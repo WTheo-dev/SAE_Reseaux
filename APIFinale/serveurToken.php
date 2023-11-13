@@ -1,6 +1,6 @@
 <?php
 
-require_once("jwt_utils.php");
+require_once("jwt_util.php");
 require_once("fonctions.php");
 
 $header = array("alg" => "HS256", "typ"=>"JWT");

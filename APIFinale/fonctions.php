@@ -55,7 +55,8 @@ function connexionApprenti($id_Apprenti) {
         }
     }else{
         return FALSE;
-    }
+    } 
+    
  }
         
 
@@ -142,7 +143,7 @@ function clean($champEntrant)
 
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////        GESTION DES EDUCATEURS       ////////////////////
-/////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////jyd///////////////////////////
 
 function inscriptionEducateur($educateurIdentite) {
     $BD = connexionBD();
@@ -169,6 +170,44 @@ function inscriptionEducateur($educateurIdentite) {
           return FALSE;
         }
 }
+
+function suppresionEducateur() {
+
+}
+
+function modifierEducateur() {
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+////////////////////           GESTION FICHES            ////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
+function listeFiche($id_fiche) {
+  $BD = connexionBD();
+  $listeFiche = $BD ->prepare('SELECT * from ')
+
+}
+
+function créerFiche() {
+
+}
+
+function supprimerFiche() {
+
+}
+
+
+function modifierFiche() {
+
+}
+
+function lireFiche() {
+
+}
+
+
 
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////             GESTION API             ////////////////////
