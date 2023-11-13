@@ -33,7 +33,7 @@ function conversionHTML($tableauAConvertir){
 function connexionApprenti($id_Apprenti) {
     $BD = connexionBD();
     if (count($id_Apprenti) > 0) {
-        $id_ApprentiHTML = conversionHTML($id_Apprenti);
+        $identiteApprentiHTML = conversionHTML($id_Apprenti);
         if (count ($id_Apprenti) > 0) {
             $verificationApprenti = $BD -> prepare('SELECT $ from apprenti WHERE schema = ?');
             $verificationApprenti -> execute(array($id_Apprenti['0']));
@@ -130,6 +130,16 @@ function  recuperation_role($login)  {
         return FALSE;
     } 
 }
+
+function clean($champEntrant)
+{
+    // permet d'enlever les balises html, xml, php
+    $champEntrant = strip_tags($champEntrant);
+    // permet d'enlève les tags HTML et PHP
+    $champEntrant = htmlspecialchars($champEntrant);
+    return $champEntrant;
+}
+
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////        GESTION DES EDUCATEURS       ////////////////////
 /////////////////////////////////////////////////////////////////////////////
