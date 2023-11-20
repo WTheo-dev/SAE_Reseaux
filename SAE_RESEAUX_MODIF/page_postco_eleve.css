@@ -1,0 +1,141 @@
+body {
+  font-family: Arial, sans-serif; /* Choisir une police de caractères appropriée */
+  text-align: center; /* Pour centrer les éléments enfants horizontalement */
+}
+
+.header_p_d {
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.header_apeaj img {
+  max-width: 100%;
+  max-height: 40px; /* Ajustez la hauteur maximale selon vos besoins */
+}
+
+
+.logo_p_d {
+  max-width: 100%;
+}
+
+.h1_pagepostco {
+  text-align: center;
+}
+
+.square2,
+.square3 {
+  display: flex;
+  width: 70%;
+  margin: 30px auto; /* Utilisation de 'auto' pour centrer les fiches horizontalement */
+  display: inline-block;
+  position: relative;
+}
+
+.square2,
+.square3 {
+  display: flex;
+  flex-direction: column; /* Changement de la direction pour placer le bouton en dessous de l'image */
+  align-items: center; /* Centrage horizontal des éléments */
+  background-color: lightblue;
+  border-radius: 10px;
+  padding: 20px; /* Ajout d'un espace intérieur pour plus de lisibilité */
+}
+
+.square2 img,
+.square3 img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+
+.bouton-anciennes-fiches,
+.bouton-fiche-actuelle {
+  display: block;
+  margin-top: 10px;
+  width: 100%;
+  font-size: 30px; /* Ajout de la taille de police */
+}
+
+.square2:hover,
+.square3:hover {
+  border:6px solid #00ff00; /* Contour vert lors du survol */
+}
+
+/* Ajoutez le reste de votre CSS existant ici */
+
+.main-header {
+  background-color: lightgreen;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.child-info h1 {
+  margin: 0;
+}
+
+.formation p {
+  margin: 0;
+}
+
+.bouton-deconnexion-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px; /* Ajustez la marge selon vos besoins */
+}
+
+.square2,
+.square3,
+.bouton-deconnexion-container {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.square2:hover,
+.square3:hover,
+.bouton-deconnexion-container:hover {
+  transform: scale(1.01); /* Grossissement de 10% */
+  opacity: 0.9; /* Opacité de 80% lors du survol */
+}
+
+.bouton-deconnexion {
+  background-color: red; /* Choisissez une couleur appropriée */
+  color: #ffffff; /* Choisissez une couleur appropriée */
+  padding: 15px 60px; /* Ajustez le padding pour agrandir le bouton */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  font-size: 18px; /* Ajustez la taille de la police */
+}
+
+.bouton-deconnexion:hover {
+  transform: scale(1.1); /* Grossissement de 10% */
+  opacity: 0.8; /* Opacité de 80% lors du survol */
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    .carts_container {
+      width: 50%; /* Ajustez la largeur pour les écrans plus petits si nécessaire */
+      height: 30%;
+      margin-bottom: auto;
+    }
+    
+    .welcome_message{
+        margin-top: 100px;
+    }
+
+    li {
+        margin-top: 50px;
+    }
+    
+  }
