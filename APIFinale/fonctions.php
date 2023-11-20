@@ -132,8 +132,7 @@ function  recuperation_role($login)  {
     } 
 }
 
-function clean($champEntrant)
-{
+function clean($champEntrant) {
     // permet d'enlever les balises html, xml, php
     $champEntrant = strip_tags($champEntrant);
     // permet d'enlève les tags HTML et PHP
@@ -143,7 +142,7 @@ function clean($champEntrant)
 
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////        GESTION DES EDUCATEURS       ////////////////////
-//////////////////////////////////////////////////jyd///////////////////////////
+/////////////////////////////////////////////////////////////////////////////
 
 function inscriptionEducateur($educateurIdentite) {
     $BD = connexionBD();
@@ -186,7 +185,7 @@ function modifierEducateur() {
 
 function listeFiche($id_fiche) {
   $BD = connexionBD();
-  $listeFiche = $BD ->prepare('SELECT * from ')
+  $listeFiche = $BD ->prepare('SELECT * from ');
 
 }
 
