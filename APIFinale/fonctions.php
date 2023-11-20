@@ -41,7 +41,7 @@ function connexionApprenti($id_Apprenti) {
             if  ($verificationApprenti->rowCount() > 0) {
                 foreach( $verificationApprenti as $row) {
                     if (password_verify($id_Apprenti['1'],$row['mdp'])){
-                        $_SESSION['id'] = $row['idEducateur'];
+                        $_SESSION['id'] = $row['id_Apprenti'];
                         $_SESSION['compteValide'] = $row['compteValide'];
                         $_SESSION['coordinateur'] = $row['coordinateur'];
                         return TRUE;
