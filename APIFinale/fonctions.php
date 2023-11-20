@@ -81,32 +81,6 @@ function verificationPremiereInscription($EducateurIdentite){
       return TRUE;
     }
   }
-
-  function inscriptionApprenti($apprentiIdentite){
-    $BD = connexionBD();
-    if(count($apprentiIdentite) > 0){
-      $identiteApprentiHTML = conversionHTML($apprentiIdentite);
-  
-      $role = 1;
-  
-      if(count($identiteApprentiHTML) > 0){
-        $ajoutApprenti = $BD->prepare('INSERT INTO apprenti(nom, prenom, login, mdp, photo, compteValide) VALUES (?,?,?,?,?,?,?)');
-        $ajoutApprenti->execute(array($identiteApprentiHTML['0'], $identiteApprentiHTML['1'], $identiteApprentiHTML['2'], $identiteApprentiHTML['3'], $identiteApprentiHTML['4'], $role, 0));
-        
-        $BD = null;
-  
-        if($ajoutApprenti->rowCount() > 0){
-          return TRUE;
-        } else {
-          return FALSE;
-        }
-      } else {
-        return TRUE; 
-      }
-    } else {
-      return FALSE;
-    }
-  }
   
 
 function envoiMail($adresseMail, $nouveauMotDePasse){
@@ -141,40 +115,93 @@ function clean($champEntrant) {
 }
 
 /////////////////////////////////////////////////////////////////////////////
+////////////////////           GESTION FICHES            ////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
+function listeApprenti() {
+
+}
+
+function unApprenti() {
+
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+////////////////////        GESTION DES SUPERADMINS      ////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
+function inscriptionApprenti($apprentiIdentite){
+  $BD = connexionBD();
+  if(count($apprentiIdentite) > 0){
+    $identiteApprentiHTML = conversionHTML($apprentiIdentite);
+
+    $role = 1;
+
+    if(count($identiteApprentiHTML) > 0){
+      $ajoutApprenti = $BD->prepare('INSERT INTO apprenti(nom, prenom, login, mdp, photo, compteValide) VALUES (?,?,?,?,?,?,?)');
+      $ajoutApprenti->execute(array($identiteApprentiHTML['0'], $identiteApprentiHTML['1'], $identiteApprentiHTML['2'], $identiteApprentiHTML['3'], $identiteApprentiHTML['4'], $role, 0));
+      
+      $BD = null;
+
+      if($ajoutApprenti->rowCount() > 0){
+        return TRUE;
+      } else {
+        return FALSE;
+      }
+    } else {
+      return TRUE; 
+    }
+  } else {
+    return FALSE;
+  }
+}
+
+function inscriptionEducateur($educateurIdentite) {
+  $BD = connexionBD();
+  if(count($educateurIdentite) > 0){
+      $identiteEducateurHTML = conversionHTML($educateurIdentite);
+      if($educateurIdentite['6'] == 2){
+        $role = 2;
+      }else{
+        $role = 3;
+      }
+      if(count($identiteEducateurHTML) > 0){
+          $ajoutEducateur = $BD->prepare('INSERT INTO Educateur(nom, prenom, login, mdp, compteValide, role) VALUES (?,?,?,?,?,?,?,?,?,?)');
+          $ajoutEducateur->execute(array($identiteEducateurHTML['0'], $identiteEducateurHTML['1'], $identiteEducateurHTML['3'], $identiteEducateurHTML['4'], $identiteEducateurHTML['5'], $role, 0));
+          $BD = null;
+          if($ajoutEducateur->rowCount() > 0){
+            return TRUE;
+          }else{
+            return FALSE;
+          }
+        }else{
+          return TRUE;
+        }
+      }else{
+        return FALSE;
+      }
+}
+
+/////////////////////////////////////////////////////////////////////////////
 ////////////////////        GESTION DES EDUCATEURS       ////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
-function inscriptionEducateur($educateurIdentite) {
-    $BD = connexionBD();
-    if(count($educateurIdentite) > 0){
-        $identiteEducateurHTML = conversionHTML($educateurIdentite);
-        if($educateurIdentite['6'] == 2){
-          $role = 2;
-        }else{
-          $role = 3;
-        }
-        if(count($identiteEducateurHTML) > 0){
-            $ajoutEducateur = $BD->prepare('INSERT INTO Educateur(nom, prenom, login, mdp, compteValide, role) VALUES (?,?,?,?,?,?,?,?,?,?)');
-            $ajoutEducateur->execute(array($identiteEducateurHTML['0'], $identiteEducateurHTML['1'], $identiteEducateurHTML['3'], $identiteEducateurHTML['4'], $identiteEducateurHTML['5'], $role, 0));
-            $BD = null;
-            if($ajoutEducateur->rowCount() > 0){
-              return TRUE;
-            }else{
-              return FALSE;
-            }
-          }else{
-            return TRUE;
-          }
-        }else{
-          return FALSE;
-        }
-}
 
 function suppresionEducateur() {
 
 }
 
 function modifierEducateur() {
+
+}
+
+function listeEducateur() {
+
+}
+
+function unEducateur() {
 
 }
 
