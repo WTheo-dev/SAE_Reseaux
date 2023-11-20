@@ -1,0 +1,31 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="page_postco_superadmin.css">
+        <title>Accueil superAdmin</title>
+    </head>
+    <body>  
+        <header class="header_page_postco_superadmin">
+            <div class="header_text"><img class="logo_page_postco_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
+        </header>
+    
+        <div class="colonne_creation">
+            <h2>Vous êtes connecté en tant que Super Admin</h2>
+            <p>Choisissez ce que vous voulez faire :</p>
+            <a href="creer_compte_eleve.html"><button class="bouton_creation">Créer un compte élève</button></a>
+            <a href="creer_compte_educateur.html"><button class="bouton_creation">Créer un compte éducateur</button></a>
+        </div>
+    
+        <div class="colonne_liste">
+            <a href="liste_eleve.html"><button class="bouton_liste">Lister les élèves</button></a>
+            <a href="liste_educateur.html"><button class="bouton_liste">Lister les éducateurs</button></a>
+            <button id="btnDeconnexion" onclick="deconnecter()">Déconnexion</button>
+        </div>
+    
+        <!-- Footer -->
+        <footer>
+            <p>Ceci est le pied de page (footer) de la page d'accueil.</p>
+        </footer>
+        <script src="page_postco_superadmin.js"></script>

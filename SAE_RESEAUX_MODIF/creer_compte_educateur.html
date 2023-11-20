@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Création de Compte Éducateur</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body class="body-creer-compte-educateur">
+    <div class="signup-form-creer-compte-educateur">
+        <h2 class="h2-creer-compte-educateur">Création de Compte Éducateur</h2>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label class="label-creer-compte-educateur" for="prenom">Prénom Éducateur</label>
+                <input class="input-text-creer-compte-educateur" type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom" required>
+            </div>
+            <div class="form-group">
+                <label class="label-creer-compte-educateur" for="nom">Nom Éducateur</label>
+                <input class="input-text-creer-compte-educateur" type="text" id="nom" name="nom" placeholder="Entrez votre nom" required>
+            </div>
+            <div class="radio-group-educateur">
+                <label class="label-creer-compte-educateur">Type d'educateur :</label>
+                <input type="radio" id="simple" name="genre" value="simple" required>
+                <label class="label-creer-compte-educateur" for="simple">Simple</label>
+                <input type="radio" id="technique" name="genre" value="technique" required>
+                <label class="label-creer-compte-educateur" for="technique">Technique</label>
+            </div>
+            <div class="form-group">
+                <label class="label-creer-compte-educateur" for="motdepasse">Mot de passe</label>
+                <input class="input-password-creer-compte-educateur" type="password" id="motdepasse" name="motdepasse" placeholder="Entrez votre mot de passe" required>
+            </div>
+            <div class="form-group">
+                <label class="label-creer-compte-educateur" for="email">Adresse e-mail</label>
+                <input class="input-email-creer-compte-educateur" type="email" id="email" name="email" placeholder="Entrez votre mail" required>
+            </div>
+            <div class="form-group">
+                <label class="label-creer-compte-educateur" for="telephone">Téléphone (optionnel)</label>
+                <input class="input-telephone-creer-compte-educateur" type="tel" id="telephone" name="telephone" placeholder="Entrez votre numéro de téléphone">
+            </div>
+            <input class="input-submit-creer-compte-educateur" type="submit" value="Créer le Compte" id="create-account-button">
+            <a href="pa.html"><input class="input-bouton-creer-compte-educateur" type="button" value="Annuler"></a>
+
+        </form>
+    </div>
+    <!-- Popup -->
+    <div class="popup-creer-compte-educateur" id="popup">
+        <div class="popup-content-educateur">
+            <h3>Compte créé</h3>
+            <p>Votre compte éducateur a été créé avec succès.</p>
+            
+            <a href="connexion_educateur.html">Retour à la page de connexion</a>
+        </div>
+    </div>
+<script src="creer_compte_educateur.js"></script>
+</body>
+</html>
