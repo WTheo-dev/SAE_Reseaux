@@ -728,18 +728,11 @@ footer {
 
 #liste_photo_p_d img {
     width: 230px; /* Redimensionner les images à la largeur souhaitée */
-    height: 150px; /* Redimensionner les images à la hauteur souhaitée */
+    height: 230px; /* Redimensionner les images à la hauteur souhaitée */
     margin: 10px;
     border: 2px solid black;
     border-radius: 5px;
 }
-
-/* .test{
-    text-align : center;
-    padding : 5px;
-    display: flex;
-    margin: 1em;    
-} */
 
 
 /* Styles pour le footer */
