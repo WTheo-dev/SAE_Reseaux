@@ -104,7 +104,9 @@ body {
   transform: scale(1.01); /* Grossissement de 10% */
   opacity: 0.9; /* Opacité de 80% lors du survol */
 }
-
+.suivi_eleve{
+  display: flex;
+}
 .bouton-deconnexion {
   background-color: red; /* Choisissez une couleur appropriée */
   color: #ffffff; /* Choisissez une couleur appropriée */

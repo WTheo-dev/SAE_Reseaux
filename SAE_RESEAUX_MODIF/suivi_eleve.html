@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi de Progression - Élève</title>
+    <link rel="stylesheet" href="suivi_eleve.css">
+</head>
+<body>
+
+    <h1>Suivi de Progression - Élève</h1>
+<!-- Ajoutez cette liste déroulante pour choisir la voix -->
+
+
+        <!-- Commentaires des professeurs -->
+        <div class="comment" id="comment1">
+            <strong>M.Carrara:</strong> Bon travail avec ChatGPT! Continuez ainsi.
+        </div>
+        <button class="playButton" onclick="playText('comment1')"><img src="Image/play-icon.png" ></button>
+        <button class="pauseButton" onclick="pauseText()"><img src="Image/icon_pause.png" ></button>
+
+        <div class="comment" id="comment2">
+            <strong>Français:</strong> Excellente rédaction de l'essai. Continuez à travailler sur la grammaire.
+        </div>
+        <button class="playButton" onclick="playText('comment2')"><img src="Image/play-icon.png" ></button>
+        <button class="pauseButton" onclick="pauseText()"><img src="Image/icon_pause.png" ></button>
+
+        <div class="comment" id="comment3">
+            <strong>Sciences:</strong> Bravo pour la compréhension des concepts. N'hésitez pas à poser des questions.
+        </div>
+        <button class="playButton" onclick="playText('comment3')"><img src="Image/play-icon.png" ></button>
+        <button class="pauseButton" onclick="pauseText()"><img src="Image/icon_pause.png" ></button>
+    </div>
+
+    <div id="transcription"></div>
+
+    <script src="suivi_eleve.js"></script>
+</body>
+</html>
