@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="page_postco_superadmin.css">
         <title>Accueil superAdmin</title>
+        
     </head>
     <body>  
         <header class="header_page_postco_superadmin">
@@ -18,11 +19,29 @@
             <a href="creer_compte_educateur.html"><button class="bouton_creation">Créer un compte éducateur</button></a>
         </div>
     
-        <div class="colonne_liste">
-            <a href="liste_eleve.html"><button class="bouton_liste">Lister les élèves</button></a>
-            <a href="liste_educateur.html"><button class="bouton_liste">Lister les éducateurs</button></a>
-            <button id="btnDeconnexion" onclick="deconnecter()">Déconnexion</button>
-        </div>
+        
+          <label for="actions">Choisir une action :</label>
+<select id="actions" onchange="showSection()">
+  <option value="modifier">Modifier</option>
+  <option value="creer">Créer</option>
+  <option value="supprimer">Supprimer</option>
+</select>
+
+<label for="liste">Choisir une liste :</label>
+<select id="liste" onchange="showSection()">
+  <option value="eleves">Liste des élèves</option>
+  <option value="cours">Liste des cours</option>
+  <option value="educateurs">Liste des éducateurs</option>
+  <option value="formations">Liste des formations</option>
+</select>
+
+<button onclick="goToPage()">GO</button>
+
+
+
+<div class="colonne_liste">
+    <button id="btnDeconnexion" onclick="deconnecter()">Déconnexion</button>
+</div>
     
         <!-- Footer -->
         <footer>
