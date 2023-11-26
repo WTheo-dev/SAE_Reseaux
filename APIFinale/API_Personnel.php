@@ -19,6 +19,8 @@ $data = json_decode($postedData, true);
 
 switch ($http_method) {
     case 'GET':
+        if ($role = 2) {    
+        } else {}
 
     case 'POST':
 
