@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 20 nov. 2023 à 19:01
+-- Généré le : dim. 26 nov. 2023 à 16:46
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -32,12 +32,10 @@ CREATE TABLE IF NOT EXISTS `apprenti` (
   `id_apprenti` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `prénom` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `login` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `mdp` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `photo` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `Id_Rôle` int NOT NULL,
+  `Id_Utilisateur` int NOT NULL,
   PRIMARY KEY (`id_apprenti`),
-  KEY `Id_Rôle` (`Id_Rôle`)
+  UNIQUE KEY `Id_Utilisateur` (`Id_Utilisateur`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -184,24 +182,22 @@ CREATE TABLE IF NOT EXISTS `personnel` (
   `id_personnel` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `prénom` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `login` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `mdp` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `Id_Rôle` int NOT NULL,
+  `Id_Utilisateur` int NOT NULL,
   PRIMARY KEY (`id_personnel`),
-  KEY `Id_Rôle` (`Id_Rôle`)
+  UNIQUE KEY `Id_Utilisateur` (`Id_Utilisateur`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `rôle`
+-- Structure de la table `rôle_`
 --
 
-DROP TABLE IF EXISTS `rôle`;
-CREATE TABLE IF NOT EXISTS `rôle` (
-  `Id_Rôle` int NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `rôle_`;
+CREATE TABLE IF NOT EXISTS `rôle_` (
+  `Id_role` int NOT NULL AUTO_INCREMENT,
   `Description` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`Id_Rôle`)
+  PRIMARY KEY (`Id_role`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -219,6 +215,22 @@ CREATE TABLE IF NOT EXISTS `session` (
   `id_formation` int NOT NULL,
   PRIMARY KEY (`id_session`),
   KEY `id_formation` (`id_formation`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `utilisateur`
+--
+
+DROP TABLE IF EXISTS `utilisateur`;
+CREATE TABLE IF NOT EXISTS `utilisateur` (
+  `Id_Utilisateur` int NOT NULL AUTO_INCREMENT,
+  `login` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `mdp` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Id_role` int NOT NULL,
+  PRIMARY KEY (`Id_Utilisateur`),
+  KEY `Id_role` (`Id_role`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 COMMIT;
 
