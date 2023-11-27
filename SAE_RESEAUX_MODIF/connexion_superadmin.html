@@ -1,30 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Page de Connexion SuperAdmin</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login</title>
+    <link rel="stylesheet" href="connexion_superadmin.css">  
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body class="body-superadmin">
-    <div class="login-container-superadmin">
-        <h2 class="h2-superadmin">Connexion SuperAdmin</h2>
-        <form action="page_postco_superadmin.html" method="post">
-            <input class="input-text-superadmin" type="text" name="username" placeholder="prenom.nom" required>
-            <input class="input-password-superadmin" type="password" name="password" placeholder="Entrez votre mot de passe" required>
-            <label for="remember">
-                <input class="input-checkbox-superadmin" type="checkbox" id="remember" name="remember"> Se souvenir de moi
-            </label>
-            <input class="input-submit-superadmin" type="submit" value="Se connecter">
+    <div class="superadmin-wrapper">
+        <form action="">
+            <h1>Se connecter</h1>
+            <div class="superadmin-input-box">
+                <input type="text" placeholder="prenom.nom" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="superadmin-input-box">
+                <input type="password" placeholder="Mot de passe" required>
+                <i class='bx bxs-lock-alt' ></i>
+            </div>
+            <div class="superadmin-remember-forgot">
+                <label><input type="checkbox"> Se souvenir de moi</label>
+                <a href="#"> Mot de passe oublié ?</a>
+            </div>
+
+            <button type="submit" class="superadmin-btn">Se connecter</button>
+
+            <div class="superadmin-register-link">
+                <p>Créer un compte ?
+                <a href="#">Register</a></p>
+            </div>
         </form>
-        <div class="links-superadmin">
-            <div class="forgot-password-superadmin">
-                <a class="superadmin" href="mot_de_passe_oublie_superadmin.html">Mot de passe oublié?</a>
-            </div>
-            <div class="creer-compte-superadmin">
-                <a class="superadmin" href="page_daccueil.html">Retour</a>
-            </div>
-        </div>
     </div>
-        
 </body>
 </html>

@@ -1,29 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Page de Connexion Edcuateur</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login</title>
+    <link rel="stylesheet" href="connexion_educateur.css">  
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 <body class="body-educateur">
-    <div class="login-container-educateur">
-        <h2 class="h2-educateur">Connexion Educateur</h2>
-        <form action="page_postco_admin.html" method="post">
-            <input class="input-text-educateur" type="text" name="username" placeholder="prenom.nom" required>
-            <input class="input-password-educateur" type="password" name="password" placeholder="Entrez votre mot de passe" required>
-            <label for="remember">
-                <input class="input-checkbox-educateur" type="checkbox" id="remember" name="remember"> Se souvenir de moi
-            </label>
-            <input class="input-submit-educateur" type="submit" value="Se connecter">
-        </form>
-        <a href="page_daccueil.html"><button class="button_retour_educateur">Retour</button></a>
-        <div class="links-educateur">
-            <div class="forgot-password-educateur">
-                <a class="a-educateur" href="mot_de_passe_oublie.html">Mot de passe oublié?</a>
-                
+    <div class="educateur-wrapper">
+        <form action="">
+            <h1>Se connecter</h1>
+            <div class="educateur-input-box">
+                <input type="text" placeholder="prenom.nom" required>
+                <i class='bx bxs-user'></i>
             </div>
-        </div>
+            <div class="educateur-input-box">
+                <input type="password" placeholder="Mot de passe" required>
+                <i class='bx bxs-lock-alt' ></i>
+            </div>
+            <div class="educateur-remember-forgot">
+                <label><input type="checkbox"> Se souvenir de moi</label>
+                <a href="#"> Mot de passe oublié ?</a>
+            </div>
+
+            <button type="submit" class="educateur-btn">Se connecter</button>
+
+            <div class="educateur-register-link">
+                <p>Créer un compte ?
+                <a href="#">Register</a></p>
+            </div>
+        </form>
     </div>
-        
 </body>
 </html>
