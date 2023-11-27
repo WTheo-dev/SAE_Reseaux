@@ -170,6 +170,18 @@ function inscriptionApprenti($apprentiIdentite)
   }
 }
 
+function supprimerApprenti($id_apprenti) {
+  $BD = connexionBD();
+  $id_personnel = htmlspecialchars($id_apprenti);
+  $suppressionApprenti = $BD->prepare('DELETE FROM apprenti WHERE id_apprenti = ?');
+  $suppressionApprenti->execute(array($id_personnel));
+  $BD = null;
+  if ($suppressionApprenti->rowCount() > 0) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
 function inscriptionEducateur($educateurIdentite)
 {
   $BD = connexionBD();
@@ -202,7 +214,7 @@ function inscriptionEducateur($educateurIdentite)
 /////////////////////////////////////////////////////////////////////////////
 
 
-function suppresionEducateur($id_personnel)
+function supprimerEducateur($id_personnel)
 {
   $BD = connexionBD();
   $id_personnel = htmlspecialchars($id_personnel);
@@ -216,14 +228,14 @@ function suppresionEducateur($id_personnel)
   }
 }
 
-function modifierEducateur($personnel, $id_personnel, $nom, $prénom)
+function modifierEducateur($personnel, $id_personnel, $nom, $prenom)
 {
   $BD = connexionBD();
   $id_personnel = htmlspecialchars($id_personnel);
   $nom = htmlspecialchars($nom);
-  $prénom = htmlspecialchars($prénom);
+  $prenom = htmlspecialchars($prenom);
   $modifierEducateur = $BD->prepare('UPDATE personnel SET nom = ? , prenom = ? where id_personnel = ?');
-  $modifierEducateur->execute(array($nom, $prénom, $id_personnel));
+  $modifierEducateur->execute(array($nom, $prenom, $id_personnel));
   $BD = null;
   if ($modifierEducateur->rowCount() > 0) {
     return TRUE;
@@ -254,7 +266,7 @@ function listeFiche($id_fiche)
 
 }
 
-function créerFiche()
+function creerFiche()
 {
   $BD = connexionBD();
 }
@@ -273,7 +285,7 @@ function supprimerFiche($id_fiche)
 }
 
 
-function modifierFiche($id_fiche, $numéro, $nom_du_demandeur, $date_demande,$date_intervention, $durée_intervention, $localisation, $description_demande, $degré_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_création
+function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande,$date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation
 ) {
   $BD = connexionBD();
 
@@ -296,19 +308,19 @@ function modifierFiche($id_fiche, $numéro, $nom_du_demandeur, $date_demande,$da
 
   // Utilisez les valeurs correctes pour la mise à jour de la fiche
   $modifierFiche->execute(array(
-    $numéro,
+    $numero,
     $nom_du_demandeur,
     $date_demande,
     $date_intervention,
-    $durée_intervention,
+    $duree_intervention,
     $localisation,
     $description_demande,
-    $degré_urgence,
+    $degre_urgence,
     $type_intervention,
     $nature_intervention,
     $couleur_intervention,
     $etat_fiche,
-    $date_création,
+    $date_creation,
     $id_fiche
   ));
 
