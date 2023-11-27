@@ -20,8 +20,6 @@ $data = json_decode($postedData, true);
 
 switch ($http_method) {
     case 'GET':
-    case 'GET':
-        $utilisateur = isset($_GET['utilisateur']) ? $_GET['utilisateur'] : '';
         if ($role == 2) {
             switch ($utilisateur) {
                 case 'apprenti':
