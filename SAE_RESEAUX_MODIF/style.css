@@ -671,10 +671,10 @@ footer {
 }
 
 .header_p_d {
+    display: flex;
     background-color: lightgreen;
     color: #fff;
-   padding: 20px 0;
-   text-align: center;  
+    height: 15%;
 }
 
 .logo_p_d{

@@ -13,30 +13,31 @@
         </header>
     
         <div class="colonne_creation">
-            <h2>Vous êtes connecté en tant que Super Admin</h2>
-            <p>Choisissez ce que vous voulez faire :</p>
-            <a href="creer_compte_eleve.html"><button class="bouton_creation">Créer un compte élève</button></a>
-            <a href="creer_compte_educateur.html"><button class="bouton_creation">Créer un compte éducateur</button></a>
+            <h2 class="h2_pagepostco_superadmin">Vous êtes connecté en tant que Super Admin</h2>
+            <div class="container_1"><p>Choisissez ce que vous voulez faire :</p>
+                <a href="creer_compte_eleve.html"><button class="bouton_creation">Créer un compte élève</button></a>
+                <a href="creer_compte_educateur.html"><button class="bouton_creation">Créer un compte éducateur</button></a></div>
         </div>
     
+        <div class="container_2">
+            <label for="actions">Choisir une action :</label>
+            <select id="actions" onchange="showSection()">
+                <option value="modifier">Modifier</option>
+                <option value="creer">Créer</option>
+                <option value="supprimer">Supprimer</option>
+            </select>
         
-          <label for="actions">Choisir une action :</label>
-<select id="actions" onchange="showSection()">
-  <option value="modifier">Modifier</option>
-  <option value="creer">Créer</option>
-  <option value="supprimer">Supprimer</option>
-</select>
-
-<label for="liste">Choisir une liste :</label>
-<select id="liste" onchange="showSection()">
-  <option value="eleves">Liste des élèves</option>
-  <option value="cours">Liste des cours</option>
-  <option value="educateurs">Liste des éducateurs</option>
-  <option value="formations">Liste des formations</option>
-</select>
-
-<button onclick="goToPage()">GO</button>
-
+            <label for="liste">Choisir une liste :</label>
+            <select id="liste" onchange="showSection()">
+                <option value="eleves">Elèves</option>
+                <option value="cours">Cours</option>
+                <option value="educateurs">Educateurs</option>
+                <option value="formations">Formations</option>
+            </select>
+        
+            <button onclick="goToPage()">GO</button>
+        </div>
+        
 
 
 <div class="colonne_liste">
@@ -44,7 +45,7 @@
 </div>
     
         <!-- Footer -->
-        <footer>
+          <footer>
             <p>Ceci est le pied de page (footer) de la page d'accueil.</p>
         </footer>
         <script src="page_postco_superadmin.js"></script>
