@@ -29,7 +29,7 @@ switch ($methodeHTTP) {
 			}
 			if($RETURN_CODE < 400){
 				$STATUS_MESSAGE = "Connexion valide";
-				$matchingData = generate_jwt($header, $body ,$cle);	
+					$matchingData = generate_jwt($header, $body ,$cle);	
 			}
 							
 		} catch (\Throwable $th) {
