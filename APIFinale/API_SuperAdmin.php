@@ -20,30 +20,6 @@ $data = json_decode($postedData, true);
 
 switch ($http_method) {
     case 'GET':
-        if ($role == 2) {
-            switch ($_GET['utilisateur'] ?? '') {
-                case 'apprenti':
-                    $matchingData = listeApprenti();
-                    break;
-                case 'educateur':
-                    $matchingData = listeEducateur();
-                    break;
-                default:
-                    $matchingData = null;
-            }
-        }
-        try {
-            $RETURN_CODE = 200;
-            $STATUS_MESSAGE = "Succes ! Les donnees autorisees pour votre role sont accessibles";
-        } catch (\Throwable $th) {
-            $RETURN_CODE = $th->getCode();
-            $STATUS_MESSAGE = $th->getMessage();
-            $matchingData = null;
-        } finally {
-            deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
-        }
-        break;
-    
 
     case 'POST':
         $utilisateur = isset($_GET['apprenti']) ? $_GET['personnel'] : ''; 
