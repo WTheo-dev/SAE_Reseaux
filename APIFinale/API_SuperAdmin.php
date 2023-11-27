@@ -20,81 +20,74 @@ $data = json_decode($postedData, true);
 
 switch ($http_method) {
     case 'GET':
-        case 'GET':
-            $utilisateur = isset($_GET['utilisateur']) ? $_GET['utilisateur'] : '';
-            if ($role == 2) {
-                switch ($utilisateur) {
-                    case 'apprenti':
-                        $matchingData = listeApprenti();
-                        break;
-                    case 'educateur':
-                        $matchingData = listeEducateur();
-                        break;
-                    default:
-                        $matchingData = null;
-                }
+    case 'GET':
+        $utilisateur = isset($_GET['utilisateur']) ? $_GET['utilisateur'] : '';
+        if ($role == 2) {
+            switch ($utilisateur) {
+                case 'apprenti':
+                    $matchingData = listeApprenti();
+                    break;
+                case 'personnel':
+                    $matchingData = listePersonnel();
+                    break;
+                default:
+                    $matchingData = null;
             }
-            try {
-                $RETURN_CODE = 200;
-                $STATUS_MESSAGE = "Succes ! Les donnees autorisees pour votre role sont accessibles";
-            } catch (\Throwable $th) {
-                $RETURN_CODE = $th->getCode();
-                $STATUS_MESSAGE = $th->getMessage();
-                $matchingData = null;
-            } finally {
-                deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
-            }
-            break;
-        
+        }
+        try {
+            $RETURN_CODE = 200;
+            $STATUS_MESSAGE = "Succes ! Les donnees autorisees pour votre role sont accessibles";
+        } catch (\Throwable $th) {
+            $RETURN_CODE = $th->getCode();
+            $STATUS_MESSAGE = $th->getMessage();
+            $matchingData = null;
+        } finally {
+            deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
+        }
+        break;
+
 
     case 'POST':
-        $matchingData == null;
-        $utilisateur = isset($_GET['apprenti']) ? $_GET['personnel'] : ''; 
-        switch ($_GET['utilisateur']) {
-            case 'apprenti':
-                if ($role == 2) {
-                    if (inscriptionApprenti($data[''])) {
+        $matchingData = null;
+        $utilisateur = isset($_GET['apprenti']) ? $_GET['personnel'] : '';
+
+        if ($role == 2) {
+            switch ($utilisateur) {
+                case 'apprenti':
+                    if (inscriptionApprenti($data['nom'],$data['prenom'],$data['photo'])) {
                         $RETURN_CODE = 200;
                         $STATUS_MESSAGE = "Ajout Apprenti effectué";
                     } else {
                         $RETURN_CODE = 400;
                         $STATUS_MESSAGE = "Erreur de syntaxe";
                     }
-                } else {
-                    $RETURN_CODE = 403;
-                    $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
-                }
-                break;
-        
-            case 'educateur':
-                if ($role == 2) {
-                    if (inscriptionEducateur($data[''])) {
+                    break;
+
+                case 'personnel':
+                    if (inscriptionPersonnel($data)) {
                         $RETURN_CODE = 200;
-                        $STATUS_MESSAGE = "Ajout Educateur effectué";
+                        $STATUS_MESSAGE = "Ajout Personnel effectué";
                     } else {
                         $RETURN_CODE = 400;
                         $STATUS_MESSAGE = "Erreur de syntaxe";
                     }
-                } else {
-                    $RETURN_CODE = 403;
-                    $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
-                }
-                break;
-        
-            default:
-                $RETURN_CODE = 400;
-                $STATUS_MESSAGE = "Type d'utilisateur non valide";
-                break;
+                    break;
+
+                default:
+                    $RETURN_CODE = 400;
+                    $STATUS_MESSAGE = "Type d'utilisateur non valide";
+                    break;
+            }
+        } else {
+            $RETURN_CODE = 403;
+            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
         }
-        
+
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
-        
-
-
 
     case 'DELETE':
         $matchingData = null;
-        $utilisateur = isset($_GET['apprenti']) ? $_GET['personnel'] : '';     
+        $utilisateur = isset($_GET['apprenti']) ? $_GET['personnel'] : '';
         if ($role == 2) {
             switch ($utilisateur) {
                 case 'apprenti':
@@ -106,17 +99,17 @@ switch ($http_method) {
                         $STATUS_MESSAGE = "Erreur de Syntaxe";
                     }
                     break;
-        
-                case 'educateur':
-                    if (supprimerEducateur($_GET['id_personnel'])) {
+
+                case 'personnel':
+                    if (supprimerPersonnel($_GET['id_personnel'])) {
                         $RETURN_CODE = 200;
-                        $STATUS_MESSAGE = "Suppression Educateur effectuée";
+                        $STATUS_MESSAGE = "Suppression Personnel effectuée";
                     } else {
                         $RETURN_CODE = 400;
                         $STATUS_MESSAGE = "Erreur de Syntaxe";
                     }
                     break;
-        
+
                 default:
                     $RETURN_CODE = 400;
                     $STATUS_MESSAGE = "Type d'utilisateur non valide";
@@ -126,15 +119,15 @@ switch ($http_method) {
             $RETURN_CODE = 403;
             $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
         }
-        
+
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
-        
+
         break;
 
 
 
 
     case 'PUT':
-        
+
 
 }

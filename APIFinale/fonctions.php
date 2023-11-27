@@ -74,11 +74,11 @@ function validationmdp($mdp, $mdpConfirmation)
   }
 }
 
-function verificationPremiereInscription($EducateurIdentite)
+function verificationPremiereInscription($PersonnelIdentite)
 {
   $BD = connexionBD();
   $recherchePresence = $BD->prepare('SELECT * FROM apprenti WHERE nom = ?');
-  $recherchePresence->execute(array($EducateurIdentite['7']));
+  $recherchePresence->execute(array($PersonnelIdentite['7']));
   $BD = null;
   if ($recherchePresence->rowCount() > 0) {
     return FALSE;
@@ -182,21 +182,21 @@ function supprimerApprenti($id_apprenti) {
     return FALSE;
   }
 }
-function inscriptionEducateur($educateurIdentite)
+function inscriptionPersonnel($PersonnelIdentite)
 {
   $BD = connexionBD();
-  if (count($educateurIdentite) > 0) {
-    $identiteEducateurHTML = conversionHTML($educateurIdentite);
-    if ($educateurIdentite['6'] == 2) {
+  if (count($PersonnelIdentite) > 0) {
+    $identitePersonnelHTML = conversionHTML($PersonnelIdentite);
+    if ($PersonnelIdentite['6'] == 2) {
       $role = 2;
     } else {
       $role = 3;
     }
-    if (count($identiteEducateurHTML) > 0) {
-      $ajoutEducateur = $BD->prepare('INSERT INTO Educateur(nom, prenom, login, mdp, compteValide, role) VALUES (?,?,?,?,?,?,?,?,?,?)');
-      $ajoutEducateur->execute(array($identiteEducateurHTML['0'], $identiteEducateurHTML['1'], $identiteEducateurHTML['3'], $identiteEducateurHTML['4'], $identiteEducateurHTML['5'], $role, 0));
+    if (count($identitePersonnelHTML) > 0) {
+      $ajoutPersonnel = $BD->prepare('INSERT INTO personnel(nom, prenom, login, mdp, compteValide, role) VALUES (?,?,?,?,?,?,?,?,?,?)');
+      $ajoutPersonnel->execute(array($identitePersonnelHTML['0'], $identitePersonnelHTML['1'], $identitePersonnelHTML['3'], $identitePersonnelHTML['4'], $identitePersonnelHTML['5'], $role, 0));
       $BD = null;
-      if ($ajoutEducateur->rowCount() > 0) {
+      if ($ajoutPersonnel->rowCount() > 0) {
         return TRUE;
       } else {
         return FALSE;
@@ -210,46 +210,46 @@ function inscriptionEducateur($educateurIdentite)
 }
 
 /////////////////////////////////////////////////////////////////////////////
-////////////////////        GESTION DES EDUCATEURS       ////////////////////
+////////////////////        GESTION DES Personnel        ////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
 
-function supprimerEducateur($id_personnel)
+function supprimerPersonnel($id_personnel)
 {
   $BD = connexionBD();
   $id_personnel = htmlspecialchars($id_personnel);
-  $suppressionEducateur = $BD->prepare('DELETE FROM personnel WHERE id_personnel = ?');
-  $suppressionEducateur->execute(array($id_personnel));
+  $suppressionPersonnel = $BD->prepare('DELETE FROM personnel WHERE id_personnel = ?');
+  $suppressionPersonnel->execute(array($id_personnel));
   $BD = null;
-  if ($suppressionEducateur->rowCount() > 0) {
+  if ($suppressionPersonnel->rowCount() > 0) {
     return TRUE;
   } else {
     return FALSE;
   }
 }
 
-function modifierEducateur($personnel, $id_personnel, $nom, $prenom)
+function modifierPersonnel($personnel, $id_personnel, $nom, $prenom)
 {
   $BD = connexionBD();
   $id_personnel = htmlspecialchars($id_personnel);
   $nom = htmlspecialchars($nom);
   $prenom = htmlspecialchars($prenom);
-  $modifierEducateur = $BD->prepare('UPDATE personnel SET nom = ? , prenom = ? where id_personnel = ?');
-  $modifierEducateur->execute(array($nom, $prenom, $id_personnel));
+  $modifierPersonnel = $BD->prepare('UPDATE personnel SET nom = ? , prenom = ? where id_personnel = ?');
+  $modifierPersonnel->execute(array($nom, $prenom, $id_personnel));
   $BD = null;
-  if ($modifierEducateur->rowCount() > 0) {
+  if ($modifierPersonnel->rowCount() > 0) {
     return TRUE;
   } else {
     return FALSE;
   }
 }
 
-function listeEducateur()
+function listePersonnel()
 {
   $BD = connexionBD();
 }
 
-function unEducateur()
+function unPersonnel()
 {
   $BD = connexionBD();
 }
