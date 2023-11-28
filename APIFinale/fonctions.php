@@ -19,6 +19,35 @@ function connexionBD()
   return $BD;
 }
 
+function identification($login, $mdp){
+  $login = htmlspecialchars($login);
+  $password = htmlspecialchars($mdp);
+  $BD = connexionBD();
+  $verificationMembre = $BD->prepare('SELECT * FROM utilisateur WHERE login = ? AND mdp = ?');
+  $verificationMembre->execute(array($login, $mdp));
+  $BD = null;
+  if($verificationMembre->rowCount() > 0){
+      return TRUE;
+  }else{
+      return FALSE;
+ } 
+}
+
+function  recuperation_role($login)  {
+  $BD = connexionBD();
+  $recuperationRoleUtilisateur = $BD->prepare('SELECT id_role FROM utilisateur WHERE login = ?');
+  $recuperationRoleUtilisateur->execute(array($login));
+  $BD = null;
+  if($recuperationRoleUtilisateur->rowCount() > 0){
+      foreach($recuperationRoleUtilisateur as $row){
+          return $row['id_role'];
+      }
+  }else{
+      return FALSE;
+  } 
+}
+D
+
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////         GESTION DES COMPTES         ////////////////////
 /////////////////////////////////////////////////////////////////////////////
@@ -77,9 +106,7 @@ function validationmdp($mdp, $mdpConfirmation)
 function verificationPremiereInscription($PersonnelIdentite)
 {
   $BD = connexionBD();
-  if ($BD->connect_error) {
-    die("Échec de la connexion à la base de données : " . $BD->connect_error);
-  }
+ 
   $recherchePresence = $BD->prepare('SELECT * FROM apprenti WHERE nom = ?');
   $recherchePresence->execute(array($PersonnelIdentite['7']));
   $BD = null;
@@ -101,20 +128,8 @@ function envoiMail($adresseMail, $nouveauMotDePasse)
   mail($destinataire, $sujet, $message, $headers);
 }
 
-function recuperation_role($login, $mdp)
-{
-  $BD = connexionBD();
-  $recuperationRoleMembre = $BD->prepare('SELECT id_role FROM role WHERE login = ? and mdp = ?');
-  $recuperationRoleMembre->execute(array($login, $mdp));
-  $BD = null;
-  if ($recuperationRoleMembre->rowCount() > 0) {
-    foreach ($recuperationRoleMembre as $row) {
-      return $row['id_role'];
-    }
-  } else {
-    return FALSE;
-  }
-}
+
+
 
 function clean($champEntrant)
 {
@@ -132,10 +147,7 @@ function clean($champEntrant)
 function listeApprenti()
 {
   $BD = connexionBD();
-  if ($BD->connect_error) {
-    die("Échec de la connexion à la base de données : " . $BD->connect_error);
-  }
-  
+
   $listeApprenti = $BD->prepare('SELECT * FROM apprentis');
   $listeApprenti->execute(array());
     $BD = null;
@@ -152,9 +164,7 @@ function listeApprenti()
 function unApprenti()
 {
   $BD = connexionBD();
-  if ($BD->connect_error) {
-    die("Échec de la connexion à la base de données : " . $BD->connect_error);
-  }
+ 
 }
 
 
@@ -168,9 +178,7 @@ function inscriptionApprenti($apprentiIdentite)
 {
   $BD = connexionBD();
   
-  if ($BD->connect_error) {
-    die("Échec de la connexion à la base de données : " . $BD->connect_error);
-  }
+
   if (count($apprentiIdentite) > 0) {
     $identiteApprentiHTML = conversionHTML($apprentiIdentite);
 

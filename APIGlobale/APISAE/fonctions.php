@@ -34,18 +34,17 @@ function connexionBD(){
 
 function  recuperation_role($login)  {
     $BD = connexionBD();
-    $recuperationRoleMembre = $BD->prepare('SELECT id_personnel FROM personnel WHERE nom = ?');
-    $recuperationRoleMembre->execute(array($login));
+    $recuperationRoleUtilisateur = $BD->prepare('SELECT id_role FROM utilisateur WHERE login = ?');
+    $recuperationRoleUtilisateur->execute(array($login));
     $BD = null;
-    if($recuperationRoleMembre->rowCount() > 0){
-        foreach($recuperationRoleMembre as $row){
+    if($recuperationRoleUtilisateur->rowCount() > 0){
+        foreach($recuperationRoleUtilisateur as $row){
             return $row['id_role'];
         }
     }else{
         return FALSE;
     } 
 }
-
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////         GESTION DES FICHES          ////////////////////
 /////////////////////////////////////////////////////////////////////////////
