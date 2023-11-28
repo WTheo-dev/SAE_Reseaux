@@ -46,7 +46,7 @@ function  recuperation_role($login)  {
       return FALSE;
   } 
 }
-D
+
 
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////         GESTION DES COMPTES         ////////////////////
@@ -148,7 +148,7 @@ function listeApprenti()
 {
   $BD = connexionBD();
 
-  $listeApprenti = $BD->prepare('SELECT * FROM apprentis');
+  $listeApprenti = $BD->prepare('SELECT * FROM apprenti');
   $listeApprenti->execute(array());
     $BD = null;
     $resultat = [];
@@ -174,19 +174,18 @@ function unApprenti()
 ////////////////////        GESTION DES SUPERADMINS      ////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
-function inscriptionApprenti($apprentiIdentite)
+function inscriptionApprenti($nom, $prenom, $photo)
 {
   $BD = connexionBD();
   
 
   if (count($apprentiIdentite) > 0) {
     $identiteApprentiHTML = conversionHTML($apprentiIdentite);
-
     $role = 1;
 
     if (count($identiteApprentiHTML) > 0) {
-      $ajoutApprenti = $BD->prepare('INSERT INTO apprenti(nom, prenom, login, mdp, photo, compteValide) VALUES (?,?,?,?,?,?,?)');
-      $ajoutApprenti->execute(array($identiteApprentiHTML['0'], $identiteApprentiHTML['1'], $identiteApprentiHTML['2'], $identiteApprentiHTML['3'], $identiteApprentiHTML['4'], $role, 0));
+      $ajoutApprenti = $BD->prepare('INSERT INTO apprenti(nom, prenom, photo) VALUES (?,?,?)');
+      $ajoutApprenti->execute(array($identiteApprentiHTML['0'], $identiteApprentiHTML['1'], $identiteApprentiHTML['2'], $identiteApprentiHTML['3']));
 
       $BD = null;
 
@@ -205,9 +204,6 @@ function inscriptionApprenti($apprentiIdentite)
 
 function supprimerApprenti($id_apprenti) {
   $BD = connexionBD();
-  if ($BD->connect_error) {
-    die("Échec de la connexion à la base de données : " . $BD->connect_error);
-  }
   $id_personnel = htmlspecialchars($id_apprenti);
   $suppressionApprenti = $BD->prepare('DELETE FROM apprenti WHERE id_apprenti = ?');
   $suppressionApprenti->execute(array($id_personnel));
@@ -222,9 +218,6 @@ function inscriptionPersonnel($PersonnelIdentite)
 {
   $BD = connexionBD();
   
-  if ($BD->connect_error) {
-    die("Échec de la connexion à la base de données : " . $BD->connect_error);
-  }
 
   if (count($PersonnelIdentite) > 0) {
     $identitePersonnelHTML = conversionHTML($PersonnelIdentite);
@@ -258,11 +251,6 @@ function inscriptionPersonnel($PersonnelIdentite)
 function supprimerPersonnel($id_personnel)
 {
   $BD = connexionBD();
-
-  if ($BD->connect_error) {
-    die("Échec de la connexion à la base de données : " . $BD->connect_error);
-  }
-
   $id_personnel = htmlspecialchars($id_personnel);
   $suppressionPersonnel = $BD->prepare('DELETE FROM personnel WHERE id_personnel = ?');
   $suppressionPersonnel->execute(array($id_personnel));
@@ -278,9 +266,7 @@ function modifierPersonnel($personnel, $id_personnel, $nom, $prenom)
 {
   $BD = connexionBD();
   // Vérifier la connexion
-  if ($BD->connect_error) {
-    die("Échec de la connexion à la base de données : " . $BD->connect_error);
-  }
+ 
 
   $id_personnel = htmlspecialchars($id_personnel);
   $nom = htmlspecialchars($nom);
@@ -295,17 +281,20 @@ function modifierPersonnel($personnel, $id_personnel, $nom, $prenom)
   }
 }
 
-function listePersonnel($role)
+function listePersonnel()
 {
   $BD = connexionBD();
 
-  if ($BD->connect_error) {
-    die("Échec de la connexion à la base de données : " . $BD->connect_error);
-  }
-  $listePersonnel = $BD->prepare('SELECT FROM * from personnel');
+  $listePersonnel = $BD->prepare('SELECT * FROM personnel');
   $listePersonnel->execute(array());
-  $BD = null;
+    $BD = null;
+    $resultat = [];
 
+    foreach($listePersonnel as $row){
+        array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom']));
+    }
+
+    return $resultat;
 }
 
 function unPersonnel()

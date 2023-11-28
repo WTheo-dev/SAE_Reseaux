@@ -21,28 +21,21 @@ $data = json_decode($postedData, true);
 switch ($http_method) {
     case 'GET':
         if ($role == 2) {
-            switch ($utilisateur) {
-                case 'apprenti':
-                    $matchingData = listeApprenti();
-                    break;
-                case 'personnel':
-                    $matchingData = listePersonnel();
-                    break;
-                default:
-                    $matchingData = null;
+            try {
+                $RETURN_CODE = 200;
+                $STATUS_MESSAGE = "Voici la liste des Apprentis :";
+                $matchingData = listeApprenti();
+            } catch (\Throwable $th) {
+                $RETURN_CODE = $th->getCode();
+                $STATUS_MESSAGE = $th->getMessage();
+                $matchingData = null;
+            } finally {
+                deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
             }
+        } else {
+            deliver_response(403, "Echec, le rôle n'est pas autorisé pour avoir accès à ces données", null);
         }
-        try {
-            $RETURN_CODE = 200;
-            $STATUS_MESSAGE = "Succes ! Les donnees autorisees pour votre role sont accessibles";
-        } catch (\Throwable $th) {
-            $RETURN_CODE = $th->getCode();
-            $STATUS_MESSAGE = $th->getMessage();
-            $matchingData = null;
-        } finally {
-            deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
-        }
-        break;
+
 
 
     case 'POST':
@@ -52,12 +45,14 @@ switch ($http_method) {
         if ($role == 2) {
             switch ($utilisateur) {
                 case 'apprenti':
-                    if (inscriptionApprenti($data['nom'],$data['prenom'],$data['photo'])) {
+                    if (inscriptionApprenti($data['nom'], $data['prenom'], $data['photo'])) {
                         $RETURN_CODE = 200;
                         $STATUS_MESSAGE = "Ajout Apprenti effectué";
+                        $matchingData = null;
                     } else {
                         $RETURN_CODE = 400;
                         $STATUS_MESSAGE = "Erreur de syntaxe";
+                        $matchingData = null;
                     }
                     break;
 
@@ -65,16 +60,14 @@ switch ($http_method) {
                     if (inscriptionPersonnel($data)) {
                         $RETURN_CODE = 200;
                         $STATUS_MESSAGE = "Ajout Personnel effectué";
+                        $matchingData = null;
                     } else {
                         $RETURN_CODE = 400;
                         $STATUS_MESSAGE = "Erreur de syntaxe";
+                        $matchingData = null;
                     }
                     break;
 
-                default:
-                    $RETURN_CODE = 400;
-                    $STATUS_MESSAGE = "Type d'utilisateur non valide";
-                    break;
             }
         } else {
             $RETURN_CODE = 403;
@@ -84,47 +77,40 @@ switch ($http_method) {
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
 
     case 'DELETE':
-        $matchingData = null;
-        $utilisateur = isset($_GET['apprenti']) ? $_GET['personnel'] : '';
-        if ($role == 2) {
-            switch ($utilisateur) {
-                case 'apprenti':
-                    if (supprimerApprenti($_GET['id_apprenti'])) {
-                        $RETURN_CODE = 200;
-                        $STATUS_MESSAGE = "Suppression Apprenti effectuée";
-                    } else {
-                        $RETURN_CODE = 400;
-                        $STATUS_MESSAGE = "Erreur de Syntaxe";
-                    }
-                    break;
+        if($role==2) {
+            // Récupérer l'ID de l'apprenti depuis les paramètres de l'URL
+            $id_apprenti = $_GET['id_apprenti'];
 
-                case 'personnel':
-                    if (supprimerPersonnel($_GET['id_personnel'])) {
-                        $RETURN_CODE = 200;
-                        $STATUS_MESSAGE = "Suppression Personnel effectuée";
-                    } else {
-                        $RETURN_CODE = 400;
-                        $STATUS_MESSAGE = "Erreur de Syntaxe";
-                    }
-                    break;
-
-                default:
-                    $RETURN_CODE = 400;
-                    $STATUS_MESSAGE = "Type d'utilisateur non valide";
-                    break;
+            // Vérifier si l'ID de l'apprenti est fourni
+            if ($id_apprenti) {
+                // Appeler la fonction de suppression
+                $result = supprimerApprenti($id_apprenti);
+            // Vérifier le résultat de la fonction
+            if ($result === true) {
+                // Réponse en cas de succès
+                $RETURN_CODE = 200; // No Content
+                $STATUS_MESSAGE = "L'apprenti a été supprimé avec succès.";
+                $matchingData = null;
+            } else {
+                // Réponse en cas d'échec
+                $RETURN_CODE = 400; // Not Found
+                $STATUS_MESSAGE = "L'apprenti n'existe pas ou à déjà été supprimé"; 
+                $matchingData = null;
+            }
+            } else {
+            // Réponse en cas de manque d'ID de l'apprenti
+            $RETURN_CODE = 400; // Bad Request
+            $STATUS_MESSAGE = "L'ID de l'apprenti est requis.";
+            $matchingData = null;
             }
         } else {
             $RETURN_CODE = 403;
             $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
         }
 
+
+        // Appeler la fonction deliver_response
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
-
-        break;
-
-
-
-
     case 'PUT':
 
 
