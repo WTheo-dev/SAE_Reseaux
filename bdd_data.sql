@@ -20,7 +20,7 @@ INSERT INTO `utilisateur` (`login`, `mdp`, `id_role`) VALUES
 ('utilisateur7', 'motdepasse7', 1);
 
 -- Insertion des données pour la table `rôle`
-INSERT INTO `rôle` (`Id_Rôle`, `Description`) VALUES
+INSERT INTO `role` (`id_role`, `description`) VALUES
 (1, 'Apprenti'),
 (2, 'Super-Admin'),
 (3, 'Educ Admin'),
@@ -28,7 +28,7 @@ INSERT INTO `rôle` (`Id_Rôle`, `Description`) VALUES
 (5, 'CIP');
 
 -- Ajout de la contrainte d'unicité pour le Super-Admin
-ALTER TABLE `rôle`
+ALTER TABLE `role`
 ADD CONSTRAINT `unique_superadmin`
 UNIQUE (`description`);
 
