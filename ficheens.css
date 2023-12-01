@@ -1,0 +1,97 @@
+body {
+    font-size: 1.2rem;
+    height: calc(100vh - 60px);
+    margin: 0;
+    padding: 20px;
+    background-color: lightgray;
+}
+
+.bordure {
+    border: solid green 0.4vh;
+    align-items: center;
+}
+
+.block{
+    padding: 1%;
+    position: relative;
+    display: block;
+    justify-content: space-around;
+}
+
+.jsp {
+    height: fit-content;
+}
+
+.fiche_button {
+    display: flex;
+    justify-content: space-around;
+    height: fit-content;
+    padding-top: 2vh;
+}
+
+.block p {
+    position: absolute;
+    top: -0.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    background-color: lightgray;
+}
+
+.block textarea {
+    width: 60%;
+    margin-top: 1%;
+}
+
+#titre_mat_util {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+#mat_util {
+    display: flex;
+    justify-content: space-around;
+}
+
+#mat_droit, #mat_gauche {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+#bouton_imprimer {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.block *:disabled {
+    background-color: lightgray;
+}
+
+#checkouille {
+    border: red solid 3px;
+}
+
+select {
+    font-size: 1.2rem;
+}
+
+button {
+    font-size: 1.2rem;
+    padding: 10px 15px;
+}
+
+button i{
+    margin-right:10px;
+}
+
+@media print {
+    .noprint {
+        visibility: hidden;
+    }
+}
+
+button[name=imprimer] {
+    margin-bottom: 2%;
+}
