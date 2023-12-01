@@ -40,34 +40,14 @@ switch ($http_method) {
 
     case 'POST':
         $matchingData = null;
-        $utilisateur = isset($_GET['apprenti']) ? $_GET['personnel'] : '';
 
         if ($role == 2) {
-            switch ($utilisateur) {
-                case 'apprenti':
-                    if (inscriptionApprenti($data['nom'], $data['prenom'], $data['photo'])) {
-                        $RETURN_CODE = 200;
-                        $STATUS_MESSAGE = "Ajout Apprenti effectué";
-                        $matchingData = null;
-                    } else {
-                        $RETURN_CODE = 400;
-                        $STATUS_MESSAGE = "Erreur de syntaxe";
-                        $matchingData = null;
-                    }
-                    break;
-
-                case 'personnel':
-                    if (inscriptionPersonnel($data)) {
-                        $RETURN_CODE = 200;
-                        $STATUS_MESSAGE = "Ajout Personnel effectué";
-                        $matchingData = null;
-                    } else {
-                        $RETURN_CODE = 400;
-                        $STATUS_MESSAGE = "Erreur de syntaxe";
-                        $matchingData = null;
-                    }
-                    break;
-
+            if (inscriptionApprenti($data['nom'], $data['prenom'], $data['photo'])) {
+                $RETURN_CODE = 200;
+                $STATUS_MESSAGE = "Ajout Apprenti effectué";
+            } else {
+                $RETURN_CODE = 400;
+                $STATUS_MESSAGE = "Erreur de syntaxe";
             }
         } else {
             $RETURN_CODE = 403;
@@ -77,7 +57,7 @@ switch ($http_method) {
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
 
     case 'DELETE':
-        if($role==2) {
+        if ($role == 2) {
             // Récupérer l'ID de l'apprenti depuis les paramètres de l'URL
             $id_apprenti = $_GET['id_apprenti'];
 
@@ -85,23 +65,23 @@ switch ($http_method) {
             if ($id_apprenti) {
                 // Appeler la fonction de suppression
                 $result = supprimerApprenti($id_apprenti);
-            // Vérifier le résultat de la fonction
-            if ($result === true) {
-                // Réponse en cas de succès
-                $RETURN_CODE = 200; // No Content
-                $STATUS_MESSAGE = "L'apprenti a été supprimé avec succès.";
-                $matchingData = null;
+                // Vérifier le résultat de la fonction
+                if ($result === true) {
+                    // Réponse en cas de succès
+                    $RETURN_CODE = 200; // No Content
+                    $STATUS_MESSAGE = "L'apprenti a été supprimé avec succès.";
+                    $matchingData = null;
+                } else {
+                    // Réponse en cas d'échec
+                    $RETURN_CODE = 400; // Not Found
+                    $STATUS_MESSAGE = "L'apprenti n'existe pas ou à déjà été supprimé";
+                    $matchingData = null;
+                }
             } else {
-                // Réponse en cas d'échec
-                $RETURN_CODE = 400; // Not Found
-                $STATUS_MESSAGE = "L'apprenti n'existe pas ou à déjà été supprimé"; 
+                // Réponse en cas de manque d'ID de l'apprenti
+                $RETURN_CODE = 400; // Bad Request
+                $STATUS_MESSAGE = "L'ID de l'apprenti est requis.";
                 $matchingData = null;
-            }
-            } else {
-            // Réponse en cas de manque d'ID de l'apprenti
-            $RETURN_CODE = 400; // Bad Request
-            $STATUS_MESSAGE = "L'ID de l'apprenti est requis.";
-            $matchingData = null;
             }
         } else {
             $RETURN_CODE = 403;
@@ -111,7 +91,30 @@ switch ($http_method) {
 
         // Appeler la fonction deliver_response
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
+
     case 'PUT':
+        $matchingData = null;
+
+        if ($role == 2) {
+            $id_apprenti = $_GET['id_apprenti'];
+
+
+            if (modifierApprenti($id_apprenti, $data['nom'], $data['prenom'], $data['photo'])) {
+                $RETURN_CODE = 200;
+                $STATUS_MESSAGE = "Mise à jour de l'Apprenti effectuée";
+            } else {
+                $RETURN_CODE = 400;
+                $STATUS_MESSAGE = "Erreur de syntaxe ou id_apprenti invalide";
+            }
+        } else {
+            $RETURN_CODE = 403;
+            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié, la méthode HTTP appropriée ou l'id_apprenti est manquant";
+        }
+
+        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
+
+
+        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
 
 
 }
