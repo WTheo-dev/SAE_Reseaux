@@ -137,3 +137,7 @@
         row-gap: 15px;
       }
     }
+
+    .superadmin-btn{
+      background-color: purple;
+    }
