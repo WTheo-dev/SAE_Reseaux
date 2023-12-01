@@ -76,6 +76,7 @@
 /* CONNEXION ELEVE */
 
 .header-connexion-eleve {
+    display: flex;
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -87,6 +88,7 @@
 }
 
 .rectangle2-connexion-eleve, .rectangle3-connexion-eleve, .rectangle4-connexion-eleve {
+    display: flex;
     width: 100%; /* Largeur de la page sur tous les appareils */ 
     margin: 10px;
     padding: 20px 0;
@@ -669,10 +671,10 @@ footer {
 }
 
 .header_p_d {
+    display: flex;
     background-color: lightgreen;
     color: #fff;
-   padding: 20px 0;
-   text-align: center;  
+    height: 15%;
 }
 
 .logo_p_d{
