@@ -1,46 +1,55 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="page_postco_eleve.css">
-    <title>Page Elève</title>
+    <title>Page Élève</title>
 </head>
+
 <body>
 
     <header class="main-header">
-            <img class="header_apeaj" src="Image/APEAJ_color2.png" alt="Logo APEAJ">
-        <div class="child-info">
-            <h2>Nom Prénom de l'eleve</h2>
+        <div class="logo">
+            <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
         </div>
-        <div class="formation">
-            <p>Formation de l'eleve</p>
+        <div class="child-info">
+            <h2>Nom Prénom de l'élève</h2>
+            <p>Formation de l'élève</p>
         </div>
     </header>
 
-    <h1 class="h1_pagepostco">Accéder à mes fiches</h1>
+    <h1 class="h1-pagepostco">Accéder à mes fiches</h1>
 
+    <div class="bubbles-container">
+        <div class="square2">
+            <a href="fiche_en_cours.html">
+                <img src="Image/fiche.png" alt="Image 2">
+            </a>
+            <button class="bouton-fiche-actuelle">Ma fiche actuelle</button>
+        </div>
 
-    <div class="square3">
-        <a href="fiche_en_cours.html">
-            <img src="Image/fiche.png" alt="Image 2">
+        <div class="square3">
+            <a href="ancienne_fiche.html">
+                <img src="Image/fiche.png" alt="Image 1">
+            </a>
+            <button class="bouton-anciennes-fiches">Mes anciennes fiches</button>
+        </div>
+    </div>
+
+    <div class="suivi-eleve">
+        <h1 class="h1-pagepostco">Mon suivi:</h1>
+        <a href="suivi_eleve.html">
+            <img src="Image/iconesuivi.png" alt="Image 2">
         </a>
-    <button class="bouton-fiche-actuelle">Ma fiche actuelle</button>
     </div>
 
-
-
-    <div class="square2">
-        <a href="ancienne_fiche.html">
-            <img src="Image/fiche.png" alt="Image 1">
-        </a>       
-        <button class="bouton-anciennes-fiches">Mes anciennes fiches</button>
-    </div>
-  
     <div class="bouton-deconnexion-container">
         <a href="page_daccueil.html" class="bouton-deconnexion">Déconnexion</a>
     </div>
-    
+
 </body>
+
 </html>

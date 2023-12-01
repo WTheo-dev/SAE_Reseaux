@@ -1,141 +1,119 @@
 body {
-  font-family: Arial, sans-serif; /* Choisir une police de caractères appropriée */
-  text-align: center; /* Pour centrer les éléments enfants horizontalement */
-}
-
-.header_p_d {
-  background-color: #f0f0f0;
-  padding: 10px;
-}
-
-.header_apeaj img {
-  max-width: 100%;
-  max-height: 40px; /* Ajustez la hauteur maximale selon vos besoins */
-}
-
-
-.logo_p_d {
-  max-width: 100%;
-}
-
-.h1_pagepostco {
+  font-family: Arial, sans-serif;
   text-align: center;
+  background-color: #f4f8ff;
+  color: #333;
+  margin: 0; /* Supprime la marge par défaut du corps */
+  padding: 0; /* Supprime le rembourrage par défaut du corps */
+  height: 100vh; /* Ajuste la hauteur du corps à 100% de la vue */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container {
+  flex: 1; /* Utilise tout l'espace disponible */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.main-header {
+  background-color: #3498db;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.child-info {
+  text-align: left;
+}
+
+.suivi-eleve {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.h1-pagepostco {
+  text-align: center;
+  margin-top: 20px;
+  color: #3498db;
+}
+
+.bubbles-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px;
 }
 
 .square2,
 .square3 {
+  flex: 1; /* Utilise tout l'espace disponible dans le conteneur parent */
   display: flex;
-  width: 70%;
-  margin: 30px auto; /* Utilisation de 'auto' pour centrer les fiches horizontalement */
-  display: inline-block;
-  position: relative;
-}
-
-.square2,
-.square3 {
-  display: flex;
-  flex-direction: column; /* Changement de la direction pour placer le bouton en dessous de l'image */
-  align-items: center; /* Centrage horizontal des éléments */
-  background-color: lightblue;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ecf0f1;
   border-radius: 10px;
-  padding: 20px; /* Ajout d'un espace intérieur pour plus de lisibilité */
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .square2 img,
 .square3 img {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 100%; /* Ajuste la taille maximale de l'image à 100% de la largeur du parent */
+  max-height: 100%; /* Ajuste la taille maximale de l'image à 100% de la hauteur du parent */
   display: block;
   margin: 0 auto;
 }
-
 
 .bouton-anciennes-fiches,
 .bouton-fiche-actuelle {
   display: block;
   margin-top: 10px;
   width: 100%;
-  font-size: 30px; /* Ajout de la taille de police */
-}
-
-.square2:hover,
-.square3:hover {
-  border:6px solid #00ff00; /* Contour vert lors du survol */
-}
-
-/* Ajoutez le reste de votre CSS existant ici */
-
-.main-header {
-  background-color: lightgreen;
+  font-size: 18px;
+  background-color: #3498db;
+  color: #fff;
   padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.logo img {
-  max-width: 100%;
-  height: auto;
-}
-
-.child-info h1 {
-  margin: 0;
-}
-
-.formation p {
-  margin: 0;
+.bubble:hover {
+  border: 2px solid #3498db;
 }
 
 .bouton-deconnexion-container {
   display: flex;
   justify-content: center;
-  margin-top: 40px; /* Ajustez la marge selon vos besoins */
-}
-
-.square2,
-.square3,
-.bouton-deconnexion-container {
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
-
-.square2:hover,
-.square3:hover,
-.bouton-deconnexion-container:hover {
-  transform: scale(1.01); /* Grossissement de 10% */
-  opacity: 0.9; /* Opacité de 80% lors du survol */
+  margin-top: 20px;
 }
 
 .bouton-deconnexion {
-  background-color: red; /* Choisissez une couleur appropriée */
-  color: #ffffff; /* Choisissez une couleur appropriée */
-  padding: 15px 60px; /* Ajustez le padding pour agrandir le bouton */
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 15px 40px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  font-size: 18px; /* Ajustez la taille de la police */
+  font-size: 18px;
 }
 
 .bouton-deconnexion:hover {
-  transform: scale(1.1); /* Grossissement de 10% */
-  opacity: 0.8; /* Opacité de 80% lors du survol */
+  transform: scale(1.1);
+  opacity: 0.8;
 }
 
-
-
 @media screen and (max-width: 1200px) {
-    .carts_container {
-      width: 50%; /* Ajustez la largeur pour les écrans plus petits si nécessaire */
-      height: 30%;
-      margin-bottom: auto;
-    }
-    
-    .welcome_message{
-        margin-top: 100px;
-    }
-
-    li {
-        margin-top: 50px;
-    }
-    
+  .container {
+      padding: 10px;
   }
+}
