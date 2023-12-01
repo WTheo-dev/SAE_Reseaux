@@ -113,8 +113,4 @@ switch ($http_method) {
 
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
 
-
-        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
-
-
 }
