@@ -1,0 +1,51 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="page_postco_superadmin.css">
+        <title>Accueil superAdmin</title>
+        
+    </head>
+    <body>  
+        <header class="header_page_postco_superadmin">
+            <div class="header_text"><img class="logo_page_postco_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
+        </header>
+    
+        <div class="colonne_creation">
+            <h2 class="h2_pagepostco_superadmin">Vous etes connecte en tant que Super Admin</h2>
+            <div class="container_1"><p>Choisissez ce que vous voulez faire :</p>
+                <a href="creer_compte_eleve.html"><button class="bouton_creation">Créer un compte eleve</button></a>
+                <a href="creer_compte_educateur.html"><button class="bouton_creation">Creer un compte educateur</button></a></div>
+        </div>
+    
+        <div class="container_2">
+            <label for="actions">Choisir une action :</label>
+            <select id="actions" onchange="showSection()">
+                <option value="modifier">Modifier</option>
+                <option value="creer">Créer</option>
+                <option value="supprimer">Supprimer</option>
+            </select>
+        
+            <label for="liste">Choisir une liste :</label>
+            <select id="liste" onchange="showSection()">
+                <option value="eleves">Elèves</option>
+                <option value="cours">Cours</option>
+                <option value="educateurs">Educateurs</option>
+                <option value="formations">Formations</option>
+            </select>
+        
+            
+        </div>
+        
+
+
+<div class="colonne_liste">
+    <button id="btnDeconnexion" onclick="deconnecter()">Deconnexion</button>
+</div>
+    
+        <!-- Footer -->
+          <footer>
+            <p>Ceci est le pied de page (footer) de la page d'accueil.</p>
+        </footer>
+        <script src="page_postco_superadmin.js"></script>

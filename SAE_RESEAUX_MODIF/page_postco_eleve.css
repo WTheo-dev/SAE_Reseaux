@@ -1,0 +1,119 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f4f8ff;
+  color: #333;
+  margin: 0; /* Supprime la marge par défaut du corps */
+  padding: 0; /* Supprime le rembourrage par défaut du corps */
+  height: 100vh; /* Ajuste la hauteur du corps à 100% de la vue */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container {
+  flex: 1; /* Utilise tout l'espace disponible */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.main-header {
+  background-color: #3498db;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.child-info {
+  text-align: left;
+}
+
+.suivi-eleve {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.h1-pagepostco {
+  text-align: center;
+  margin-top: 20px;
+  color: #3498db;
+}
+
+.bubbles-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+.square2,
+.square3 {
+  flex: 1; /* Utilise tout l'espace disponible dans le conteneur parent */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ecf0f1;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.square2 img,
+.square3 img {
+  max-width: 100%; /* Ajuste la taille maximale de l'image à 100% de la largeur du parent */
+  max-height: 100%; /* Ajuste la taille maximale de l'image à 100% de la hauteur du parent */
+  display: block;
+  margin: 0 auto;
+}
+
+.bouton-anciennes-fiches,
+.bouton-fiche-actuelle {
+  display: block;
+  margin-top: 10px;
+  width: 100%;
+  font-size: 18px;
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bubble:hover {
+  border: 2px solid #3498db;
+}
+
+.bouton-deconnexion-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.bouton-deconnexion {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  font-size: 18px;
+}
+
+.bouton-deconnexion:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+      padding: 10px;
+  }
+}

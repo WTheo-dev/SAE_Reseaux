@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page connecte educ technique</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="voir_commentaire_educ.css">
+  </head>
+  <body>
+
+    <div class="w3-container">
+
+      <h2>Commentaires de la fiche</h2>
+      
+      <label for="comment">Ajouter un commentaire:</label>
+      <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br>
+      
+      <button onclick="ajouterCommentaire()">Ajouter commentaire</button>
+      
+      <div class="w3-responsive">
+        <table id="commentTable" class="w3-table-all">
+          <tr>
+            <th>Nom Educateur</th>
+            <th>Prenom Educateur</th>
+            <th>Commentaires </th>
+            <th>Action</th>
+          </tr>
+        </table>
+      </div>
+      
+      
+      
+    </div>
+    <button class="buton_deconnexion" onclick="deconnecter()">Deconnexion</button>
+    
+    <script src="voir_commentaire_educ.js"></script>
+
+  </body>
+</html>
