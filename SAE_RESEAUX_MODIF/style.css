@@ -739,6 +739,7 @@ footer {
 
 /* Styles pour le footer */
 footer {
+    display: none;
     background-color: #333;
     color: #fff;
     text-align: center;
