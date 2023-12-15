@@ -1,508 +1,519 @@
 /* CONNEXION EDUCATEUR */
 
-.body-educateur {
-    font-family: Arial, sans-serif;
-    background-color: #3498db;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
-.login-container-educateur {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 30vh;
-    height: 40vh;
-    padding: 100px;
-    position: relative; /* Pour positionner le lien */
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
 
-.h2-educateur {
-    color: #333;
-}
+    .body-educateur {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+       /* background: url('Image/img.jpg') no-repeat;*/
+       background: rgb(130, 106, 251);
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
 
-.input-text-educateur,.input-password-educateur {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 1vh;
-}
+    .educateur-wrapper {
+        width: 420px;
+        border: 2px solid rgba(255,255,255,.2);
+        box-shadow: 0 0 10px rgba(0,0,0,.2);
+        background: purple;
+        color: #ffff;
+        border-radius: 10px;
+        padding: 30px 40px;
+    }
 
-.input-checkbox-educateur {
-    margin: 20px 5px;
-}
+    .educateur-wrapper h1 {
+        font-size: 36px;
+        text-align: center;
+    }
 
-.input-submit-educateur {
-    display: flex;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 50px;
-    cursor: pointer;
-    width: 100%;
-}
+    .educateur-input-box {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        margin: 30px 0;
+    }
 
-.input-submit-educateur:hover {
-    background-color: #2187c7;
-}
+    .educateur-input-box input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        border: 2px solid rgba(255,255,255,.2);
+        border-radius: 40px;
+        font-size: 16px;
+        color: #fff;
+        padding: 20px 45px 20px 20px;
+    }
 
-.forgot-password-educateur {
-    text-align: right; /* Aligner le texte à droite */
-    margin-top: 50px; /* Ajouter de l'espace en haut */
-}
+    .educateur-input-box input::placeholder {
+        color: #fff;
+    }
 
-.links-educateur {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-}
+    .educateur-input-box i {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+    }
 
+    .educateur-wrapper .educateur-remember-forgot {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14.5px;
+        margin: -15px 0 15px;
+    }
 
-.a-educateur {
-    text-decoration: none;
-    color: #3498db;
-}
+    .educateur-remember-forgot label input {
+        accent-color: #fff;
+        margin-right: 3px;
+    }
 
+    .educateur-remember-forgot a {
+        color: #fff;
+        text-decoration: none;
+    }
 
-/* CONNEXION ELEVE */
+    .educateur-remember-forgot a:hover {
+        text-decoration: underline;
+    }
 
-.header-connexion-eleve {
-    display: flex;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-/* Styles de base pour la tablette */
-.body-connexion-eleve {
-    font-family: Arial, sans-serif;
-}
+    .educateur-wrapper .educateur-btn {
+        width: 100%;
+        height: 45px;
+        background: #fff;
+        border: none;
+        outline: none;
+        border-radius: 40px;
+        box-shadow: 0 0 10px rgba(0,0,0,.1);
+        cursor: pointer;
+        font-size: 16px;
+        color: #333;
+        font-weight: 600;
+    }
 
-.rectangle2-connexion-eleve, .rectangle3-connexion-eleve, .rectangle4-connexion-eleve {
-    display: flex;
-    width: 100%; /* Largeur de la page sur tous les appareils */ 
-    margin: 10px;
-    padding: 20px 0;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    text-align: center;
-}
+    .educateur-wrapper .educateur-register-link {
+        font-size: 14.5px;
+        text-align: center;
+        margin: 20px 0 15px;
+    }
 
-#Imageenfant-connexion-eleve{
-    width: 20%;
-    padding:1em;
-}
+    .educateur-register-link p a {
+        color : #fff;
+        text-decoration: none;
+        font-weight: 600;
+    }
 
-#rond-connexion-eleve {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 5px;
-    cursor: pointer;
-}
-
-
-/* Styles CSS pour aligner le contenu au milieu de rectangle4 */
-.rectangle4-connexion-eleve {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Aligner horizontalement au centre */
-    justify-content: center; /* Aligner verticalement au centre */
-    text-align: center;
-}
-
-
-/* Styles CSS pour le formulaire et les boutons */
-#login-form-connexion-eleve {
-    margin-top: 20px; /* Espace entre le schéma de connexion et le formulaire */
-}
-
-#password-input-connexion-eleve {
-    margin-bottom: 10px; /* Espace entre le champ de mot de passe et les boutons */
-}
-
-.row-connexion-eleve {
-    display: flex;
-    
-}
-
-.point-connexion-eleve {
-    background-color: lightblue; 
-}
-
-.schéma-connexion-eleve{
-    text-align: center;
-}
-
-.button_retour{
-    text-align: left;
-    display: flex;
-    border-radius: 3px;
-}
-
-/* Styles pour le footer */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-}
+    .educateur-register-link p a:hover{
+        text-decoration: underline;
+    }
 
 
 /* CONNEXION SUPERADMIN */
 
 .body-superadmin {
-    font-family: Arial, sans-serif;
-    background-color: #3498db;
-    text-align: center;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    background: rgb(130, 106, 251);
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
-.login-container-superadmin {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    padding: 50px;
-    position: relative; /* Pour positionner le lien */
+.superadmin-wrapper {
+    width: 420px;
+    border: 2px solid rgba(255,255,255,.2);
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    background: purple;
+    color: #ffff;
+    border-radius: 10px;
+    padding: 30px 40px;
 }
 
-.h2-superadmin {
-    color: #333;
+.superadmin-wrapper h1 {
+    font-size: 36px;
+    text-align: center;
 }
 
-.input-text-superadmin,.input-password-superadmin {
+.superadmin-input-box {
+    position: relative;
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    height: 50px;
+    margin: 30px 0;
 }
 
-.input-checkbox-superadmin {
-    margin: 20px 5px;
-}
-
-.input-submit-superadmin {
-    background-color: #3498db;
-    color: #fff;
+.superadmin-input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
     border: none;
-    border-radius: 5px;
-    padding: 10px 50px;
-    cursor: pointer;
-    width: 100%;
+    outline: none;
+    border: 2px solid rgba(255,255,255,.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
 }
 
-.input-submit-superadmin:hover {
-    background-color: #2187c7;
+.superadmin-input-box input::placeholder {
+    color: #fff;
 }
 
-.forgot-password-superadmin {
-    text-align: right; /* Aligner le texte à droite */
-    margin-top: 50px; /* Ajouter de l'espace en haut */
+.superadmin-input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
 }
 
-.links-superadmin {
+.superadmin-wrapper .superadmin-remember-forgot {
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
 }
 
+.superadmin-remember-forgot label input {
+    accent-color: #fff;
+    margin-right: 3px;
+}
 
-.a-superadmin {
+.superadmin-remember-forgot a {
+    color: #fff;
     text-decoration: none;
-    color: #3498db;
+}
+
+.superadmin-remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.superadmin-wrapper .superadmin-btn {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.superadmin-wrapper .superadmin-register-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.superadmin-register-link p a {
+    color : #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.superadmin-register-link p a:hover{
+    text-decoration: underline;
 }
 
 
 /* CREER COMPTE EDUCATEUR */
 
 .body-creer-compte-educateur {
-    font-family: Arial, sans-serif;
-    background-color: #3498db;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
-}
-
-.signup-form-creer-compte-educateur {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 400px;
-    padding: 40px;
-}
-
-.h2-creer-compte-educateur {
-    color: #333;
-}
-
-.label-creer-compte-educateur {
-    display: block;
-    text-align: left;
-    margin-top: 10px;
-}
-
-.input-text-creer-compte-educateur, .input-password-creer-compte-educateur, .input-email-creer-compte-educateur, .input-telephone-creer-compte-educateur {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.radio-group-educateur {
-    text-align: left;
-}
-
-.radio-group-educateur label {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.input-submit-creer-compte-educateur, .input-bouton-creer-compte-educateur {
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: 10px 5px;
-    margin-top: 30px;
-}
-
-
-.input-bouton-creer-compte-educateur{
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: 10px 5px;
-    margin-top: 30px;
-}
-
-.input-submit-creer-compte-educateur:hover, .input-bouton-creer-compte-educateur:hover {
-    background-color: #2187c7;
-}
-
-.popup-creer-compte-educateur {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
     justify-content: center;
-    align-items: center;
-    z-index: 1;
-}
-
-.popup-content-educateur {
-    background-color: #fff;
-    border-radius: 5px;
-    width: 300px;
     padding: 20px;
+    background: rgb(130, 106, 251);
+  }
+
+  .creer_compte_educateur-container {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .creer_compte_educateur-container header {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 500;
     text-align: center;
-}
+  }
 
+  .creer_compte_educateur-form {
+    margin-top: 30px;
+  }
 
-/* CREER COMPTE ELEVE */
+  .creer_compte_educateur-input-box {
+    width: 100%;
+    margin-top: 20px;
+  }
 
-.header_creercompteeleve {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-/* Styles de base pour la tablette */
-.body_creercompteleve{
-    font-family: Arial, sans-serif;
-}
+  .creer_compte_educateur-input-box label {
+    color: #333;
+  }
 
-.rectangle2_creercompteeleve, .rectangle3_creercompteeleve, .rectangle4_creercompteeleve {
-    width: 100%; /* Largeur de la page sur tous les appareils */ 
-    margin: 10px;
-    padding: 20px 0;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    text-align: center;
-}
-#Imageenfant{
-    width: 20%;
-    padding:1em;
-}
-
-.rond {
-    width: 50px;
+  .creer_compte_educateur-form :where(.creer_compte_educateur-input-box input, .creer_compte_educateur-select-box) {
+    position: relative;
     height: 50px;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 5px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+  }
+
+  .creer_compte_educateur-input-box input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .creer_compte_educateur-form .creer_compte_educateur-gender-box {
+    margin-top: 20px;
+  }
+
+  .creer_compte_educateur-gender-box h3 {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .creer_compte_educateur-form :where(.creer_compte_educateur-gender-option, .creer_compte_educateur-gender) {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    flex-wrap: wrap;
+  }
+
+  .creer_compte_educateur-form .creer_compte_educateur-gender {
+    column-gap: 5px;
+  }
+
+  .creer_compte_educateur-gender input {
+    accent-color: rgb(130, 106, 251);
+  }
+
+  .creer_compte_educateur-form :where(.creer_compte_educateur-gender input, .creer_compte_educateur-gender label) {
     cursor: pointer;
-}
+  }
 
+  .creer_compte_educateur-gender label {
+    color: #707070;
+  }
 
-/* Styles CSS pour aligner le contenu au milieu de rectangle4 */
-.rectangle4_creercompteeleve {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Aligner horizontalement au centre */
-    justify-content: center; /* Aligner verticalement au centre */
-    text-align: center;
-}
+  .creer_compte_educateur-input-box :where(input, .creer_compte_educateur-select-box) {
+    margin-top: 15px;
+  }
 
+  .creer_compte_educateur-select-box select {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    color: #707070;
+    font-size: 1rem;
+  }
 
-/* Styles CSS pour le formulaire et les boutons */
-#login-form_creercompteeleve {
-    margin-top: 20px; /* Espace entre le schéma de connexion et le formulaire */
-}
-
-#password-input {
-    margin-bottom: 10px; /* Espace entre le champ de mot de passe et les boutons */
-}
-
-.row_creercompteeleve {
-    display: flex;
-    
-}
-
-.rond {
-    background-color: lightblue; /* Vert */
-}
-
-.schéma-connexion_creercompteeleve{
-    text-align: center;
-}
-
-/* Styles pour le footer */
-footer {
-    background-color: #333;
+  .creer_compte_educateur-form button {
+    height: 55px;
+    width: 100%;
     color: #fff;
-    text-align: center;
-    padding: 10px 0;
-}
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: rgb(130, 106, 251);
+  }
 
-#imagePreview {
-    max-width: 400px;
-    max-height: 400px;
-    margin : auto;
-    padding: 2em;
-}
+  .creer_compte_educateur-form button:hover {
+    background: rgb(88, 56, 250);
+  }
+
+  /*Responsive*/
+  @media screen and (max-width: 500px) {
+    .creer_compte_educateur-form {
+      flex-wrap: wrap;
+    }
+
+    .creer_compte_educateur-form :where(.creer_compte_educateur-gender-option, .creer_compte_educateur-gender) {
+      row-gap: 15px;
+    }
+  }
+
+  .superadmin-btn{
+    background-color: purple;
+  }
 
 
 /* CREER COMPTE SUPERADMIN */
 
-.body_creer_compte_superadmin {
-    font-family: Arial, sans-serif;
-    background-color: #3498db;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+.body-creer-compte-superadmin {
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
-}
-
-.signup-form_creer_compte_superadmin {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 400px;
-    padding: 40px;
-}
-
-.h2_creer_compte_superadmin {
-    color: #333;
-}
-
-.label_creer_compte_superadmin {
-    display: block;
-    text-align: left;
-    margin-top: 10px;
-}
-
-.input_creer_compte_superadmin[type="text"],
-.input_creer_compte_superadmin[type="password"],
-.input_creer_compte_superadmin[type="email"],
-.input_creer_compte_superadmin[type="tel"] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.radio-group_creer_compte_superadmin {
-    text-align: left;
-}
-
-.radio-group_creer_compte_superadmin label {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.input2_creer_compte_superadmin,
-.input2_creer_compte_superadmin {
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: 10px 5px;
-    margin-top: 30px;
-}
-
-
-.input2_creer_compte_superadmin:hover,
-.input2_creer_compte_superadmin:hover {
-    background-color: #2187c7;
-}
-
-
-.popup_creer_compte_superadmin {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
     justify-content: center;
-    align-items: center;
-    z-index: 1;
-}
-
-.popup_creer_compte_superadmin-content {
-    background-color: #fff;
-    border-radius: 5px;
-    width: 300px;
     padding: 20px;
+    background: rgb(130, 106, 251);
+  }
+
+  .creer_compte_superadmin-container {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .creer_compte_superadmin-container header {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 500;
     text-align: center;
-}
+  }
+
+  .creer_compte_superadmin-form {
+    margin-top: 30px;
+  }
+
+  .creer_compte_superadmin-input-box {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .creer_compte_superadmin-input-box label {
+    color: #333;
+  }
+
+  .creer_compte_superadmin-form :where(.creer_compte_superadmin-input-box input, .creer_compte_superadmin-select-box) {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+  }
+
+  .creer_compte_superadmin-input-box input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .creer_compte_superadmin-form .creer_compte_superadmin-column {
+    display: flex;
+    column-gap: 15px;
+  }
+
+  .creer_compte_superadmin-form .creer_compte_superadmin-gender-box {
+    margin-top: 20px;
+  }
+
+  .creer_compte_superadmin-gender-box h3 {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .creer_compte_superadmin-form :where(.creer_compte_superadmin-gender-option, .creer_compte_superadmin-gender) {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    flex-wrap: wrap;
+  }
+
+  .creer_compte_superadmin-form .creer_compte_superadmin-gender {
+    column-gap: 5px;
+  }
+
+  .creer_compte_superadmin-gender input {
+    accent-color: rgb(130, 106, 251);
+  }
+
+  .creer_compte_superadmin-form :where(.creer_compte_superadmin-gender input, .creer_compte_superadmin-gender label) {
+    cursor: pointer;
+  }
+
+  .creer_compte_superadmin-gender label {
+    color: #707070;
+  }
+
+  .creer_compte_superadmin-address :where(input, .creer_compte_superadmin-select-box) {
+    margin-top: 15px;
+  }
+
+  .creer_compte_superadmin-select-box select {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    color: #707070;
+    font-size: 1rem;
+  }
+
+  .creer_compte_superadmin-form button {
+    height: 55px;
+    width: 100%;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: rgb(130, 106, 251);
+  }
+
+  .creer_compte_superadmin-form button:hover {
+    background: rgb(88, 56, 250);
+  }
+
+  
+
+  /*Responsive*/
+  @media screen and (max-width: 500px) {
+    .creer_compte_superadmin-form .creer_compte_superadmin-column {
+      flex-wrap: wrap;
+    }
+    .creer_compte_superadmin-form :where(.creer_compte_superadmin-gender-option, .creer_compte_superadmin-gender) {
+      row-gap: 15px;
+    }
+  }
 
 
 /* MDP OUBLIE SUPERADMIN */
@@ -655,143 +666,81 @@ footer {
 }
 
 
-/* PAGE D'ACCUEIL */
-
-.body_p_d {
+/* VOIR COMMENTAIRE EDUC */
+.body-voircom {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    height: 100vh;
 }
 
-.header_p_d {
-    display: flex;
-    background-color: lightgreen;
-    color: #fff;
-    height: 15%;
-}
-
-.logo_p_d{
-    width: 10%;
-    margin-left: 40px;    
-   
-}
-
-.p_d{
-    text-align: center;
-    margin: 10px;
-    padding : 1em;
-    border-radius: 0.5em;
-    background-color: lightblue;
-}
-
-.main_p_d {
-    padding: 20px;
-}
-
-
-.Connexion_superadmin{
-    background-color: #007bff;/*Bouton superadmin*/
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.Connexion_superadmin a, .Connexion_admin a {
-    text-decoration: none;
-}
-
-.Connexion_admin{
-    background-color: #007bff; /*Bouton admin*/
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    cursor: pointer;
-   
-}
-
-#liste_photo_p_d {
-    width: 80%;             /*Taille du rectangle*/
-    margin: 0 auto;
-    padding: 20px;
+.w3-container-voircom {
+    max-width: 800px;
+    margin: 50px auto;
     background-color: #fff;
-    border: 2px solid #ddd;
-    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#liste_photo_p_d img {
-    width: 230px; /* Redimensionner les images à la largeur souhaitée */
-    height: 230px; /* Redimensionner les images à la hauteur souhaitée */
-    margin: 10px;
-    border: 2px solid black;
-    border-radius: 5px;
+.h2-voircom {
+    color: #333;
 }
 
+.label-voircom {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
 
-/* Styles pour le footer */
-footer {
-    display: none;
-    background-color: #333;
+.textarea-voircom {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+.button-voircom {
+    background-color: #4caf50;
     color: #fff;
+    border: none;
+    padding: 10px 20px;
     text-align: center;
-    padding: 10px 0;
-    position: absolute;
-    bottom: 0%;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.button-voircom:hover {
+    background-color: #45a049;
+}
+
+.w3-responsive-voircom {
+    margin-top: 20px;
+}
+
+.w3-table-all-voircom {
     width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
 }
 
-.quoicoubeh {
-    width: 100%;
-    display: flex;
-    margin-block: 2rem;
-    justify-content: center;
+.th-voircom {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    background-color: #4caf50;
+    color: white;
 }
 
-.boutons {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+.th-voircom, .buton_deconnexion-voircom {
+    border-radius: 4px;
 }
 
-/* Media Queries pour les tablettes et les smartphones */
-@media (max-width: 1200px) {
 
-    #liste_photo {
-        width: 80%;
-        height: auto;
-    }
-
-    #liste_photo img {
-        width: 30%;
-        height: auto;
-    }
-}
-
-@media (max-width: 768px) {
-    .Connexion_superadmin, .Connexion_admin {
-        padding: 8px 16px;
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        padding: 5px 0;
-    }
-
-    .Connexion_superadmin, .Connexion_admin {
-        padding: 6px 12px;
-        font-size: 12px;
-    }
-
-    #liste_photo {
-        width: 95%;
-    }
-}
 
 
 
