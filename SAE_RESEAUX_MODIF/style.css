@@ -99,7 +99,7 @@
 
 
 .header-connexion-eleve {
-    background-color: lightgreen;
+    background-color: rgb(130,106,251); 
     padding: 20px;
     display: flex;
     justify-content: space-between;
@@ -158,14 +158,14 @@
 }
 
 .active-dot {
-    background-color: lightgreen;
+    background-color: rgb(130,106,251);   ;
     color: #fff;
 }
 
 #connect-button,
 #a,
 #back-button {
-    background-color: lightgreen;
+    background-color: rgb(130,106,251);
     color: #fff;
     padding: 25px 50px; /* Augmentez la taille du padding */
     border: none;
@@ -177,7 +177,7 @@
 }
 
 #a {
-    background-color: lightgreen;
+    background-color: rgb(130,106,251);   
     color: #fff;
     padding: 25px 50px; /* Augmentez la taille du padding */
     border: none;
@@ -191,7 +191,7 @@
 #connect-button:hover,
 #a:hover,
 #back-button:hover {
-    background-color: green; /* Couleur au survol */
+    background-color: blue; /* Couleur au survol */
 }
 
 #connect-button {
