@@ -71,13 +71,13 @@ function formatBox($name){
     <p>Intervenant</p>
 
     <label for="nomIntervenant">Nom de l'intervenant</label>
-    <input type="text" disabled name="nomIntervenant" value="<?php echo $_COOKIE['nomIntervenant'] ?>">
+    <input type="text" disabled name="nomIntervenant" value="<?php if (isset($_COOKIE['nomIntervenant'])) { echo $_COOKIE['nomIntervenant']; } ?>">
     <?php formatBox("NomIntervenant", ""); ?>
 
     <br>
 
     <label for="prenomIntervenant">Prénom de l'intervenant</label>
-    <input type="text" disabled  name="prenomIntervenant" value="<?php echo $_COOKIE['prenomIntervenant'] ?>">
+    <input type="text" disabled  name="prenomIntervenant" value="<?php if (isset($_COOKIE['prenomIntervenant'])) { echo $_COOKIE['prenomIntervenant']; } ?>">
     <?php formatBox("PrenomIntervenant", ""); ?>
 
     </div>
