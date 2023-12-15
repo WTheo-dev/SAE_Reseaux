@@ -1,4 +1,4 @@
-body {
+.body_postcoeleve {
   font-family: Arial, sans-serif;
   text-align: center;
   background-color: #f4f8ff;
@@ -9,13 +9,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.container {
-  flex: 1; /* Utilise tout l'espace disponible */
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
 }
 
 .main-header {
