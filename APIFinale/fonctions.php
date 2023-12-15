@@ -153,11 +153,6 @@ function clean($champEntrant)
 function listeApprenti()
 {
   $BD = connexionBD();
-
-  if (!$BD) {
-    return FALSE;
-  }
-
   $listeApprenti = $BD->prepare('SELECT * FROM apprenti');
   $listeApprenti->execute(array());
     $BD = null;
@@ -187,11 +182,6 @@ function unApprenti()
 function inscriptionApprenti($nom, $prenom, $photo)
 {
   $BD = connexionBD();
-
-  // Vérifiez que la connexion à la base de données est réussie
-  if (!$BD) {
-    return FALSE;
-  }
 
   // Vérifiez si les informations de l'apprenti sont valides
   if (!empty($nom) && !empty($prenom) && !empty($photo)) {
@@ -232,51 +222,28 @@ function supprimerApprenti($id_apprenti) {
     return FALSE;
   }
 }
-function inscriptionPersonnel($PersonnelIdentite)
+function inscriptionPersonnel($nom, $prenom)
 {
   $BD = connexionBD();
+  // Vérifiez si les informations de l'apprenti sont valides
+  if (!empty($nom) && !empty($prenom)) {
+    // Préparez la requête SQL pour insérer un nouvel apprenti
+    $ajoutPersonnel = $BD->prepare('INSERT INTO personnel(nom, prenom) VALUES (?, ?)');
 
-  // Vérifiez que la connexion à la base de données est réussie
-  if (!$BD) {
-    return FALSE;
-  }
+    // Exécutez la requête en liant les valeurs des paramètres
+    $ajoutPersonnel->execute(array($nom, $prenom));
 
-  // Vérifiez si les informations du personnel sont valides
-  if (count($PersonnelIdentite) > 0) {
-    // Supposons que le rôle par défaut est 3
-    $role = 3;
+    // Fermez la connexion à la base de données
+    $BD = null;
 
-    // Vérifiez le rôle spécifique
-    if ($PersonnelIdentite['6'] == 2) {
-      $role = 2;
-    }
-
-    // Convertissez les informations du personnel en HTML si nécessaire
-    $identitePersonnelHTML = conversionHTML($PersonnelIdentite);
-
-    // Vérifiez si la conversion HTML a réussi
-    if (count($identitePersonnelHTML) > 0) {
-      // Préparez la requête SQL pour insérer un nouveau personnel
-      $ajoutPersonnel = $BD->prepare('INSERT INTO personnel(nom, prenom, id_role) VALUES (?, ?, ?)');
-
-      // Exécutez la requête en liant les valeurs des paramètres
-      $ajoutPersonnel->execute(array($identitePersonnelHTML['0'], $identitePersonnelHTML['1'], $role));
-
-      // Fermez la connexion à la base de données
-      $BD = null;
-
-      // Vérifiez si l'ajout du personnel a réussi
-      if ($ajoutPersonnel->rowCount() > 0) {
-        return TRUE;
-      } else {
-        return FALSE;
-      }
+    // Vérifiez si l'ajout de l'apprenti a réussi
+    if ($ajoutPersonnel->rowCount() > 0) {
+      return TRUE;
     } else {
-      // Retournez FALSE si la conversion HTML a échoué
       return FALSE;
     }
   } else {
-    // Retournez FALSE si les informations du personnel ne sont pas valides
+    // Retournez FALSE si les informations de l'apprenti ne sont pas valides
     return FALSE;
   }
 }
@@ -290,10 +257,10 @@ function modifierApprenti($id_apprenti, $nom, $prenom, $photo){
   $nom = htmlspecialchars($nom);
   $prenom = htmlspecialchars($prenom);
   $photo = htmlspecialchars($photo);	
-  $modifierPersonnel = $BD->prepare('UPDATE apprenti SET nom = ? , prenom = ? photo = ? where id_apprenti = ?');
-  $modifierPersonnel->execute(array($id_apprenti, $nom, $prenom, $photo));
+  $modifierApprenti = $BD->prepare('UPDATE apprenti SET nom = ? , prenom = ? photo = ? where id_apprenti = ?');
+  $modifierApprenti->execute(array($id_apprenti, $nom, $prenom, $photo));
   $BD = null;
-  if ($modifierPersonnel->rowCount() > 0) {
+  if ($modifierApprenti->rowCount() > 0) {
     return TRUE;
   } else {
     return FALSE;
