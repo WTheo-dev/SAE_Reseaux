@@ -44,7 +44,7 @@ switch ($http_method) {
         if ($role == 2) {
             if (inscriptionPersonnel($data['nom'], $data['prenom'])) {
                 $RETURN_CODE = 200;
-                $STATUS_MESSAGE = "Ajout Apprenti effectué";
+                $STATUS_MESSAGE = "Ajout Personnel effectué";
             } else {
                 $RETURN_CODE = 400;
                 $STATUS_MESSAGE = "Erreur de syntaxe";
