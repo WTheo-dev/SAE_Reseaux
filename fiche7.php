@@ -11,7 +11,7 @@
 
 <?php ifform() ?>
 
-    <div class="block">
+    <div class="block" style="height:85%;">
     <p>Travaux non réalisés</p>
     <textarea id="travauxNonRealises" name="travauxNonRealises" rows="10"><?php echo $_COOKIE['travauxNonRealises']; ?></textarea>
     </div>
