@@ -1,60 +1,64 @@
-document.addEventListener("DOMContentLoaded", function() {
-    let recognition;
+const lockDots = document.querySelectorAll('.lock-dot');
+let selectedDots = [];
 
-    function initRecognition() {
-        if ('webkitSpeechRecognition' in window) {
-            recognition = new webkitSpeechRecognition();
-        } else if ('SpeechRecognition' in window) {
-            recognition = new SpeechRecognition();
-        } else {
-            alert("La reconnaissance vocale n'est pas prise en charge par votre navigateur.");
-            return;
-        }
-
-        recognition.lang = 'fr-FR';
-
-        recognition.onresult = function(event) {
-            const evaluationTextarea = document.getElementById('evaluation');
-            evaluationTextarea.value = event.results[0][0].transcript;
-        };
+lockDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    if (!dot.classList.contains('active-dot') && selectedDots.length < 4) {
+      addDelayAndToggleColor(dot);
+    } else if (dot.classList.contains('active-dot')) {
+      toggleColor(dot);
     }
 
-    function startRecording() {
-        if (!recognition) {
-            initRecognition();
-        }
-        recognition.start();
-        alert("Enregistrement vocal en cours...");
-    }
-
-    function stopRecording() {
-        if (recognition) {
-            recognition.stop();
-            alert("Enregistrement vocal arrêté.");
-        }
-    }
-
-    function reecouterEvaluation() {
-        const evaluationTextarea = document.getElementById('evaluation');
-        const evaluation = evaluationTextarea.value;
-
-        if (evaluation.trim() !== '') {
-            // Code pour réécouter l'évaluation
-            alert("Réécoute de l'évaluation : " + evaluation);
-        } else {
-            alert("Aucune évaluation à réécouter.");
-        }
-    }
-
-    function supprimerEvaluation() {
-        const evaluationTextarea = document.getElementById('evaluation');
-        evaluationTextarea.value = '';
-        alert("Évaluation supprimée avec succès!");
-    }
-
-    // Événements des boutons
-    document.getElementById('startRecordingBtn').addEventListener('click', startRecording);
-    document.getElementById('stopRecordingBtn').addEventListener('click', stopRecording);
-    document.getElementById('reecouterBtn').addEventListener('click', reecouterEvaluation);
-    document.getElementById('supprimerBtn').addEventListener('click', supprimerEvaluation);
+    checkCode();
+  });
 });
+
+function addDelayAndToggleColor(dot) {
+  setTimeout(() => {
+    toggleColor(dot);
+    checkCode();
+  }, 200); // 200 millisecondes de délai (ajustez selon vos préférences)
+}
+
+function toggleColor(dot) {
+  dot.classList.toggle('active-dot');
+  if (dot.classList.contains('active-dot')) {
+    selectedDots.push(dot);
+  } else {
+    selectedDots = selectedDots.filter(selectedDot => selectedDot !== dot);
+  }
+}
+
+function checkCode() {
+  if (selectedDots.length === 4) {
+    showConnectButton();
+  } else {
+    hideConnectButton();
+  }
+}
+
+function showConnectButton() {
+  const connectButton = document.getElementById('connect-button');
+  connectButton.style.display = 'block';
+}
+
+function hideConnectButton() {
+  const connectButton = document.getElementById('connect-button');
+  connectButton.style.display = 'none';
+}
+
+function connect() {
+  window.location.href = 'page_postco_eleve.html';
+}
+
+function clearSelection() {
+  selectedDots.forEach(dot => {
+    toggleColor(dot);
+  });
+  selectedDots = [];
+  hideConnectButton();
+}
+
+function goBack() {
+  history.back();
+}

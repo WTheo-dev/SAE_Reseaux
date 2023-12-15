@@ -75,88 +75,122 @@
 
 /* CONNEXION ELEVE */
 
-.header-connexion-eleve {
+.logo_header{
     display: flex;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
+    width: 45%;
+    margin: 1em;
 }
-/* Styles de base pour la tablette */
-.body-connexion-eleve {
-    font-family: Arial, sans-serif;
+.body-connexion-eleve{
+    flex-direction: column;
+    margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f0f0f0;
 }
 
-.rectangle2-connexion-eleve, .rectangle3-connexion-eleve, .rectangle4-connexion-eleve {
+.header-connexion-eleve{
+    background-color: lightgreen;
+    padding: 20px;
     display: flex;
-    width: 100%; /* Largeur de la page sur tous les appareils */ 
-    margin: 10px;
-    padding: 20px 0;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
+    justify-content: space-between;
+    align-items: center;
+}
+.rectangle2-connexion-eleve {
+    display: flex;
+    justify-content: center;
+    height: 15%;
+    border: 2px solid #2187c7;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 20px 0;
+  }
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+  }
+
+ 
+.lock-screen {
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    grid-gap: 10px;
+    margin-bottom: 20px;
+  }
+  #container{
+    display: flex;
+  }
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-}
-
-#Imageenfant-connexion-eleve{
-    width: 20%;
-    padding:1em;
-}
-
-#rond-connexion-eleve {
+    margin: 20px;
+  }
+  
+  .lock-dot {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    display: inline-block;
-    margin: 5px;
+    background-color: lightgray; /* Couleur de base */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
     cursor: pointer;
-}
+    transition: background-color 0.3s ease;
+  }
 
+  .active-dot {
+    background-color: lightgreen;
+    color: #fff;
+  }
+  
+  #connect-button,
+  #a,
+  #back-button {
+    background-color: lightgreen;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  #a{ 
+    background-color: lightgreen;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;}
+  
+  
+    #connect-button:hover,
+    #a:hover,
+    #back-button:hover {
+      background-color: green; /* Couleur au survol */
+    }
 
-/* Styles CSS pour aligner le contenu au milieu de rectangle4 */
-.rectangle4-connexion-eleve {
+  #connect-button {
+    display: none;
+  }
+  
+
+  #lock-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Aligner horizontalement au centre */
-    justify-content: center; /* Aligner verticalement au centre */
-    text-align: center;
-}
+    align-items: center;
+    justify-content: center;
+  }
 
-
-/* Styles CSS pour le formulaire et les boutons */
-#login-form-connexion-eleve {
-    margin-top: 20px; /* Espace entre le schéma de connexion et le formulaire */
-}
-
-#password-input-connexion-eleve {
-    margin-bottom: 10px; /* Espace entre le champ de mot de passe et les boutons */
-}
-
-.row-connexion-eleve {
-    display: flex;
-    
-}
-
-.point-connexion-eleve {
-    background-color: lightblue; 
-}
-
-.schéma-connexion-eleve{
-    text-align: center;
-}
-
-.button_retour{
-    text-align: left;
-    display: flex;
-    border-radius: 3px;
-}
-
-/* Styles pour le footer */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-}
 
 
 /* CONNEXION SUPERADMIN */
@@ -796,6 +830,7 @@ footer {
     #liste_photo {
         width: 95%;
     }
+    
 }
 
 
