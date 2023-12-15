@@ -311,9 +311,7 @@ function modifierPersonnel($personnel, $id_personnel, $nom, $prenom)
 function listePersonnel()
 {
   $BD = connexionBD();
-  if (!$BD) {
-    return FALSE;
-  }
+  
   $listePersonnel = $BD->prepare('SELECT * FROM personnel');
   $listePersonnel->execute(array());
     $BD = null;

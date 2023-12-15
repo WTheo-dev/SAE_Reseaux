@@ -35,8 +35,7 @@ switch ($http_method) {
         } else {
             deliver_response(403, "Echec, le rôle n'est pas autorisé pour avoir accès à ces données", null);
         }
-
-
+        break;
 
     case 'POST':
         $matchingData = null;
@@ -55,6 +54,8 @@ switch ($http_method) {
         }
 
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
+
+        break;
 
     case 'DELETE':
         if ($role == 2) {
@@ -92,6 +93,8 @@ switch ($http_method) {
         // Appeler la fonction deliver_response
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
 
+        break;
+
     case 'PUT':
         $matchingData = null;
 
@@ -112,5 +115,5 @@ switch ($http_method) {
         }
 
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
-
+        break;
 }
