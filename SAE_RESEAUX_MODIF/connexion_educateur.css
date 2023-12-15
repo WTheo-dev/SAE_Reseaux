@@ -12,7 +12,8 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        background: url('Image/img.jpg') no-repeat;
+       /* background: url('Image/img.jpg') no-repeat;*/
+       background: rgb(130, 106, 251);
         background-size: cover;
         background-position: center;
         margin: 0;

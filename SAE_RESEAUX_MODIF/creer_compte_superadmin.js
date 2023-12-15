@@ -1,24 +1,19 @@
-const createAccountButton = document.getElementById("create-account-button");
-const popup = document.getElementById("popup");
-        
+function validateForm() {
+    var emailInput = document.querySelector('input[type="email"]');
+    var email = emailInput.value;
 
-        createAccountButton.addEventListener("click", function(event) {
-            const emailInput = document.getElementById("email");
-            if (!isValidEmail(emailInput.value)) {
-                event.preventDefault(); // Empêche la soumission du formulaire
-                alert("Adresse e-mail non valide. Veuillez entrer une adresse e-mail valide.");
-            } else {
-                popup.style.display = "block";
-                event.preventDefault();
-            }
-        });
+    // Simple email validation using regular expression
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        closePopupButton.addEventListener("click", function() {
-            popup.style.display = "none";
-        });
+    if (!emailRegex.test(email)) {
+      alert("Veuillez entrer une adresse email valide.");
+      return false;
+    }
 
-        function isValidEmail(email) {
-            // Utilisez une expression régulière pour valider l'adresse e-mail
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            return emailPattern.test(email);
-        }
+    return true;
+  }
+
+  function redirectToPostcoAdmin() {
+    // Rediriger vers la page_postco_admin
+    window.location.href = 'page_postco_superadmin.html'; // Assurez-vous de mettre le chemin correct vers votre page_postco_admin
+  }

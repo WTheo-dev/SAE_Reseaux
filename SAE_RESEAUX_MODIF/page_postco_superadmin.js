@@ -30,4 +30,6 @@ function showSection() {
 
     // Rediriger vers la page appropriée en fonction des sélections
     window.location.href = selectedAction + selectedListe + ".html";
+
+    
   }
