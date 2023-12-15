@@ -7,7 +7,7 @@
 
     <div class="block">
     <p>Travaux réalisés</p>
-    <textarea id="travauxRealises" name="travauxRealises" rows="10"><?php echo $_COOKIE['travauxRealises'] ?></textarea>
+    <textarea id="travauxRealises" name="travauxRealises" rows="10"><?php if (isset($_COOKIE['travauxRealises'])) { echo $_COOKIE['travauxRealises']; } ?></textarea>
     </div>
 
     <?php

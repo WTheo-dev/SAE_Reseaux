@@ -19,7 +19,7 @@
     <div class="jsp">
     <?php addIcon("dateIntervention", "fa-calendar-o"); ?>
     <?php addTexte("dateIntervention", "Date d'intervention:") ?>
-    <input type="date" id="dateIntervention" name="dateIntervention" value="<?php echo $_COOKIE['dateIntervention']; ?>">
+    <input type="date" id="dateIntervention" name="dateIntervention" value="<?php if (isset($_COOKIE['dateIntervention'])) { echo $_COOKIE['dateIntervention']; } ?>">
     <?php addAudio("dateIntervention", "dateInt"); ?>
     </div>
 

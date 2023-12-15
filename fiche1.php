@@ -19,14 +19,14 @@
     <div class="jsp">
     <?php addIcon("NomIntervenant", "fa-user"); ?>
     <?php addTexte("nomIntervenant", "Nom de l'intervenant") ?>
-    <input type="text" name="nomIntervenant" value="<?php echo $_COOKIE['nomIntervenant'] ?>">
+    <input type="text" name="nomIntervenant" value="<?php if (isset($_COOKIE['nomIntervenant'])){ echo $_COOKIE['nomIntervenant']; } ?>">
     <?php addAudio("NomIntervenant", "nomInterv"); ?>
     </div>
 
     <div class="jsp">
     <?php addIcon("PrenomIntervenant", "fa-address-card"); ?>
     <?php addTexte("prenomIntervenant", "Prénom de l'intervenant") ?>
-    <input type="text" name="prenomIntervenant" value="<?php echo $_COOKIE['prenomIntervenant'] ?>">
+    <input type="text" name="prenomIntervenant" value="<?php if (isset($_COOKIE['prenomIntervenant'])) { echo $_COOKIE['prenomIntervenant']; } ?>">
     <?php addAudio("PrenomIntervenant", "prenomInterv"); ?>
     </div>
 

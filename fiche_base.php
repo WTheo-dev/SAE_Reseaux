@@ -1,22 +1,22 @@
 <?php
 
 function addIcon($cookie, $name){
-    if ($_COOKIE['icon'.ucfirst($cookie)] == "on"){
+    if (isset($_COOKIE['icon'.ucfirst($cookie)]) && $_COOKIE['icon'.ucfirst($cookie)] == "on"){
         echo '<span><i class="fa '.$name.' fa-2x" aria-hidden="true"></i></span>';
     }
 }
 function addTexte($id, $name){
-    if ($_COOKIE['texte'.ucfirst($id)] == "on"){
+    if (isset($_COOKIE['texte'.ucfirst($id)]) && $_COOKIE['texte'.ucfirst($id)] == "on"){
         echo '<label for="'.$id.'">'.$name.'</label>';
     }
 }
 function addTexteBox($cookie, $name){
-    if ($_COOKIE['texte'.ucfirst($cookie)] == "on"){
+    if (isset($_COOKIE['texte'.ucfirst($cookie)]) && $_COOKIE['texte'.ucfirst($cookie)] == "on"){
         echo $name;
     }
 }
 function addAudio($cookie, $path){
-    if ($_COOKIE['audio'.ucfirst($cookie)] == "on"){
+    if (isset($_COOKIE['audio'.ucfirst($cookie)]) && $_COOKIE['audio'.ucfirst($cookie)] == "on"){
         echo '<button type="button" style class="audiobutton" onclick="toggleAudio(\''.$path.'\')"><i class="fa fa-volume-up" aria-hidden="true"></i></button>';
     }
 }
