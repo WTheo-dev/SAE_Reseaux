@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Création du compte Educateur</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="body-creer-compte-educateur">
+    <section class="creer_compte_educateur-container">
+      <header>Création du compte Educateur</header>
+      <form action="page_postco_superadmin.html" class="creer_compte_educateur-form">
+        <div class="creer_compte_educateur-input-box">
+          <label>Nom</label>
+          <input type="text" placeholder="Entrez un nom" required />
+        </div>
+
+        <div class="creer_compte_educateur-input-box">
+            <label>Prénom</label>
+            <input type="text" placeholder="Entrez un prénom" required />
+          </div>
+        
+          <div class="creer_compte_educateur-input-box">
+            <label>Mot de passe</label>
+            <input type="password" placeholder="Entrez un mot de passe" required />
+          </div>
+
+        <div class="creer_compte_educateur-gender-box">
+            <h3>Type Educateur</h3>
+            <div class="creer_compte_educateur-gender-option">
+              <div class="creer_compte_educateur-gender">
+                <input type="radio" id="creer_compte_educateur-check-male" name="gender" checked />
+                <label for="creer_compte_educateur-check-male">Educateur simple</label>
+              </div>
+              <div class="creer_compte_educateur-gender">
+                <input type="radio" id="creer_compte_educateur-check-female" name="gender" />
+                <label for="creer_compte_educateur-check-female">Educateur technique</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="creer_compte_educateur-input-box">
+            <label>Numéro de téléphone (Optionnel)</label>
+            <input type="number" placeholder="Entrez un numéro de telephone (optionnel)" />
+          </div>
+       
+        <button>Créer compte educateur</button>
+      </form>
+    </section>
+  </body>
+  <script src="creer_compte_educateur.js"></script></html>

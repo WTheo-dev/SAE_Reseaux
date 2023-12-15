@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page connecté educ technique</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="body-voircom">
+
+    <div class="w3-container-voircom">
+
+      <h2 class="h2-voircom">Commentaires de la fiche</h2>
+      
+      <label class="label-voircom" for="comment">Ajouter un commentaire:</label>
+      <textarea class="textarea-voircom" id="comment-voircom" name="comment-voircom" rows="4" cols="50"></textarea><br>
+      
+      <button class="button-voircom" onclick="ajouterCommentaire()">Ajouter commentaire</button>
+      
+      <div class="w3-responsive-voircom">
+        <table id="commentTablevoircom" class="w3-table-all-voircom">
+          <tr>
+            <th class="th-voircom">Nom Educateur</th>
+            <th class="th-voircom">Prénom Educateur</th>
+            <th class="th-voircom">Commentaires </th>
+            <th class="th-voircom">Action</th>
+          </tr>
+        </table>
+      </div>
+      
+      
+      
+    </div>
+    <button class="buton_deconnexion-voircom" onclick="deconnecter()">Déconnexion</button>
+    
+    <script src="voir_commentaire_educ.js"></script>
+
+  </body>
+</html>
