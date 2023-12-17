@@ -634,7 +634,7 @@ footer {
 
   .creer_compte_educateur-container {
     position: relative;
-    max-width: 800px;
+    max-width: 1100px;
     width: 100%;
     background: #fff;
     padding: 25px;
@@ -655,7 +655,8 @@ footer {
 
   .creer_compte_educateur-input-box {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 60px;
+    font-size: 50px;
   }
 
   .creer_compte_educateur-input-box label {
@@ -664,12 +665,12 @@ footer {
 
   .creer_compte_educateur-form :where(.creer_compte_educateur-input-box input, .creer_compte_educateur-select-box) {
     position: relative;
-    height: 50px;
+    height: 100px;
     width: 100%;
     outline: none;
     font-size: 50px;
     color: #707070;
-    margin-top: 8px;
+    margin-top: 50px;
     border: 1px solid #ddd;
     border-radius: 6px;
     padding: 0 15px;
@@ -680,7 +681,7 @@ footer {
   }
 
   .creer_compte_educateur-form .creer_compte_educateur-gender-box {
-    margin-top: 20px;
+    margin-top: 75px;
   }
 
   .creer_compte_educateur-gender-box h3 {
@@ -694,9 +695,13 @@ footer {
     display: flex;
     align-items: center;
     column-gap: 50px;
+    font-size: 50px;
     flex-wrap: wrap;
   }
-
+  .creer_compte_educateur-gender input {
+    transform: scale(2.5);
+    margin: 20px;
+  }
   .creer_compte_educateur-form .creer_compte_educateur-gender {
     column-gap: 5px;
   }
@@ -723,16 +728,16 @@ footer {
     outline: none;
     border: none;
     color: #707070;
-    font-size: 50px;
+    font-size: 100px;
   }
 
   .creer_compte_educateur-form button {
-    height: 55px;
+    height: 100px;
     width: 100%;
     color: #fff;
-    font-size: 50px;
+    font-size: 60px;
     font-weight: 400;
-    margin-top: 30px;
+    margin-top: 50px;
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -768,7 +773,7 @@ footer {
 
   .creer_compte_superadmin-container {
     position: relative;
-    max-width: 700px;
+    max-width: 1200px;
     width: 100%;
     background: #fff;
     padding: 25px;
@@ -777,7 +782,7 @@ footer {
   }
 
   .creer_compte_superadmin-container header {
-    font-size: 1.5rem;
+    font-size: 100px;
     color: #333;
     font-weight: 500;
     text-align: center;
@@ -789,8 +794,10 @@ footer {
 
   .creer_compte_superadmin-input-box {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 50px;
+    font-size: 50px;
   }
+
 
   .creer_compte_superadmin-input-box label {
     color: #333;
@@ -798,7 +805,7 @@ footer {
 
   .creer_compte_superadmin-form :where(.creer_compte_superadmin-input-box input, .creer_compte_superadmin-select-box) {
     position: relative;
-    height: 50px;
+    height: 100px;
     width: 100%;
     outline: none;
     font-size: 50px;
@@ -818,60 +825,13 @@ footer {
     column-gap: 15px;
   }
 
-  .creer_compte_superadmin-form .creer_compte_superadmin-gender-box {
-    margin-top: 20px;
-  }
-
-  .creer_compte_superadmin-gender-box h3 {
-    color: #333;
-    font-size: 50px;
-    font-weight: 400;
-    margin-bottom: 8px;
-  }
-
-  .creer_compte_superadmin-form :where(.creer_compte_superadmin-gender-option, .creer_compte_superadmin-gender) {
-    display: flex;
-    align-items: center;
-    column-gap: 50px;
-    flex-wrap: wrap;
-  }
-
-  .creer_compte_superadmin-form .creer_compte_superadmin-gender {
-    column-gap: 5px;
-  }
-
-  .creer_compte_superadmin-gender input {
-    accent-color: rgb(130, 106, 251);
-  }
-
-  .creer_compte_superadmin-form :where(.creer_compte_superadmin-gender input, .creer_compte_superadmin-gender label) {
-    cursor: pointer;
-  }
-
-  .creer_compte_superadmin-gender label {
-    color: #707070;
-  }
-
-  .creer_compte_superadmin-address :where(input, .creer_compte_superadmin-select-box) {
-    margin-top: 15px;
-  }
-
-  .creer_compte_superadmin-select-box select {
-    height: 100%;
-    width: 100%;
-    outline: none;
-    border: none;
-    color: #707070;
-    font-size: 1rem;
-  }
-
   .creer_compte_superadmin-form button {
-    height: 55px;
+    height: 130px;
     width: 100%;
     color: #fff;
-    font-size: 1rem;
+    font-size: 50px;
     font-weight: 400;
-    margin-top: 30px;
+    margin-top: 50px;
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -919,23 +879,27 @@ footer {
 }
 
 .reset-form_mdpsoubliésuperadmin {
-    max-width: 400px;
+    max-width: 11000px;
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 100px;
 }
 
 .h2_mdpsoubliésuperadmin {
     text-align: center;
     color: #333;
+    font-size: 75px;
 }
 
 .input_mdpsoubliésuperadmin {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 50px 0;
     box-sizing: border-box;
+    font-size: 75px;
+    border-color: #000;
 }
 
 .input_mdpsoubliésuperadmin2 {
@@ -944,6 +908,7 @@ footer {
     border: none;
     padding: 10px;
     cursor: pointer;
+    font-size: 75px;
 }
 
 #cancel-button {
@@ -951,6 +916,7 @@ footer {
     color: #fff;
     border: none;
     cursor: pointer;
+    font-size: 50px;
 }
 
 .input_mdpsoubliésuperadmin2:hover {
@@ -982,7 +948,7 @@ footer {
 #modal-close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -1006,24 +972,27 @@ footer {
     margin: 0;
 }
 .reset-form_mdpoublié {
-    max-width: 400px;
+    max-width: 1100px;
     margin: 50px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 70px;
 }
 
 .h2_mdpoublié {
     text-align: center;
     color: #333;
+    font-size: 70px;
 }
 
 .input_mdpoublié2 {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 25px 0;
     box-sizing: border-box;
+    font-size: 70px;
 }
 
 #reset-button {
@@ -1031,6 +1000,7 @@ footer {
     color: #fff;
     border: none;
     cursor: pointer;
+    font-size: 70px;
 }
 
 #cancel-button {
@@ -1038,6 +1008,7 @@ footer {
     color: #fff;
     border: none;
     cursor: pointer;
+    font-size: 70px;
 }
 
 #reset-button:hover, #cancel-button:hover {
