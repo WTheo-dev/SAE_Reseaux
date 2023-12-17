@@ -1,6 +1,11 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+
 .body_postcoeleve {
-  font-family: Arial, sans-serif;
-  text-align: center;
+  font-family: 'Cormorant', sans-serif;
   background-color: #f4f8ff;
   color: #333;
   margin: 0; /* Supprime la marge par défaut du corps */
@@ -9,30 +14,37 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: #f0f0f0;
 }
 
 .main-header {
-  background-color: lightgreen;
+  background-color: rgb(130,106,251); 
   padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.child-info {
-  text-align: left;
-}
-
 .suivi-eleve {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+}
+.suivi-eleve img {
+  display: flex;
+  justify-content: center;
 }
 
 .h1-pagepostco {
-  text-align: center;
-  margin-top: 20px;
+  font-family: 'Cinzel', sans-serif;
+  display: flex;
+  justify-content: center;
+  font-size: 60px;
+  
+}
+.header_text_postcoeleve {
+  font-family: 'Cormorant', sans-serif;
+  font-size: 40px;
 }
 
 .bubbles-container {
@@ -41,6 +53,11 @@
   align-items: center;
   flex-wrap: wrap;
   margin: 20px;
+}
+
+.suivi_eleve img{
+  display: flex;
+  width: 50%;
 }
 
 .square2,
@@ -66,37 +83,37 @@
 
 .bouton-anciennes-fiches,
 .bouton-fiche-actuelle {
-  display: block;
+  font-family: 'Cormorant', sans-serif;
   margin-top: 10px;
   width: 100%;
-  font-size: 18px;
-  background-color: lightgreen;
+  font-size: 45px;
+  background-color: rgb(130,106,251);
   color: #fff;
   padding: 10px;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
 }
 
 .bubble:hover {
-  border: 2px solid lightgreen;
+  border: 2px solid rgb(130,106,251);
 }
 
 .bouton-deconnexion-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
 }
 
+
 .bouton-deconnexion {
+  display: flex;
   background-color: #e74c3c;
   color: #fff;
   padding: 15px 40px;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  font-size: 18px;
+  font-size: 45px;
+  margin-bottom: 1em;
+  text-decoration: none;
 }
 
 .bouton-deconnexion:hover {
