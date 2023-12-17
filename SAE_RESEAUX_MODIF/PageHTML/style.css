@@ -1,3 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+
+
 /* CONNEXION ELEVE */
 
 .logo_header {
@@ -11,14 +18,15 @@
     margin: 0;
     padding: 0;
     height: 100vh;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Cormorant', sans-serif;
     background-color: #f0f0f0;
 }
 
 .p_connexion_eleve{
+    font-family: 'Cormorant', sans-serif;
     display: flex;
     justify-content: center;
-    font-size: 40px;
+    font-size: 90px;
 }
 
 
@@ -61,6 +69,7 @@
 }
 
 .content-container {
+    font-family: 'Cormorant', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -90,6 +99,7 @@
 #connect-button,
 #a,
 #back-button {
+    font-family: 'Cormorant', sans-serif;
     background-color: rgb(130,106,251);
     color: #fff;
     padding: 25px 50px; /* Augmentez la taille du padding */
@@ -215,9 +225,6 @@ footer {
     padding: 2em;
 }
 
-
-
-
 /* PAGE D'ACCUEIL */
 
 .body_p_d {
@@ -229,33 +236,50 @@ footer {
 }
 
 .header_p_d {
-    display: flex;
-    background-color: lightgreen;
-    color: #fff;
-    height: 8%;
+    background-color: rgb(130,106,251); 
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.logo_p_d{
-    display: flex;
-    width: 45%;
-    margin: 1em;
-   
-}
-.p_d{
+
+.h1p_d{
+    font-family: 'Cinzel', sans-serif;
     text-align: center;
-    margin: 10px;
-    padding : 1em;
-    border-radius: 0.5em;
-    background-color: lightblue;
+    margin: 30px;
+    padding: auto;
+    font-size: 60px;
+}
+
+.h1p_d_2{
+    font-family: 'Cinzel', sans-serif;
+    display: flex;
+    justify-content: center;
+    font-size: 60px;
 }
 
 .main_p_d {
     padding: 20px;
 }
+.test{
+    font-family: 'Cormorant', sans-serif;
+   display: flex; 
+   justify-content: center;
+   font-size: 60px;
+}
+.p_p_d{
+    display: flex;
+    justify-content: center;
+    font-family: 'Cormorant', sans-serif;
+    font-size: 50px;
+}
 
 
-.Connexion_superadmin{
-    background-color: #007bff;/*Bouton superadmin*/
+.Connexion_superadmin, .Connexion_admin{
+    
+    display: flex;
+    background-color:rgb(153,153,251);
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -264,17 +288,10 @@ footer {
 }
 
 .Connexion_superadmin a, .Connexion_admin a {
+    font-family: 'Cormorant', sans-serif;
+    display: flex;
     text-decoration: none;
-}
-
-.Connexion_admin{
-    background-color: #007bff; /*Bouton admin*/
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    cursor: pointer;
-   
+    font-size: 40px;
 }
 
 #liste_photo_p_d {
@@ -308,13 +325,13 @@ footer {
 }
 
 .quoicoubeh {
-    width: 100%;
-    display: flex;
-    margin-block: 2rem;
+    margin-block: 4rem;
     justify-content: center;
 }
 
 .boutons {
+    margin-top: 20px;
+    padding: 3em;
     width: 100%;
     display: flex;
     justify-content: space-between;
