@@ -84,11 +84,14 @@
 .btnGO{
     font-family: 'Cormorant', sans-serif;
     font-size: 65px;
+    cursor: pointer;
 }
 
 .colonne_liste{
     display: flex;
     justify-content: center;
+    cursor: pointer;
+    
 
 }
 
@@ -96,4 +99,6 @@
     font-family: 'Cormorant', sans-serif;
     font-size: 70px;
     margin-top: 10rem;
+    background-color: lightcoral;
+    cursor: pointer;
 }
