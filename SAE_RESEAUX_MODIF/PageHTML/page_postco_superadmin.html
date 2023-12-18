@@ -7,47 +7,57 @@
         <title>Accueil superAdmin</title>
         
     </head>
-    <body>  
+    <body class="body_page_postco_superadmin">  
         <header class="header_page_postco_superadmin">
             <div class="header_text"><img class="logo_page_postco_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
+            <div class="child-info">
+                <h2 class="header_text_postcoeleve">Nom Prénom de l'admin</h2>
+            </div>
         </header>
     
         <div class="colonne_creation">
-            <h2 class="h2_pagepostco_superadmin">Vous êtes connecté en tant que Super Admin</h2>
-            <div class="container_1"><p>Choisissez ce que vous voulez faire :</p>
-                <a href="creer_compte_eleve.html"><button class="bouton_creation">Créer un compte eleve</button></a>
-                <a href="creer_compte_educateur.html"><button class="bouton_creation">Créer un compte educateur</button></a>
-                <a href="creer_compte_superadmin.html"><button class="bouton_creation">Créer un compte superadmin</button></a></div>
+            <h2 class="h2_pagepostco_superadmin">Vous êtes connecté en tant que Super Administrateur</h2>
+           
         </div>
-    
+        
+        <div class="container_1_page_postco_admin"><p>Choisissez ce que vous voulez faire :</p>
+        </div> 
+    <div class="container_central"> 
         <div class="container_2">
             <label for="actions">Choisir une action :</label>
-            <select id="actions" onchange="showSection()">
+        </div>
+        <div class="btnaction"> 
+            <select class="actions" onchange="showSection()">
                 <option value="modifier">Modifier</option>
                 <option value="creer">Créer</option>
                 <option value="supprimer">Supprimer</option>
-            </select>
-        
+           </select>
+        </div>
+           
+        <div class="container_3">
             <label for="liste">Choisir une liste :</label>
-            <select id="liste" onchange="showSection()">
+        </div>
+        <div class="btnliste"> 
+            <select class="liste" onchange="showSection()">
                 <option value="eleves">Elèves</option>
                 <option value="cours">Cours</option>
                 <option value="educateurs">Educateurs</option>
                 <option value="formations">Formations</option>
+                <option value="administrateur">Administrateur</option>    
             </select>
-            <button onclick="goToPage()">GO</button>
+        </div>
+        <div class="container_4">
+            <button class="btnGO" onclick="goToPage()">GO</button>
+        </div>
+    </div>
         
             
-        </div>
+     
         
 
 
 <div class="colonne_liste">
     <button id="btnDeconnexion" onclick="deconnecter()">Déconnexion</button>
 </div>
-    
-        <!-- Footer -->
-          <footer>
-            <p>Ceci est le pied de page (footer) de la page d'accueil.</p>
-        </footer>
+
         <script src="page_postco_superadmin.js"></script>
