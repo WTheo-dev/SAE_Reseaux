@@ -7,58 +7,58 @@
     <title>Creation compte eleve</title>
 </head>
 <body class="body_creercompteleve">
-    <header class="header_creercompteeleve">
-        <div class="logo_creercompteleve">
 
+    <!-- Header -->
+    <header class="header-connexion-eleve">
+        <div class="logo">
+            <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
         </div>
-        <h1 class="titre_page">Creation compte eleve</h1>
     </header>
+
+    <!-- Main Content -->
     <main>
+        <!-- Section pour sélectionner une photo -->
         <div class="rectangle2_creercompteeleve">
-
-            <form>
-                <label for="photo">Selectionner une photo d'etudiant :</label>
-                <input type="file" name="photo" id="photo" accept="image/*" onchange="previewImage()">
-            </form>
-            
-            <!-- Affichage de l'image dans un rectangle -->
-            <img id="imagePreview" src="" alt="Aperçu de la photo" style="display:none;">
+            <input type="file" id="file-input" style="display: none;">
+            <div id="image-container">
+                <img id="selected-image" src="" alt="Image sélectionnée">
+                <div id="container-buttons-page-creation-eleve"> <!-- Nouveau conteneur pour les boutons -->
+                </div>
+            </div>          
         </div>
+        <div class="button-container">
+            <button class="boutons-create" onclick="openFileExplorer()">Sélectionner une photo</button>
+            <button class="boutons-delete" onclick="deleteSelectedPhoto()" style="display: none;">Supprimer la photo</button>
+        </div>
+
+        <!-- Section pour le nom et prénom de l'élève -->
         <div class="rectangle3_creercompteeleve">
-            <label for="nom-prenom">Nom et Prénom de l'eleve:</label>
-            <input type="text" id="nom-prenom">
+            <label class = "nom_prenom_creereleve" for="nom-prenom">Nom et Prénom de l'élève:</label>
+            <input class= "input_creercompteeleve" type="text" id="nom-prenom">
         </div>
-        
-        <div class="rectangle4_creercompteeleve">
-            <div class="schéma-connexion_creercompteeleve">
-                <div class="row_creercompteeleve">
-                    <div class="rond" id="rond1"></div>
-                    <div class="rond" id="rond2"></div>
-                    <div class="rond" id="rond3"></div>
-                </div>
-                <div class="row_creercompteeleve">
-                    <div class="rond" id="rond4"></div>
-                    <div class="rond" id="rond5"></div>
-                    <div class="rond" id="rond6"></div>
-                </div>
-                <div class="row_creercompteeleve">
-                    <div class="rond" id="rond7"></div>
-                    <div class="rond" id="rond8"></div>
-                    <div class="rond" id="rond9"></div>
-                </div>
-            </div>
-            <form id="login-form_creercompteeleve">
-                <input type="password" id="password-input" name="password" placeholder="Mot de passe" disabled>
-                <button type="button" id="clear-button">Effacer</button>
-                <button type="button" id="valider-button"><a href="page_postco_superadmin.html">Valider</a></button>
-            </form>
-        </div>
-    </main>
-    <footer>
-        <p>Ceci est le pied de page (footer) de la page d'accueil.</p>
-    </footer>
 
-    <script src="creer_compte_eleve.js"></script>
+        <!-- Section pour le schéma de connexion et le formulaire -->
+        <p class="p_creation_eleve">Creez le code de l'élève: </p>
+    
+        <div id="creation_eleve_container">
+          <div id="creation_eleve_lock-container">
+            <div id="creation_eleve_lock-screen" class="creation_eleve_lock-screen">
+              <div class="lock-dot" data-dot="1">1</div>
+              <div class="lock-dot" data-dot="2">2</div>
+              <div class="lock-dot" data-dot="3">3</div>
+              <div class="lock-dot" data-dot="4">4</div>
+              <div class="lock-dot" data-dot="5">5</div>
+              <div class="lock-dot" data-dot="6">6</div>
+              <div class="lock-dot" data-dot="7">7</div>
+              <div class="lock-dot" data-dot="8">8</div>
+              <div class="lock-dot" data-dot="9">9</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </main>
+
+   <script src="creer_compte_eleve.js"></script>
 </body>
 </html>
-

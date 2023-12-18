@@ -145,86 +145,110 @@
 /* CREER COMPTE ELEVE */
 
 .header_creercompteeleve {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 /* Styles de base pour la tablette */
 .body_creercompteleve{
-    font-family: Arial, sans-serif;
-}
-
-.rectangle2_creercompteeleve, .rectangle3_creercompteeleve, .rectangle4_creercompteeleve {
-    width: 100%; /* Largeur de la page sur tous les appareils */ 
-    margin: 10px;
-    padding: 20px 0;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    text-align: center;
-}
-#Imageenfant{
-    width: 20%;
-    padding:1em;
-}
-
-.rond {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 5px;
-    cursor: pointer;
-}
-
-
-/* Styles CSS pour aligner le contenu au milieu de rectangle4 */
-.rectangle4_creercompteeleve {
+    font-family: 'Cormorant', sans-serif;
+    background-color: #f4f8ff;
+    color: #333;
+    margin: 0; /* Supprime la marge par défaut du corps */
+    padding: 0; /* Supprime le rembourrage par défaut du corps */
+    height: 100vh; /* Ajuste la hauteur du corps à 100% de la vue */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Aligner horizontalement au centre */
-    justify-content: center; /* Aligner verticalement au centre */
-    text-align: center;
+    background-color: #f0f0f0;
 }
 
 
-/* Styles CSS pour le formulaire et les boutons */
-#login-form_creercompteeleve {
-    margin-top: 20px; /* Espace entre le schéma de connexion et le formulaire */
-}
-
-#password-input {
-    margin-bottom: 10px; /* Espace entre le champ de mot de passe et les boutons */
-}
-
-.row_creercompteeleve {
+.rectangle2_creercompteeleve  {
     display: flex;
+    justify-content: center;
+}
+
+.rectangle2-creercompteeleve {
+    font-family: 'Cormorant', sans-serif;
+}
+#image-container {
+    border: 2px solid #333;
+    padding: 10px;
+    text-align: center;
+}
+
+#container-buttons-page-creation-eleve {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.boutons-create, .boutons-delete{    
+    font-size: 50px;
+    font-family: 'Cormorant', sans-serif;
+    background-color: rgb(153,153,251);
+    border-radius: 25px;
+}
+
+#selected-image {
     
+    display: flex;
+    justify-content: center;
+    max-width:500px;
+    max-height: 300px;
 }
 
-.rond {
-    background-color: lightblue; /* Vert */
+.rectangle3_creercompteeleve{
+    display: flex;
+    justify-content: center;
+    margin-top: 5em;
+
 }
 
-.schéma-connexion_creercompteeleve{
-    text-align: center;
+.creation_eleve_lock-screen {
+    display: grid;
+    grid-template-columns: repeat(3, 150px); /* Augmentez la taille des colonnes */
+    grid-gap: 45px; /* Augmentez l'espace entre les colonnes */
+    margin-bottom: 25px;
+    justify-content: center;
 }
 
-/* Styles pour le footer */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
+.input_creercompteeleve{
+    display: flex;
+    justify-content: center;
+   
 }
 
-#imagePreview {
-    max-width: 400px;
-    max-height: 400px;
-    margin : auto;
-    padding: 2em;
+.nom_prenom_creereleve{
+    font-size: 50px;
 }
 
+.rectangle4_creercompteeleve{
+    display: flex;
+    justify-content: center;
+}
+
+.p_creation_eleve{
+    margin-top: 2rem;
+   display: flex;
+   justify-content: center;
+   font-size: 50px;
+
+}
+
+#lock-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 /* PAGE D'ACCUEIL */
 
 .body_p_d {
