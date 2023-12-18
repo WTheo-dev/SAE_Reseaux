@@ -1,6 +1,7 @@
 <?php
 foreach ($_POST as $param => $value){
     //echo $param." : ".$value."<br>";
+    $value=htmlspecialchars($value);
     setcookie($param, $value, time() + (86400 * 60));
 }
 
