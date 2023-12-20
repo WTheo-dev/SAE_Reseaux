@@ -318,6 +318,11 @@
     }
 }
 
+.button_creercompteleve{
+    display: flex;
+    justify-content: center;
+}
+
 
 /* PAGE D'ACCUEIL */
 
