@@ -168,6 +168,8 @@
 .rectangle2_creercompteeleve  {
     display: flex;
     justify-content: center;
+    margin-top: 2rem;
+
 }
 
 .rectangle2-creercompteeleve {
@@ -190,6 +192,9 @@
     margin: 10px;
 }
 
+#btn-valider-creation-eleve{
+    font-size: 50px;
+}
 .boutons-create, .boutons-delete{    
     font-size: 50px;
     font-family: 'Cormorant', sans-serif;
@@ -197,6 +202,16 @@
     border-radius: 25px;
     margin-top: 3rem;
     padding: 10px;
+}
+.boutons_creercompteeleve{
+    display: flex;
+    justify-content: center;
+}
+
+.boutons_creercompteeleve2{
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
 }
 
 #selected-image {
@@ -266,12 +281,6 @@
     text-align: center;
 }
 
-.btn-valider-creation-eleve{
-    margin-top: 2rem;
-    font-family: "Cormorant", "sans-serif";
-    font-size: 50px;
-    text-align: center;
-}
 
 .lock-dot {
     width: 150px; /* Augmentez la taille du cercle */
