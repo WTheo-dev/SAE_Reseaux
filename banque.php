@@ -15,9 +15,27 @@
 </head>
 <body>
 
+    <?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 'On');
+    ?>
+
+    <?php
+        if (isset($_POST['supprimer_icon'])){
+            foreach ($_POST as $file => $check){
+                if ($check == "on"){
+                    $file="icon/".str_replace("_", ".", str_replace("checkimg-", "", $file));
+                    unlink($file);
+                }
+            }
+        }
+    ?>
+
     <form action="banque.php" method="post" enctype="multipart/form-data">
 
     <h1>BANQUE RESSOURCE</h1>
+
+    <div class="banque-icon">
 
     <h2>ICON</h2>
 
@@ -33,7 +51,8 @@
     <?php
     if (!empty($_FILES)){
         $target_dir="icon/";
-        $target_file=$target_dir.basename($_FILES["icon-file"]["name"]);
+        $name=basename($_FILES["icon-file"]["name"]);
+        $target_file=$target_dir.$name;
         $uploadOk=0;
         $imageFileType=strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         $extAutoriser=array("jpeg", "jpg", "png");
@@ -41,20 +60,24 @@
         if(isset($_POST["enregistrer_icon"])) {
             if(in_array($imageFileType, $extAutoriser) === false){
                 echo "extension non autorisé, choisisez parmis : jpeg, jpg, png<br>";
+            } else if (str_contains($name, "_") || str_contains($name, " ")) {
+                echo $name." incorrect, ne pas mettre de _ ou d'espace dans le nom";
             } else {
                 $check = getimagesize($_FILES["icon-file"]["tmp_name"]);
                 if($check == false) {
                     echo "ce fichier n'est pas une image correct.";
                     $uploadOk = 1;
                 } else {
-                    $succes=move_uploaded_file($_FILES['icon-file']['tmp_name'][$key],getcwd()."/".$target_file);
-                    if ($succes){
-                        echo "success<br>";
-                    } else {
-                        echo "pas success<br>";
+                    try {
+                        $succes=move_uploaded_file($_FILES['icon-file']['tmp_name'], $target_file);
+                    } catch (Exception $e) {
+                        echo $e->getMessage();
                     }
-                    echo getcwd()."/".$target_file."<br>";
-                    echo "icon enregistrée.";
+                    if (!$succes){
+                        echo "erreur a l'enregistrement, verifier que l'image est bonne.<br>";
+                    } else {
+                        echo "icon enregistrée.<br>";
+                    }
                 }
             }
         }
@@ -67,10 +90,42 @@
             $files=scandir("icon");
             foreach ($files as $file){
                 if ($file == "." || $file == "..") continue;
-                echo "<img class='icon-img' src='icon/".$file."' />";
+                echo "<input type='checkbox' id='checkimg-".$file."' name='checkimg-".$file."' class='img-check'>";
+                echo "<label class='image-icon-container' for='checkimg-".$file."'>";
+                echo "<img class='icon-img' src='icon/".$file."' name='".$file."' />";
+                echo "<span>".$file."</span>";
+                echo "</label>";
             }
         ?>
     </div>
+
+    <button class="noprint" type="submit" name="supprimer_icon">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+        <span>Supprimer icon selectionné</span>
+    </button>
+
+    </div>
+
+    <!--
+    </div class="banque-audio">
+    <h2>AUDIO</h2>
+
+    <h3>Liste des audios :</h3>
+    <div class="audio-container">
+        <?php
+            /*
+            $files=scandir("audio");
+            foreach ($files as $file){
+                if ($file == "." || $file == "..") continue;
+                echo "<div class='audio-container'>";
+                echo "<p class='audio-img'> src='audio/".$file."' </p>";
+                echo "</div>";
+            }
+            */
+        ?>
+    </div>
+    </div>
+    -->
 
     </form>
 
