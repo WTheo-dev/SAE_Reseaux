@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiche d'intervention</title>
+    <title>BANQUE</title>
     <link rel="stylesheet" href="banque.css">
     <link
     rel="stylesheet"
@@ -103,6 +103,21 @@
         <i class="fa fa-trash" aria-hidden="true"></i>
         <span>Supprimer icon selectionné</span>
     </button>
+    <br>
+
+    <?php
+        if (isset($_POST['supprimer_icon'])){
+            echo "Icon supprimées :<br>";
+            echo "<ul>";
+            foreach ($_POST as $file => $check){
+                if ($check == "on"){
+                    $file=str_replace("_", ".", str_replace("checkimg-", "", $file));
+                    echo "<li>".$file."</li>";
+                }
+            }
+            echo "</ul>";
+        }
+    ?>
 
     </div>
 
