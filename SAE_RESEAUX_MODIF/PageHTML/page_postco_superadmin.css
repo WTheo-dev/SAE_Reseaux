@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+.header_page_postco_superadmin{
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.child-info{
+    font-family: 'Cinzel', 'sans-serif';
+    font-size: 25px;
+    padding-right: 1em;
+}
+
+.body_page_postco_superadmin{
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.colonne_creation{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 55px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.container_1_page_postco_admin{
+    font-family: 'Cinzel', 'sans-serif';
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+}
+
+.container_2{
+
+    font-family: 'Cormorant', sans-serif;
+    display: flex;
+    font-size: 60px;
+    justify-content: center;
+    margin-top: 5rem;
+}
+.btnaction, .btnliste{
+    display: flex;
+    justify-content: center;
+}
+
+.actions, .liste{
+    margin-top: 2rem;
+    font-family: 'Cormorant', sans-serif;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 50px;
+}
+
+.container_1-1{
+    display: inline;
+
+}
+
+.container_3{
+    margin-top: 2rem;
+    font-family: 'Cormorant', sans-serif;
+    display: flex;
+    justify-content: center;
+    font-size: 60px;
+}
+
+.container_4{
+    margin-top: 2rem;
+    justify-content: center;
+    display: flex;
+    font-size: 90px;
+}
+
+.btnGO{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 65px;
+    cursor: pointer;
+}
+
+.colonne_liste{
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    
+
+}
+
+#btnDeconnexion{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 70px;
+    margin-top: 10rem;
+    background-color: lightcoral;
+    cursor: pointer;
+}

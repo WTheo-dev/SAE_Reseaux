@@ -13,51 +13,62 @@ function deconnecter() {
 function ajouterCommentaire() {
   var commentaire = document.getElementById("comment-voircom").value.trim();
 
+  var caracteresParLigne = 200;
+
+  // Vérifiez si le texte dépasse la limite de caractères
+  if (commentaire.length > caracteresParLigne) {
+    // Ajoutez un retour à la ligne après chaque certain nombre de caractères
+    var regex = new RegExp('.{' + caracteresParLigne + '}', 'g');
+    commentaire = commentaire.replace(regex, '$&\n');
+  }
+
   // Check if the textarea has at least one character
   if (commentaire.length > 0) {
-      var table = document.getElementById("commentTablevoircom");
-      var row = table.insertRow(-1);
-      var cell1 = row.insertCell(0);
-      var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
-      var cell4 = row.insertCell(3);
-      cell1.innerHTML = "Jean";
-      cell2.innerHTML = "Dubois";
-      cell3.innerHTML = commentaire;
+    var table = document.getElementById("commentTablevoircom");
+    var row = table.insertRow(-1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    cell1.innerHTML = "Jean";
+    cell2.innerHTML = "Dubois";
+    cell3.innerHTML = commentaire;
 
-      // Add a "Supprimer" button only for the new row
-      var deleteButton = document.createElement("button");
-      deleteButton.innerHTML = "Supprimer";
-      deleteButton.onclick = function() {
-          supprimerLigne(row);
-      };
-      cell4.appendChild(deleteButton);
+    // Add a "Supprimer" button only for the new row
+    var deleteButton = document.createElement("button");
+    deleteButton.innerHTML = "Supprimer";
+    deleteButton.className = "button-voircom"; // Add the existing button class
+    deleteButton.onclick = function() {
+      supprimerLigne(row);
+    };
+    cell4.appendChild(deleteButton);
 
-      // Add a "Modifier" button only for the new row
-      var editButton = document.createElement("button");
-      editButton.innerHTML = "Modifier";
-      editButton.onclick = function() {
-          modifierCommentaire(row);
-      };
-      cell4.appendChild(editButton);
+    // Add a "Modifier" button only for the new row
+    var editButton = document.createElement("button");
+    editButton.innerHTML = "Modifier";
+    editButton.className = "button-voircom"; // Add the existing button class
+    editButton.onclick = function() {
+      modifierCommentaire(row);
+    };
+    cell4.appendChild(editButton);
 
-      // Save comments to localStorage
-      saveComments();
+    // Save comments to localStorage
+    saveComments();
 
-      // Clear the textarea content
-      document.getElementById("comment-voircom").value = "";
+    // Clear the textarea content
+    document.getElementById("comment-voircom").value = "";
   } else {
-      alert("Veuillez entrer un commentaire avant d'ajouter.");
+    alert("Veuillez entrer un commentaire avant d'ajouter.");
   }
 }
 
 function modifierCommentaire(row) {
   var newComment = prompt("Modifier le commentaire:", row.cells[2].innerHTML);
   if (newComment !== null) {
-      row.cells[2].innerHTML = newComment;
+    row.cells[2].innerHTML = newComment;
 
-      // Save comments to localStorage after modification
-      saveComments();
+    // Save comments to localStorage after modification
+    saveComments();
   }
 }
 
@@ -74,8 +85,8 @@ function saveComments() {
   var table = document.getElementById("commentTablevoircom");
 
   for (var i = 1; i < table.rows.length; i++) {
-      var comment = table.rows[i].cells[2].innerHTML;
-      comments.push(comment);
+    var comment = table.rows[i].cells[2].innerHTML;
+    comments.push(comment);
   }
 
   localStorage.setItem("comments", JSON.stringify(comments));
@@ -86,36 +97,31 @@ function loadComments() {
   var table = document.getElementById("commentTablevoircom");
 
   for (var i = 0; i < comments.length; i++) {
-      var row = table.insertRow(-1);
-      var cell1 = row.insertCell(0);
-      var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
-      var cell4 = row.insertCell(3);
-      cell1.innerHTML = "Jean";
-      cell2.innerHTML = "Dubois";
-      cell3.innerHTML = comments[i];
+    var row = table.insertRow(-1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    cell1.innerHTML = "Jean";
+    cell2.innerHTML = "Dubois";
+    cell3.innerHTML = comments[i];
 
-      
-          // Add a "Supprimer" button
-          var deleteButton = document.createElement("button");
-          deleteButton.innerHTML = "Supprimer";
-          deleteButton.onclick = function () {
-              supprimerLigne(row);
-          };
-          cell4.appendChild(deleteButton);
-      
+    // Add a "Supprimer" button
+    var deleteButton = document.createElement("button");
+    deleteButton.innerHTML = "Supprimer";
+    deleteButton.className = "button-voircom"; // Add the existing button class
+    deleteButton.onclick = function() {
+      supprimerLigne(row);
+    };
+    cell4.appendChild(deleteButton);
 
-      // Add a "Modifier" button
-      var editButton = document.createElement("button");
-      editButton.innerHTML = "Modifier";
-      editButton.onclick = function () {
-          modifierCommentaire(row);
-      };
-      cell4.appendChild(editButton);
+    // Add a "Modifier" button
+    var editButton = document.createElement("button");
+    editButton.innerHTML = "Modifier";
+    editButton.className = "button-voircom"; // Add the existing button class
+    editButton.onclick = function() {
+      modifierCommentaire(row);
+    };
+    cell4.appendChild(editButton);
   }
 }
-
-
-
-
-
