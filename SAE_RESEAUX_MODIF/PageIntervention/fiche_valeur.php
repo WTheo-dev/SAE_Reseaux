@@ -1,6 +1,7 @@
 <?php
 foreach ($_POST as $param => $value){
     //echo $param." : ".$value."<br>";
+    $value=htmlspecialchars($value);
     setcookie($param, $value, time() + (86400 * 60));
 }
 
@@ -37,7 +38,7 @@ foreach ($_COOKIE as $name => $value){
 function valEns($name){
     if (isset($_REQUEST[$name])){
         return $_REQUEST[$name];
-    }else{
+    }else if (isset($_COOKIE[$name])){
         return $_COOKIE[$name];
     }
 }
@@ -71,13 +72,13 @@ function formatBox($name){
     <p>Intervenant</p>
 
     <label for="nomIntervenant">Nom de l'intervenant</label>
-    <input type="text" disabled name="nomIntervenant" value="<?php echo $_COOKIE['nomIntervenant'] ?>">
+    <input type="text" disabled name="nomIntervenant" value="<?php if (isset($_COOKIE['nomIntervenant'])) { echo $_COOKIE['nomIntervenant']; } ?>">
     <?php formatBox("NomIntervenant", ""); ?>
 
     <br>
 
     <label for="prenomIntervenant">Prénom de l'intervenant</label>
-    <input type="text" disabled  name="prenomIntervenant" value="<?php echo $_COOKIE['prenomIntervenant'] ?>">
+    <input type="text" disabled  name="prenomIntervenant" value="<?php if (isset($_COOKIE['prenomIntervenant'])) { echo $_COOKIE['prenomIntervenant']; } ?>">
     <?php formatBox("PrenomIntervenant", ""); ?>
 
     </div>
@@ -116,14 +117,14 @@ function formatBox($name){
 
 <div class="jsp">
 <label for="dateIntervention">Date d'intervention:</label>
-<input disabled type="date" id="dateIntervention" name="dateIntervention" value="<?php echo $_COOKIE['dateIntervention']; ?>">
+<input disabled type="date" id="dateIntervention" name="dateIntervention" value="<?php if (isset($_COOKIE['dateIntervention'])) { echo $_COOKIE['dateIntervention']; } ?>">
 <?php formatBox("DateIntervention", ""); ?>
 </div>
 
 <div class="jsp">
 <label for="dureeIntervention">Durée de l'opération:</label>
 <select disabled id="dureeIntervention" name="dureeIntervention">
-<br><option><?php echo $_COOKIE['dureeIntervention']; ?></option>
+<br><option><?php if (isset($_COOKIE['dureeIntervention'])) { echo $_COOKIE['dureeIntervention']; } ?></option>
 <br></select>
 <?php formatBox("DureeIntervention", ""); ?>
 </div>
@@ -179,14 +180,14 @@ function formatBox($name){
 
 <div class="block bordure">
 <p>Travaux réalisés</p>
-<textarea disabled id="travauxRealises" name="travauxRealises" rows="10"><?php echo $_COOKIE['travauxRealises'] ?></textarea>
+<textarea disabled id="travauxRealises" name="travauxRealises" rows="10"><?php if (isset($_COOKIE['travauxRealises'])) { echo $_COOKIE['travauxRealises']; } ?></textarea>
 </div>
 
 <br>
 
 <div class="block bordure">
 <p>Travaux non réalisés</p>
-<textarea disabled id="travauxNonRealises" name="travauxNonRealises" rows="10"><?php echo $_COOKIE['travauxNonRealises']; ?></textarea>
+<textarea disabled id="travauxNonRealises" name="travauxNonRealises" rows="10"><?php if (isset($_COOKIE['travauxNonRealises'])) { echo $_COOKIE['travauxNonRealises']; } ?></textarea>
 <br>
 <input disabled type="checkbox" name="Nécessite_un_nouvelle_intervention" id="Nécessite_un_nouvelle_intervention" <?php if(isset($_COOKIE['Nécessite_un_nouvelle_intervention'])) echo "checked"; ?> />
 <label for="Nécessite_un_nouvelle_intervention">Nécessite un nouvelle intervention</label>

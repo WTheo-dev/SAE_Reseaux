@@ -1,4 +1,4 @@
-<?php if ($nohead != "no"): ?>
+<?php if (! (isset($nohead))): ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

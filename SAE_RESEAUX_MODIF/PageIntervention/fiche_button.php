@@ -1,7 +1,7 @@
-<?php if ($nobutton != "no"): ?>
+<?php if (! (isset($nobutton))): ?>
 
     <div class="fiche_button">
-    <?php if ($begin != "true") : ?>
+    <?php if (! isset($begin)) : ?>
     <button type="submit" name="precedent" value="<?php echo $numpage; ?>">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>
         <span>précédent</span>
@@ -13,7 +13,7 @@
         <i class="fa fa-check" aria-hidden="true"></i>
         <span>sauvegarder</span>
     </button>
-    <?php if ($end != "true") : ?>
+    <?php if (! isset($end)) : ?>
     <button type="submit" name="suivant" value="<?php echo $numpage; ?>">
         <span>suivant</span>
         <i class="fa fa-arrow-right" aria-hidden="true"></i>

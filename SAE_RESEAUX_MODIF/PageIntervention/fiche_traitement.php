@@ -33,6 +33,7 @@ if (isset($_POST['precedent'])){
 }
 
 foreach ($_POST as $param => $value){
+    $value=htmlspecialchars($value);
     setcookie($param, $value, time() + (86400 * 60));
 }
 

@@ -1,0 +1,64 @@
+.icon-container {
+    border: 2px solid black;
+    border-radius: 15px;
+
+    padding: 4px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    width: 50%;
+}
+
+.image-icon-container {
+    border: 2px solid black;
+    margin: 3px;
+    padding: 3px;
+}
+
+.icon-img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.banque-icon {
+    float: left;
+}
+
+.banque-audio {
+    float: right;
+}
+
+.img-check {
+    appearance: none;
+}
+
+.img-check:checked + .image-icon-container {
+    border: solid orange 4px;
+}
+
+
+/*
+.audio-container {
+    border: 2px solid black;
+    border-radius: 15px;
+
+    padding: 4px;
+
+    display: flex;
+}
+
+.audio-container {
+    border: 2px solid black;
+
+    margin: 3px;
+
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.audio-img {
+    max-width: 50px;
+    max-height: 50px;
+}
+*/

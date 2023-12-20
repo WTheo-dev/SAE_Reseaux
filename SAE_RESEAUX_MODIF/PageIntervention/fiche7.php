@@ -11,9 +11,9 @@
 
 <?php ifform() ?>
 
-    <div class="block">
+    <div class="block" style="height:85%;">
     <p>Travaux non réalisés</p>
-    <textarea id="travauxNonRealises" name="travauxNonRealises" rows="10"><?php echo $_COOKIE['travauxNonRealises']; ?></textarea>
+    <textarea id="travauxNonRealises" name="travauxNonRealises" rows="10"><?php if (isset($_COOKIE['travauxNonRealises'])) { echo $_COOKIE['travauxNonRealises']; } ?></textarea>
     </div>
     <input type="checkbox" name="Nécessite_un_nouvelle_intervention" id="Nécessite_un_nouvelle_intervention" <?php if(isset($_COOKIE['Nécessite_un_nouvelle_intervention'])) echo "checked"; ?> />
     <label for="Nécessite_un_nouvelle_intervention">
