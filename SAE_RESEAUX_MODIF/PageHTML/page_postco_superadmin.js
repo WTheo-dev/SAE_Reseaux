@@ -29,7 +29,12 @@ function showSection() {
     var selectedListe = selectListe.options[selectListe.selectedIndex].value;
 
     // Rediriger vers la page appropriée en fonction des sélections
-    window.location.href = selectedAction + selectedListe + ".html";
+    switch(selectedAction + selectedListe){
+      case "creereleves":
+        window.location.href = "creer_compte_eleve.html";
+        break;
+      case
+    }
 
     
   }

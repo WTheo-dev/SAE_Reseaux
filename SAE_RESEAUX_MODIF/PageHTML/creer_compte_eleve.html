@@ -40,9 +40,9 @@
         <!-- Section pour le schéma de connexion et le formulaire -->
         <p class="p_creation_eleve">Creez le code de l'élève: </p>
     
-        <div id="creation_eleve_container">
-          <div id="creation_eleve_lock-container">
-            <div id="creation_eleve_lock-screen" class="creation_eleve_lock-screen">
+        <div id="container">
+          <div id="lock-container">
+            <div id="lock-screen" class="lock-screen">
               <div class="lock-dot" data-dot="1">1</div>
               <div class="lock-dot" data-dot="2">2</div>
               <div class="lock-dot" data-dot="3">3</div>
@@ -55,8 +55,12 @@
             </div>
           </div>
         </div>
-      </div>
       
+        <button id="btn-valider-creation-eleve" onclick="afficherPopup()" style="display: none;">Créer le compte de l'élève</button>
+        <button id="a" onclick="clearSelection()">Effacer</button>
+        <button id="back-button" onclick="goBack()">Retour</button>
+      </div>
+      </div>
     </main>
 
    <script src="creer_compte_eleve.js"></script>

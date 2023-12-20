@@ -51,17 +51,8 @@ document.getElementById('file-input').addEventListener('change', function () {
     }
  
 });
-// Fonction appelée lors du clic sur le bouton "Créer"
 function createProfile() {
-    // Vous pouvez ajouter ici le code nécessaire pour créer le profil
-
-    // Ramener vers la page page_posto_superadmin
-    window.location.href = 'page_posto_superadmin.html';
-
-    // Afficher un popup "Profil créé"
-    alert('Profil créé');
-
-    // Effacer le code précédemment saisi
+    conter=0;
     clearLockScreen();
 }
 
@@ -97,5 +88,78 @@ function addEventListener() {
 // Associer ces fonctions aux boutons correspondants
 document.getElementById('a').addEventListener('click', createProfile);
 document.getElementById('back-button').addEventListener('click', clearForm);
-document.getElementById('connect-button').addEventListener('click', connect);
-document.getElementById('a').addEventListener('click', addEventListener);
+document.getElementById('btn-valider-creation-eleve').addEventListener('click', afficherPopup);
+
+
+function afficherPopup() {
+    // Créer l'élément de la popup
+    var popup = document.createElement("div");
+    popup.className = "popup";
+    popup.innerHTML = "Profil créé";
+
+    // Ajouter la popup à la fin du corps du document
+    document.body.appendChild(popup);
+
+    // Ajouter une classe pour l'animation (facultatif)
+    popup.classList.add("popup-anim");
+
+    // Fermer la popup après un certain délai (par exemple, 3 secondes)
+    setTimeout(function () {
+        document.body.removeChild(popup);
+    }, 3000);
+}
+
+const   lockDots = document.querySelectorAll('.lock-dot');
+let enteredCode = '';
+
+lockDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    if (enteredCode.length < 4) {
+      enteredCode += dot.dataset.dot;
+      toggleColor(dot);
+    }
+
+    checkCode();
+  });
+});
+
+function toggleColor(dot) {
+  dot.classList.toggle('active-dot');
+}
+
+let conter = 0
+function checkCode() {
+  if (conter === 3) {
+    showConnectButton();
+  } else {
+    conter++
+  }
+}
+
+function showConnectButton() {
+  const connectButton = document.getElementById('btn-valider-creation-eleve');
+  connectButton.style.display = 'block';
+}
+
+function hideConnectButton() {
+  const connectButton = document.getElementById('btn-valider-creation-eleve');
+  connectButton.style.display = 'none';
+}
+
+function connect() {
+  window.location.href = 'page_postco_eleve.html';
+}
+
+function clearSelection() {
+  lockDots.forEach(dot => {
+    if (dot.classList.contains('active-dot')) {
+      toggleColor(dot);
+    }
+  });
+  enteredCode = '';
+  hideConnectButton();
+}
+
+function goBack() {
+  window.location.href = 'page_daccueil.html';
+}

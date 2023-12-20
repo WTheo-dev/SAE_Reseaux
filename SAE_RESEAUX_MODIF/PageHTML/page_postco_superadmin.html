@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="page_postco_superadmin.css">
         <title>Accueil superAdmin</title>
         
     </head>
@@ -27,7 +27,7 @@
             <label for="actions">Choisir une action :</label>
         </div>
         <div class="btnaction"> 
-            <select class="actions" onchange="showSection()">
+            <select class="actions" id="actions" onchange="showSection()">
                 <option value="modifier">Modifier</option>
                 <option value="creer">Créer</option>
                 <option value="supprimer">Supprimer</option>
@@ -38,7 +38,7 @@
             <label for="liste">Choisir une liste :</label>
         </div>
         <div class="btnliste"> 
-            <select class="liste" onchange="showSection()">
+            <select class="liste" id="liste" onchange="showSection()">
                 <option value="eleves">Elèves</option>
                 <option value="cours">Cours</option>
                 <option value="educateurs">Educateurs</option>
