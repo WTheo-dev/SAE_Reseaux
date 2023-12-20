@@ -161,5 +161,5 @@ function clearSelection() {
 }
 
 function goBack() {
-  window.location.href = 'page_daccueil.html';
+  window.location.href = 'page_postco_superadmin.html';
 }
