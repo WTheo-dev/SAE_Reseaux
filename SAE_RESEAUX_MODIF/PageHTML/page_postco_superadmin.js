@@ -49,7 +49,7 @@ function showSection() {
           window.location.href = "supprimer_cours.html";
         break;
         case "creereducateurs":
-        window.location.href = "creer_educateur.html";
+        window.location.href = "creer_compte_educateur.html";
         break;
       case "modifiereducateurs":
         window.location.href = "modifier_educateur.html";
