@@ -182,26 +182,17 @@ function unApprenti()
 function inscriptionApprenti($nom, $prenom, $photo)
 {
   $BD = connexionBD();
-
-  // Vérifiez si les informations de l'apprenti sont valides
   if (!empty($nom) && !empty($prenom) && !empty($photo)) {
-    // Préparez la requête SQL pour insérer un nouvel apprenti
+
     $ajoutApprenti = $BD->prepare('INSERT INTO apprenti(nom, prenom, photo) VALUES (?, ?, ?)');
-
-    // Exécutez la requête en liant les valeurs des paramètres
     $ajoutApprenti->execute(array($nom, $prenom, $photo));
-
-    // Fermez la connexion à la base de données
     $BD = null;
-
-    // Vérifiez si l'ajout de l'apprenti a réussi
     if ($ajoutApprenti->rowCount() > 0) {
       return TRUE;
     } else {
       return FALSE;
     }
   } else {
-    // Retournez FALSE si les informations de l'apprenti ne sont pas valides
     return FALSE;
   }
 }
@@ -227,23 +218,15 @@ function inscriptionPersonnel($nom, $prenom)
   $BD = connexionBD();
   // Vérifiez si les informations de l'apprenti sont valides
   if (!empty($nom) && !empty($prenom)) {
-    // Préparez la requête SQL pour insérer un nouvel apprenti
     $ajoutPersonnel = $BD->prepare('INSERT INTO personnel(nom, prenom) VALUES (?, ?)');
-
-    // Exécutez la requête en liant les valeurs des paramètres
     $ajoutPersonnel->execute(array($nom, $prenom));
-
-    // Fermez la connexion à la base de données
     $BD = null;
-
-    // Vérifiez si l'ajout de l'apprenti a réussi
     if ($ajoutPersonnel->rowCount() > 0) {
       return TRUE;
     } else {
       return FALSE;
     }
   } else {
-    // Retournez FALSE si les informations de l'apprenti ne sont pas valides
     return FALSE;
   }
 }
@@ -337,9 +320,6 @@ function unPersonnel()
 function listeFiche($id_fiche)
 {
   $BD = connexionBD();
-  if (!$BD) {
-    return FALSE;
-  }
   $listeFiche = $BD->prepare('SELECT * from ');
 
 }
