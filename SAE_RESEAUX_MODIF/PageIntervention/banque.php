@@ -21,6 +21,12 @@
     ?>
 
     <?php
+        if (!is_dir("icon")){
+            mkdir("icon");
+        }
+    ?>
+
+    <?php
         if (isset($_POST['supprimer_icon'])){
             foreach ($_POST as $file => $check){
                 if ($check == "on"){
@@ -88,7 +94,7 @@
     <div class="icon-container">
         <?php
             if (is_dir("icon")){
-            $files=scandir("icon");
+                $files=scandir("icon");
                 foreach ($files as $file){
                     if ($file == "." || $file == "..") continue;
                     echo "<input type='checkbox' id='checkimg-".$file."' name='checkimg-".$file."' class='img-check'>";
