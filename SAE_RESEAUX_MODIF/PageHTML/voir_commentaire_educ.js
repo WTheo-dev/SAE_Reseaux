@@ -13,7 +13,7 @@ function deconnecter() {
 function ajouterCommentaire() {
   var commentaire = document.getElementById("comment-voircom").value.trim();
 
-  var caracteresParLigne = 200;
+  var caracteresParLigne = 17;
 
   // Vérifiez si le texte dépasse la limite de caractères
   if (commentaire.length > caracteresParLigne) {

@@ -1,0 +1,30 @@
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 70px;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 70px;
+    padding: 40px;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  button {
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 70px;
+  }
+
+  h2 {
+      font-size: 70px;
+  }
