@@ -387,7 +387,7 @@
 }
 
 
-.Connexion_superadmin{
+.Connexion_superadmin, .Connexion_admin{
     
     display: flex;
     background-color:rgb(153,153,251);
@@ -398,7 +398,7 @@
     border-radius: 10px;
 }
 
-.Connexion_superadmin a{
+.Connexion_superadmin a, .Connexion_admin a{
     font-family: 'Cormorant', sans-serif;
     display: flex;
     text-decoration: none;
