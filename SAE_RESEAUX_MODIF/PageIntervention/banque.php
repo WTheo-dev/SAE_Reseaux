@@ -87,14 +87,16 @@
     <h3>Liste des icons :</h3>
     <div class="icon-container">
         <?php
+            if (is_dir("icon")){
             $files=scandir("icon");
-            foreach ($files as $file){
-                if ($file == "." || $file == "..") continue;
-                echo "<input type='checkbox' id='checkimg-".$file."' name='checkimg-".$file."' class='img-check'>";
-                echo "<label class='image-icon-container' for='checkimg-".$file."'>";
-                echo "<img class='icon-img' src='icon/".$file."' name='".$file."' />";
-                echo "<span>".$file."</span>";
-                echo "</label>";
+                foreach ($files as $file){
+                    if ($file == "." || $file == "..") continue;
+                    echo "<input type='checkbox' id='checkimg-".$file."' name='checkimg-".$file."' class='img-check'>";
+                    echo "<label class='image-icon-container' for='checkimg-".$file."'>";
+                    echo "<img class='icon-img' src='icon/".$file."' name='".$file."' />";
+                    echo "<span>".$file."</span>";
+                    echo "</label>";
+                }
             }
         ?>
     </div>
