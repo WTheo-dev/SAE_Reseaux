@@ -1,3 +1,21 @@
+.body-liste-educateur{
+  font-family: 'Cormorant', sans-serif;
+  background-color: #f4f8ff;
+  color: #333;
+  margin: 0; /* Supprime la marge par défaut du corps */
+  padding: 0; /* Supprime le rembourrage par défaut du corps */
+  height: 100vh; /* Ajuste la hauteur du corps à 100% de la vue */
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0;
+}
+.header-connexion-eleve {
+  background-color: rgb(130,106,251); 
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 
 table {
