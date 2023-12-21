@@ -1,34 +1,48 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">  
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
 
+  <title>Connexion Educateur</title>
 </head>
-<body class="body-educateur">
-    <div class="educateur-wrapper">
-        <form action="page_postco_admin.html">
-            <h1>Se connecter</h1>
-            <div class="educateur-input-box">
-                <input type="text" placeholder="prenom.nom" required>
-                <i class='bx bxs-user'></i>
-            </div>
-            <div class="educateur-input-box">
-                <input type="password" placeholder="Mot de passe" required>
-                <i class='bx bxs-lock-alt' ></i>
-            </div>
-            <div class="educateur-remember-forgot">
-                <label><input type="checkbox"> Se souvenir de moi</label>
-                <a href="mot_de_passe_oublie_educateur.html"> Mot de passe oublié ?</a>
-            </div>
-
-            <button a type="submit" class="educateur-btn">Se connecter</button>
-            </div>
-        </form>
+<body class="body-connexion-eleve">
+  <header class="header-connexion-eleve">
+    <div class="logo">
+      <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
     </div>
+  </header>
+    <div class="label_connexion_educ">
+        <input type="text" id="nom" name="nom" placeholder="Entrez votre nom" />
+    </div>
+  <div class="content-container">
+    <p class="p_connexion_eleve">Mettez votre code : </p>
+    
+    <div id="container">
+      <div id="lock-container">
+        <div id="lock-screen" class="lock-screen">
+          <div class="lock-dot" data-dot="1">1</div>
+          <div class="lock-dot" data-dot="2">2</div>
+          <div class="lock-dot" data-dot="3">3</div>
+          <div class="lock-dot" data-dot="4">4</div>
+          <div class="lock-dot" data-dot="5">5</div>
+          <div class="lock-dot" data-dot="6">6</div>
+          <div class="lock-dot" data-dot="7">7</div>
+          <div class="lock-dot" data-dot="8">8</div>
+          <div class="lock-dot" data-dot="9">9</div>
+        </div>
+      </div>
+    </div>
+  
+    <button id="connect-button" onclick="connect()" style="display: none;">Se connecter</button>
+</div>
+    <div class="btn_connexion_educ">
+    <button id="a" onclick="clearSelection()">Effacer</button>
+    <button id="back-button" onclick="goBack()">Retour</button>
+    </div>
+  <script src="connexion_eleve.js"></script>
 </body>
 </html>
+  
