@@ -23,8 +23,18 @@
     ?>
 
     <?php
-        if (!is_dir("icon")) mkdir("icon");
-        if (!is_dir("audio")) mkdir("audio");
+        if (!is_dir("icon")){
+            mkdir("icon");
+            shell_exec("chmod 777 icon");
+            shell_exec("chown www-data icon");
+            shell_exec("chgrp www-data icon");
+        }
+        if (!is_dir("audio")){
+            mkdir("audio");
+            shell_exec("chmod 777 audio");
+            shell_exec("chown www-data audio");
+            shell_exec("chgrp www-data audio");
+        }
     ?>
 
 
