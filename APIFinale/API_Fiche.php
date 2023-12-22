@@ -50,7 +50,6 @@ switch ($http_method) {
     case 'DELETE':
         if ($role == 2) {
             $id_fiche = $_GET['id_fiche'];
-
             if ($id_fiche) {
                 $result = supprimerFiche($id_fiche);
                 if ($result === true) {
@@ -71,7 +70,6 @@ switch ($http_method) {
             $RETURN_CODE = 403;
             $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
         }
-
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         break;
 

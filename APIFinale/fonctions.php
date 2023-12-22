@@ -96,21 +96,50 @@ function conversionHTML($tableauAConvertir)
   return $tableauConverti;
 }
 
-function connexionApprenti($id_Apprenti)
+function connexionApprenti($id_apprenti)
 {
   $BD = connexionBD();
-  if (!$BD) {
-    return FALSE;
-  }
-  if (count($id_Apprenti) > 0) {
-    $identiteApprentiHTML = conversionHTML($id_Apprenti);
-    if (count($id_Apprenti) > 0) {
+
+  if (count($id_apprenti) > 0) {
+    $identiteApprentiHTML = conversionHTML($id_apprenti);
+    if (count($id_apprenti) > 0) {
       $verificationApprenti = $BD->prepare('SELECT $ from apprenti WHERE schema = ?');
-      $verificationApprenti->execute(array($id_Apprenti['0']));
+      $verificationApprenti->execute(array($id_apprenti['0']));
       $BD = null;
       if ($verificationApprenti->rowCount() > 0) {
         foreach ($verificationApprenti as $row) {
-          if (password_verify($id_Apprenti['1'], $row['mdp'])) {
+          if (password_verify($id_apprenti['1'], $row['mdp'])) {
+            $_SESSION['id'] = $row['id_apprenti'];
+            $_SESSION['compteValide'] = $row['compteValide'];
+            $_SESSION['coordinateur'] = $row['coordinateur'];
+            return TRUE;
+          }
+        }
+      } else {
+        return FALSE;
+      }
+    } else {
+      return FALSE;
+    }
+  } else {
+    return FALSE;
+  }
+
+}
+
+function connexionEducateur($id_personnel)
+{
+  $BD = connexionBD();
+
+  if (count($id_personnel) > 0) {
+    $identiteApprentiHTML = conversionHTML($id_personnel);
+    if (count($id_personnel) > 0) {
+      $verificationApprenti = $BD->prepare('SELECT $ from apprenti WHERE schema = ?');
+      $verificationApprenti->execute(array($id_personnel['0']));
+      $BD = null;
+      if ($verificationApprenti->rowCount() > 0) {
+        foreach ($verificationApprenti as $row) {
+          if (password_verify($id_personnel['1'], $row['mdp'])) {
             $_SESSION['id'] = $row['id_apprenti'];
             $_SESSION['compteValide'] = $row['compteValide'];
             $_SESSION['coordinateur'] = $row['coordinateur'];
@@ -210,10 +239,17 @@ function inscriptionApprenti($nom, $prenom, $photo, $utilisateur)
   $nom = htmlspecialchars($nom);
   $prenom = htmlspecialchars($prenom);
   $photo = htmlspecialchars($photo);
+
+  $ajoutUtilisateur = $BD->prepare('INSERT INTO utilisateur(login, mdp) VALUES (?, ?)');
+  $ajoutUtilisateur->execute(array($utilisateur['login'], $utilisateur['mdp']));
+  $id_utilisateur = $BD->lastInsertId();
+
   if (!empty($nom) && !empty($prenom) && !empty($photo)) {
     $ajoutApprenti = $BD->prepare('INSERT INTO apprenti(nom, prenom, photo, id_utilisateur) VALUES (?, ?, ?, ?)');
-    $ajoutApprenti->execute(array($nom, $prenom, $photo, id_login($utilisateur)));
+    $ajoutApprenti->execute(array($nom, $prenom, $photo, $id_utilisateur));
+
     $BD = null;
+
     if ($ajoutApprenti->rowCount() > 0) {
       return TRUE;
     } else {

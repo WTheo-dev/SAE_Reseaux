@@ -1,10 +1,8 @@
 <?php
-
 require_once("jwt_util.php");
 require_once("fonctions.php");
 header("Content-Type:application/json");
 $http_method = $_SERVER['REQUEST_METHOD'];
-
 $bearer_token = get_bearer_token();
 if (is_jwt_valid($bearer_token, "pass")) {
     $decoded_jwt = get_body_token($bearer_token);
@@ -39,9 +37,8 @@ switch ($http_method) {
 
     case 'POST':
         $matchingData = null;
-
         if ($role == 2) {
-            if (inscriptionApprenti($data['nom'], $data['prenom'], $data['photo'], $utilisateur)) {
+            if (inscriptionApprenti($data['nom'], $data['prenom'], $data['photo'], $id_utilisateur)) {
                 $RETURN_CODE = 200;
                 $STATUS_MESSAGE = "Ajout Apprenti effectué";
             } else {
@@ -52,26 +49,20 @@ switch ($http_method) {
             $RETURN_CODE = 403;
             $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
         }
-
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
-
         break;
 
     case 'DELETE':
         if ($role == 2) {
             $id_apprenti = $_GET['id_apprenti'];
             if ($id_apprenti) {
-                // Appeler la fonction de suppression
                 $result = supprimerApprenti($id_apprenti);
-                // Vérifier le résultat de la fonction
                 if ($result === true) {
-                    // Réponse en cas de succès
-                    $RETURN_CODE = 200; // No Content
+                    $RETURN_CODE = 200; 
                     $STATUS_MESSAGE = "L'apprenti a été supprimé avec succès.";
                     $matchingData = null;
                 } else {
-                    // Réponse en cas d'échec
-                    $RETURN_CODE = 400; // Not Found
+                    $RETURN_CODE = 400;
                     $STATUS_MESSAGE = "L'apprenti n'existe pas ou à déjà été supprimé";
                     $matchingData = null;
                 }
