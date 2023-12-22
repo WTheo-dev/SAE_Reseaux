@@ -1,32 +1,109 @@
 /* Style de base pour la table */
-.w3-table-all {
-    border-collapse: collapse;
-    width: 100%;
-  }
+
+
+.header-connexion-eleve {
+  background-color: rgb(130,106,251); 
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.body-postco-admin{
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Cormorant', sans-serif;
+  background-color: #f0f0f0;
+}
+
+.zone-texte_page_postco-admin{
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.text_tableau{
+  display: flex;
+  justify-content: center;
+  font-size: 60px;
+}
+.class-container-profile-switch{
+  width: 100%;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  overflow-x: scroll;
+}
+
+.profile-switch-container{
+  justify-content: center;
+  width: 40%;
+  display: flex;
+  background-color: lightgray;  
+}
+
+.rectangle-container-photo-label{
+  padding: 1rem;
+  display: grid;
+  justify-content: center;
+}
+.rectangle-container-photo-label label{
+  font-size: 50px;
+  text-align: center;
+}
+
+
+.rectangle-photo{
+  margin: 10px;
+  background-color: white;
+  padding: 1em;
+  display: flex;
+  width: 300px; /* ou toute autre valeur souhaitée */
+}
+.image {
+  width: 100%;
+  height: 100%; /* Cela remplira la hauteur de la div-container */
+}
+
+.btn-deconnexion_page_postco_admin{
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+
+}
+
+.btn-deconnexion_page_postco_admin button{
+  font-size: 50px;
+  background-color: rgb(130,106,251); 
+  color: #f0f0f0  ;
+  cursor: pointer;
+
+}
+
+
+.profile-switch-container.selected {
+  border: 10px solid green;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+/* ... (votre code CSS existant) */
+
+.profile-buttons {
+  display: none;
+  margin-top: 10px;
+}
+
+.profile-buttons button{
   
-  .w3-table-all th, .w3-table-all td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .w3-table-all th {
-    background-color: #f2f2f2;
-  }
-  
-  /* Style pour l'effet hover */
-  .w3-table-all tr:hover {
-    background-color: #f5f5f5;
-  }
-  
-  /* Style pour les liens */
-  .w3-table-all a {
-    text-decoration: none;
-    color: #3498db;
-  }
-  
-  /* Style pour les liens au survol */
-  .w3-table-all a:hover {
-    color: #2980b9;
-  }
-  
+  padding: 1rem;
+  margin-top: 1em;
+  font-size: 50px;
+  background-color: rgb(130,106,251); 
+  color: #f0f0f0  ;
+  cursor: pointer;
+}
