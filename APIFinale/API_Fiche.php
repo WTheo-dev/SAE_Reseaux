@@ -22,7 +22,7 @@ switch ($http_method) {
         if ($role == 1 || 3 || 4) {
             try {
                 $RETURN_CODE = 200;
-                $STATUS_MESSAGE = "Voici la liste des Fiche :";
+                $STATUS_MESSAGE = "Voici la liste des fiches :";
                 $matchingData = listeFiche();
             } catch (\Throwable $th) {
                 $RETURN_CODE = $th->getCode();
@@ -32,15 +32,21 @@ switch ($http_method) {
                 deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
             }
         } else {
-            deliver_response(403, "Echec, le rôle n'est pas autorisé pour avoir accès à ces données", null);
+            $RETURN_CODE = 403;
+            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
         }
+        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         break;
 
 
     case 'POST':
+        if ($role == 3) {
+
+        }
+
 
     case 'DELETE':
-        if ($role == 1 || 3 || 4) {
+        if ($role == 2) {
             $id_fiche = $_GET['id_fiche'];
 
             if ($id_fiche) {
@@ -68,10 +74,8 @@ switch ($http_method) {
         break;
 
     case 'PUT':
-
         $matchingData = null;
-
-        if ($role == 1 || 3 || 4) {
+        if ($role == 1 || 3 ) {
             $id_fiche = $_GET['id_fiche'];
             if (modifierFiche($id_fiche, $data = array(
                 'id_fiche' => $id_fiche,
@@ -89,7 +93,7 @@ switch ($http_method) {
                 'etat_fiche' => $etat_fiche,
                 'date_creation' => $date_creation))) {
                 $RETURN_CODE = 200;
-                $STATUS_MESSAGE = "Mise à jour de la Fiche effectué";
+                $STATUS_MESSAGE = "Mise à jour de la fiche effectué";
             } else {
                 $RETURN_CODE = 400;
                 $STATUS_MESSAGE = "Erreur de syntaxe ou id_fiche invalide";
@@ -98,5 +102,5 @@ switch ($http_method) {
             $RETURN_CODE = 403;
             $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié, la méthode HTTP appropriée ou l'id_fiche est manquant";
         }
-
+        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
 }
