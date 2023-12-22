@@ -19,36 +19,68 @@ function connexionBD()
   return $BD;
 }
 
-function identification($login, $mdp){
+function identification($login, $mdp)
+{
   $login = htmlspecialchars($login);
   $mdp = htmlspecialchars($mdp);
   $BD = connexionBD();
   $verificationMembre = $BD->prepare('SELECT * FROM utilisateur WHERE login = ? AND mdp = ?');
   $verificationMembre->execute(array($login, $mdp));
   $BD = null;
-  if($verificationMembre->rowCount() > 0){
-      return TRUE;
-  }else{
-      return FALSE;
- } 
-}
-
-function  recuperation_role($login)  {
-  $BD = connexionBD();
-  if (!$BD) {
+  if ($verificationMembre->rowCount() > 0) {
+    return TRUE;
+  } else {
     return FALSE;
   }
+}
+
+function recuperation_role($login)
+{
+  $BD = connexionBD();
   $recuperationRoleUtilisateur = $BD->prepare('SELECT id_role FROM utilisateur WHERE login = ?');
   $recuperationRoleUtilisateur->execute(array($login));
   $BD = null;
-  if($recuperationRoleUtilisateur->rowCount() > 0){
-      foreach($recuperationRoleUtilisateur as $row){
-          return $row['id_role'];
-      }
-  }else{
-      return FALSE;
-  } 
+  if ($recuperationRoleUtilisateur->rowCount() > 0) {
+    foreach ($recuperationRoleUtilisateur as $row) {
+      return $row['id_role'];
+    }
+  } else {
+    return FALSE;
+  }
 }
+
+/////////////////////////////////////////////////////////////////////////////
+////////////////////       GESTION DES UTILISATEURS      ////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
+function login_id($id_utilisateur) {
+  $BD = connexionBD();
+  $rechercheUtilisateur = $BD ->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+  $rechercheUtilisateur -> execute(array($id_utilisateur));
+  $BD = null;
+  if ($rechercheUtilisateur -> rowCount() > 0) {
+    foreach($rechercheUtilisateur as $row) {
+      return $row['login'];
+    }
+  } else {
+    return FALSE;
+  }
+}
+
+function id_login($login) {
+  $BD = connexionBD();
+  $rechercheUtilisateur = $BD ->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+  $rechercheUtilisateur -> execute(array($login));
+  $BD = null;
+  if ($rechercheUtilisateur -> rowCount() > 0) {
+    foreach($rechercheUtilisateur as $row) {
+      return $row['id_utilisateur'];
+    }
+  } else {
+    return FALSE;
+  }
+}
+
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -112,7 +144,7 @@ function validationmdp($mdp, $mdpConfirmation)
 function verificationPremiereInscription($PersonnelIdentite)
 {
   $BD = connexionBD();
- 
+
   $recherchePresence = $BD->prepare('SELECT * FROM apprenti WHERE nom = ?');
   $recherchePresence->execute(array($PersonnelIdentite['7']));
   $BD = null;
@@ -155,21 +187,14 @@ function listeApprenti()
   $BD = connexionBD();
   $listeApprenti = $BD->prepare('SELECT * FROM apprenti');
   $listeApprenti->execute(array());
-    $BD = null;
-    $resultat = [];
+  $BD = null;
+  $resultat = [];
 
-    foreach($listeApprenti as $row){
-        array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom'], 'photo' => $row['photo']));
-    }
+  foreach ($listeApprenti as $row) {
+    array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom'], 'photo' => $row['photo']));
+  }
 
-    return $resultat;
-}
-
-
-function unApprenti()
-{
-  $BD = connexionBD();
- 
+  return $resultat;
 }
 
 
@@ -179,13 +204,15 @@ function unApprenti()
 ////////////////////        GESTION DES SUPERADMINS      ////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
-function inscriptionApprenti($nom, $prenom, $photo)
+function inscriptionApprenti($nom, $prenom, $photo, $utilisateur)
 {
   $BD = connexionBD();
+  $nom = htmlspecialchars($nom);
+  $prenom = htmlspecialchars($prenom);
+  $photo = htmlspecialchars($photo);
   if (!empty($nom) && !empty($prenom) && !empty($photo)) {
-
-    $ajoutApprenti = $BD->prepare('INSERT INTO apprenti(nom, prenom, photo) VALUES (?, ?, ?)');
-    $ajoutApprenti->execute(array($nom, $prenom, $photo));
+    $ajoutApprenti = $BD->prepare('INSERT INTO apprenti(nom, prenom, photo, id_utilisateur) VALUES (?, ?, ?, ?)');
+    $ajoutApprenti->execute(array($nom, $prenom, $photo, id_login($utilisateur)));
     $BD = null;
     if ($ajoutApprenti->rowCount() > 0) {
       return TRUE;
@@ -198,7 +225,8 @@ function inscriptionApprenti($nom, $prenom, $photo)
 }
 
 
-function supprimerApprenti($id_apprenti) {
+function supprimerApprenti($id_apprenti)
+{
   $BD = connexionBD();
   if (!$BD) {
     return FALSE;
@@ -213,13 +241,14 @@ function supprimerApprenti($id_apprenti) {
     return FALSE;
   }
 }
-function inscriptionPersonnel($nom, $prenom)
+function inscriptionPersonnel($nom, $prenom, $utilisateur)
 {
   $BD = connexionBD();
-  // Vérifiez si les informations de l'apprenti sont valides
+  $nom = htmlspecialchars($nom);
+  $prenom = htmlspecialchars($prenom);
   if (!empty($nom) && !empty($prenom)) {
-    $ajoutPersonnel = $BD->prepare('INSERT INTO personnel(nom, prenom) VALUES (?, ?)');
-    $ajoutPersonnel->execute(array($nom, $prenom));
+    $ajoutPersonnel = $BD->prepare('INSERT INTO personnel(nom, prenom, id_utilisateur) VALUES (?, ?, ?)');
+    $ajoutPersonnel->execute(array($nom, $prenom, id_login($utilisateur)));
     $BD = null;
     if ($ajoutPersonnel->rowCount() > 0) {
       return TRUE;
@@ -231,7 +260,8 @@ function inscriptionPersonnel($nom, $prenom)
   }
 }
 
-function modifierApprenti($id_apprenti, $nom, $prenom, $photo){
+function modifierApprenti($id_apprenti, $nom, $prenom, $photo)
+{
   $BD = connexionBD();
   if (!$BD) {
     return FALSE;
@@ -239,7 +269,7 @@ function modifierApprenti($id_apprenti, $nom, $prenom, $photo){
   $id_apprenti = htmlspecialchars($id_apprenti);
   $nom = htmlspecialchars($nom);
   $prenom = htmlspecialchars($prenom);
-  $photo = htmlspecialchars($photo);	
+  $photo = htmlspecialchars($photo);
   $modifierApprenti = $BD->prepare('UPDATE apprenti SET nom = ? , prenom = ? photo = ? where id_apprenti = ?');
   $modifierApprenti->execute(array($id_apprenti, $nom, $prenom, $photo));
   $BD = null;
@@ -272,12 +302,9 @@ function supprimerPersonnel($id_personnel)
   }
 }
 
-function modifierPersonnel($personnel, $id_personnel, $nom, $prenom)
+function modifierPersonnel($id_personnel, $nom, $prenom)
 {
   $BD = connexionBD();
-  if (!$BD) {
-    return FALSE;
-  }
   $id_personnel = htmlspecialchars($id_personnel);
   $nom = htmlspecialchars($nom);
   $prenom = htmlspecialchars($prenom);
@@ -294,17 +321,17 @@ function modifierPersonnel($personnel, $id_personnel, $nom, $prenom)
 function listePersonnel()
 {
   $BD = connexionBD();
-  
+
   $listePersonnel = $BD->prepare('SELECT * FROM personnel');
   $listePersonnel->execute(array());
-    $BD = null;
-    $resultat = [];
+  $BD = null;
+  $resultat = [];
 
-    foreach($listePersonnel as $row){
-        array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom']));
-    }
+  foreach ($listePersonnel as $row) {
+    array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom']));
+  }
 
-    return $resultat;
+  return $resultat;
 }
 
 function unPersonnel()
@@ -317,29 +344,32 @@ function unPersonnel()
 ////////////////////           GESTION FICHES            ////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
-function listeFiche($id_fiche)
+function listeFiche()
 {
   $BD = connexionBD();
-  $listeFiche = $BD->prepare('SELECT * from ');
+  $listeFiche = $BD->prepare('SELECT * from fiche_intervention');
+  $listeFiche ->execute(array());
+  $BD = null;
+  $resultat = [];
 
+  foreach($listeFiche as $row) {
+    array_push($resultat, array('numero' => $row['numero'],'nom_du_demandeur' => $row['nom_du_demandeur'],'date_demande' => $row['date_demande'],'date_intervention' => $row['date_intervention'],'duree_intervention' => $row['duree_intervention'],'localisation' => $row['localisation'],'description_demande' => $row['description_demande'],'degre_urgence' => $row['degre_urgence'],'type_intervention' => $row['type_intervention'],'nature_intervention' => $row['nature_intervention'],'couleur_intervention' => $row['couleur_intervention'],'etat_fiche' => $row['etat_fiche'],'date_creation' => $row['date_creation']));
+  }
+
+  return $resultat;
 }
 
 function creerFiche()
 {
   $BD = connexionBD();
-  if (!$BD) {
-    return FALSE;
-  }
+ 
 }
 
 function supprimerFiche($id_fiche)
 {
   $BD = connexionBD();
-  if (!$BD) {
-    return FALSE;
-  }
   $id_fiche = htmlspecialchars($id_fiche);
-  $suppressionFiche = $BD->prepare('DELETE FROM fiche WHERE id_fiche = ?');
+  $suppressionFiche = $BD->prepare('DELETE FROM fiche_intervention WHERE id_fiche = ?');
   $suppressionFiche->execute(array($id_fiche));
   if ($suppressionFiche->rowCount() > 0) {
     return TRUE;
@@ -349,14 +379,14 @@ function supprimerFiche($id_fiche)
 }
 
 
-function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande,$date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation
+function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation
 ) {
   $BD = connexionBD();
   if (!$BD) {
     return FALSE;
   }
   // Utilisez les paramètres corrects pour la modification de la fiche
-  $modifierFiche = $BD->prepare('UPDATE fiche SET
+  $modifierFiche = $BD->prepare('UPDATE fiche_intervention SET
     numero = ?,
     nom_demandeur = ?,
     date_demande = ?,
@@ -396,15 +426,6 @@ function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande,$dat
     return true;
   } else {
     return false;
-  }
-}
-
-
-function lireFiche()
-{
-  $BD = connexionBD();
-  if (!$BD) {
-    return FALSE;
   }
 }
 

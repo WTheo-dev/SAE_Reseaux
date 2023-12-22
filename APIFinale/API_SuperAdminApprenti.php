@@ -41,7 +41,7 @@ switch ($http_method) {
         $matchingData = null;
 
         if ($role == 2) {
-            if (inscriptionApprenti($data['nom'], $data['prenom'], $data['photo'])) {
+            if (inscriptionApprenti($data['nom'], $data['prenom'], $data['photo'], $utilisateur)) {
                 $RETURN_CODE = 200;
                 $STATUS_MESSAGE = "Ajout Apprenti effectué";
             } else {
@@ -59,10 +59,7 @@ switch ($http_method) {
 
     case 'DELETE':
         if ($role == 2) {
-            // Récupérer l'ID de l'apprenti depuis les paramètres de l'URL
             $id_apprenti = $_GET['id_apprenti'];
-
-            // Vérifier si l'ID de l'apprenti est fourni
             if ($id_apprenti) {
                 // Appeler la fonction de suppression
                 $result = supprimerApprenti($id_apprenti);

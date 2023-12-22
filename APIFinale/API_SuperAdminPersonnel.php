@@ -43,7 +43,7 @@ switch ($http_method) {
         $matchingData = null;
 
         if ($role == 2) {
-            if (inscriptionPersonnel($data['nom'], $data['prenom'])) {
+            if (inscriptionPersonnel($data['nom'], $data['prenom'], $utilisateur)) {
                 $RETURN_CODE = 200;
                 $STATUS_MESSAGE = "Ajout Personnel effectué";
             } else {
@@ -60,28 +60,21 @@ switch ($http_method) {
 
     case 'DELETE':
         if ($role == 2) {
-            // Récupérer l'ID de l'apprenti depuis les paramètres de l'URL
             $id_personnel = $_GET['id_personnel'];
 
-            // Vérifier si l'ID de l'apprenti est fourni
             if ($id_personnel) {
-                // Appeler la fonction de suppression
-                $result = supprimerApprenti($id_personnel);
-                // Vérifier le résultat de la fonction
+                $result = supprimerPersonnel($id_personnel);
                 if ($result === true) {
-                    // Réponse en cas de succès
-                    $RETURN_CODE = 200; // No Content
+                    $RETURN_CODE = 200; 
                     $STATUS_MESSAGE = "Le personnel a été supprimé avec succès.";
                     $matchingData = null;
                 } else {
-                    // Réponse en cas d'échec
-                    $RETURN_CODE = 400; // Not Found
+                    $RETURN_CODE = 400;
                     $STATUS_MESSAGE = "Le personnel n'existe pas ou à déjà été supprimé";
                     $matchingData = null;
                 }
             } else {
-                // Réponse en cas de manque d'ID de l'apprenti
-                $RETURN_CODE = 400; // Bad Request
+                $RETURN_CODE = 400;
                 $STATUS_MESSAGE = "L'ID du personnel est requis.";
                 $matchingData = null;
             }
@@ -90,7 +83,6 @@ switch ($http_method) {
             $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
         }
 
-        // Appeler la fonction deliver_response
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         break;
 
@@ -99,8 +91,6 @@ switch ($http_method) {
 
         if ($role == 2) {
             $id_personnel = $_GET['id_personnel'];
-
-
             if (modifierPersonnel($id_personnel, $data['nom'], $data['prenom'])) {
                 $RETURN_CODE = 200;
                 $STATUS_MESSAGE = "Mise à jour du Personnel effectuée";
