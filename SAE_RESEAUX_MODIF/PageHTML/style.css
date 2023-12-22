@@ -1180,8 +1180,13 @@ footer {
     /*background: rgb(130, 106, 251);*/
 }
 
+#comment-voircom{
+    border-radius: 10px;
+    background-color: lightgray;
+}
+
 .w3-container-voircom {
-    max-width: 800px;
+    max-width: 900px;
     margin: 50px auto;
     background-color: #fff;
     padding: 20px;
