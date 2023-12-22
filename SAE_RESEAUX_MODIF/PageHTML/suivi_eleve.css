@@ -7,18 +7,18 @@
   }
 
 
-  h2 {
+.h2-suivi_eleve {
     color: #333;
     font-size: 60px;
 }
 
-table {
+.table-suivi_eleve {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-th, td {
+.th-suivi_eleve, .td-suivi_eleve {
     padding: 30px;
     border: 1px solid #ddd;
     text-align: left;
@@ -26,15 +26,15 @@ th, td {
     max-width: 100%;
 }
 
-th {
+.th-suivi_eleve {
     background-color: #f2f2f2;
 }
 
-tr:hover {
+.tr-suivi_eleve:hover {
     background-color: #f5f5f5;
 }
 
-.audio {
+.audio-suivi_eleve {
     width: 100%;
     max-width: 100%; /* La largeur maximale est désormais la largeur de sa cellule parente */
     display: block; /* Pour gérer les marges correctement */
