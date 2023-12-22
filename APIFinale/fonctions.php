@@ -288,9 +288,6 @@ function modifierApprenti($id_apprenti, $nom, $prenom, $photo)
 function supprimerPersonnel($id_personnel)
 {
   $BD = connexionBD();
-  if (!$BD) {
-    return FALSE;
-  }
   $id_personnel = htmlspecialchars($id_personnel);
   $suppressionPersonnel = $BD->prepare('DELETE FROM personnel WHERE id_personnel = ?');
   $suppressionPersonnel->execute(array($id_personnel));
