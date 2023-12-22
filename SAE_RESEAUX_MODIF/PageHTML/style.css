@@ -1161,13 +1161,23 @@ footer {
 
 
 /* VOIR COMMENTAIRE EDUC */
+
+.header-voir_com_educ {
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
 .body-voircom {
     min-height: 100vh;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background: rgb(130, 106, 251);
+    /*background: rgb(130, 106, 251);*/
 }
 
 .w3-container-voircom {
@@ -1177,6 +1187,7 @@ footer {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 150px;
 }
 
 .h2-voircom {
@@ -1198,10 +1209,12 @@ footer {
     box-sizing: border-box;
     word-wrap: break-word; /* Force le retour à la ligne */
     font-size: 50px;
+    border: 1px solid black;
+    word-wrap: break-word;
 }
 
 .button-voircom {
-    background-color: purple;
+    background-color: rgb(130,106,251); 
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -1229,7 +1242,7 @@ footer {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
-    background-color: purple;
+    background-color: rgb(130,106,251); 
     color: white;
 }
 
@@ -1237,6 +1250,17 @@ footer {
     border-radius: 4px;
     font-size: 30px;
 }
+
+.buton_deconnexion-voircom {
+    margin: 0 auto; /* Pour centrer le bouton horizontalement */
+    display: block; /* Pour que la marge auto fonctionne */
+    font-size: 45px; /* Taille du texte */
+    padding: 20px 45px; /* Rembourrage pour augmenter la taille du bouton */
+    background-color: red; /* Couleur de fond rouge */
+    color: white; /* Couleur du texte blanc */
+    border: none; /* Suppression de la bordure */
+    cursor: pointer;
+  }
 
 /* Styles pour le footer */
 footer {
