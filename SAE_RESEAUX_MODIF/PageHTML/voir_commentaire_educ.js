@@ -13,15 +13,6 @@ function deconnecter() {
 function ajouterCommentaire() {
   var commentaire = document.getElementById("comment-voircom").value.trim();
 
-  var caracteresParLigne = 17;
-
-  // Vérifiez si le texte dépasse la limite de caractères
-  if (commentaire.length > caracteresParLigne) {
-    // Ajoutez un retour à la ligne après chaque certain nombre de caractères
-    var regex = new RegExp('.{' + caracteresParLigne + '}', 'g');
-    commentaire = commentaire.replace(regex, '$&\n');
-  }
-
   // Check if the textarea has at least one character
   if (commentaire.length > 0) {
     var table = document.getElementById("commentTablevoircom");

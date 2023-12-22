@@ -3,9 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suivi elève</title>
+    <title>Votre Suivi</title>
+    <link rel="stylesheet" href="style.css">
+    <header class="header-suivi_eleve">
+        <div class="logo">
+          <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
+        </div>
+      </header>
 </head>
 <body>
-    
+
+<h2 class="h2-suivi_eleve">Votre suivi</h2>
+
+<table border="1" class="table-suivi_eleve">
+    <thead>
+        <tr class="tr-suivi_eleve">
+            <th class="th-suivi_eleve">Nom de l'Éducateur</th>
+            <th class="th-suivi_eleve">Prénom de l'Éducateur</th>
+            <th class="th-suivi_eleve">Écouter l'Audio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="tr-suivi_eleve">
+            <td class="td-suivi_eleve">Nom1</td>
+            <td class="td-suivi_eleve">Prénom1</td>
+            <td class="td-suivi_eleve">
+                <audio controls class="audio-suivi_eleve">
+                    <source src="chemin/audio.mp3" type="audio/mp3">
+                </audio>
+            </td>
+        </tr>
+        <tr class="tr-suivi_eleve">
+            <td class="td-suivi_eleve">Nom2</td>
+            <td class="td-suivi_eleve">Prénom2</td>
+            <td class="td-suivi_eleve">
+                <audio controls class="audio-suivi_eleve">
+                    <source src="chemin/audio2.mp3" type="audio/mp3">
+                </audio>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 </body>
 </html>
