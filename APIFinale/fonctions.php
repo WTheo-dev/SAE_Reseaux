@@ -356,10 +356,16 @@ function listeFiche()
   return $resultat;
 }
 
-function creerFiche()
+function creerFiche($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation)
 {
   $BD = connexionBD();
- 
+  $creationFiche = $BD ->prepare('INSERT INTO fiche_intervention(numero, nom_du_demandeur, date_demande, date_intervention, duree_intervention, localisation, description_demande, degre_urgence, type_intervention, nature_intervention, couleur_intervention, etat_fiche, date_creation VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?');
+  $creationFiche ->execute (array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation));
+  if($creationFiche -> rowCount() > 0) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
 }
 
 function supprimerFiche($id_fiche)
@@ -376,13 +382,8 @@ function supprimerFiche($id_fiche)
 }
 
 
-function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation
-) {
+function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation) {
   $BD = connexionBD();
-  if (!$BD) {
-    return FALSE;
-  }
-  // Utilisez les paramètres corrects pour la modification de la fiche
   $modifierFiche = $BD->prepare('UPDATE fiche_intervention SET
     numero = ?,
     nom_demandeur = ?,
@@ -399,7 +400,6 @@ function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande, $da
     date_creation = ?
     WHERE id_fiche = ?');
 
-  // Utilisez les valeurs correctes pour la mise à jour de la fiche
   $modifierFiche->execute(array(
     $numero,
     $nom_du_demandeur,
