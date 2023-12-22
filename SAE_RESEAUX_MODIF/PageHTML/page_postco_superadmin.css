@@ -102,3 +102,13 @@
     background-color: lightcoral;
     cursor: pointer;
 }
+
+:root {
+	--background-color: #eeeeee;
+	--text-color: #1a1a1a;
+}
+
+:root {
+	--background-color: #282828;
+	--text-color: #d5d5d5;
+}
