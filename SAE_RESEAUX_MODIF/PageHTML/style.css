@@ -430,6 +430,19 @@
   font-size: 50px; 
 }
 
+#connect-button_educ{
+    font-family: 'Cormorant', sans-serif;
+    background-color: rgb(130,106,251);
+    color: #fff;
+    padding: 25px 50px; /* Augmentez la taille du padding */
+    border: none;
+    border-radius: 8px; /* Augmentez le rayon du bord */
+    cursor: pointer;
+    margin: 20px;
+    font-size: 50px; /* Augmentez la taille de la police */
+    transition: background-color 0.3s ease;
+}
+
 #nom{
     padding: 1rem;
     border-radius: 20px;
