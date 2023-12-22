@@ -24,7 +24,7 @@ function deconnecter() {
   }
   
   function accederEvaluation() {
-    window.location.href = "eva.html";
+    window.location.href = "suivi_eleve_educateur.html";
     }
   
   function voirCommentaires() {
