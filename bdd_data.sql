@@ -32,3 +32,25 @@ ALTER TABLE `role`
 ADD CONSTRAINT `unique_superadmin`
 UNIQUE (`description`);
 
+INSERT INTO `fiche_intervention` (
+    `numero`,
+    `nom_du_demandeur`,
+    `date_demande`,
+    `date_intervention`,
+    `duree_intervention`,
+    `localisation`,
+    `description_demande`,
+    `degre_urgence`,
+    `type_intervention`,
+    `nature_intervention`,
+    `couleur_intervention`,
+    `etat_fiche`,
+    `date_creation`,
+    `id_personnel`,
+    `id_apprenti`
+) VALUES
+(1, 'John Doe', '2023-12-22', '2023-12-23', '2 heures', 'Emplacement A', 'Réparation électrique', 'Urgent', 'Maintenance', 'Réparation', 'Rouge', 'En cours', '2023-12-22 08:00:00', 1, 2),
+(2, 'Jane Smith', '2023-12-20', '2023-12-25', '3 heures', 'Emplacement B', 'Installation de matériel', 'Moyen', 'Installation', 'Équipement', 'Bleu', 'En attente', '2023-12-20 10:30:00', 2, 3),
+(3, 'Bob Johnson', '2023-12-18', '2023-12-24', '1 heure', 'Emplacement C', 'Problème de plomberie', 'Faible', 'Réparation', 'Plomberie', 'Vert', 'Terminé', '2023-12-18 15:45:00', 3, 1);
+
+
