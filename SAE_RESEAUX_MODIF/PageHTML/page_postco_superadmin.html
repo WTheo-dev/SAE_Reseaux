@@ -20,32 +20,27 @@
            
         </div>
         
-        <div class="container_1_page_postco_admin"><p>Choisissez ce que vous voulez faire :</p>
-        </div> 
     <div class="container_central"> 
         <div class="container_2">
-            <label for="actions">Choisir une action :</label>
+            <label for="actions"> Que voulez vous faire?</label>
         </div>
         <div class="btnaction"> 
             <select class="actions" id="actions" onchange="showSection()">
                 <option value="modifier">Modifier</option>
                 <option value="creer">Créer</option>
                 <option value="supprimer">Supprimer</option>
-           </select>
+            </select>
+            <div class="btnliste"> 
+                <select class="liste" id="liste" onchange="showSection()">
+                    <option value="eleves">Elèves</option>
+                    <option value="cours">Cours</option>
+                    <option value="educateurs">Educateurs</option>
+                    <option value="formations">Formations</option>
+                    <option value="administrateur">Administrateur</option>    
+                </select>
+            </div>
         </div>
            
-        <div class="container_3">
-            <label for="liste">Choisir une liste :</label>
-        </div>
-        <div class="btnliste"> 
-            <select class="liste" id="liste" onchange="showSection()">
-                <option value="eleves">Elèves</option>
-                <option value="cours">Cours</option>
-                <option value="educateurs">Educateurs</option>
-                <option value="formations">Formations</option>
-                <option value="administrateur">Administrateur</option>    
-            </select>
-        </div>
         <div class="container_4">
             <button class="btnGO" onclick="goToPage()">GO</button>
         </div>
