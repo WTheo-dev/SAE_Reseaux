@@ -1,3 +1,35 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+
+.header_page-banque-de-donnee{
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.body_page_banque_de_donnee{
+    font-family: "Cormorant", "sans-serif";
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.h1-banque-ressources{
+    display: flex;
+    justify-content: center;
+}
+
+.h1-banque-ressources h1{
+    font-family: "Cormorant", "sans-serif";
+    font-size: 50px;
+}
+
 .icon-container {
     border: 2px solid black;
     border-radius: 15px;
