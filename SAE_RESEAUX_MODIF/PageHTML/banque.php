@@ -13,7 +13,14 @@
     referrerpolicy="no-referrer"
     />
 </head>
-<body>
+
+<body class="body_page_postco_superadmin">  
+        <header class="header_page_postco_superadmin">
+            <div class="header_text"><img class="logo_page_postco_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
+            <div class="child-info">
+                <h2 class="header_text_postcoeleve">Nom Prénom de l'admin</h2>
+            </div>
+        </header>
 
     <script src="fiche_audio.js"></script>
 
