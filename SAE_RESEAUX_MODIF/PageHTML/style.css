@@ -1341,6 +1341,20 @@ footer {
     transform: scale(1.30); /* Ajustez la valeur selon vos besoins */
 }
 
+.btn-suivi-eleve{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-suivi-eleve button{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 50px;
+    background-color: rgb(130,106,251); 
+    color: white;
+    cursor: pointer;
+}
+
 /*Page Postco_SuperADMIN*/
 
 .header_page_postco_superadmin {
