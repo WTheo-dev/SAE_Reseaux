@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BANQUE</title>
-    <link rel="stylesheet" href="banque.css">
-    <link
-    rel="stylesheet"
+    <title>Banque de ressources</title>
+    <link rel="stylesheet" href="banque.css"><link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
     integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
     crossorigin="anonymous"
@@ -170,7 +168,7 @@
 
     </div>
 
-    </div class="banque-audio">
+    <div class="banque-audio">
     <h2>Ajoutez ici vos audios enregistrés</h2>
 
     <input type="file" name="audio-file"/>
@@ -255,7 +253,7 @@
         }
     ?>
 
-    </div>
+ </div>
 
     </form>
 
