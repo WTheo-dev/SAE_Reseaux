@@ -1294,6 +1294,7 @@ footer {
 
 
 .h2-suivi_eleve {
+    font-family: 'Cormorant', sans-serif;
     display: flex;
     justify-content: center;
     margin-top: 2em;
@@ -1310,6 +1311,7 @@ footer {
 }
 
 .th-suivi_eleve, .td-suivi_eleve {
+    font-family: 'Cormorant', sans-serif;
     padding: 30px;
     border: 1px solid #ddd;
     text-align: left;
@@ -1317,8 +1319,15 @@ footer {
     max-width: 100%;
 }
 
-.th-suivi_eleve {
+.th-suivi_eleve{
+    table-layout: fixed;
     background-color: #f2f2f2;
+}
+.th-suivi_eleve text{
+    background-color: #f2f2f2;
+    font-family: 'Cormorant', sans-serif;
+
+
 }
 
 .tr-suivi_eleve:hover {
