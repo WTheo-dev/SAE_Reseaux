@@ -14,6 +14,16 @@
     align-items: center;
 }
 
+.header_text_pagebanque{
+    display: flex;
+    font-size: 50px;
+
+}
+
+.h2_textpagebanque{
+    font-size: 4em;
+}
+
 .body_page_banque_de_donnee{
     font-family: "Cormorant", "sans-serif";
     background-color: #f0f0f0;

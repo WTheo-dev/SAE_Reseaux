@@ -16,7 +16,7 @@
         <header class="header_page-banque-de-donnee">
             <div class="header_text"><img class="logo_page_postco_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
             <div class="child-info">
-                <h2 class="header_text_postcoeleve">Nom Prénom de l'admin</h2>
+                <h2 class="header_text_pagebanque">Nom Prénom de l'admin</h2>
             </div>
         </header>
 
@@ -82,7 +82,7 @@
 
     <div class="banque-icon">
 
-    <h2>Ajoutez ici vos icônes / pictogrammes </h2>
+    <h2 class="h2_textpagebanque">Ajoutez ici vos icônes / pictogrammes </h2>
 
     <input type="file" name="icon-file"/>
 
@@ -129,7 +129,7 @@
     }
     ?>
 
-    <h3>Liste de vos pictogrammes :</h3>
+    <h3 class="h2_textpagebanque">Liste de vos pictogrammes :</h3>
     <div class="icon-container">
         <?php
             if (is_dir("icon")){
