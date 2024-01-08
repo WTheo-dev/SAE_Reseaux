@@ -49,5 +49,5 @@ function clearSelection() {
 }
 
 function goBack() {
-  window.location.href = 'page_daccueil.html';
+  window.location.href = 'index.html';
 }

@@ -1,0 +1,135 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+
+
+
+.header_page-banque-de-donnee{
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_text_pagebanque{
+    display: flex;
+    font-size: 50px;
+
+}
+
+.h2_textpagebanque{
+    font-size: 4em;
+}
+
+.body_page_banque_de_donnee{
+    font-family: "Cormorant", "sans-serif";
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+
+
+
+.h1-banque-ressources{
+    display: flex;
+    justify-content: center;
+}
+
+.h1-banque-ressources h1{
+    font-family: "Cormorant", "sans-serif";
+    font-size: 60px;
+}
+
+.icon-container {
+    border: 2px solid black;
+   background-color: white;
+    border-radius: 25px;
+    padding: 3px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.banque-icon{
+    display: grid;
+    justify-content: center;
+}
+
+.banque-icon h2{
+    font-size: 60px;
+}
+
+
+.banque-icon input{
+    font-family: "Cormorant", "sans-serif";
+
+    font-size: 55px;
+}
+
+.noprint{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+}
+
+.audio-container  {
+    border: 2px solid black;
+    border-radius: 15px;
+
+    padding: 4px;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+.image-icon-container {
+    text-align: center;
+    border-radius: 2px;
+    background-color: lightgray
+;    margin: 20px;
+    padding: 20px;
+}
+
+.aud-icon-container {
+    border: 2px solid black;
+    margin: 3px;
+    padding: 3px;
+}
+
+.icon-img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.img-check {
+    appearance: none;
+}
+
+.aud-check {
+    appearance: none;
+}
+
+.img-check:checked + .image-icon-container {
+    border: solid green 4px;
+}
+
+.aud-check:checked + .aud-icon-container {
+    border: solid green 4px;
+}
+
+.audiobutton {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 10px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

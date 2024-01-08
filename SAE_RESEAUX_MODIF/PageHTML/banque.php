@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BANQUE</title>
-    <link rel="stylesheet" href="banque.css">
-    <link
-    rel="stylesheet"
+    <title>Banque de ressources</title>
+    <link rel="stylesheet" href="banque.css"><link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
     integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
     />
 </head>
-<body>
+
+<body class="body_page_banque_de_donnee">  
+        <header class="header_page-banque-de-donnee">
+            <div class="header_text"><img class="logo_page_postco_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
+            <div class="child-info">
+                <h2 class="header_text_pagebanque">Nom Prénom de l'admin</h2>
+            </div>
+        </header>
 
     <script src="fiche_audio.js"></script>
 
@@ -71,18 +76,19 @@
     ?>
 
     <form action="banque.php" method="post" enctype="multipart/form-data">
-
-    <h1>BANQUE RESSOURCE</h1>
+    <div class="h1-banque-ressources">
+        <h1>Bienvenue sur votre banque de ressources</h1>
+    </div>
 
     <div class="banque-icon">
 
-    <h2>ICON</h2>
+    <h2 class="h2_textpagebanque">Ajoutez ici vos icônes / pictogrammes </h2>
 
     <input type="file" name="icon-file"/>
 
     <button class="noprint" type="submit" name="enregistrer_icon">
         <i class="fa fa-floppy-o" aria-hidden="true"></i>
-        <span>ajouter icon</span>
+        <span>Ajouter le pictogramme</span>
     </button>
 
     <br>
@@ -98,13 +104,13 @@
 
         if(isset($_POST["enregistrer_icon"])) {
             if(in_array($imageFileType, $extAutoriser) === false){
-                echo "extension non autorisé, choisisez parmis : jpeg, jpg, png<br>";
+                echo "Extension non autorisée, choisisez parmi : jpeg, jpg, png<br>";
             } else if (str_contains($name, "_") || str_contains($name, " ")) {
-                echo $name." incorrect, ne pas mettre de _ ou d'espace dans le nom";
+                echo $name." Nom incorrect, ne pas mettre de _ ou d'espace dans le nom";
             } else {
                 $check = getimagesize($_FILES["icon-file"]["tmp_name"]);
                 if($check == false) {
-                    echo "ce fichier n'est pas une image correct.";
+                    echo "Ce fichier n'est pas une image correcte.";
                     $uploadOk = 1;
                 } else {
                     try {
@@ -115,7 +121,7 @@
                     if (!$succes){
                         echo "erreur a l'enregistrement, verifier que l'image est bonne.<br>";
                     } else {
-                        echo "icon enregistrée.<br>";
+                        echo "Pictogramme enregistré.<br>";
                     }
                 }
             }
@@ -123,7 +129,7 @@
     }
     ?>
 
-    <h3>Liste des icons :</h3>
+    <h3 class="h2_textpagebanque">Liste de vos pictogrammes :</h3>
     <div class="icon-container">
         <?php
             if (is_dir("icon")){
@@ -142,7 +148,7 @@
 
     <button class="noprint" type="submit" name="supprimer_icon">
         <i class="fa fa-trash" aria-hidden="true"></i>
-        <span>Supprimer icon selectionné</span>
+        <span>Supprimer le/les pictogramme(s) sélectionné(s)</span>
     </button>
     <br>
 
@@ -162,8 +168,8 @@
 
     </div>
 
-    </div class="banque-audio">
-    <h2>AUDIO</h2>
+    <div class="banque-audio">
+    <h2>Ajoutez ici vos audios enregistrés</h2>
 
     <input type="file" name="audio-file"/>
 
@@ -185,13 +191,13 @@
 
         if(isset($_POST["enregistrer_audio"])) {
             if(in_array($imageFileType, $extAutoriser) === false){
-                echo "extension non autorisé, choisisez parmis : mp3, wav, ogg<br>";
+                echo "Extension non autorisée, choisisez parmi : mp3, wav, ogg<br>";
             } else if (str_contains($name, "_") || str_contains($name, " ")) {
-                echo $name." incorrect, ne pas mettre de _ ou d'espace dans le nom";
+                echo $name." Nom de fichier incorrect, ne pas mettre de _ ou d'espace dans le nom";
             } else {
                 $check = explode("/", mime_content_type($_FILES['audio-file']['tmp_name']))[0] === "audio";
                 if($check == false) {
-                    echo "ce fichier n'est pas un audio correct.";
+                    echo "Ce fichier n'est pas un audio correct.";
                     $uploadOk = 1;
                 } else {
                     try {
@@ -200,9 +206,9 @@
                         echo "Erreur : ".$e->getMessage();
                     }
                     if (!$succes){
-                        echo "erreur a l'enregistrement, verifier que l'audio est bon.<br>";
+                        echo "Erreur a l'enregistrement, verifier que l'audio est bon.<br>";
                     } else {
-                        echo "icon enregistrée.<br>";
+                        echo "Votre audio a été enregistré avec succès.<br>";
                     }
                 }
             }
@@ -210,7 +216,7 @@
     }
     ?>
 
-    <h3>Liste des audio :</h3>
+    <h3>Liste des audios :</h3>
     <div class="audio-container">
         <?php
             if (is_dir("audio")){
@@ -229,13 +235,13 @@
 
     <button class="noprint" type="submit" name="supprimer_audio">
         <i class="fa fa-trash" aria-hidden="true"></i>
-        <span>Supprimer audio selectionné</span>
+        <span>Supprimer le ou les audio(s) selectionnés</span>
     </button>
     <br>
 
     <?php
         if (isset($_POST['supprimer_audio'])){
-            echo "Audio supprimées :<br>";
+            echo "Audio(s) supprimé(s) :<br>";
             echo "<ul>";
             foreach ($_POST as $file => $check){
                 if ($check == "on" && str_starts_with($file, "checkaud-")){
@@ -247,7 +253,7 @@
         }
     ?>
 
-    </div>
+ </div>
 
     </form>
 

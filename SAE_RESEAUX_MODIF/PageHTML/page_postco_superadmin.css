@@ -43,7 +43,7 @@
 
     font-family: 'Cormorant', sans-serif;
     display: flex;
-    font-size: 60px;
+    font-size: 80px;
     justify-content: center;
     margin-top: 5rem;
 }
@@ -52,13 +52,19 @@
     justify-content: center;
 }
 
+.btnaction option, .btnliste option{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 20px;
+}
+
 .actions, .liste{
     margin-top: 2rem;
     font-family: 'Cormorant', sans-serif;
     display: flex;
     justify-content: center;
     text-align: center;
-    font-size: 50px;
+    font-size: 5em;
+    margin: 30px;
 }
 
 .container_1-1{
@@ -66,19 +72,11 @@
 
 }
 
-.container_3{
-    margin-top: 2rem;
-    font-family: 'Cormorant', sans-serif;
-    display: flex;
-    justify-content: center;
-    font-size: 60px;
-}
-
 .container_4{
     margin-top: 2rem;
     justify-content: center;
     display: flex;
-    font-size: 90px;
+    font-size: 110px;
 }
 
 .btnGO{
@@ -101,4 +99,14 @@
     margin-top: 10rem;
     background-color: lightcoral;
     cursor: pointer;
+}
+
+:root {
+	--background-color: #eeeeee;
+	--text-color: #1a1a1a;
+}
+
+:root {
+	--background-color: #282828;
+	--text-color: #d5d5d5;
 }

@@ -92,22 +92,24 @@ document.getElementById('btn-valider-creation-eleve').addEventListener('click', 
 
 
 function afficherPopup() {
-    // Créer l'élément de la popup
-    var popup = document.createElement("div");
-    popup.className = "popup";
-    popup.innerHTML = "Profil créé";
+  // Créer l'élément de la popup
+  var popup = document.createElement("div");
+  popup.className = "popup";
+  popup.innerHTML = "Profil créé";
 
-    // Ajouter la popup à la fin du corps du document
-    document.body.appendChild(popup);
+  // Ajouter la popup à la fin du corps du document
+  document.body.appendChild(popup);
 
-    // Ajouter une classe pour l'animation (facultatif)
-    popup.classList.add("popup-anim");
+  // Ajouter une classe pour l'animation (facultatif)
+  popup.classList.add("popup-anim");
 
-    // Fermer la popup après un certain délai (par exemple, 3 secondes)
-    setTimeout(function () {
-        document.body.removeChild(popup);
-    }, 3000);
+  // Fermer la popup après un certain délai (par exemple, 3 secondes)
+  setTimeout(function () {
+      document.body.removeChild(popup);
+      window.location.href = 'page_postco_superadmin.html';; // Ajout de cette ligne pour rediriger après la popup
+  }, 3000);
 }
+
 
 const   lockDots = document.querySelectorAll('.lock-dot');
 let enteredCode = '';

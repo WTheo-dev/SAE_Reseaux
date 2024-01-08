@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Login</title>
+    <title>Connexion</title>
     <link rel="stylesheet" href="style.css">  
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
+<header class="header-connexion-eleve">
+    <div class="logo">
+      <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
+    </div>
+  </header>
 <body class="body-superadmin">
     <div class="superadmin-wrapper">
         <form action="page_postco_superadmin.html">
@@ -27,8 +32,13 @@
             </div>
 
             <button a type="submit" class="superadmin-btn">Se connecter</button>
+           
+            <script src="connexion_superadmin.js"></script>
             </div>
         </form>
+        <button id="back-button" onclick="goBack()">Retour</button>
+       
     </div>
+    
 </body>
 </html>
