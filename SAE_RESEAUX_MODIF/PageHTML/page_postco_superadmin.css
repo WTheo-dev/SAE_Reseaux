@@ -101,6 +101,14 @@
     cursor: pointer;
 }
 
+#btnredirection{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 70px;
+    margin-top: 10rem;
+    background-color: lightblue;
+    cursor: pointer;
+}
+
 :root {
 	--background-color: #eeeeee;
 	--text-color: #1a1a1a;

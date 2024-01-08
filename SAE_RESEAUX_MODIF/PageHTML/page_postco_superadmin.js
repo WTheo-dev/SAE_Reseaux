@@ -79,3 +79,8 @@ function showSection() {
 
     
   }
+
+  function goToPageBanque(){
+    window.location.href = "banque.php";
+
+  }
