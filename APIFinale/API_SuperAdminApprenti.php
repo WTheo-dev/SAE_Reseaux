@@ -105,7 +105,6 @@ switch ($http_method) {
         if ($role == 2) {
             $id_apprenti = $_GET['id_apprenti'];
 
-
             if (modifierApprenti($id_apprenti, $data['nom'], $data['prenom'], $data['photo'])) {
                 $RETURN_CODE = 200;
                 $STATUS_MESSAGE = "Mise à jour de l'Apprenti effectuée";

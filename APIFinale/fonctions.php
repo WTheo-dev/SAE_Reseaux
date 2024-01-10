@@ -331,15 +331,12 @@ function inscriptionPersonnel($nom, $prenom, $utilisateur)
 function modifierApprenti($id_apprenti, $nom, $prenom, $photo)
 {
   $BD = connexionBD();
-  if (!$BD) {
-    return FALSE;
-  }
   $id_apprenti = htmlspecialchars($id_apprenti);
   $nom = htmlspecialchars($nom);
   $prenom = htmlspecialchars($prenom);
   $photo = htmlspecialchars($photo);
-  $modifierApprenti = $BD->prepare('UPDATE apprenti SET nom = ? , prenom = ? photo = ? where id_apprenti = ?');
-  $modifierApprenti->execute(array($id_apprenti, $nom, $prenom, $photo));
+  $modifierApprenti = $BD->prepare('UPDATE apprenti SET nom = ?, prenom = ?, photo = ? where id_apprenti = ?');
+  $modifierApprenti->execute(array($nom, $prenom, $photo, $id_apprenti));
   $BD = null;
   if ($modifierApprenti->rowCount() > 0) {
     return TRUE;
