@@ -169,7 +169,7 @@
     </div>
 
     <div class="banque-audio">
-    <h2>Ajoutez ici vos audios enregistrés</h2>
+    <h2 class="h2_textpagebanque">Ajoutez ici vos audios enregistrés</h2>
 
     <input type="file" name="audio-file"/>
 
@@ -216,7 +216,7 @@
     }
     ?>
 
-    <h3>Liste des audios :</h3>
+    <h3 class ="h3_banque">Liste des audios :</h3>
     <div class="audio-container">
         <?php
             if (is_dir("audio")){

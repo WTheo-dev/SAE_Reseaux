@@ -46,12 +46,10 @@
 }
 
 .icon-container {
-    border: 2px solid black;
-   background-color: white;
     border-radius: 25px;
-    padding: 3px;
+    padding: 25px;
     display: flex;
-    flex-wrap: wrap;
+    overflow-x: scroll;
 }
 
 .banque-icon{
@@ -66,7 +64,6 @@
 
 .banque-icon input{
     font-family: "Cormorant", "sans-serif";
-
     font-size: 55px;
 }
 
@@ -78,34 +75,33 @@
 }
 
 .audio-container  {
-    border: 2px solid black;
-    border-radius: 15px;
-
-    padding: 4px;
-
+    padding: 20px;
     display: flex;
-    flex-wrap: wrap;
+    overflow-x: scroll;
 }
 
 
 
 .image-icon-container {
+    border: solid 2px;
     text-align: center;
     border-radius: 2px;
-    background-color: lightgray
-;    margin: 20px;
-    padding: 20px;
+    margin: 10px;
+    padding: 50px;
+    
 }
 
 .aud-icon-container {
+    display: flex;
+    justify-content: center;
     border: 2px solid black;
     margin: 3px;
-    padding: 3px;
+    padding: 60px;
 }
 
 .icon-img {
-    max-width: 50px;
-    max-height: 50px;
+    max-width: 100px;
+    max-height: 100px;
 }
 
 .img-check {
@@ -124,12 +120,23 @@
     border: solid green 4px;
 }
 
+.h3_banque{
+    display: flex;
+    font-size: 50px;
+    justify-content: center;
+}
+
 .audiobutton {
+    justify-content: center;
+    display: flex;
     background: none;
 	color: inherit;
 	border: none;
 	padding: 10px;
 	font: inherit;
 	cursor: pointer;
-	outline: inherit;
+}
+
+span{
+    font-size: 50px;
 }
