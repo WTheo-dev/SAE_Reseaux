@@ -23,16 +23,21 @@ foreach ($_COOKIE as $name => $value){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fiche d'intervention</title>
-    <link rel="stylesheet" href="ficheens.css">
-    <link
-    rel="stylesheet"
+    <link rel="stylesheet" href="fiche_valeur.css">
+    <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
     integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
     />
 </head>
-<body>
+<header class="header_page_postco_superadmin">
+            <div class="header_text"><img class="logo_page_postco_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
+            <div class="child-info">
+                <h2 class="header_text_postcoeleve">Nom Prénom de l'admin</h2>
+            </div>
+        </header>
+<body class="body_fiche_valeur">
 
 <?php
 function valEns($name){
@@ -66,41 +71,41 @@ function formatBox($name){
 
 <form action="fiche_valeur.php" method="post">
 
-<h2>Fiche intervention</h2>
+<h2 class="h2-valeur-fiche">Fiche intervention</h2>
 
-    <div class="block bordure">
-    <p>Intervenant</p>
-
-    <label for="nomIntervenant">Nom de l'intervenant</label>
-    <input type="text" disabled name="nomIntervenant" value="<?php if (isset($_COOKIE['nomIntervenant'])) { echo $_COOKIE['nomIntervenant']; } ?>">
+    <div class="blockbordure1">
+    <p class="titrepagevaleur">Intervenant</p>
+    <label for="nomIntervenant">Nom de l'intervenant:</label>
+    <input class="labelfichevaleur" type="text" disabled name="nomIntervenant" value="<?php if (isset($_COOKIE['nomIntervenant'])) { echo $_COOKIE['nomIntervenant']; } ?>">
     <?php formatBox("NomIntervenant", ""); ?>
 
     <br>
+    <br>
 
     <label for="prenomIntervenant">Prénom de l'intervenant</label>
-    <input type="text" disabled  name="prenomIntervenant" value="<?php if (isset($_COOKIE['prenomIntervenant'])) { echo $_COOKIE['prenomIntervenant']; } ?>">
+    <input class="labelfichevaleur" type="text" disabled  name="prenomIntervenant" value="<?php if (isset($_COOKIE['prenomIntervenant'])) { echo $_COOKIE['prenomIntervenant']; } ?>">
     <?php formatBox("PrenomIntervenant", ""); ?>
 
     </div>
     <br>
 
-    <div class="block bordure">
+    <div class="blockbordure2">
     <p>Demandeur</p>
 
     <label for="nomDemandeur">Nom du demandeur: </label>
-    <input type="text" name="nomDemandeur" value="<?php echo valEns('nomDemandeur') ?>"></input>
+    <input class="labelfichevaleur" type="text" name="nomDemandeur" value="<?php echo valEns('nomDemandeur') ?>"></input>
     <?php formatBox("NomDemandeur"); ?>
     <br>
     <label for="degreeUrgence">Degré d'urgence: </label>
-    <input type="text" name="degreeUrgence" value="<?php echo valEns('degreeUrgence') ?>"></input>
+    <input class="labelfichevaleur" type="text" name="degreeUrgence" value="<?php echo valEns('degreeUrgence') ?>"></input>
     <?php formatBox("DegreeUrgence"); ?>
     <br>
     <label for="dateDemande">Date demande: </label>
-    <input type="date" name="dateDemande" value="<?php echo valEns('dateDemande') ?>"></input>
+    <input  class="labelfichevaleur"type="date" name="dateDemande" value="<?php echo valEns('dateDemande') ?>"></input>
     <?php formatBox("DateDemande"); ?>
     <br>
     <label for="localisation">Localisation: </label>
-    <input type="text" name="localisation" value="<?php echo valEns('localisation') ?>"></input>
+    <input class="labelfichevaleur" type="text" name="localisation" value="<?php echo valEns('localisation') ?>"></input>
     <?php formatBox("Localisation"); ?>
     <br>
     <label for="descDemande">Description demande: </label>
@@ -112,12 +117,11 @@ function formatBox($name){
 
 <br>
 
-<div class="block bordure">
+<div class="blockbordure3">
 <p>Intervention</p>
-
 <div class="jsp">
 <label for="dateIntervention">Date d'intervention:</label>
-<input disabled type="date" id="dateIntervention" name="dateIntervention" value="<?php if (isset($_COOKIE['dateIntervention'])) { echo $_COOKIE['dateIntervention']; } ?>">
+<input class="labelfichevaleur"disabled type="date" id="dateIntervention" name="dateIntervention" value="<?php if (isset($_COOKIE['dateIntervention'])) { echo $_COOKIE['dateIntervention']; } ?>">
 <?php formatBox("DateIntervention", ""); ?>
 </div>
 
@@ -132,7 +136,7 @@ function formatBox($name){
 
 <br>
 
-<div class="block bordure">
+<div class="blockbordure4">
 <p>Type de maintenance</p>
 
 <input disabled type="checkbox" name="Améliorative" id="Améliorative" <?php if(isset($_COOKIE['Améliorative'])) echo "checked"; ?> />
@@ -153,7 +157,7 @@ function formatBox($name){
 <br>
 
 
-<div class="block bordure">
+<div class="blockbordure5">
 <p>Nature de l'intervention</p>
 
 <input disabled type="checkbox" name="Aménagement" id="Aménagement" <?php if(isset($_COOKIE['Aménagement'])) echo "checked"; ?> />
@@ -178,26 +182,26 @@ function formatBox($name){
 
 <br>
 
-<div class="block bordure">
+<div class="blockbordure6">
 <p>Travaux réalisés</p>
 <textarea disabled id="travauxRealises" name="travauxRealises" rows="10"><?php if (isset($_COOKIE['travauxRealises'])) { echo $_COOKIE['travauxRealises']; } ?></textarea>
 </div>
 
 <br>
 
-<div class="block bordure">
+<div class="blockbordure7">
 <p>Travaux non réalisés</p>
 <textarea disabled id="travauxNonRealises" name="travauxNonRealises" rows="10"><?php if (isset($_COOKIE['travauxNonRealises'])) { echo $_COOKIE['travauxNonRealises']; } ?></textarea>
 <br>
 <input disabled type="checkbox" name="Nécessite_un_nouvelle_intervention" id="Nécessite_un_nouvelle_intervention" <?php if(isset($_COOKIE['Nécessite_un_nouvelle_intervention'])) echo "checked"; ?> />
-<label for="Nécessite_un_nouvelle_intervention">Nécessite un nouvelle intervention</label>
+<label for="Nécessite_un_nouvelle_intervention">Nécessite une nouvelle intervention</label>
 <?php formatBox("Nécessite_un_nouvelle_intervention", ""); ?>
 </div>
 
 <br>
 
 
-<div class="block bordure" id="mat_util">
+<div class="blockbordure8" id="mat_util">
 <p>Matériaux utilisés</p>
 <div id="mat_droit">
 <?php
