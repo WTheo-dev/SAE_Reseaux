@@ -20,7 +20,7 @@ function deconnecter() {
   }
   
   function creerNouvelleFiche() {
-    // Ajoutez ici le code pour la création d'une nouvelle fiche
+    window.location.href="fiche_valeur.php"; 
   }
   
   function accederEvaluation() {
