@@ -39,24 +39,37 @@ switch ($http_method) {
 
 
 
-    case 'POST':
-        $matchingData = null;
-
-        if ($role == 2) {
-            if (inscriptionPersonnel($data['nom'], $data['prenom'], $utilisateur)) {
-                $RETURN_CODE = 200;
-                $STATUS_MESSAGE = "Ajout Personnel effectué";
+        case 'POST':
+            $matchingData = null;
+        
+            // Vérifiez si l'utilisateur a le rôle approprié (supposons que $role et $id_utilisateur soient définis)
+            if ($role == 2) {
+                // Assurez-vous que les clés nécessaires existent dans $data
+                if (isset($data['nom'], $data['prenom'], $data['login'], $data['mdp'], $data['id_role'])) {
+                    // Appel à la fonction inscriptionPersonnel
+                    if (inscriptionPersonnel($data['nom'], $data['prenom'], [
+                        'login' => $data['login'],
+                        'mdp' => $data['mdp'],
+                        'id_role' => $data['id_role']
+                    ])) {
+                        $RETURN_CODE = 200;
+                        $STATUS_MESSAGE = "Ajout Personnel effectué";
+                    } else {
+                        $RETURN_CODE = 400;
+                        $STATUS_MESSAGE = "Erreur lors de l'ajout de l'apprenti";
+                    }
+                } else {
+                    $RETURN_CODE = 400;
+                    $STATUS_MESSAGE = "Données manquantes dans la requête";
+                }
             } else {
-                $RETURN_CODE = 400;
-                $STATUS_MESSAGE = "Erreur de syntaxe";
+                $RETURN_CODE = 403;
+                $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
             }
-        } else {
-            $RETURN_CODE = 403;
-            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
-        }
-
-        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
-        break;
+        
+            // Envoi de la réponse
+            deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
+            break;
 
     case 'DELETE':
         if ($role == 2) {

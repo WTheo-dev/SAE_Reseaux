@@ -235,38 +235,50 @@ function listeApprenti()
 
 function inscriptionApprenti($nom, $prenom, $photo, $utilisateur)
 {
-  $BD = connexionBD();
-  $nom = htmlspecialchars($nom);
-  $prenom = htmlspecialchars($prenom);
-  $photo = htmlspecialchars($photo);
+  try {
+    $BD = connexionBD();
+    $nom = htmlspecialchars($nom);
+    $prenom = htmlspecialchars($prenom);
+    $photo = htmlspecialchars($photo);
 
-  $ajoutUtilisateur = $BD->prepare('INSERT INTO utilisateur(login, mdp) VALUES (?, ?)');
-  $ajoutUtilisateur->execute(array($utilisateur['login'], $utilisateur['mdp']));
-  $id_utilisateur = $BD->lastInsertId();
+    $BD->beginTransaction();
 
-  if (!empty($nom) && !empty($prenom) && !empty($photo)) {
-    $ajoutApprenti = $BD->prepare('INSERT INTO apprenti(nom, prenom, photo, id_utilisateur) VALUES (?, ?, ?, ?)');
-    $ajoutApprenti->execute(array($nom, $prenom, $photo, $id_utilisateur));
+    $ajoutUtilisateur = $BD->prepare('INSERT INTO utilisateur(login, mdp, id_role) VALUES (?, ?, ?)');
+    $ajoutUtilisateur->execute(array($utilisateur['login'], $utilisateur['mdp'], $utilisateur['id_role']));
+    $id_utilisateur = $BD->lastInsertId();
 
-    $BD = null;
+    if (!empty($nom) && !empty($prenom) && !empty($photo)) {
+      $ajoutApprenti = $BD->prepare('INSERT INTO apprenti(nom, prenom, photo, id_utilisateur) VALUES (?, ?, ?, ?)');
+      $ajoutApprenti->execute(array($nom, $prenom, $photo, $id_utilisateur));
 
-    if ($ajoutApprenti->rowCount() > 0) {
-      return TRUE;
+      $BD->commit();
+
+      if ($ajoutApprenti->rowCount() > 0) {
+        $BD = null;
+        return true;
+      } else {
+        $BD->rollBack();
+        $BD = null;
+        return false;
+      }
     } else {
-      return FALSE;
+      $BD->rollBack();
+      $BD = null;
+      return false;
     }
-  } else {
-    return FALSE;
+  } catch (PDOException $e) {
+    $BD->rollBack();
+    $BD = null;
+    return false;
   }
 }
+
 
 
 function supprimerApprenti($id_apprenti)
 {
   $BD = connexionBD();
-  if (!$BD) {
-    return FALSE;
-  }
+ 
   $id_apprenti = htmlspecialchars($id_apprenti);
   $suppressionApprenti = $BD->prepare('DELETE FROM apprenti WHERE id_apprenti = ?');
   $suppressionApprenti->execute(array($id_apprenti));
@@ -279,22 +291,42 @@ function supprimerApprenti($id_apprenti)
 }
 function inscriptionPersonnel($nom, $prenom, $utilisateur)
 {
-  $BD = connexionBD();
-  $nom = htmlspecialchars($nom);
-  $prenom = htmlspecialchars($prenom);
-  if (!empty($nom) && !empty($prenom)) {
-    $ajoutPersonnel = $BD->prepare('INSERT INTO personnel(nom, prenom, id_utilisateur) VALUES (?, ?, ?)');
-    $ajoutPersonnel->execute(array($nom, $prenom, id_login($utilisateur)));
-    $BD = null;
-    if ($ajoutPersonnel->rowCount() > 0) {
-      return TRUE;
+  try {
+    $BD = connexionBD();
+    $nom = htmlspecialchars($nom);
+    $prenom = htmlspecialchars($prenom);
+    $BD->beginTransaction();
+
+    $ajoutUtilisateur = $BD->prepare('INSERT INTO utilisateur(login, mdp, id_role) VALUES (?, ?, ?)');
+    $ajoutUtilisateur->execute(array($utilisateur['login'], $utilisateur['mdp'], $utilisateur['id_role']));
+    $id_utilisateur = $BD->lastInsertId();
+
+    if (!empty($nom) && !empty($prenom)) {
+      $ajoutPersonnel = $BD->prepare('INSERT INTO personnel(nom, prenom, id_utilisateur) VALUES (?, ?, ?)');
+      $ajoutPersonnel ->execute(array($nom, $prenom, $id_utilisateur));
+
+      $BD->commit();
+
+      if ($ajoutPersonnel->rowCount() > 0) {
+        $BD = null;
+        return true;
+      } else {
+        $BD->rollBack();
+        $BD = null;
+        return false;
+      }
     } else {
-      return FALSE;
+      $BD->rollBack();
+      $BD = null;
+      return false;
     }
-  } else {
-    return FALSE;
+  } catch (PDOException $e) {
+    $BD->rollBack();
+    $BD = null;
+    return false;
   }
 }
+
 
 function modifierApprenti($id_apprenti, $nom, $prenom, $photo)
 {
