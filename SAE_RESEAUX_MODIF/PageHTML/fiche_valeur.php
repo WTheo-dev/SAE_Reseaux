@@ -90,7 +90,7 @@ function formatBox($name){
     <br>
 
     <div class="blockbordure2">
-    <p>Demandeur</p>
+    <p class="titrepagevaleur">Demandeur</p>
 
     <label for="nomDemandeur">Nom du demandeur: </label>
     <input class="labelfichevaleur" type="text" name="nomDemandeur" value="<?php echo valEns('nomDemandeur') ?>"></input>
@@ -118,7 +118,7 @@ function formatBox($name){
 <br>
 
 <div class="blockbordure3">
-<p>Intervention</p>
+<p class="titrepagevaleur">Intervention</p>
 <div class="jsp">
 <label for="dateIntervention">Date d'intervention:</label>
 <input class="labelfichevaleur"disabled type="date" id="dateIntervention" name="dateIntervention" value="<?php if (isset($_COOKIE['dateIntervention'])) { echo $_COOKIE['dateIntervention']; } ?>">
