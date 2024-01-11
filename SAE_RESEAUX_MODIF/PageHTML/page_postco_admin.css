@@ -1,5 +1,9 @@
 /* Style de base pour la table */
 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
 
 .header-connexion-eleve {
   background-color: rgb(130,106,251); 
@@ -20,6 +24,8 @@
 }
 
 .texte_pagepostco_educ{
+  font-family: 'Cormorant', sans-serif;
+
   display: flex;
   justify-content: center;
   font-size: 50px;

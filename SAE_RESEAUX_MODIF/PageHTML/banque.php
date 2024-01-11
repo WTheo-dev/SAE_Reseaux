@@ -171,7 +171,7 @@
     <div class="banque-audio">
     <h2 class="h2_textpagebanque">Ajoutez ici vos audios enregistrés</h2>
 
-    <input type="file" name="audio-file"/>
+    <input class="browseaudio" type="file" name="audio-file"/>
 
     <button class="noprint" type="submit" name="enregistrer_audio">
         <i class="fa fa-floppy-o" aria-hidden="true"></i>
@@ -193,11 +193,11 @@
             if(in_array($imageFileType, $extAutoriser) === false){
                 echo "Extension non autorisée, choisisez parmi : mp3, wav, ogg<br>";
             } else if (str_contains($name, "_") || str_contains($name, " ")) {
-                echo $name." Nom de fichier incorrect, ne pas mettre de _ ou d'espace dans le nom";
+                echo $name." <div class='mot'>Nom de fichier incorrect, ne pas mettre de _ ou d'espace dans le nom></div";
             } else {
                 $check = explode("/", mime_content_type($_FILES['audio-file']['tmp_name']))[0] === "audio";
                 if($check == false) {
-                    echo "Ce fichier n'est pas un audio correct.";
+                    echo "<div class='mot'>Ce fichier n'est pas un audio correct.></div>";
                     $uploadOk = 1;
                 } else {
                     try {

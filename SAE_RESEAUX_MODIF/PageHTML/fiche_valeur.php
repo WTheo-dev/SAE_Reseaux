@@ -7,7 +7,7 @@ foreach ($_POST as $param => $value){
 
 foreach ($_COOKIE as $name => $value){
     //echo $name.' : '.$value.'<br>';
-    if (str_starts_with($name, "texte") || str_starts_with($name, "icon") || str_starts_with($name, "audio")){
+    if (str_starts_with($name, "Texte") || str_starts_with($name, "Icon") || str_starts_with($name, "Audio")){
         if (!isset($_POST[$name])){
             unset($_COOKIE[$name]); 
             setcookie($name, '', -1); 
@@ -55,17 +55,17 @@ function formatBox($name){
     echo '<input class="noprint" type="checkbox" id="texte'.$name.'" name="texte'.$name.'" ';
     if (valEns('texte'.$name) == "on") echo "checked";
     echo '/>';
-    echo '<label class="noprint" for="texte'.$name.'">texte</label>';
+    echo '<label class="noprint" for="texte'.$name.'"> Texte </label>';
 
     echo '<input class="noprint" type="checkbox" id="icon'.$name.'" name="icon'.$name.'" ';
     if (valEns('icon'.$name) == "on") echo "checked";
     echo '/>';
-    echo '<label class="noprint" for="icon'.$name.'">icon</label>';
+    echo '<label class="noprint" for="icon'.$name.'"> Icône </label>';
 
     echo '<input class="noprint" type="checkbox" id="audio'.$name.'" name="audio'.$name.'" ';
     if (valEns('audio'.$name) == "on") echo "checked";
     echo '/>';
-    echo '<label class="noprint" for="audio'.$name.'">audio</label>';
+    echo '<label class="noprint" for="audio'.$name.'"> Audio </label>';
 }
 ?>
 
@@ -202,7 +202,7 @@ function formatBox($name){
 
 
 <div class="blockbordure8" id="mat_util">
-<p>Matériaux utilisés</p>
+<p class="titrepagevaleur">Matériaux utilisés</p>
 <div id="mat_droit">
 <?php
 for ($i=0; $i<5; $i++){
