@@ -1,9 +1,46 @@
-.body_suivi_eleve_educateur{
+.header_page_suivi_eleve_educateur {
+    background-color: rgb(130,106,251); 
+    padding: 20px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .child-info{
+    font-family: 'Cinzel', 'sans-serif';
+    font-size: 25px;
+    padding-right: 1em;
+}
+
+.body_page_suivi_eleve_educateur{
     flex-direction: column;
     margin: 0;
     padding: 0;
     height: 100vh;
-    font-family: 'Cormorant', sans-serif;
     background-color: #f0f0f0;
+}
+
+.h1_eval_fiches_suivi_eleve_educateur {
+    font-size: 80px;
+}
+
+#ficheLabel {
+    font-size: 50px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+#ficheDropdown {
+    font-size: 50px;
+    margin-top: 20px;
+}
+#recordButton, #stopButton, #playButton, #deleteButton, #saveButton {
+    margin: 10px;
+    padding: 10px;
+    font-size: 70px;
+    cursor: pointer;
+}
+
+#audioPlayer {
+    width: 500px;;
 }
