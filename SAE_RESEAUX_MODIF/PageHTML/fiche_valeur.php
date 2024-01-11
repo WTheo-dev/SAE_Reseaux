@@ -137,7 +137,7 @@ function formatBox($name){
 <br>
 
 <div class="blockbordure4">
-<p>Type de maintenance</p>
+<p class="titrepagevaleur">Type de maintenance</p>
 
 <input disabled type="checkbox" name="Améliorative" id="Améliorative" <?php if(isset($_COOKIE['Améliorative'])) echo "checked"; ?> />
 <label for="Améliorative">Améliorative</label>
@@ -158,7 +158,7 @@ function formatBox($name){
 
 
 <div class="blockbordure5">
-<p>Nature de l'intervention</p>
+<p class="titrepagevaleur">Nature de l'intervention</p>
 
 <input disabled type="checkbox" name="Aménagement" id="Aménagement" <?php if(isset($_COOKIE['Aménagement'])) echo "checked"; ?> />
 <label for="Aménagement">Aménagement</label>
@@ -183,14 +183,14 @@ function formatBox($name){
 <br>
 
 <div class="blockbordure6">
-<p>Travaux réalisés</p>
+<p class="titrepagevaleur">Travaux réalisés</p>
 <textarea disabled id="travauxRealises" name="travauxRealises" rows="10"><?php if (isset($_COOKIE['travauxRealises'])) { echo $_COOKIE['travauxRealises']; } ?></textarea>
 </div>
 
 <br>
 
 <div class="blockbordure7">
-<p>Travaux non réalisés</p>
+<p class="titrepagevaleur">Travaux non réalisés</p>
 <textarea disabled id="travauxNonRealises" name="travauxNonRealises" rows="10"><?php if (isset($_COOKIE['travauxNonRealises'])) { echo $_COOKIE['travauxNonRealises']; } ?></textarea>
 <br>
 <input disabled type="checkbox" name="Nécessite_un_nouvelle_intervention" id="Nécessite_un_nouvelle_intervention" <?php if(isset($_COOKIE['Nécessite_un_nouvelle_intervention'])) echo "checked"; ?> />
