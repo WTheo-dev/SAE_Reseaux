@@ -74,6 +74,39 @@ function formatBox($name){
 <h2 class="h2-valeur-fiche">Fiche intervention</h2>
 
     <div class="blockbordure1">
+    <p class="configgeneralfichevaleur">Config General</p>
+
+    <span>Taille texte</span>
+    <select id="configTaille" name="configTaille">
+    <?php if(isset($_COOKIE['configTaille'])): ?>
+        <option><?php echo $_COOKIE['configTaille'] ?></option>
+    <?php else: ?>
+        <option>-- Choisir une taille --</option>
+    <?php endif; ?>
+    <option>75%</option>
+    <option>100%</option>
+    <option>125%</option>
+    <option>150%</option>
+    <option>175%</option>
+    </select>
+
+    <br>
+
+    <span>Police texte</span>
+    <select id="configPolice" name="configPolice">
+    <?php if(isset($_COOKIE['configPolice'])): ?>
+        <option><?php echo $_COOKIE['configPolice'] ?></option>
+    <?php else: ?>
+        <option>-- Choisir une police --</option>
+    <?php endif; ?>
+    <option>Arial</option>
+    <option>Verdana</option>
+    </select>
+    </div>
+
+    <br>
+
+    <div class="blockbordure1">
     <p class="titrepagevaleur">Intervenant</p>
     <label for="nomIntervenant">Nom de l'intervenant:</label>
     <input class="labelfichevaleur" type="text" disabled name="nomIntervenant" value="<?php if (isset($_COOKIE['nomIntervenant'])) { echo $_COOKIE['nomIntervenant']; } ?>">
