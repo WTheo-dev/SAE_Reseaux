@@ -12,8 +12,8 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
     />
-</head>
-<body>
+</head> 
+<body class="body_fiche">
  <?php include_once("fiche_base.php"); ?>
 
     <audio id="nomInterv">
@@ -28,26 +28,27 @@
 <?php ifform() ?>
     <!-- Informations sur l'intervenant -->
     <div class="block bordure">
-    <header class="header_page_postco_superadmin">
+    <header class="header_fiche">
             <div class="header_text"><img class="logo_page_postco_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
             <div class="child-info">
                 <h2 class="header_text_postcoeleve">Nom Prénom de l'admin</h2>
             </div>
         </header>
     <p class="texte-page1">Intervenant</p>
-
+    
     <div class="jsp">
+        <div class="audio-fiche-1">
+        <?php addAudio("NomIntervenant", "nomInterv"); ?>
+        </div>
     <?php addIcon("NomIntervenant", "fa-user"); ?>
     <?php addTexte("nomIntervenant", "Nom de l'intervenant") ?>
     <input type="text" name="nomIntervenant" value="<?php if (isset($_COOKIE['nomIntervenant'])){ echo $_COOKIE['nomIntervenant']; } ?>">
-    <?php addAudio("NomIntervenant", "nomInterv"); ?>
-    </div>
-
+</div>
     <div class="jsp">
+        <?php addAudio("PrenomIntervenant", "prenomInterv"); ?>
     <?php addIcon("PrenomIntervenant", "fa-address-card"); ?>
     <?php addTexte("prenomIntervenant", "Prénom de l'intervenant") ?>
     <input type="text" name="prenomIntervenant" value="<?php if (isset($_COOKIE['prenomIntervenant'])) { echo $_COOKIE['prenomIntervenant']; } ?>">
-    <?php addAudio("PrenomIntervenant", "prenomInterv"); ?>
     </div>
 
     </div>
