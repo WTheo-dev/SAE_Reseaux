@@ -20,31 +20,53 @@ $data = json_decode($postedData, true);
 switch ($http_method) {
 
     case 'GET':
-        if ($role == 1 || $role == 2 || $role == 3 || $role == 4 || $role == 5) {
-            try {
-                $RETURN_CODE = 200;
-                $STATUS_MESSAGE = "Voici la liste des fiches :";
-                $matchingData = listeFiche();
-            } catch (\Throwable $th) {
-                $RETURN_CODE = $th->getCode();
-                $STATUS_MESSAGE = $th->getMessage();
-                $matchingData = null;
-            } finally {
-                deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
-            }
-        } else {
-            $RETURN_CODE = 403;
-            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
-            deliver_response($RETURN_CODE, $STATUS_MESSAGE, null);
+        try {
+            $RETURN_CODE = 200;
+            $STATUS_MESSAGE = "Voici la liste des fiches :";
+            $matchingData = listeFiche();
+        } catch (\Throwable $th) {
+            $RETURN_CODE = $th->getCode();
+            $STATUS_MESSAGE = $th->getMessage();
+            $matchingData = null; 
         }
+        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         break;
-
 
 
     case 'POST':
         if ($role == 3) {
+            // Récupérer les données du formulaire
+            $numero = $_POST['numero']; // Assurez-vous que les noms correspondent à ceux du formulaire
+            $nom_du_demandeur = $_POST['nom_du_demandeur'];
+            $date_demande = $_POST['date_demande'];
+            $date_intervention = $_POST['date_intervention'];
+            $duree_intervention = $_POST['duree_intervention'];
+            $localisation = $_POST['localisation'];
+            $description_demande = $_POST['description_demande'];
+            $degre_urgence = $_POST['degre_urgence'];
+            $type_intervention = $_POST['type_intervention'];
+            $nature_intervention = $_POST['nature_intervention'];
+            $couleur_intervention = $_POST['couleur_intervention'];
+            $etat_fiche = $_POST['etat_fiche'];
+            $date_creation = $_POST['date_creation'];
 
+            // Appeler la fonction pour créer la fiche d'intervention
+            $resultat_creation = creerFiche($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation);
+
+            // Vérifier le résultat de la création de la fiche
+            if ($resultat_creation === true) {
+                $RETURN_CODE = 200;
+                $STATUS_MESSAGE = "La fiche a été correctement créée.";
+                $matchingData = null;
+            } else {
+                $RETURN_CODE = 400;
+                $STATUS_MESSAGE = "Cette fiche existe déjà.";
+                $matchingData = null;
+            }
         }
+        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
+        break;
+
 
 
     case 'DELETE':
@@ -54,24 +76,25 @@ switch ($http_method) {
                 $result = supprimerFiche($id_fiche);
                 if ($result === true) {
                     $RETURN_CODE = 200;
-                    $STATUS_MESSAGE = "La fiche à correctement été supprimé.";
+                    $STATUS_MESSAGE = "La fiche a été correctement supprimée.";
                     $matchingData = null;
                 } else {
                     $RETURN_CODE = 400;
-                    $STATUS_MESSAGE = "Cette fiche n'existe pas ou à déja été supprimé";
+                    $STATUS_MESSAGE = "Cette fiche n'existe pas ou a déjà été supprimée.";
                     $matchingData = null;
                 }
             } else {
                 $RETURN_CODE = 400;
-                $STATUS_MESSAGE = "L'ID de la fiche est requise.";
+                $STATUS_MESSAGE = "L'ID de la fiche est requis.";
                 $matchingData = null;
             }
         } else {
             $RETURN_CODE = 403;
-            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
+            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié.";
         }
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         break;
+
 
     case 'PUT':
         $matchingData = null;

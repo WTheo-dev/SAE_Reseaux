@@ -21,6 +21,19 @@ $data = json_decode($postedData, true);
 switch ($http_method) {
     case 'GET':
         if ($role == 2) {
+            if(isset($_GET['id_personnel'])) {
+                try {
+                    $RETURN_CODE = 200;
+                    $STATUS_MESSAGE= "Voici le personnel :";
+                    $matchingData = unPersonnel($_GET['id_personnel']);
+                } catch (\Throwable $th) {
+                    $RETURN_CODE = $th ->getCode();
+                    $STATUS_MESSAGE = $th ->getMessage();
+                    $matchingData =null;
+                } finally {
+                    deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
+                }
+            } else {
             try {
                 $RETURN_CODE = 200;
                 $STATUS_MESSAGE = "Voici la liste des Personnel :";
@@ -32,6 +45,7 @@ switch ($http_method) {
             } finally {
                 deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
             }
+           }
         } else {
             deliver_response(403, "Echec, le rôle n'est pas autorisé pour avoir accès à ces données", null);
         }

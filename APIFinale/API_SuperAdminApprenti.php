@@ -19,6 +19,19 @@ $data = json_decode($postedData, true);
 switch ($http_method) {
     case 'GET':
         if ($role == 2) {
+            if(isset($_GET['id_apprenti'])) {
+                try {
+                    $RETURN_CODE = 200;
+                    $STATUS_MESSAGE= "Voici l'apprenti :";
+                    $matchingData = unApprenti($_GET['id_apprenti']);
+                } catch (\Throwable $th) {
+                    $RETURN_CODE = $th ->getCode();
+                    $STATUS_MESSAGE = $th ->getMessage();
+                    $matchingData =null;
+                } finally {
+                    deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
+                }
+            } else {
             try {
                 $RETURN_CODE = 200;
                 $STATUS_MESSAGE = "Voici la liste des Apprentis :";
@@ -30,43 +43,46 @@ switch ($http_method) {
             } finally {
                 deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
             }
+           }
         } else {
             deliver_response(403, "Echec, le rôle n'est pas autorisé pour avoir accès à ces données", null);
         }
         break;
 
-        case 'POST':
-            $matchingData = null;
-        
-            // Vérifiez si l'utilisateur a le rôle approprié (supposons que $role et $id_utilisateur soient définis)
-            if ($role == 2) {
-                // Assurez-vous que les clés nécessaires existent dans $data
-                if (isset($data['nom'], $data['prenom'], $data['photo'], $data['login'], $data['mdp'], $data['id_role'])) {
-                    // Appel à la fonction inscriptionApprenti
-                    if (inscriptionApprenti($data['nom'], $data['prenom'], $data['photo'], [
+    case 'POST':
+        $matchingData = null;
+
+        // Vérifiez si l'utilisateur a le rôle approprié (supposons que $role et $id_utilisateur soient définis)
+        if ($role == 2) {
+            // Assurez-vous que les clés nécessaires existent dans $data
+            if (isset($data['nom'], $data['prenom'], $data['photo'], $data['login'], $data['mdp'], $data['id_role'])) {
+                // Appel à la fonction inscriptionApprenti
+                if (
+                    inscriptionApprenti($data['nom'], $data['prenom'], $data['photo'], [
                         'login' => $data['login'],
                         'mdp' => $data['mdp'],
                         'id_role' => $data['id_role']
-                    ])) {
-                        $RETURN_CODE = 200;
-                        $STATUS_MESSAGE = "Ajout Apprenti effectué";
-                    } else {
-                        $RETURN_CODE = 400;
-                        $STATUS_MESSAGE = "Erreur lors de l'ajout de l'apprenti";
-                    }
+                    ])
+                ) {
+                    $RETURN_CODE = 200;
+                    $STATUS_MESSAGE = "Ajout Apprenti effectué";
                 } else {
                     $RETURN_CODE = 400;
-                    $STATUS_MESSAGE = "Données manquantes dans la requête";
+                    $STATUS_MESSAGE = "Erreur lors de l'ajout de l'apprenti";
                 }
             } else {
-                $RETURN_CODE = 403;
-                $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
+                $RETURN_CODE = 400;
+                $STATUS_MESSAGE = "Données manquantes dans la requête";
             }
-        
-            // Envoi de la réponse
-            deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
-            break;
-        
+        } else {
+            $RETURN_CODE = 403;
+            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
+        }
+
+        // Envoi de la réponse
+        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
+        break;
+
 
     case 'DELETE':
         if ($role == 2) {
@@ -74,7 +90,7 @@ switch ($http_method) {
             if ($id_apprenti) {
                 $result = supprimerApprenti($id_apprenti);
                 if ($result === true) {
-                    $RETURN_CODE = 200; 
+                    $RETURN_CODE = 200;
                     $STATUS_MESSAGE = "L'apprenti a été supprimé avec succès.";
                     $matchingData = null;
                 } else {

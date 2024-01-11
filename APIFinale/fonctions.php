@@ -220,7 +220,7 @@ function listeApprenti()
   $resultat = [];
 
   foreach ($listeApprenti as $row) {
-    array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom'], 'photo' => $row['photo']));
+    array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom'], 'photo' => $row['photo'],'id_apprenti' => $row['id_apprenti']));
   }
 
   return $resultat;
@@ -345,6 +345,21 @@ function modifierApprenti($id_apprenti, $nom, $prenom, $photo)
   }
 }
 
+function unApprenti($id_apprenti) {
+  $BD = connexionBD();
+  $id_apprenti = htmlspecialchars($id_apprenti);
+  $ListeUnApprenti = $BD ->prepare('SELECT * from apprenti WHERE id_apprenti= ?');
+  $ListeUnApprenti->execute(array($id_apprenti));
+  $BD = null;
+  $resultat = [];
+
+  foreach ($ListeUnApprenti as $row) {
+    array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom'], 'photo' => $row['photo'],'id_apprenti' => $row['id_apprenti']));
+  }
+
+  return $resultat;
+
+}
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////        GESTION DES Personnel        ////////////////////
 /////////////////////////////////////////////////////////////////////////////
@@ -390,15 +405,26 @@ function listePersonnel()
   $resultat = [];
 
   foreach ($listePersonnel as $row) {
-    array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom']));
+    array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom'], 'id_personnel' => $row['id_personnel']));
   }
 
   return $resultat;
 }
 
-function unPersonnel()
-{
+function unPersonnel($id_personnel) {
   $BD = connexionBD();
+  $id_personnel = htmlspecialchars($id_personnel);
+  $ListeUnPersonnel = $BD ->prepare('SELECT * from personnel WHERE id_personnel= ?');
+  $ListeUnPersonnel->execute(array($id_personnel));
+  $BD = null;
+  $resultat = [];
+
+  foreach ($ListeUnPersonnel as $row) {
+    array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom'], 'id_personnel' => $row['id_personnel']));
+  }
+
+  return $resultat;
+
 }
 
 
@@ -423,15 +449,17 @@ function listeFiche()
 
 function creerFiche($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation)
 {
-  $BD = connexionBD();
-  $creationFiche = $BD ->prepare('INSERT INTO fiche_intervention(numero, nom_du_demandeur, date_demande, date_intervention, duree_intervention, localisation, description_demande, degre_urgence, type_intervention, nature_intervention, couleur_intervention, etat_fiche, date_creation VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?');
-  $creationFiche ->execute (array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation));
-  if($creationFiche -> rowCount() > 0) {
-    return TRUE;
-  } else {
-    return FALSE;
-  }
+    $BD = connexionBD();
+    $creationFiche = $BD->prepare('INSERT INTO fiche_intervention(numero, nom_du_demandeur, date_demande, date_intervention, duree_intervention, localisation, description_demande, degre_urgence, type_intervention, nature_intervention, couleur_intervention, etat_fiche, date_creation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+    $creationFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation));
+    
+    if ($creationFiche->rowCount() > 0) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
+
 
 function supprimerFiche($id_fiche)
 {
