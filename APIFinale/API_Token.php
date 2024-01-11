@@ -17,12 +17,17 @@ switch ($methodeHTTP) {
 			$postedData = file_get_contents('php://input');
 			$data=json_decode($postedData, true);
 			if(empty($data['login']) AND empty($data['mdp'])){
-				$body = array("role" => "", "utilisateur" => "", "exp" => (time()+600));
+				$body = array("role" => "", "utilisateur" => "", "exp" => (time()+2592000)); // 1 mois = 30 jours * 24 heures * 60 minutes * 60 secondes
 				$RETURN_CODE = 201;
 			}else{
 				if(identification($data['login'], $data['mdp'])){
 					$RETURN_CODE = 201;
-					$body = array("role" => recuperation_role($data['login']), "utilisateur" => $data['login'],"exp" => (time()+600));
+					$duree = 2592000;
+					$body = array(
+						"role" => recuperation_role($data['login']),
+						"utilisateur" => $data['login'],
+						"exp" => (time() + $duree)
+					);
 				}else{
 					$RETURN_CODE = 400;
 					$STATUS_MESSAGE = "Identifiant incorrect";

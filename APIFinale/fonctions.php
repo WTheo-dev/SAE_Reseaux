@@ -405,7 +405,7 @@ function listePersonnel()
   $resultat = [];
 
   foreach ($listePersonnel as $row) {
-    array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom'], 'id_personnel' => $row['id_personnel']));
+    array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom'], 'id_personnel' => $row['id_personnel'], 'id_utilisateur' => $row['id_utilisateur']));
   }
 
   return $resultat;
@@ -420,7 +420,7 @@ function unPersonnel($id_personnel) {
   $resultat = [];
 
   foreach ($ListeUnPersonnel as $row) {
-    array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom'], 'id_personnel' => $row['id_personnel']));
+    array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom'], 'id_personnel' => $row['id_personnel'],'id_utilisateur' => $row['id_utilisateur']));
   }
 
   return $resultat;
@@ -441,7 +441,7 @@ function listeFiche()
   $resultat = [];
 
   foreach($listeFiche as $row) {
-    array_push($resultat, array('numero' => $row['numero'],'nom_du_demandeur' => $row['nom_du_demandeur'],'date_demande' => $row['date_demande'],'date_intervention' => $row['date_intervention'],'duree_intervention' => $row['duree_intervention'],'localisation' => $row['localisation'],'description_demande' => $row['description_demande'],'degre_urgence' => $row['degre_urgence'],'type_intervention' => $row['type_intervention'],'nature_intervention' => $row['nature_intervention'],'couleur_intervention' => $row['couleur_intervention'],'etat_fiche' => $row['etat_fiche'],'date_creation' => $row['date_creation']));
+    array_push($resultat, array('numero' => $row['numero'],'nom_du_demandeur' => $row['nom_du_demandeur'],'date_demande' => $row['date_demande'],'date_intervention' => $row['date_intervention'],'duree_intervention' => $row['duree_intervention'],'localisation' => $row['localisation'],'description_demande' => $row['description_demande'],'degre_urgence' => $row['degre_urgence'],'type_intervention' => $row['type_intervention'],'nature_intervention' => $row['nature_intervention'],'couleur_intervention' => $row['couleur_intervention'],'etat_fiche' => $row['etat_fiche'],'date_creation' => $row['date_creation'], 'id_fiche' => $row ['id_fiche']));
   }
 
   return $resultat;
@@ -449,16 +449,41 @@ function listeFiche()
 
 function creerFiche($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation)
 {
-    $BD = connexionBD();
-    $creationFiche = $BD->prepare('INSERT INTO fiche_intervention(numero, nom_du_demandeur, date_demande, date_intervention, duree_intervention, localisation, description_demande, degre_urgence, type_intervention, nature_intervention, couleur_intervention, etat_fiche, date_creation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-    $creationFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation));
-    
-    if ($creationFiche->rowCount() > 0) {
-        return TRUE;
-    } else {
-        return FALSE;
+    try {
+        $BD = connexionBD();
+
+        // Validation et nettoyage des données
+        $numero = htmlspecialchars($numero);
+        $nom_du_demandeur = htmlspecialchars($nom_du_demandeur);
+        $date_demande = htmlspecialchars($date_demande);
+        $date_intervention = htmlspecialchars($date_intervention);
+        $duree_intervention = htmlspecialchars($duree_intervention);
+        $localisation = htmlspecialchars($localisation);
+        $description_demande = htmlspecialchars($description_demande);
+        $degre_urgence = htmlspecialchars($degre_urgence);
+        $type_intervention = htmlspecialchars($type_intervention);
+        $nature_intervention = htmlspecialchars($nature_intervention);
+        $couleur_intervention = htmlspecialchars($couleur_intervention);
+        $etat_fiche = htmlspecialchars($etat_fiche);
+        $date_creation = htmlspecialchars($date_creation);
+
+        $creationFiche = $BD->prepare('INSERT INTO fiche_intervention(numero, nom_du_demandeur, date_demande, date_intervention, duree_intervention, localisation, description_demande, degre_urgence, type_intervention, nature_intervention, couleur_intervention, etat_fiche, date_creation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        $creationFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation));
+
+        $BD->beginTransaction();
+        $BD->commit();
+
+        if ($creationFiche->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        $BD->rollBack();
+        return false;
     }
 }
+
 
 
 function supprimerFiche($id_fiche)
@@ -519,7 +544,21 @@ function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande, $da
   }
 }
 
+function uneFicheIntervention($id_fiche) {
+  $BD = connexionBD();
+  $id_fiche = htmlspecialchars($id_fiche);
+  $uneFicheIntervention = $BD->prepare('SELECT * from fiche_intervention WHERE id_fiche = ?');
+  $uneFicheIntervention ->execute(array($id_fiche));
+  $BD = null;
+  $resultat = [];
 
+  foreach($uneFicheIntervention as $row) {
+    array_push($resultat, array('numero' => $row['numero'],'nom_du_demandeur' => $row['nom_du_demandeur'],'date_demande' => $row['date_demande'],'date_intervention' => $row['date_intervention'],'duree_intervention' => $row['duree_intervention'],'localisation' => $row['localisation'],'description_demande' => $row['description_demande'],'degre_urgence' => $row['degre_urgence'],'type_intervention' => $row['type_intervention'],'nature_intervention' => $row['nature_intervention'],'couleur_intervention' => $row['couleur_intervention'],'etat_fiche' => $row['etat_fiche'],'date_creation' => $row['date_creation'], 'id_fiche' => $row['id_fiche']));
+  }
+
+  return $resultat;
+  
+}
 
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////             GESTION API             ////////////////////
