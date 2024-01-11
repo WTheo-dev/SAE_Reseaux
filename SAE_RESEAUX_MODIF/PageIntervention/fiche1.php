@@ -14,7 +14,7 @@
 <?php ifform() ?>
     <!-- Informations sur l'intervenant -->
     <div class="block bordure">
-    <p>Intervenant</p>
+    <p class="texte-page1">Intervenant</p>
 
     <div class="jsp">
     <?php addIcon("NomIntervenant", "fa-user"); ?>
