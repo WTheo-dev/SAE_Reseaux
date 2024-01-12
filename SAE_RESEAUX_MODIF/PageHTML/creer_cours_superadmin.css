@@ -1,0 +1,51 @@
+.header_page_creer_cours_superadmin{
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.child-info{
+    font-family: 'Cinzel', 'sans-serif';
+    font-size: 25px;
+    padding-right: 1em;
+}
+
+h1{
+    font-size: 75px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh; /* Optionally, set a specific height to center vertically in the viewport */
+}
+
+.service-button {
+    display: block;
+    margin: 50px 0;
+    padding: 10px 20px;
+    font-size: 75px;
+    cursor: pointer;
+}
+
+.btn_deconnexion-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn_deconnexion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 75px;
+    background-color: lightcoral;
+    cursor: pointer;
+}
+
