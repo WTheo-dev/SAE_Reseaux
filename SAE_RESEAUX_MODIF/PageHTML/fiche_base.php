@@ -42,7 +42,7 @@ if (isset($_COOKIE["configPolice"]))
 
 function addIcon($cookie, $name){
     if (isset($_COOKIE['icon'.ucfirst($cookie)]) && $_COOKIE['icon'.ucfirst($cookie)] == "on"){
-        echo '<span><i class="fa '.$name.' fa-2x" aria-hidden="true"></i></span>';
+        echo '<span><i class="fa '.$name.' fa-4x" aria-hidden="true"></i></span>';
     }
 }
 function addTexte($id, $name){

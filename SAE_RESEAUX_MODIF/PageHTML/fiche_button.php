@@ -18,21 +18,21 @@
 
     <div class="fiche_button">
     <?php if (! isset($begin)) : ?>
-    <button type="submit" name="precedent" value="<?php echo $numpage; ?>">
-        <i class="fafa-arrow-left" aria-hidden="true"></i>
+        <button type="submit" name="precedent" value="<?php echo $numpage; ?>">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
         <span>Page précédente</span>
     </button>
     <?php else : ?>
         <!-- boutton de menu -->
     <?php endif; ?>
-    <button class="fafa_button" type="submit" name="sauvegarder" value="<?php echo $numpage; ?>">
-        <i class="fafa-check" aria-hidden="true"></i>
+    <button class="fa fa_button" type="submit" name="sauvegarder" value="<?php echo $numpage; ?>">
+        <i class="fa fa-check" aria-hidden="true"></i>
         <span>Sauvegarder</span>
     </button>
     <?php if (! isset($end)) : ?>
-    <button type="submit" name="suivant" value="<?php echo $numpage; ?>">
+        <button type="submit" name="suivant" value="<?php echo $numpage; ?>">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
         <span>Page suivante</span>
-        <i class="fafa-arrow-right" aria-hidden="true"></i>
     </button>
     <?php else : ?>
         <!-- boutton de retour -->

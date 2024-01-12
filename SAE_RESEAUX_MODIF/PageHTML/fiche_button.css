@@ -1,4 +1,17 @@
-.fafa_button{
-    align-items: center;
-    
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+
+
+.fiche_button{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4em;
+
+}
+
+.fiche_button span{
+    font-family: 'Cormorant', 'sans-serif';
+    font-size: 4em;
 }

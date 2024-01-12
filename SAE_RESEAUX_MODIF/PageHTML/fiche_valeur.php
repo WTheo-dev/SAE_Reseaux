@@ -277,16 +277,16 @@ for ($i=5; $i<10; $i++){
 </div>
 
 <br>
-
+    
 <button class="noprint" type="submit" name="enregister_format">
-    <i class="fafa-floppy-o" aria-hidden="true"></i>
+    <i class="fa fa-floppy-o" aria-hidden="true"></i>
     <span>Enregistrer</span>
 </button>
 
 </form>
 
 <button class="noprint" type="submit" name="imprimer" onClick="window.print()">
-    <i class="fafa-print" aria-hidden="true"></i>
+    <i class="fa fa-print" aria-hidden="true"></i>
     <span>imprimer</span>
 </button>
 
