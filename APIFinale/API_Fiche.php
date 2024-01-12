@@ -45,6 +45,7 @@ switch ($http_method) {
         }
 
     case 'POST':
+       print_r("API_Fiche.POST"); 
         // Supposons que vous ayez les valeurs nécessaires depuis le formulaire POST
         $numero = $_POST['numero'];
         $nom_du_demandeur = $_POST['nom_du_demandeur'];

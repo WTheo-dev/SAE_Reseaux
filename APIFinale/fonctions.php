@@ -388,7 +388,7 @@ function modifierPersonnel($id_personnel, $nom, $prenom)
   $modifierPersonnel = $BD->prepare('UPDATE personnel SET nom = ? , prenom = ? where id_personnel = ?');
   $modifierPersonnel->execute(array($nom, $prenom, $id_personnel));
   $BD = null;
-  if ($modifierPersonnel->rowCount() > 0) {
+  if ($ Personnel->rowCount() > 0) {
     return TRUE;
   } else {
     return FALSE;
@@ -468,9 +468,8 @@ function creerFiche($numero, $nom_du_demandeur, $date_demande, $date_interventio
         $date_creation = htmlspecialchars($date_creation);
 
         $creationFiche = $BD->prepare('INSERT INTO fiche_intervention(numero, nom_du_demandeur, date_demande, date_intervention, duree_intervention, localisation, description_demande, degre_urgence, type_intervention, nature_intervention, couleur_intervention, etat_fiche, date_creation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-        $creationFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation));
-
         $BD->beginTransaction();
+        $creationFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation));     
         $BD->commit();
 
         if ($creationFiche->rowCount() > 0) {
