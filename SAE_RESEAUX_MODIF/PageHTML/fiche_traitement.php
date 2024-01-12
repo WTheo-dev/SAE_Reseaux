@@ -25,16 +25,27 @@ if (isset($_POST['precedent'])){
         $direction = "sauvegarder";
         header("location: fiche".$_POST['sauvegarder'].".php");
     }
-} else {
+} else if (isset($_POST['suivant'])) {
     $numpage = $_POST['suivant'];
     $index = $numpage + 1;
     $direction = "suivant";
     header("location: fiche".$index.".php");
+} else if (isset($_POST['from-fiche-valeur'])) {
+    header("location: fiche_valeur.php");
 }
 
 foreach ($_POST as $param => $value){
+    if ($param == "from-fiche-valeur") continue;
     $value=htmlspecialchars($value);
     setcookie($param, $value, time() + (86400 * 60));
+
+    //echo $name.' : '.$value.'<br>';
+    if (str_starts_with($name, "Texte") || str_starts_with($name, "Icon") || str_starts_with($name, "Audio")){
+        if (!isset($_POST[$name])){
+            unset($_COOKIE[$name]); 
+            setcookie($name, '', -1); 
+        }
+    }
 }
 
 function uncheck_checkbox($name, $pagenum){
