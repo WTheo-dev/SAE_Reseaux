@@ -388,7 +388,7 @@ function modifierPersonnel($id_personnel, $nom, $prenom)
   $modifierPersonnel = $BD->prepare('UPDATE personnel SET nom = ? , prenom = ? where id_personnel = ?');
   $modifierPersonnel->execute(array($nom, $prenom, $id_personnel));
   $BD = null;
-  if ($ Personnel->rowCount() > 0) {
+  if ($modifierPersonnel->rowCount() > 0) {
     return TRUE;
   } else {
     return FALSE;
