@@ -74,7 +74,7 @@ function formatBox($name){
 <h2 class="h2-valeur-fiche">Fiche intervention</h2>
 
     <div class="blockbordure1">
-    <p class="configgeneralfichevaleur">Config General</p>
+    <p class="configgeneralfichevaleur">Configuration Générale</p>
 
     <span>Taille texte</span>
     <select id="configTaille" name="configTaille">
@@ -267,14 +267,14 @@ for ($i=5; $i<10; $i++){
 <br>
 
 <button class="noprint" type="submit" name="enregister_format">
-    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    <i class="fafa-floppy-o" aria-hidden="true"></i>
     <span>Enregistrer</span>
 </button>
 
 </form>
 
 <button class="noprint" type="submit" name="imprimer" onClick="window.print()">
-    <i class="fa fa-print" aria-hidden="true"></i>
+    <i class="fafa-print" aria-hidden="true"></i>
     <span>imprimer</span>
 </button>
 
