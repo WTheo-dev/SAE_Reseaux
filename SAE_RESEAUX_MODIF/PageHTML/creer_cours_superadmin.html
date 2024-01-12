@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="creer_cours_superadmin.css">
+</head>
+<body>
+    <header class="header_page_creer_cours_superadmin">
+        <div class="header_text"><img class="logo_page_creer_cours_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
+        <div class="child-info">
+            <h2 class="header_page_creer_cours_superadmin">Nom Prénom du SuperAdmin</h2>
+        </div>
+    </header>
+
+    <h1>Choisissez le cours que vous voulez créer</h1>
+
+<div class="button-container">
+    <button class="service-button" onclick="redirectTo('plomberie.html')">Plomberie</button>
+    <button class="service-button" onclick="redirectTo('amenagement.html')">Aménagement intérieur</button>
+    <button class="service-button" onclick="redirectTo('serrurier.html')">Serrurier</button>
+    <button class="service-button" onclick="redirectTo('electricite.html')">Électricité</button>
+    <button class="service-button" onclick="redirectTo('finition.html')">Finition</button>
+</div>
+
+
+<div class="btn_deconnexion-container">
+    <button class="btn_deconnexion" onclick="redirectTo('page_postco_superadmin.html')">Retour</button>
+</div>
+
+<script>
+    function redirectTo(page) {
+        window.location.href = page;
+    }
+</script>
+
+</body>
+</html>
