@@ -16,10 +16,11 @@ foreach ($_COOKIE as $name => $value){
     }
 }
 */
+include_once("fiche_base.php");
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" <?php echo getFontName(); ?>;>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,6 +70,9 @@ function formatBox($name){
     echo '<label class="noprint" for="audio'.$name.'"> Audio </label>';
 }
 ?>
+ 
+<?php
+?>
 
 <!--<form action="fiche_valeur.php" method="post">-->
 <form action="fiche_traitement.php" method="post">
@@ -91,6 +95,11 @@ function formatBox($name){
     <option>125%</option>
     <option>150%</option>
     <option>175%</option>
+    <option>200%</option>
+    <option>225%</option>
+    <option>250%</option>
+    <option>275%</option>
+    <option>300%</option>
     </select>
 
     <br>

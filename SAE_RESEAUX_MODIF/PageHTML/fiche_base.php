@@ -1,17 +1,44 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiche d'intervention</title>
-    <link rel="stylesheet" href="fiche_base.css">
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-    integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-    />
-</head>
 <?php
+function matchFontSize() {
+    if (!isset($_COOKIE["configTaille"])) return "1em";
+    switch ($_COOKIE["configTaille"]) {
+        case '75%':
+            return '1.75em';
+            break;
+        case '100%':
+            return '2em';
+            break;
+        case '125%':
+            return '2.25em';
+            break;
+        case "150%":
+            return "2.5em";
+            break;
+        case "175%":
+            return "2.75em";
+            break;
+        case '200%':
+            return '3em';
+            break;
+        case '225%':
+            return '3.25em';
+            break;
+        case "250%":
+            return "3.5em";
+            break;
+        case "275%":
+            return "3.75em";
+            break;
+        case "300%":
+            return "4em";
+            break;
+    }
+    return "1em";
+}
+function getFontName(){
+if (isset($_COOKIE["configPolice"]))
+    return "style='font-family: ".$_COOKIE["configPolice"]."'";
+}
 
 function addIcon($cookie, $name){
     if (isset($_COOKIE['icon'.ucfirst($cookie)]) && $_COOKIE['icon'.ucfirst($cookie)] == "on"){
