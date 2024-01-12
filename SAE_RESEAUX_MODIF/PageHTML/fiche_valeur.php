@@ -1,4 +1,5 @@
 <?php
+/*
 foreach ($_POST as $param => $value){
     //echo $param." : ".$value."<br>";
     $value=htmlspecialchars($value);
@@ -13,8 +14,8 @@ foreach ($_COOKIE as $name => $value){
             setcookie($name, '', -1); 
         }
     }
-
 }
+*/
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +70,9 @@ function formatBox($name){
 }
 ?>
 
-<form action="fiche_valeur.php" method="post">
+<!--<form action="fiche_valeur.php" method="post">-->
+<form action="fiche_traitement.php" method="post">
+<input type="hidden" name="from-fiche-valeur" value="OUI, je suis raciste">
 
 <h2 class="h2-valeur-fiche">Fiche intervention</h2>
 
