@@ -16,10 +16,11 @@ foreach ($_COOKIE as $name => $value){
     }
 }
 */
+include_once("fiche_base.php");
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" <?php echo getFontName(); ?>;>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,6 +70,9 @@ function formatBox($name){
     echo '<label class="noprint" for="audio'.$name.'"> Audio </label>';
 }
 ?>
+ 
+<?php
+?>
 
 <!--<form action="fiche_valeur.php" method="post">-->
 <form action="fiche_traitement.php" method="post">
@@ -77,7 +81,7 @@ function formatBox($name){
 <h2 class="h2-valeur-fiche">Fiche intervention</h2>
 
     <div class="blockbordure1">
-    <p class="configgeneralfichevaleur">Config General</p>
+    <p class="configgeneralfichevaleur">Configuration Générale</p>
 
     <span>Taille texte</span>
     <select id="configTaille" name="configTaille">
@@ -91,6 +95,11 @@ function formatBox($name){
     <option>125%</option>
     <option>150%</option>
     <option>175%</option>
+    <option>200%</option>
+    <option>225%</option>
+    <option>250%</option>
+    <option>275%</option>
+    <option>300%</option>
     </select>
 
     <br>
@@ -270,14 +279,14 @@ for ($i=5; $i<10; $i++){
 <br>
 
 <button class="noprint" type="submit" name="enregister_format">
-    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    <i class="fafa-floppy-o" aria-hidden="true"></i>
     <span>Enregistrer</span>
 </button>
 
 </form>
 
 <button class="noprint" type="submit" name="imprimer" onClick="window.print()">
-    <i class="fa fa-print" aria-hidden="true"></i>
+    <i class="fafa-print" aria-hidden="true"></i>
     <span>imprimer</span>
 </button>
 
