@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services</title>
     <link rel="stylesheet" href="creer_cours_superadmin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-FawF8f7ovfA67zceqO8n+J3/z21S0g9/jeLiNgO7tn5z1eGrLJpRgz7XKL2eJpaOkt2tsQv7GfADmACuRvZ2eQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header class="header_page_creer_cours_superadmin">
@@ -16,24 +17,32 @@
 
     <h1>Choisissez le cours que vous voulez créer</h1>
 
-<div class="button-container">
-    <button class="service-button" onclick="redirectTo('plomberie.html')">Plomberie</button>
-    <button class="service-button" onclick="redirectTo('amenagement.html')">Aménagement intérieur</button>
-    <button class="service-button" onclick="redirectTo('serrurier.html')">Serrurier</button>
-    <button class="service-button" onclick="redirectTo('electricite.html')">Électricité</button>
-    <button class="service-button" onclick="redirectTo('finition.html')">Finition</button>
-</div>
+    <form id="serviceForm" action="fiche_valeur.php" method="get">
+        <div class="button-container">
+            <button class="service-button" type="submit" name="service" value="plomberie">Plomberie</button>
+            <button class="service-button" type="submit" name="service" value="amenagement">Aménagement intérieur</button>
+            <button class="service-button" type="submit" name="service" value="serrurier">Serrurier</button>
+            <button class="service-button" type="submit" name="service" value="electricite">Électricité</button>
+            <button class="service-button" type="submit" name="service" value="finition">Finition</button>
+        </div>
+    </form>
 
+    <div class="btn_deconnexion-container">
+        <button class="btn_deconnexion" onclick="redirectTo('page_postco_superadmin.html')">Retour</button>
+    </div>
 
-<div class="btn_deconnexion-container">
-    <button class="btn_deconnexion" onclick="redirectTo('page_postco_superadmin.html')">Retour</button>
-</div>
+    <script>
+    
+        function redirectTo(page) {
+            window.location.href = page;
+        }
+    </script>
 
-<script>
-    function redirectTo(page) {
-        window.location.href = page;
-    }
-</script>
+    
+
+ <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    
 
 </body>
+
 </html>
