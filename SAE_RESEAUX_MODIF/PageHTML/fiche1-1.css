@@ -29,7 +29,7 @@
 .texte-page1{
     display: flex;
     justify-content: center;
-    font-size: 10em;
+    font-size: 5em;
 }
 
 .jsp{
@@ -61,5 +61,10 @@
 }   
 
 .audiobutton{
-    font-size: 5em;
+    font-size: 50px;
+}
+
+.fa fa-address-card fa-4x{
+    display: flex;
+    justify-content: center;
 }

@@ -45,7 +45,9 @@
     <input type="text" name="nomIntervenant" value="<?php if (isset($_COOKIE['nomIntervenant'])){ echo $_COOKIE['nomIntervenant']; } ?>">
 </div>
     <div class="jsp">
+    <div class="audio-fiche-1">
         <?php addAudio("PrenomIntervenant", "prenomInterv"); ?>
+        </div>
     <?php addIcon("PrenomIntervenant", "fa-address-card"); ?>
     <?php addTexte("prenomIntervenant", "Prénom de l'intervenant") ?>
     <input type="text" name="prenomIntervenant" value="<?php if (isset($_COOKIE['prenomIntervenant'])) { echo $_COOKIE['prenomIntervenant']; } ?>">

@@ -45,58 +45,58 @@
     <div class="block bordure">
     <p class="texte-page2">Demande</p>
 
-    <div class="jsp">
+     <div class="jsp">
+    <div class="icon-page2">
     <?php addIcon("NomDemandeur", "fa-user"); ?>
-    <?php addTexte("nomDemandeur", "Nom du demandeur") ?>
-    <input disabled type="text" id="nomDemandeur" value="<?php if (isset($_COOKIE['nomDemandeur'])){ echo $_COOKIE['nomDemandeur']; } ?>">
     <?php addAudio("NomDemandeur", "nomDem"); ?>
+</div>
+<?php addTexte("nomDemandeur", "Nom du demandeur") ?>
+<input disabled type="text" id="nomDemandeur" value="<?php if (isset($_COOKIE['nomDemandeur'])){ echo $_COOKIE['nomDemandeur']; } ?>">
     </div>
 
     <br>
     
     <div class="jsp">
+    <div class="icon-page2">
     <?php addIcon("DateDemande", "fa-calendar-o"); ?>
-    <?php addTexte("dateDemande", "Date de la demande") ?>
-    <input disabled type="date" id="dateDemande" value="<?php if (isset($_COOKIE['dateDemande'])){ echo $_COOKIE['dateDemande']; } ?>">
     <?php addAudio("DateDemande", "dateDem"); ?>
-
+</div>
+<?php addTexte("dateDemande", "Date de la demande") ?>
+<input disabled type="date" id="dateDemande" value="<?php if (isset($_COOKIE['dateDemande'])){ echo $_COOKIE['dateDemande']; } ?>">
+  
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
+<div class="jsp">
+    <div class="icon-page2">
     <?php addIcon("Localisation", "fa-map-marker"); ?>
-    <?php addTexte("localisation", "Localisation") ?>
-    <input disabled type="text" id="localisation" value="<?php if (isset($_COOKIE['localisation'])){ echo $_COOKIE['localisation']; } ?>">
     <?php addAudio("Localisation", "local"); ?>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
+</div>
+<?php addTexte("localisation", "Localisation") ?>
+<input disabled type="text" id="localisation" value="<?php if (isset($_COOKIE['localisation'])){ echo $_COOKIE['localisation']; } ?>">
+</div>
+        <br>
+        <div class="jsp">
+    <div class="icon-page2">
     <?php addIcon("descDemande", "fa-info-circle"); ?>
-    <?php addTexte("descDemande", "Description de la demande") ?>
     <?php addAudio("descDemande", "descDem"); ?>
-    <br><textarea disabled id="descDemande" rows="4"><?php if (isset($_COOKIE['descDemande'])){ echo $_COOKIE['descDemande']; } ?></textarea>
+</div>
+<?php addTexte("descDemande", "Description de la demande") ?>
+<br><textarea disabled id="descDemande" rows="4"><?php if (isset($_COOKIE['descDemande'])){ echo $_COOKIE['descDemande']; } ?></textarea>
     </div>
 
     <br>
 
     <div class="jsp">
+    <div class="icon-page2">
+
     <?php addIcon("DegreeUrgence", "fa-exclamation-triangle"); ?>
-    <?php addTexte("degreeUrgence", "Degré d'urgence") ?>
-    <input disabled type="text" id="degreeUrgence" value="<?php if (isset($_COOKIE['degreeUrgence'])){ echo $_COOKIE['degreeUrgence']; } ?>">
     <?php addAudio("degreeUrgence", "degre"); ?>
-    </div>
+</div>
+<?php addTexte("degreeUrgence", "Degré d'urgence") ?>
+<input disabled type="text" id="degreeUrgence" value="<?php if (isset($_COOKIE['degreeUrgence'])){ echo $_COOKIE['degreeUrgence']; } ?>">
 
     </div>
+    </div>
+
 
     <?php
     $numpage=2;
