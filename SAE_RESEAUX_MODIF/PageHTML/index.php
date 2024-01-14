@@ -1,3 +1,9 @@
+<?php
+session_start();
+include_once("../../APIFinale/fonctions.php");
+$bd = connexion_bd();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
