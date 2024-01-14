@@ -259,17 +259,17 @@ function inscriptionApprenti($nom, $prenom, $photo, $utilisateur)
       } else {
         $BD->rollBack();
         $BD = null;
-        return false;
+        return FALSE;
       }
     } else {
       $BD->rollBack();
       $BD = null;
-      return false;
+      return FALSE;
     }
   } catch (PDOException $e) {
     $BD->rollBack();
     $BD = null;
-    return false;
+    return FALSE;
   }
 }
 
@@ -289,43 +289,7 @@ function supprimerApprenti($id_apprenti)
     return FALSE;
   }
 }
-function inscriptionPersonnel($nom, $prenom, $utilisateur)
-{
-  try {
-    $BD = connexionBD();
-    $nom = htmlspecialchars($nom);
-    $prenom = htmlspecialchars($prenom);
-    $BD->beginTransaction();
 
-    $ajoutUtilisateur = $BD->prepare('INSERT INTO utilisateur(login, mdp, id_role) VALUES (?, ?, ?)');
-    $ajoutUtilisateur->execute(array($utilisateur['login'], $utilisateur['mdp'], $utilisateur['id_role']));
-    $id_utilisateur = $BD->lastInsertId();
-
-    if (!empty($nom) && !empty($prenom)) {
-      $ajoutPersonnel = $BD->prepare('INSERT INTO personnel(nom, prenom, id_utilisateur) VALUES (?, ?, ?)');
-      $ajoutPersonnel ->execute(array($nom, $prenom, $id_utilisateur));
-
-      $BD->commit();
-
-      if ($ajoutPersonnel->rowCount() > 0) {
-        $BD = null;
-        return true;
-      } else {
-        $BD->rollBack();
-        $BD = null;
-        return false;
-      }
-    } else {
-      $BD->rollBack();
-      $BD = null;
-      return false;
-    }
-  } catch (PDOException $e) {
-    $BD->rollBack();
-    $BD = null;
-    return false;
-  }
-}
 
 
 function modifierApprenti($id_apprenti, $nom, $prenom, $photo)
@@ -360,10 +324,59 @@ function unApprenti($id_apprenti) {
   return $resultat;
 
 }
+
+function apprentiDejaExistant($nom,$prenom) {
+  $BD = connexionBD();
+  $apprentiExiste = $BD->prepare('SELECT * FROM apprenti WHERE nom= ? AND prenom ?');
+  $apprentiExiste ->execute(array($nom,$prenom));
+  $BD = null;
+
+  if ($apprentiExiste ->rowCount() > 0){
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////        GESTION DES Personnel        ////////////////////
 /////////////////////////////////////////////////////////////////////////////
+function inscriptionPersonnel($nom, $prenom, $utilisateur)
+{
+  try {
+    $BD = connexionBD();
+    $nom = htmlspecialchars($nom);
+    $prenom = htmlspecialchars($prenom);
+    $BD->beginTransaction();
 
+    $ajoutUtilisateur = $BD->prepare('INSERT INTO utilisateur(login, mdp, id_role) VALUES (?, ?, ?)');
+    $ajoutUtilisateur->execute(array($utilisateur['login'], $utilisateur['mdp'], $utilisateur['id_role']));
+    $id_utilisateur = $BD->lastInsertId();
+
+    if (!empty($nom) && !empty($prenom)) {
+      $ajoutPersonnel = $BD->prepare('INSERT INTO personnel(nom, prenom, id_utilisateur) VALUES (?, ?, ?)');
+      $ajoutPersonnel ->execute(array($nom, $prenom, $id_utilisateur));
+
+      $BD->commit();
+
+      if ($ajoutPersonnel->rowCount() > 0) {
+        $BD = null;
+        return true;
+      } else {
+        $BD->rollBack();
+        $BD = null;
+        return FALSE;
+      }
+    } else {
+      $BD->rollBack();
+      $BD = null;
+      return FALSE;
+    }
+  } catch (PDOException $e) {
+    $BD->rollBack();
+    $BD = null;
+    return FALSE;
+  }
+}
 
 function supprimerPersonnel($id_personnel)
 {
@@ -427,6 +440,18 @@ function unPersonnel($id_personnel) {
 
 }
 
+function personnelDejaExistant($nom,$prenom) {
+  $BD = connexionBD();
+  $personnelExiste = $BD->prepare('SELECT * FROM personnel WHERE nom= ? AND prenom ?');
+  $personnelExiste ->execute(array($nom,$prenom));
+  $BD = null;
+
+  if ($personnelExiste ->rowCount() > 0){
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
 
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////           GESTION FICHES            ////////////////////
@@ -447,40 +472,33 @@ function listeFiche()
   return $resultat;
 }
 
-function creerFiche($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation)
-{
-    try {
-        $BD = connexionBD();
+function creationFiche($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation, $id_apprenti, $id_personnel) {
+  $BD = connexionBD();
+  $numero = htmlspecialchars($numero);
+  $nom_du_demandeur = htmlspecialchars($nom_du_demandeur);
+  $date_demande = htmlspecialchars($date_demande);
+  $date_intervention = htmlspecialchars($date_intervention);
+  $duree_intervention = htmlspecialchars($duree_intervention);
+  $localisation = htmlspecialchars($localisation);
+  $description_demande = htmlspecialchars($description_demande);
+  $degre_urgence = htmlspecialchars($degre_urgence);
+  $type_intervention = htmlspecialchars($type_intervention);
+  $nature_intervention = htmlspecialchars($nature_intervention);
+  $couleur_intervention = htmlspecialchars($couleur_intervention);
+  $etat_fiche = htmlspecialchars($etat_fiche);
+  $date_creation = htmlspecialchars($date_creation);
+  $id_apprenti = htmlspecialchars($id_apprenti);
+  $id_personnel = htmlspecialchars($id_personnel);
 
-        // Validation et nettoyage des données
-        $numero = htmlspecialchars($numero);
-        $nom_du_demandeur = htmlspecialchars($nom_du_demandeur);
-        $date_demande = htmlspecialchars($date_demande);
-        $date_intervention = htmlspecialchars($date_intervention);
-        $duree_intervention = htmlspecialchars($duree_intervention);
-        $localisation = htmlspecialchars($localisation);
-        $description_demande = htmlspecialchars($description_demande);
-        $degre_urgence = htmlspecialchars($degre_urgence);
-        $type_intervention = htmlspecialchars($type_intervention);
-        $nature_intervention = htmlspecialchars($nature_intervention);
-        $couleur_intervention = htmlspecialchars($couleur_intervention);
-        $etat_fiche = htmlspecialchars($etat_fiche);
-        $date_creation = htmlspecialchars($date_creation);
+  $creerFiche = $BD->prepare('INSERT INTO fiche_intervention(numero, nom_du_demandeur, date_demande, date_intervention, duree_intervention, localisation, description_demande, degre_urgence, type_intervention, nature_intervention, couleur_intervention, etat_fiche, date_creation, id_apprenti, id_personnel) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+  $creerFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation, $id_apprenti, $id_personnel));
+  $BD = null;
 
-        $creationFiche = $BD->prepare('INSERT INTO fiche_intervention(numero, nom_du_demandeur, date_demande, date_intervention, duree_intervention, localisation, description_demande, degre_urgence, type_intervention, nature_intervention, couleur_intervention, etat_fiche, date_creation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-        $BD->beginTransaction();
-        $creationFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation));     
-        $BD->commit();
-
-        if ($creationFiche->rowCount() > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    } catch (PDOException $e) {
-        $BD->rollBack();
-        return false;
-    }
+  if ($creerFiche->rowCount() > 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 
@@ -499,47 +517,36 @@ function supprimerFiche($id_fiche)
 }
 
 
-function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation) {
+function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation,$id_apprenti,$id_personnel) {
   $BD = connexionBD();
-  $modifierFiche = $BD->prepare('UPDATE fiche_intervention SET
-    numero = ?,
-    nom_demandeur = ?,
-    date_demande = ?,
-    date_intervention = ?,
-    duree_intervention = ?,
-    localisation = ?,
-    description_demande = ?,
-    degre_urgence = ?,
-    type_intervention = ?,
-    nature_intervention = ?,
-    couleur_intervention = ?,
-    etat_fiche = ?,
-    date_creation = ?
-    WHERE id_fiche = ?');
+  $id_fiche = htmlspecialchars($id_fiche);
+  $numero = htmlspecialchars($numero);
+  $nom_du_demandeur = htmlspecialchars($nom_du_demandeur);
+  $date_demande = htmlspecialchars($date_demande);
+  $date_intervention = htmlspecialchars($date_intervention);
+  $duree_intervention = htmlspecialchars($duree_intervention);
+  $localisation = htmlspecialchars($localisation);
+  $description_demande = htmlspecialchars($description_demande);
+  $degre_urgence = htmlspecialchars($degre_urgence);
+  $type_intervention = htmlspecialchars($type_intervention);
+  $nature_intervention = htmlspecialchars($nature_intervention);
+  $couleur_intervention = htmlspecialchars($couleur_intervention);
+  $etat_fiche = htmlspecialchars($etat_fiche);
+  $date_creation = htmlspecialchars($date_creation);
+  $id_apprenti = htmlspecialchars($id_apprenti);
+  $id_personnel = htmlspecialchars($id_personnel);
 
-  $modifierFiche->execute(array(
-    $numero,
-    $nom_du_demandeur,
-    $date_demande,
-    $date_intervention,
-    $duree_intervention,
-    $localisation,
-    $description_demande,
-    $degre_urgence,
-    $type_intervention,
-    $nature_intervention,
-    $couleur_intervention,
-    $etat_fiche,
-    $date_creation,
-    $id_fiche
-  ));
+
+  $modifierFiche = $BD->prepare('UPDATE fiche_intervention SET numero = ?, nom_du_demandeur = ?, date_demande = ?, date_intervention = ?, duree_intervention = ?, localisation = ?, description_demande = ?, degre_urgence = ?, type_intervention = ?, nature_intervention = ?, couleur_intervention = ?, etat_fiche = ?, date_creation = ?, id_apprenti = ?, id_personnel = ? WHERE id_fiche = ?');
+
+  $modifierFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation,$id_apprenti,$id_personnel,$id_fiche));
 
   $BD = null;
 
   if ($modifierFiche->rowCount() > 0) {
-    return true;
+    return TRUE;
   } else {
-    return false;
+    return FALSE;
   }
 }
 
@@ -557,6 +564,19 @@ function uneFicheIntervention($id_fiche) {
 
   return $resultat;
   
+}
+
+function ficheInterventionDejaExistante($numero) {
+  $BD = connexionBD();
+  $numero = htmlspecialchars($numero);
+  $ficheExiste = $BD ->prepare('SELECT * from fiche_intervention WHERE numero = ?');
+  $ficheExiste ->execute(array($numero));
+  $BD = null;
+  if($ficheExiste->rowCount() > 0) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
 }
 
 /////////////////////////////////////////////////////////////////////////////

@@ -55,7 +55,10 @@ switch ($http_method) {
 
         case 'POST':
             $matchingData = null;
-        
+            if(personnelDejaExistant($nom,$prenom)){
+                $RETURN_CODE = 400;
+                $STATUS_MESSAGE = "Création du personnel impossible pour cause de doublon";
+            } else {
             // Vérifiez si l'utilisateur a le rôle approprié (supposons que $role et $id_utilisateur soient définis)
             if ($role == 2) {
                 // Assurez-vous que les clés nécessaires existent dans $data
@@ -80,7 +83,7 @@ switch ($http_method) {
                 $RETURN_CODE = 403;
                 $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié";
             }
-        
+            }
             // Envoi de la réponse
             deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
             break;

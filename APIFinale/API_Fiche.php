@@ -20,75 +20,43 @@ $data = json_decode($postedData, true);
 switch ($http_method) {
 
     case 'GET':
-        if (isset($_GET['id_fiche'])) {
-            try {
-                $RETURN_CODE = 200;
+        try {
+            $RETURN_CODE = 200;
+        
+            if (isset($_GET['id_fiche'])) {
                 $STATUS_MESSAGE = "Voici une fiche :";
                 $matchingData = uneFicheIntervention($_GET['id_fiche']);
-            } catch (\Throwable $th) {
-                $RETURN_CODE = $th->getCode();
-                $STATUS_MESSAGE = $th->getMessage();
-                $matchingData = null;
-            }
-        } else {
-            try {
-                $RETURN_CODE = 200;
+                if ($matchingData === null) {
+                    throw new Exception("Aucune fiche n'a été trouvé avec l'ID spécifié");
+                }
+            } else {
                 $STATUS_MESSAGE = "Voici la liste des fiches :";
                 $matchingData = listeFiche();
-            } catch (\Throwable $th) {
-                $RETURN_CODE = $th->getCode();
-                $STATUS_MESSAGE = $th->getMessage();
-                $matchingData = null;
             }
+        } catch (\Throwable $th) {
+            $RETURN_CODE = $th ->getCode();
+            $STATUS_MESSAGE = $th->getMessage();
+            $matchingData = null;
+        } finally {
             deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
-            break;
         }
+        break;
 
     case 'POST':
-       print_r("API_Fiche.POST"); 
-        // Supposons que vous ayez les valeurs nécessaires depuis le formulaire POST
-        $numero = $_POST['numero'];
-        $nom_du_demandeur = $_POST['nom_du_demandeur'];
-        $date_demande = $_POST['date_demande'];
-        $date_intervention = $_POST['date_intervention'];
-        $duree_intervention = $_POST['duree_intervention'];
-        $localisation = $_POST['localisation'];
-        $description_demande = $_POST['description_demande'];
-        $degre_urgence = $_POST['degre_urgence'];
-        $type_intervention = $_POST['type_intervention'];
-        $nature_intervention = $_POST['nature_intervention'];
-        $couleur_intervention = $_POST['couleur_intervention'];
-        $etat_fiche = $_POST['etat_fiche'];
-        $date_creation = $_POST['date_creation'];
-
-        // Vérifiez que toutes les données nécessaires sont présentes
-        if (
-            !empty($numero) &&
-            !empty($nom_du_demandeur) &&
-            !empty($date_demande) &&
-            !empty($date_intervention) &&
-            !empty($duree_intervention) &&
-            !empty($localisation) &&
-            !empty($description_demande) &&
-            !empty($degre_urgence) &&
-            !empty($type_intervention) &&
-            !empty($nature_intervention) &&
-            !empty($couleur_intervention) &&
-            !empty($etat_fiche) &&
-            !empty($date_creation)
-        ) {
-            // Appelez votre fonction creerFiche avec les données récupérées
-            $resultatCreation = creerFiche($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation);
-
-            // Vérifiez le résultat et affichez un message en conséquence
-            if ($resultatCreation) {
-                echo "La fiche d'intervention a été créée avec succès.";
-            } else {
-                echo "Une erreur s'est produite lors de la création de la fiche d'intervention.";
-            }
+        $matchingData = null;
+        if (ficheInterventionDejaExistante($data['numero'])) {
+            $RETURN_CODE = 400;
+            $STATUS_MESSAGE = "Création Impossible de la fiche pour cause de fiche déjà existante";
         } else {
-            echo "Tous les champs sont obligatoires. Veuillez remplir le formulaire correctement.";
+            if (creationFiche($data['numero'], $data['nom_du_demandeur'], $data['date_demande'], $data['date_intervention'], $data['duree_intervention'], $data['localisation'], $data['description_demande'], $data['degre_urgence'], $data['type_intervention'], $data['nature_intervention'], $data['couleur_intervention'], $data['etat_fiche'], $data['date_creation'], $data['id_apprenti'], $data['id_personnel'])) {
+                $RETURN_CODE = 200;
+                $STATUS_MESSAGE = "Création de la fiche d'intervention correctement effectué.";
+            } else {
+                $RETURN_CODE = 400;
+                $STATUS_MESSAGE = "Création de la fiche d'intervention impossible ";
+            }
         }
+        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         break;
 
 
@@ -124,23 +92,7 @@ switch ($http_method) {
         $matchingData = null;
         if ($role == 1 || $role == 3) {
             $id_fiche = $_GET['id_fiche'];
-            $data = array(
-                'numero' => $numero,
-                'nom_du_demandeur' => $nom_du_demandeur,
-                'date_demande' => $date_demande,
-                'date_intervention' => $date_intervention,
-                'duree_intervention' => $duree_intervention,
-                'localisation' => $localisation,
-                'description_demande' => $description_demande,
-                'degre_urgence' => $degre_urgence,
-                'type_intervention' => $type_intervention,
-                'nature_intervention' => $nature_intervention,
-                'couleur_intervention' => $couleur_intervention,
-                'etat_fiche' => $etat_fiche,
-                'date_creation' => $date_creation
-            );
-
-            if (modifierFiche($id_fiche, $data)) {
+            if (modifierFiche($id_fiche, $data['numero'], $data['nom_du_demandeur'], $data['date_demande'], $data['date_intervention'], $data['duree_intervention'], $data['localisation'], $data['description_demande'], $data['degre_urgence'], $data['type_intervention'], $data['nature_intervention'], $data['couleur_intervention'], $data['etat_fiche'], $data['date_creation'], $data['id_apprenti'], $data['id_personnel'])) {
                 $RETURN_CODE = 200;
                 $STATUS_MESSAGE = "Mise à jour de la fiche effectuée";
                 $matchingData = null;
