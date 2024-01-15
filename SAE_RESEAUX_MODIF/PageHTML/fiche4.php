@@ -1,3 +1,4 @@
+<?php include_once("fiche_base.php"); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,6 +20,14 @@
                 <h2 class="header_text_postcoeleve">Nom Prénom de l'admin</h2>
             </div>
         </header>
+    <style>
+        p, label, span, input, .fa{
+            font-size:<?php echo matchFontSize(); ?> !important;
+        }
+        *{
+            font-family:<?php echo getFontName(); ?>;
+        }
+    </style>
 </head>
 <body class="body_fiche">
     <?php include_once("fiche_base.php"); ?>

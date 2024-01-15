@@ -1,3 +1,4 @@
+<?php include_once("fiche_base.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,6 +13,14 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
     />
+    <style>
+        p, label, span, input, .fa{
+            font-size:<?php echo matchFontSize(); ?> !important;
+        }
+        *{
+            font-family:<?php echo getFontName(); ?>;
+        }
+    </style>
 </head> 
 <body class="body_fiche">
  <?php include_once("fiche_base.php"); ?>

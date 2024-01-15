@@ -37,12 +37,12 @@ function matchFontSize() {
 }
 function getFontName(){
 if (isset($_COOKIE["configPolice"]))
-    return "style='font-family: ".$_COOKIE["configPolice"]."'";
+    return $_COOKIE["configPolice"];
 }
 
 function addIcon($cookie, $name){
     if (isset($_COOKIE['icon'.ucfirst($cookie)]) && $_COOKIE['icon'.ucfirst($cookie)] == "on"){
-        echo '<span><i class="fa '.$name.' fa-4x" aria-hidden="true"></i></span>';
+        echo '<span><i class="fa '.$name.'" aria-hidden="true"></i></span>';
     }
 }
 function addTexte($id, $name){
