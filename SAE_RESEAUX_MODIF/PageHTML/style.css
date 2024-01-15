@@ -414,6 +414,13 @@
     text-align: center;
     display: flex;
     flex-wrap: wrap;
+    text-align: center;
+}
+
+#liste_photo_p_d button {
+    background: transparent;
+    border: none;
+
 }
 
 #liste_photo_p_d img {

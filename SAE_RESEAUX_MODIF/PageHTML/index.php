@@ -27,25 +27,17 @@ include_once("../../APIFinale/fonctions.php");
 
         <div id="liste_photo_p_d">
             <!-- Placeholder pour les photos d'élève -->
+            <form action="connexion_eleve.php" method="post">
             <?php
                 $etus = listeApprenti();
                 foreach ($etus as $etu){
-                    echo "<a href='connexion_eleve.html'><img src='Image/etu/".$etu["photo"]."' alt='".$etu["prenom"]."'>";
+                    echo "<button name=".$etu["id_apprenti"].">";
+                    echo "<img src='Image/etu/".$etu["photo"]."' alt='".$etu["prenom"]."'>";
                     echo "<p>Nom: ".$etu["nom"].", Prenom: ".$etu["prenom"]."</p>";
-                    echo "</a>";
+                    echo "</button>";
                 }
             ?>
-            <!--
-            <a href="connexion_eleve.html"><img src="Image/utilisateur.png" alt="Élève 1"></a>
-            <a href="connexion_eleve.html"><img src="Image/utilisateur.png" alt="Élève 2"></a>
-            <a href="connexion_eleve.html"><img src="Image/utilisateur.png" alt="Élève 3"></a>
-            <a href="connexion_eleve.html"><img src="Image/utilisateur.png" alt="Élève 4"></a>
-            <a href="connexion_eleve.html"><img src="Image/utilisateur.png" alt="Élève 5"></a>
-            <a href="connexion_eleve.html"><img src="Image/utilisateur.png" alt="Élève 6"></a>
-            <a href="connexion_eleve.html"><img src="Image/utilisateur.png" alt="Élève 7"></a>
-            <a href="connexion_eleve.html"><img src="Image/utilisateur.png" alt="Élève 8"></a>
-            <a href="connexion_eleve.html"><img src="Image/utilisateur.png" alt="Élève 1"></a>
-            -->
+            </form>
         </div>
     </main>
     <p class="p_p_d"> Ou connecte toi en temps qu'administrateur</p>
