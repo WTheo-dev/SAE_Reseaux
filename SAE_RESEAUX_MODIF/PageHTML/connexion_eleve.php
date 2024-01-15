@@ -15,6 +15,7 @@
   </header>
 
   <?php
+  session_start();
   include_once("../../APIFinale/fonctions.php");
   $idetu = -1;
   $i = 0;

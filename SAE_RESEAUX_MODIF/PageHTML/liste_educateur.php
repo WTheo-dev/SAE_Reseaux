@@ -1,3 +1,7 @@
+<?php
+session_start();
+include_once("../../APIFinale/fonctions.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +30,13 @@
     </tr>
   </thead>
   <tbody>
+
+    <?php
+      /*
+      $persos = listeEducateur();
+      var_dump($persos);
+      */
+    ?>
 
     <tr>
       <td>Jean-Charles</td>

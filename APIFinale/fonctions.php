@@ -424,6 +424,26 @@ function listePersonnel()
   return $resultat;
 }
 
+function listeEducateur()
+{
+  $BD = connexionBD();
+
+  try {
+    $listePersonnel = $BD->prepare('SELECT * FROM personnel p, utilisateur u, role r WHERE p.id_utilisateur = u.id_utilisateur AND u.id_role = r.id_role');
+    $listePersonnel->execute(array());
+    $BD = null;
+    $resultat = [];
+
+    foreach ($listePersonnel as $row) {
+      array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom'], 'id_personnel' => $row['id_personnel'], 'id_utilisateur' => $row['id_utilisateur']));
+    }
+  } catch (PDOException $e) {
+    die('Erreur : ' . $e->getMessage());
+  }
+
+  return $resultat;
+}
+
 function unPersonnel($id_personnel) {
   $BD = connexionBD();
   $id_personnel = htmlspecialchars($id_personnel);

@@ -42,7 +42,7 @@ include_once("../../APIFinale/fonctions.php");
     </main>
     <p class="p_p_d"> Ou connecte toi en temps qu'administrateur</p>
     <div class="boutons"> 
-        <button class="Connexion_admin"><a href="liste_educateur.html">Educateur</a></button>
+        <button class="Connexion_admin"><a href="liste_educateur.php">Educateur</a></button>
         <button class="Connexion_superadmin"><a href="connexion_superadmin.html">Super-Admin</a></button>
     </div>
     <script src="page_daccueil.js"></script>
