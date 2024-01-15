@@ -30,7 +30,7 @@ include_once("../../APIFinale/fonctions.php");
             <?php
                 $etus = listeApprenti();
                 foreach ($etus as $etu){
-                    echo "<a href='connexion_eleve.html'><img src='Image/".$etu["photo"]."' alt='".$etu["prenom"]."'>";
+                    echo "<a href='connexion_eleve.html'><img src='Image/etu/".$etu["photo"]."' alt='".$etu["prenom"]."'>";
                     echo "<p>Nom: ".$etu["nom"].", Prenom: ".$etu["prenom"]."</p>";
                     echo "</a>";
                 }
