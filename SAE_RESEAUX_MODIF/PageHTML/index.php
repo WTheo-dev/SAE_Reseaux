@@ -33,7 +33,7 @@ include_once("../../APIFinale/fonctions.php");
                 foreach ($etus as $etu){
                     echo "<button name=".$etu["id_apprenti"].">";
                     echo "<img src='Image/etu/".$etu["photo"]."' alt='".$etu["prenom"]."'>";
-                    echo "<p>Nom: ".$etu["nom"].", Prenom: ".$etu["prenom"]."</p>";
+                    echo "<p class='p_pd'>".$etu["nom"].", ".$etu["prenom"]."</p>";
                     echo "</button>";
                 }
             ?>

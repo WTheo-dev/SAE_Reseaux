@@ -427,8 +427,7 @@
     width: 230px; /* Redimensionner les images à la largeur souhaitée */
     height: 230px; /* Redimensionner les images à la hauteur souhaitée */
     margin: 10px;
-    border: 2px solid black;
-    border-radius: 5px;
+    border-radius: 127px;
 }
 .label_connexion_educ{
     padding: 10em;
@@ -450,6 +449,11 @@
     margin: 20px;
     font-size: 50px; /* Augmentez la taille de la police */
     transition: background-color 0.3s ease;
+}
+
+.p_pd{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 2.5em;
 }
 
 #nom{
