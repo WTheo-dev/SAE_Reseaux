@@ -1,3 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+
+
 .body-liste-educateur{
   font-family: 'Cormorant', sans-serif;
   background-color: #f4f8ff;
@@ -19,6 +26,8 @@
 
 
 table {
+  font-family: 'Cormorant', sans-serif;
+
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -38,6 +47,8 @@ table {
   }
 
   button {
+    font-family: 'Cormorant', sans-serif;
+
     padding: 5px 10px;
     cursor: pointer;
     font-size: 70px;

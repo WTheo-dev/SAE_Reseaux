@@ -40,13 +40,12 @@
 }
 
 .rectangle2-connexion-eleve {
-    display: flex;
-    justify-content: center;
+
     height: 15%;
-    border: 2px solid #2187c7;
     padding: 10px;
     box-sizing: border-box;
     margin: 20px 0;
+    border-radius: 127px;
 }
 
 .logo img {
