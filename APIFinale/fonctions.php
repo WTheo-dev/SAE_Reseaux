@@ -659,26 +659,64 @@ function ModificationCours($id_session,$theme,$cours,$duree,$id_formation) {
 
 function listeFormations() {
   $BD = connexionBD();
-  $listeFormations = $BD ->prepare('SELECT * from formations');
+  $listeFormations = $BD ->prepare('SELECT * from formation');
   $listeFormations ->execute(array());
   $BD = null;
-  if($listeFormations )
+  $result = [];
+  foreach($listeFormations as $row) {
+    array_push($result,array('Intitulé de la Formation' => $row['intitule'], 'Niveau de Qualification' => $row['niveau_qualif'],'Groupe' =>$row['groupe'], 'ID de la formation' =>$row['id_formation']));
+  }
+
+  return $result;
 }
 
 function UneFormation($id_formation) {
   $BD = connexionBD();
+  $uneFormation = $BD ->prepare('SELECT * FROM formation WHERE id_formation = ?');
+  $uneFormation ->execute(array($id_formation));
+  $BD = null;
+  $result = [];
+  foreach($uneFormation as $row) {
+    array_push($result,array('Intitulé de la Formation' => $row['intitule'], 'Niveau de Qualification' => $row['niveau_qualif'],'Groupe' =>$row['groupe']));
+  }
+
+  return $result;
 }
 
 function ajouterFormation($intitule,$niveau_qualif,$groupe) {
   $BD = connexionBD();
+  $ajoutFormation = $BD ->prepare('INSERT INTO formation(intitule,niveau_qualif,groupe) VALUES (?, ?, ?)');
+  $ajoutFormation -> execute(array($intitule,$niveau_qualif,$groupe));
+  $BD = null;
+  if ($ajoutFormation -> rowCount() > 0) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
 }
 
 function suppresionFormation($id_formation) {
   $BD = connexionBD();
+  $supprimerFormation = $BD ->prepare('DELETE FROM formation WHERE id_formation = ?');
+  $supprimerFormation ->execute(array($id_formation));
+  $BD = null;
+  if ($supprimerFormation -> rowCount() > 0 ){
+    return TRUE;
+  } else {
+    return FALSE;
+  }
 }
 
 function modifierFormation($id_formation,$intitule,$niveau_qualif,$groupe) {
   $BD = connexionBD();
+  $modifierFormation = $BD ->prepare('UPDATE formation SET intitule = ?, niveau_qualif = ?, groupe = ? WHERE id_formation = ?');
+  $modifierFormation ->execute(array($intitule,$niveau_qualif,$groupe,$id_formation));
+  $BD = null;
+  if ($modifierFormation -> rowCount() > 0 ){
+    return TRUE;
+  } else {
+    return FALSE;
+  }
 }
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////             GESTION API             ////////////////////
