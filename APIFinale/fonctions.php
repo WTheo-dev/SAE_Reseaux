@@ -580,6 +580,107 @@ function ficheInterventionDejaExistante($numero) {
 }
 
 /////////////////////////////////////////////////////////////////////////////
+////////////////////          GESTION DES COURS          ////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
+function ListeCours() {
+  $BD = connexionBD();
+  $listeCours = $BD->prepare('SELECT * from session');
+  $listeCours ->execute(array());
+  $BD = null;
+  $resultat = [];
+
+  foreach($listeCours as $row) {
+    array_push($resultat, array('Thème' => $row['theme'],'Cours' => $row['cours'],'Durée du Cours' => $row['duree'], 'ID_Formation' => $row['id_formation']));
+  }
+
+  return $resultat;
+}
+
+
+function UnCours($cours) {
+  $BD = connexionBD();
+  $unCours = $BD->prepare('SELECT * from session WHERE cours = ?');
+  $unCours ->execute(array($cours));
+  $BD = null;
+  $resultat = [];
+
+  foreach($unCours as $row) {
+    array_push($resultat, array('Thème' => $row['theme'],'Cours' => $row['cours'],'Durée du Cours' => $row['duree'], 'ID_Formation' => $row['id_formation']));
+  }
+
+  return $resultat;
+}
+
+function CreationCours($theme, $cours, $duree, $id_formation) {
+  $BD = connexionBD();
+  $theme = htmlspecialchars($theme);
+  $cours = htmlspecialchars($cours);
+  $duree = htmlspecialchars($duree);
+  $id_formation = htmlspecialchars($id_formation);
+  $creerCours = $BD->prepare('INSERT INTO session(theme, cours, duree, id_formation) VALUES (?, ?, ?, ?)');
+  $creerCours->execute(array($theme, $cours, $duree, $id_formation));
+  $BD = null;
+  if ($creerCours->rowCount() > 0) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+
+function SuppressionCours($id_session) {
+  $BD = connexionBD();
+  $supprimerCours = $BD ->prepare('DELETE FROM session WHERE id_session = ?');
+  $supprimerCours ->execute(array($id_session));
+  $BD = null;
+  if($supprimerCours ->rowCount() > 0) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+function ModificationCours($id_session,$theme,$cours,$duree,$id_formation) {
+  $BD = connexionBD();
+  $modifierCours = $BD -> prepare('UPDATE session SET theme = ?, cours = ?, duree = ? , id_formation = ? WHERE id_session = ?');
+  $modifierCours ->execute(array($theme,$cours,$duree,$id_formation,$id_session)); 
+  $BD = null;
+  if($modifierCours -> rowCount() > 0){
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+////////////////////            GESTION FORMATIONS       ////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
+function listeFormations() {
+  $BD = connexionBD();
+  $listeFormations = $BD ->prepare('SELECT * from formations');
+  $listeFormations ->execute(array());
+  $BD = null;
+  if($listeFormations )
+}
+
+function UneFormation($id_formation) {
+  $BD = connexionBD();
+}
+
+function ajouterFormation($intitule,$niveau_qualif,$groupe) {
+  $BD = connexionBD();
+}
+
+function suppresionFormation($id_formation) {
+  $BD = connexionBD();
+}
+
+function modifierFormation($id_formation,$intitule,$niveau_qualif,$groupe) {
+  $BD = connexionBD();
+}
+/////////////////////////////////////////////////////////////////////////////
 ////////////////////             GESTION API             ////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
