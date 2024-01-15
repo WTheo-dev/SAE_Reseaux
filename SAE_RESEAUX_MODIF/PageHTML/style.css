@@ -412,15 +412,6 @@
     background-color: #fff;
     border: 2px solid #ddd;
     text-align: center;
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-}
-
-#liste_photo_p_d button {
-    background: transparent;
-    border: none;
-
 }
 
 #liste_photo_p_d img {
@@ -1418,4 +1409,2316 @@ footer {
 }
 
 
+/* liste éducateurs */
+
+.body-liste-educateur{
+    font-family: 'Cormorant', sans-serif;
+    background-color: #f4f8ff;
+    color: #333;
+    margin: 0; /* Supprime la marge par défaut du corps */
+    padding: 0; /* Supprime le rembourrage par défaut du corps */
+    height: 100vh; /* Ajuste la hauteur du corps à 100% de la vue */
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0;
+  }
+  
+  
+  table.liste_educateur {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 70px;
+  }
+  
+  th.liste_educateur, td.liste_educateur {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+      font-size: 70px;
+      padding: 40px;
+  }
+  
+  th.liste_educateur {
+      background-color: #f2f2f2;
+  }
+  
+  button.liste_educateur {
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 70px;
+  }
+  
+  h2.liste_educateur {
+        font-size: 70px;
+  }
+
+  /* Page post co éducateur */
+  /* Style de base pour la table */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+
+
+
+.body-postco-educ{
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Cormorant', sans-serif;
+  background-color: #f0f0f0;
+}
+
+.texte_pagepostco_educ{
+  font-family: 'Cormorant', sans-serif;
+
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+}
+
+.zone-texte_page_postco-educ{
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.contient-profils-des-apprentis{
+  margin-top: 5rem;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.profils-des-apprentis{
+  justify-content: center;
+  width: 40%;
+  display: flex;
+  background-color: lightgray;  
+}
+
+.contient-photos-apprentis{
+  padding: 1rem;
+  display: grid;
+  justify-content: center;
+}
+.contient-photos-apprentis label{
+  font-size: 50px;
+  text-align: center;
+}
+
+
+.photos-apprentis{
+  margin: 10px;
+  background-color: white;
+  padding: 1em;
+  display: flex;
+  width: 300px; 
+}
+.imageApprentis {
+  width: 100%;
+  height: 100%; 
+}
+
+.btn-deconnexion_page_postco_educ{
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+
+}
+
+.btn-deconnexion_page_postco_educ button{
+  font-size: 50px;
+  background-color: red; 
+  color: #f0f0f0  ;
+  cursor: pointer;
+  padding: 20px;
+
+}
+
+
+.profils-des-apprentis.selected {
+  border: 10px solid green;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+
+.profils-boutons {
+  display: none;
+  margin-top: 8em;
+  padding: 1em;
+  
+}
+
+.profils-boutons button{
+  
+  padding: 1rem;
+  margin-top: 1em;
+  font-size: 50px;
+  background-color: rgb(130,106,251); 
+  color: #f0f0f0  ;
+  cursor: pointer;
+}
+
+/* Page post co élève */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+
+.body_postcoeleve {
+  font-family: 'Cormorant', sans-serif;
+  background-color: #f4f8ff;
+  color: #333;
+  margin: 0; /* Supprime la marge par défaut du corps */
+  padding: 0; /* Supprime le rembourrage par défaut du corps */
+  height: 100vh; /* Ajuste la hauteur du corps à 100% de la vue */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+}
+
+.main-header-eleve {
+  background-color: rgb(130,106,251); 
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.suivi-eleve {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.suivi-eleve img {
+  display: flex;
+  justify-content: center;
+}
+
+.h1-pagepostco-eleve {
+  font-family: 'Cinzel', sans-serif;
+  display: flex;
+  justify-content: center;
+  font-size: 60px;
+  
+}
+.header_text_postcoeleve {
+  font-family: 'Cormorant', sans-serif;
+  font-size: 40px;
+}
+
+.fiches-eleves{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+.suivi_eleve img{
+  display: flex;
+  width: 50%;
+}
+
+.fiche-actuelle,
+.anciennes-fiches {
+  flex: 1; /* Utilise tout l'espace disponible dans le conteneur parent */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ecf0f1;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fiche-actuelle img,
+.anciennes-fiches img {
+  max-width: 100%; /* Ajuste la taille maximale de l'image à 100% de la largeur du parent */
+  max-height: 100%; /* Ajuste la taille maximale de l'image à 100% de la hauteur du parent */
+  display: block;
+  margin: 0 auto;
+}
+
+.bouton-anciennes-fiches,
+.bouton-fiche-actuelle {
+  font-family: 'Cormorant', sans-serif;
+  margin-top: 10px;
+  width: 100%;
+  font-size: 45px;
+  background-color: rgb(130,106,251);
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.bubble:hover {
+  border: 2px solid rgb(130,106,251);
+}
+
+.contient-bouton-deconnexion {
+  display: flex;
+  justify-content: center;
+}
+
+
+.bouton-deconnexion {
+  display: flex;
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 15px 40px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  font-size: 45px;
+  margin-bottom: 1em;
+  text-decoration: none;
+}
+
+.bouton-deconnexion:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+      padding: 10px;
+  }
+}
+
+/* Page post co super administrateur */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+.header_page_postco_superadmin{
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.information-superadmin{
+    font-family: 'Cinzel', 'sans-serif';
+    font-size: 25px;
+    padding-right: 1em;
+}
+
+.body_page_postco_superadmin{
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.affichage-connexion-superadmin{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 55px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.container_1_page_postco_admin{
+    font-family: 'Cinzel', 'sans-serif';
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+}
+
+.choix-actions-superadmin{
+
+    font-family: 'Cormorant', sans-serif;
+    display: flex;
+    font-size: 80px;
+    justify-content: center;
+    margin-top: 5rem;
+}
+.btnaction, .btnliste{
+    display: flex;
+    justify-content: center;
+}
+
+.btnaction option, .btnliste option{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 20px;
+}
+
+.actions, .liste{
+    margin-top: 2rem;
+    font-family: 'Cormorant', sans-serif;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 5em;
+    margin: 30px;
+}
+
+.bouton-go{
+    margin-top: 2rem;
+    justify-content: center;
+    display: flex;
+    font-size: 110px;
+}
+
+.btnGO{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 65px;
+    cursor: pointer;
+}
+
+.colonne_liste{
+    display: flex;
+    justify-content: center; 
+    
+
+}
+
+#btnDeconnexion{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 70px;
+    margin-top: 10rem;
+    background-color: lightcoral;
+    cursor: pointer;
+}
+
+#btnredirection{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 70px;
+    margin-top: 10rem;
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+:root {
+	--background-color: #eeeeee;
+	--text-color: #1a1a1a;
+}
+
+:root {
+	--background-color: #282828;
+	--text-color: #d5d5d5;
+}
+
+/* Page suivi élève éducateur */
+
+.header_page_suivi_eleve_educateur {
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+.information-page-suivi-eleve-educ{
+    font-family: 'Cinzel', 'sans-serif';
+    font-size: 25px;
+    padding-right: 1em;
+}
+
+.body_page_suivi_eleve_educateur{
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.h1_eval_fiches_suivi_eleve_educateur {
+    font-size: 80px;
+}
+
+#ficheLabel {
+    font-size: 50px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+#ficheDropdown {
+    font-size: 50px;
+    margin-top: 20px;
+}
+#recordButton, #stopButton, #playButton, #deleteButton, #saveButton {
+    margin: 10px;
+    padding: 10px;
+    font-size: 70px;
+    cursor: pointer;
+}
+
+#audioPlayer {
+    width: 500px;;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+
+
+/* CONNEXION ELEVE */
+
+.logo_header {
+    display: flex;
+    width: 45%;
+    margin: 1em;
+}
+
+.body-connexion-eleve {
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Cormorant', sans-serif;
+    background-color: #f0f0f0;
+}
+
+.p_connexion_eleve{
+    font-family: 'Cormorant', sans-serif;
+    display: flex;
+    justify-content: center;
+    font-size: 90px;
+}
+
+
+
+.header-connexion-eleve {
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rectangle2-connexion-eleve {
+    display: flex;
+    justify-content: center;
+    height: 15%;
+    border: 2px solid #2187c7;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 20px 0;
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.lock-screen {
+    display: grid;
+    grid-template-columns: repeat(3, 150px); /* Augmentez la taille des colonnes */
+    grid-gap: 45px; /* Augmentez l'espace entre les colonnes */
+    margin-bottom: 25px;
+}
+
+#container {
+    display: flex;
+    padding: 50px;
+    margin: 1em;
+    justify-content: center;
+}
+
+.content-container {
+    font-family: 'Cormorant', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 20px;
+}
+
+.lock-dot {
+    width: 150px; /* Augmentez la taille du cercle */
+    height: 150px; /* Augmentez la taille du cercle */
+    border-radius: 50%;
+    background-color: lightgray; /* Couleur de base */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 75px; /* Augmentez la taille de la police */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.active-dot {
+    background-color: rgb(130,106,251);   ;
+    color: #fff;
+}
+
+#connect-button,
+#a,
+#back-button {
+    font-family: 'Cormorant', sans-serif;
+    background-color: rgb(130,106,251);
+    color: #fff;
+    padding: 25px 50px; /* Augmentez la taille du padding */
+    border: none;
+    border-radius: 8px; /* Augmentez le rayon du bord */
+    cursor: pointer;
+    margin: 20px;
+    font-size: 50px; /* Augmentez la taille de la police */
+    transition: background-color 0.3s ease;
+}
+
+#a {
+    background-color: rgb(130,106,251);   
+    color: #fff;
+    padding: 25px 50px; /* Augmentez la taille du padding */
+    border: none;
+    border-radius: 8px; /* Augmentez le rayon du bord */
+    cursor: pointer;
+    margin: 20px;
+    font-size: 50px; /* Augmentez la taille de la police */
+    transition: background-color 0.3s ease;
+}
+
+#connect-button:hover,
+#a:hover,
+#back-button:hover {
+    background-color: blue; /* Couleur au survol */
+}
+
+#connect-button {
+    display: none;
+}
+
+#lock-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/* CREER COMPTE ELEVE */
+
+.header_creercompteeleve {
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Styles de base pour la tablette */
+.body_creercompteleve{
+    font-family: 'Cormorant', sans-serif;
+    background-color: #f4f8ff;
+    color: #333;
+    margin: 0; /* Supprime la marge par défaut du corps */
+    padding: 0; /* Supprime le rembourrage par défaut du corps */
+    height: 100vh; /* Ajuste la hauteur du corps à 100% de la vue */
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0;
+}
+
+
+.rectangle2_creercompteeleve  {
+    display: flex;
+    justify-content: center;
+}
+
+.rectangle2-creercompteeleve {
+    font-family: 'Cormorant', sans-serif;
+}
+#image-container {
+    border: 2px solid #333;
+    padding: 10px;
+    text-align: center;
+}
+
+#container-buttons-page-creation-eleve {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.boutons-create, .boutons-delete{    
+    font-size: 50px;
+    font-family: 'Cormorant', sans-serif;
+    background-color: rgb(130,106,251); ;
+    border-radius: 10px;
+    margin-top: 3rem;
+    padding: 10px;
+    color: #fff;
+}
+
+#selected-image {
+    
+    display: flex;
+    justify-content: center;
+    max-width:500px;
+    max-height: 300px;
+}
+
+.rectangle3_creercompteeleve{
+    display: flex;
+    justify-content: center;
+    margin-top: 5em;
+
+}
+
+
+.creation_eleve_lock-screen {
+    display: grid;
+    grid-template-columns: repeat(3, 150px); /* Augmentez la taille des colonnes */
+    grid-gap: 45px; /* Augmentez l'espace entre les colonnes */
+    margin-bottom: 25px;
+    justify-content: center;
+}
+
+.input_creercompteeleve{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    font-family: "Cormorant", sans-serif;
+    text-align: center;
+   
+}
+
+.nom_prenom_creereleve{
+    font-size: 55px;
+    padding: 1em;
+    font-family: "Cormorant", sans-serif;
+}
+
+.rectangle4_creercompteeleve{
+    display: flex;
+    justify-content: center;
+}
+
+.p_creation_eleve{
+    margin-top: 7rem;
+   display: flex;
+   justify-content: center;
+   font-size: 55px;
+   font-family: "Cormorant", sans-serif;
+   margin-bottom: 1em;
+
+}
+
+#lock-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-valider-creation-eleve-div{
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    text-align: center;
+}
+
+.btn-valider-creation-eleve{
+    margin-top: 2rem;
+    font-family: "Cormorant", "sans-serif";
+    font-size: 50px;
+    text-align: center;
+}
+
+.lock-dot {
+    width: 150px; /* Augmentez la taille du cercle */
+    height: 150px; /* Augmentez la taille du cercle */
+    border-radius: 50%;
+    background-color: lightgray; /* Couleur de base */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 75px; /* Augmentez la taille de la police */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.active-dot {
+    background-color: rgb(130,106,251);   ;
+    color: #fff;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 40px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.popup-anim {
+    animation: fadeInOut 3s forwards;
+    font-size: 50px;
+    
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0;
+    }
+    25%, 75% {
+        opacity: 1;
+    }
+}
+
+.btn_creercompteleve,.btn_creercompteleve2{
+    display: flex;
+    justify-content: center;
+}
+
+#btn-valider-creation-eleve{
+    font-family: "Cormorant", sans-serif;
+    font-size: 50px;
+    background-color: rgb(130,106,251); 
+    cursor: pointer;
+    padding: 1rem;
+    color: #fff;
+    border-radius: 10px;
+
+}
+
+/* PAGE D'ACCUEIL */
+
+.body_p_d {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.header_p_d {
+    background-color: rgb(130,106,251); 
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.h1p_d{
+    font-family: 'Cinzel', sans-serif;
+    text-align: center;
+    margin: 30px;
+    padding: auto;
+    font-size: 60px;
+}
+
+.h1p_d_2{
+    font-family: 'Cinzel', sans-serif;
+    display: flex;
+    justify-content: center;
+    font-size: 60px;
+}
+
+.main_p_d {
+    padding: 20px;
+}
+.test{
+    font-family: 'Cormorant', sans-serif;
+   display: flex; 
+   justify-content: center;
+   font-size: 60px;
+}
+.p_p_d{
+    display: flex;
+    justify-content: center;
+    font-family: 'Cormorant', sans-serif;
+    font-size: 50px;
+}
+
+
+.Connexion_superadmin, .Connexion_admin{
+    
+    display: flex;
+    background-color:rgb(153,153,251);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.Connexion_superadmin a, .Connexion_admin a{
+    font-family: 'Cormorant', sans-serif;
+    display: flex;
+    text-decoration: none;
+    font-size: 40px;
+}
+
+#liste_photo_p_d {
+    width: 80%;             /*Taille du rectangle*/
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    text-align: center;
+}
+
+#liste_photo_p_d img {
+    width: 230px; /* Redimensionner les images à la largeur souhaitée */
+    height: 230px; /* Redimensionner les images à la hauteur souhaitée */
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+.label_connexion_educ{
+    padding: 10em;
+    display: flex;
+    justify-content: center;
+}
+.label_connexion_educ label{
+  font-size: 50px; 
+}
+
+#connect-button_educ{
+    font-family: 'Cormorant', sans-serif;
+    background-color: rgb(130,106,251);
+    color: #fff;
+    padding: 25px 50px; /* Augmentez la taille du padding */
+    border: none;
+    border-radius: 8px; /* Augmentez le rayon du bord */
+    cursor: pointer;
+    margin: 20px;
+    font-size: 50px; /* Augmentez la taille de la police */
+    transition: background-color 0.3s ease;
+}
+
+#nom{
+    padding: 1rem;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 80px;
+}
+
+.btn_connexion_educ{
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* Styles pour le footer */
+footer {
+    display: none;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+}
+
+.quoicoubeh {
+    margin-block: 4rem;
+    justify-content: center;
+}
+
+.boutons {
+    margin-top: 20px;
+    padding: 3em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Media Queries pour les tablettes et les smartphones */
+@media (max-width: 1200px) {
+
+    #liste_photo {
+        width: 80%;
+        height: auto;
+    }
+
+    #liste_photo img {
+        width: 30%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .Connexion_superadmin, .Connexion_admin {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 5px 0;
+    }
+
+    .Connexion_superadmin, .Connexion_admin {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    #liste_photo {
+        width: 95%;
+    }
+    
+}
+
+
+
+/* CONNEXION EDUCATEUR */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .body-educateur {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+       /* background: url('Image/img.jpg') no-repeat;*/
+       background: rgb(130, 106, 251);
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .educateur-wrapper {
+        width: 1200px;
+        border: 2px solid rgba(255,255,255,.2);
+        box-shadow: 0 0 10px rgba(0,0,0,.2);
+        background: purple;
+        color: #ffff;
+        border-radius: 10px;
+        padding: 30px 40px;
+        margin: 50px;
+    }
+
+    .educateur-wrapper h1 {
+        font-size: 100px;
+        text-align: center;
+    }
+
+    .educateur-input-box {
+        position: relative;
+        width: 100%;
+        height: 120px;
+        margin: 40px 0;
+    }
+
+    .educateur-input-box input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        border: 2px solid rgba(255,255,255,.2);
+        border-radius: 40px;
+        font-size: 50px;
+        color: #fff;
+        padding: 20px 45px 20px 20px;
+    }
+
+    .educateur-input-box input::placeholder {
+        color: #fff;
+    }
+
+    .educateur-input-box i {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 50px;
+    }
+
+    .educateur-wrapper .educateur-remember-forgot {
+        display: flex;
+        justify-content: space-between;
+        font-size: 50px;
+        margin: 10px;
+    }
+
+    .educateur-remember-forgot label input {
+        accent-color: #fff;
+        margin-right: 15px;
+        transform: scale(3.5);
+    }
+
+    .educateur-remember-forgot a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .educateur-remember-forgot a:hover {
+        text-decoration: underline;
+    }
+
+    .educateur-wrapper .educateur-btn {
+        width: 100%;
+        height: 100px;
+        background: #fff;
+        border: none;
+        outline: none;
+        border-radius: 40px;
+        box-shadow: 0 0 10px rgba(0,0,0,.1);
+        cursor: pointer;
+        font-size: 50px;
+        color: #333;
+        font-weight: 600;
+        margin-top: 50px;
+    }
+
+    .educateur-wrapper .educateur-register-link {
+        font-size: 50px;
+        text-align: center;
+    }
+
+    .educateur-register-link p a {
+        color : #fff;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .educateur-register-link p a:hover{
+        text-decoration: underline;
+    }
+
+
+/* CONNEXION SUPERADMIN */
+
+.body-superadmin {
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Cormorant', sans-serif;
+    background-color: #f0f0f0;
+    justify-content: center;
+}
+
+.superadmin-wrapper {
+    margin-top: 13em;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    background: rgb(130, 106, 251);;
+    color: #ffff;
+    border-radius: 40px;
+    padding: 10em;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.superadmin-wrapper h1 {
+    font-family: 'Cormorant', sans-serif;
+
+    font-size: 100px;
+    text-align: center;
+    font-family: 'Cormorant', sans-serif;
+
+}
+
+.superadmin-input-box {
+    
+    position: relative;
+    width: 100%;
+    height: 120px;
+    margin: 40px 0;
+}
+
+.superadmin-input-box input {
+    font-family: 'Cinzel', sans-serif;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 4px solid rgba(255,255,255,.2);
+    border-radius: 40px;
+    font-size: 50px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+}
+
+.superadmin-input-box input::placeholder {
+    color: #fff;
+}
+
+.superadmin-input-box i {
+    font-family: 'Cinzel', sans-serif;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 50px;
+}
+
+.superadmin-wrapper .superadmin-remember-forgot {
+    font-family: 'Cinzel', sans-serif;
+    display: flex;
+    font-size: 60px;
+
+}
+
+.superadmin-remember-forgot label input {
+    accent-color: #fff;
+    margin-right: 15px;
+    transform: scale(3.5);
+}
+
+.superadmin-remember-forgot a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.superadmin-remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.superadmin-wrapper .superadmin-btn {
+    width: 100%;
+    height: 100px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor: pointer;
+    font-size: 50px;
+    color: #333;
+    font-weight: 600;
+    margin-top: 50px;
+}
+
+.superadmin-wrapper .superadmin-register-link {
+    font-size: 50px;
+    text-align: center;
+    
+}
+
+.superadmin-register-link p a {
+    color : #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.superadmin-register-link p a:hover{
+    text-decoration: underline;
+}
+
+
+/* CREER COMPTE EDUCATEUR */
+
+.body-creer-compte-educateur {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgb(130, 106, 251);
+  }
+
+  .creer_compte_educateur-container {
+    position: relative;
+    max-width: 1100px;
+    width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .creer_compte_educateur-container header {
+    font-size: 100px;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .creer_compte_educateur-form {
+    margin-top: 30px;
+  }
+
+  .creer_compte_educateur-input-box {
+    width: 100%;
+    margin-top: 60px;
+    font-size: 50px;
+  }
+
+  .creer_compte_educateur-input-box label {
+    color: #333;
+  }
+
+  .creer_compte_educateur-form :where(.creer_compte_educateur-input-box input, .creer_compte_educateur-select-box) {
+    position: relative;
+    height: 100px;
+    width: 100%;
+    outline: none;
+    font-size: 50px;
+    color: #707070;
+    margin-top: 50px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+  }
+
+  .creer_compte_educateur-input-box input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .creer_compte_educateur-form .creer_compte_educateur-gender-box {
+    margin-top: 75px;
+  }
+
+  .creer_compte_educateur-gender-box h3 {
+    color: #333;
+    font-size: 50px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .creer_compte_educateur-form :where(.creer_compte_educateur-gender-option, .creer_compte_educateur-gender) {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    font-size: 50px;
+    flex-wrap: wrap;
+  }
+  .creer_compte_educateur-gender input {
+    transform: scale(2.5);
+    margin: 20px;
+  }
+  .creer_compte_educateur-form .creer_compte_educateur-gender {
+    column-gap: 5px;
+  }
+
+  .creer_compte_educateur-gender input {
+    accent-color: rgb(130, 106, 251);
+  }
+
+  .creer_compte_educateur-form :where(.creer_compte_educateur-gender input, .creer_compte_educateur-gender label) {
+    cursor: pointer;
+  }
+
+  .creer_compte_educateur-gender label {
+    color: #707070;
+  }
+
+  .creer_compte_educateur-input-box :where(input, .creer_compte_educateur-select-box) {
+    margin-top: 15px;
+  }
+
+  .creer_compte_educateur-select-box select {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    color: #707070;
+    font-size: 100px;
+  }
+
+  .creer_compte_educateur-form button {
+    height: 100px;
+    width: 100%;
+    color: #fff;
+    font-size: 60px;
+    font-weight: 400;
+    margin-top: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: rgb(130, 106, 251);
+  }
+
+  .creer_compte_educateur-form button:hover {
+    background: rgb(88, 56, 250);
+  }
+
+  /*Responsive*/
+  @media screen and (max-width: 500px) {
+    .creer_compte_educateur-form {
+      flex-wrap: wrap;
+    }
+
+    .creer_compte_educateur-form :where(.creer_compte_educateur-gender-option, .creer_compte_educateur-gender) {
+      row-gap: 15px;
+    }
+  }
+
+
+/* CREER COMPTE SUPERADMIN */
+
+.body-creer-compte-superadmin {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgb(130, 106, 251);
+  }
+
+  .creer_compte_superadmin-container {
+    position: relative;
+    max-width: 1200px;
+    width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .creer_compte_superadmin-container header {
+    font-size: 100px;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .creer_compte_superadmin-form {
+    margin-top: 30px;
+  }
+
+  .creer_compte_superadmin-input-box {
+    width: 100%;
+    margin-top: 50px;
+    font-size: 50px;
+  }
+
+
+  .creer_compte_superadmin-input-box label {
+    color: #333;
+  }
+
+  .creer_compte_superadmin-form :where(.creer_compte_superadmin-input-box input, .creer_compte_superadmin-select-box) {
+    position: relative;
+    height: 100px;
+    width: 100%;
+    outline: none;
+    font-size: 50px;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+  }
+
+  .creer_compte_superadmin-input-box input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .creer_compte_superadmin-form .creer_compte_superadmin-column {
+    display: flex;
+    column-gap: 15px;
+  }
+
+  .creer_compte_superadmin-form button {
+    height: 130px;
+    width: 100%;
+    color: #fff;
+    font-size: 50px;
+    font-weight: 400;
+    margin-top: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: rgb(130, 106, 251);
+  }
+
+  .creer_compte_superadmin-form button:hover {
+    background: rgb(88, 56, 250);
+  }
+
+  
+
+  /*Responsive*/
+  @media screen and (max-width: 500px) {
+    .creer_compte_superadmin-form .creer_compte_superadmin-column {
+      flex-wrap: wrap;
+    }
+    .creer_compte_superadmin-form :where(.creer_compte_superadmin-gender-option, .creer_compte_superadmin-gender) {
+      row-gap: 15px;
+    }
+  }
+
+
+/* MDP OUBLIE SUPERADMIN */
+
+.body_mdpsoubliésuperadmin {
+    font-family: Arial, sans-serif;
+    background-color: #3498db;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.body_mdpsoubliésuperadmin {
+    background-color: purple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.reset-form_mdpsoubliésuperadmin {
+    max-width: 11000px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 100px;
+}
+
+.h2_mdpsoubliésuperadmin {
+    text-align: center;
+    color: #333;
+    font-size: 75px;
+}
+
+.input_mdpsoubliésuperadmin {
+    width: 100%;
+    padding: 10px;
+    margin: 50px 0;
+    box-sizing: border-box;
+    font-size: 75px;
+    border-color: #000;
+}
+
+.input_mdpsoubliésuperadmin2 {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 75px;
+}
+
+#cancel-button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 50px;
+}
+
+.input_mdpsoubliésuperadmin2:hover {
+    opacity: 0.8;
+}
+
+.modal_mdpsoubliésuperadmin {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal_mdpsoubliésuperadmin-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+#modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#modal-close:hover,
+#modal-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+/* MDP OUBLIE EDUCATEUR */
+.body_mdpoublié {
+    background-color: purple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+.reset-form_mdpoublié {
+    max-width: 1100px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 70px;
+}
+
+.h2_mdpoublié {
+    text-align: center;
+    color: #333;
+    font-size: 70px;
+}
+
+.input_mdpoublié2 {
+    width: 100%;
+    padding: 10px;
+    margin: 25px 0;
+    box-sizing: border-box;
+    font-size: 70px;
+}
+
+#reset-button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 70px;
+}
+
+#cancel-button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 70px;
+}
+
+#reset-button:hover, #cancel-button:hover {
+    opacity: 0.8;
+}
+
+
+/* VOIR COMMENTAIRE EDUC */
+
+.header-voir_com_educ {
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+.body-voircom {
+    min-height: 100vh;
+    font-family: "Cormorant", sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    /*background: rgb(130, 106, 251);*/
+}
+    
+#comment-voircom{
+    border-radius: 10px;
+    background-color: lightgray;
+}
+
+.w3-container-voircom {
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 150px;
+}
+
+.h2-voircom {
+    color: #333;
+    font-size: 50px;
+}
+
+.label-voircom {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 50px;
+}
+
+.textarea-voircom {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    word-wrap: break-word; /* Force le retour à la ligne */
+    font-size: 50px;
+    border: 1px solid black;
+    word-wrap: break-word;
+}
+
+.button-voircom {
+    background-color: rgb(130,106,251); 
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 35px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.w3-responsive-voircom {
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.w3-table-all-voircom {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.th-voircom {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    background-color: rgb(130,106,251); 
+    color: white;
+}
+
+.th-voircom, .buton_deconnexion-voircom {
+    border-radius: 4px;
+    font-size: 30px;
+}
+
+.buton_deconnexion-voircom {
+    margin: 0 auto; /* Pour centrer le bouton horizontalement */
+    display: block; /* Pour que la marge auto fonctionne */
+    font-size: 45px; /* Taille du texte */
+    padding: 20px 45px; /* Rembourrage pour augmenter la taille du bouton */
+    background-color: red; /* Couleur de fond rouge */
+    color: white; /* Couleur du texte blanc */
+    border: none; /* Suppression de la bordure */
+    cursor: pointer;
+  }
+
+
+  /* SUIVI ELEVE */
+
+
+  .header-suivi_eleve {
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .body_suivi_eleve{
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Cormorant', sans-serif;
+    background-color: #f0f0f0;
+    justify-content: center;
+  }
+
+
+.h2-suivi_eleve {
+    font-family: 'Cormorant', sans-serif;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+.h2-suivi_eleve h2{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 90px;
+}
+
+.table-suivi_eleve {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.th-suivi_eleve, .td-suivi_eleve {
+    font-family: 'Cormorant', sans-serif;
+    padding: 30px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 50px;
+    max-width: 100%;
+}
+
+.th-suivi_eleve{
+    table-layout: fixed;
+    background-color: #f2f2f2;
+}
+.th-suivi_eleve text{
+    background-color: #f2f2f2;
+    font-family: 'Cormorant', sans-serif;
+
+
+}
+
+.tr-suivi_eleve:hover {
+    background-color: #f5f5f5;
+}
+
+.audio-suivi_eleve {
+    width: 100%;
+    max-width: 100%; /* La largeur maximale est désormais la largeur de sa cellule parente */
+    display: block; /* Pour gérer les marges correctement */
+    transform: scale(1.30); /* Ajustez la valeur selon vos besoins */
+}
+
+.btn-suivi-eleve{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-suivi-eleve button{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 50px;
+    background-color: rgb(130,106,251); 
+    color: white;
+    cursor: pointer;
+}
+
+/*Page Postco_SuperADMIN*/
+
+.header_page_postco_superadmin {
+    background-color: lightgreen;
+    color: #fff;
+   padding: 20px 0;
+   text-align: center;
+}
+
+.logo_page_postco_superadmin{
+    width: 10%;
+    margin-left: 40px;
+
+}
+
+.colonne_creation, .colonne_liste {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.bouton_creation, .bouton_liste {
+    display: block;
+    width: 20%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.bouton_creation {
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+}
+
+.bouton_creation:hover {
+    background-color: #2980b9;
+}
+
+.bouton_liste {
+    background-color: #27ae60;
+    color: #fff;
+}
+
+.bouton_liste:hover {
+    background-color: #218c54;
+}
+
+
+/* liste éducateurs */
+
+.body-liste-educateur{
+    font-family: 'Cormorant', sans-serif;
+    background-color: #f4f8ff;
+    color: #333;
+    margin: 0; /* Supprime la marge par défaut du corps */
+    padding: 0; /* Supprime le rembourrage par défaut du corps */
+    height: 100vh; /* Ajuste la hauteur du corps à 100% de la vue */
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0;
+  }
+  
+  
+  table.liste_educateur {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 70px;
+  }
+  
+  th.liste_educateur, td.liste_educateur {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+      font-size: 70px;
+      padding: 40px;
+  }
+  
+  th.liste_educateur {
+      background-color: #f2f2f2;
+  }
+  
+  button.liste_educateur {
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 70px;
+  }
+  
+  h2.liste_educateur {
+        font-size: 70px;
+  }
+
+  /* Page post co éducateur */
+  /* Style de base pour la table */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+
+
+
+.body-postco-educ{
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Cormorant', sans-serif;
+  background-color: #f0f0f0;
+}
+
+.texte_pagepostco_educ{
+  font-family: 'Cormorant', sans-serif;
+
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+}
+
+.zone-texte_page_postco-educ{
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.contient-profils-des-apprentis{
+  margin-top: 5rem;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.profils-des-apprentis{
+  justify-content: center;
+  width: 40%;
+  display: flex;
+  background-color: lightgray;  
+}
+
+.contient-photos-apprentis{
+  padding: 1rem;
+  display: grid;
+  justify-content: center;
+}
+.contient-photos-apprentis label{
+  font-size: 50px;
+  text-align: center;
+}
+
+
+.photos-apprentis{
+  margin: 10px;
+  background-color: white;
+  padding: 1em;
+  display: flex;
+  width: 300px; 
+}
+.imageApprentis {
+  width: 100%;
+  height: 100%; 
+}
+
+.btn-deconnexion_page_postco_educ{
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+
+}
+
+.btn-deconnexion_page_postco_educ button{
+  font-size: 50px;
+  background-color: red; 
+  color: #f0f0f0  ;
+  cursor: pointer;
+  padding: 20px;
+
+}
+
+
+.profils-des-apprentis.selected {
+  border: 10px solid green;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+
+.profils-boutons {
+  display: none;
+  margin-top: 8em;
+  padding: 1em;
+  
+}
+
+.profils-boutons button{
+  
+  padding: 1rem;
+  margin-top: 1em;
+  font-size: 50px;
+  background-color: rgb(130,106,251); 
+  color: #f0f0f0  ;
+  cursor: pointer;
+}
+
+/* Page post co élève */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+
+.body_postcoeleve {
+  font-family: 'Cormorant', sans-serif;
+  background-color: #f4f8ff;
+  color: #333;
+  margin: 0; /* Supprime la marge par défaut du corps */
+  padding: 0; /* Supprime le rembourrage par défaut du corps */
+  height: 100vh; /* Ajuste la hauteur du corps à 100% de la vue */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+}
+
+.main-header-eleve {
+  background-color: rgb(130,106,251); 
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.suivi-eleve {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.suivi-eleve img {
+  display: flex;
+  justify-content: center;
+}
+
+.h1-pagepostco-eleve {
+  font-family: 'Cinzel', sans-serif;
+  display: flex;
+  justify-content: center;
+  font-size: 60px;
+  
+}
+.header_text_postcoeleve {
+  font-family: 'Cormorant', sans-serif;
+  font-size: 40px;
+}
+
+.fiches-eleves{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+.suivi_eleve img{
+  display: flex;
+  width: 50%;
+}
+
+.fiche-actuelle,
+.anciennes-fiches {
+  flex: 1; /* Utilise tout l'espace disponible dans le conteneur parent */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ecf0f1;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fiche-actuelle img,
+.anciennes-fiches img {
+  max-width: 100%; /* Ajuste la taille maximale de l'image à 100% de la largeur du parent */
+  max-height: 100%; /* Ajuste la taille maximale de l'image à 100% de la hauteur du parent */
+  display: block;
+  margin: 0 auto;
+}
+
+.bouton-anciennes-fiches,
+.bouton-fiche-actuelle {
+  font-family: 'Cormorant', sans-serif;
+  margin-top: 10px;
+  width: 100%;
+  font-size: 45px;
+  background-color: rgb(130,106,251);
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.bubble:hover {
+  border: 2px solid rgb(130,106,251);
+}
+
+.contient-bouton-deconnexion {
+  display: flex;
+  justify-content: center;
+}
+
+
+.bouton-deconnexion {
+  display: flex;
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 15px 40px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  font-size: 45px;
+  margin-bottom: 1em;
+  text-decoration: none;
+}
+
+.bouton-deconnexion:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+      padding: 10px;
+  }
+}
+
+/* Page post co super administrateur */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+.header_page_postco_superadmin{
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.information-superadmin{
+    font-family: 'Cinzel', 'sans-serif';
+    font-size: 25px;
+    padding-right: 1em;
+}
+
+.body_page_postco_superadmin{
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.affichage-connexion-superadmin{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 55px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.container_1_page_postco_admin{
+    font-family: 'Cinzel', 'sans-serif';
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+}
+
+.choix-actions-superadmin{
+
+    font-family: 'Cormorant', sans-serif;
+    display: flex;
+    font-size: 80px;
+    justify-content: center;
+    margin-top: 5rem;
+}
+.btnaction, .btnliste{
+    display: flex;
+    justify-content: center;
+}
+
+.btnaction option, .btnliste option{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 20px;
+}
+
+.actions, .liste{
+    margin-top: 2rem;
+    font-family: 'Cormorant', sans-serif;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 5em;
+    margin: 30px;
+}
+
+.bouton-go{
+    margin-top: 2rem;
+    justify-content: center;
+    display: flex;
+    font-size: 110px;
+}
+
+.btnGO{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 65px;
+    cursor: pointer;
+}
+
+.colonne_liste{
+    display: flex;
+    justify-content: center; 
+    
+
+}
+
+#btnDeconnexion{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 70px;
+    margin-top: 10rem;
+    background-color: lightcoral;
+    cursor: pointer;
+}
+
+#btnredirection{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 70px;
+    margin-top: 10rem;
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+:root {
+	--background-color: #eeeeee;
+	--text-color: #1a1a1a;
+}
+
+:root {
+	--background-color: #282828;
+	--text-color: #d5d5d5;
+}
+
+/* Page suivi élève éducateur */
+
+.header_page_suivi_eleve_educateur {
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+.information-page-suivi-eleve-educ{
+    font-family: 'Cinzel', 'sans-serif';
+    font-size: 25px;
+    padding-right: 1em;
+}
+
+.body_page_suivi_eleve_educateur{
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.h1_eval_fiches_suivi_eleve_educateur {
+    font-size: 80px;
+}
+
+#ficheLabel {
+    font-size: 50px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+#ficheDropdown {
+    font-size: 50px;
+    margin-top: 20px;
+}
+#recordButton, #stopButton, #playButton, #deleteButton, #saveButton {
+    margin: 10px;
+    padding: 10px;
+    font-size: 70px;
+    cursor: pointer;
+}
+
+#audioPlayer {
+    width: 500px;;
+}
 

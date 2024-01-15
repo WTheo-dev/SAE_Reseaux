@@ -1,13 +1,9 @@
-<?php
-session_start();
-include_once("../../APIFinale/fonctions.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="liste_educateur.css">
+  <link rel="stylesheet" href="style.css">
   <title>Liste des Éducateurs</title>
   <header class="header-connexion-eleve">
     <div class="logo">
@@ -19,37 +15,30 @@ include_once("../../APIFinale/fonctions.php");
 
 <body class="body-liste-educateur">
 
-<h2>Liste des Éducateurs</h2>
+<h2 class="liste_educateur">Liste des Éducateurs</h2>
 
-<table>
+<table class="liste_educateur">
   <thead>
     <tr>
-      <th>Nom</th>
-      <th>Prénom</th>
-      <th>Action</th>
+      <th class="liste_educateur">Nom</th>
+      <th class="liste_educateur">Prénom</th>
+      <th class="liste_educateur">Action</th>
     </tr>
   </thead>
   <tbody>
 
-    <?php
-      /*
-      $persos = listeEducateur();
-      var_dump($persos);
-      */
-    ?>
-
     <tr>
-      <td>Jean-Charles</td>
-      <td>Delcaste</td>
-      <td><button onclick="window.location.href='connexion_educateur.html'">Se connecter</button></td>
+      <td class="liste_educateur">Jean-Charles</td>
+      <td class="liste_educateur">Delcaste</td>
+      <td class="liste_educateur"><button onclick="window.location.href='connexion_educateur.html'" class="liste_educateur">Se connecter</button></td>
     </tr>
     
     <tr>
-      <td>Jean</td>
-      <td>Neymar</td>
-      <td><button onclick="window.location.href='connexion_educateur.html'">Se connecter</button></td>
+      <td class="liste_educateur">Jean</td>
+      <td class="liste_educateur">Neymar</td>
+      <td class="liste_educateur"><button onclick="window.location.href='connexion_educateur.html'" class="liste_educateur">Se connecter</button></td>
     </tr>
-    <!-- Ajoutez d'autres lignes d'éducateurs ici selon vos besoins -->
+    
   </tbody>
 </table>
 
