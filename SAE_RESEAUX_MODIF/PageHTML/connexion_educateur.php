@@ -28,10 +28,11 @@
   }
   $perso = unPersonnel($id);
   $nomperso = $perso[0]["nom"];
+  $prenomperso = $perso[0]["prenom"];
   ?>
 
     <div class="label_connexion_educ">
-        <input type="text" id="nom" name="nom" disabled placeholder="<?php echo $nomperso; ?>" />
+        <input type="text" id="nom" name="nom" disableBienvenue sur votre espace d placeholder="<?php echo $prenomperso." ".$nomperso; ?>" />
     </div>
   <div class="content-container">
     <p class="p_connexion_eleve">Mettez votre code : </p>

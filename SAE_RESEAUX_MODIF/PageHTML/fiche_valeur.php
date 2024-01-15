@@ -70,12 +70,6 @@ function formatBox($name){
     echo '<label class="noprint" for="audio'.$name.'"> Audio </label>';
 }
 ?>
- 
-<?php
-echo getFontName();
-echo matchFontSize();
-?>
-
 
 <!--<form action="fiche_valeur.php" method="post">-->
 <form action="fiche_traitement.php" method="post">
