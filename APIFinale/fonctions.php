@@ -653,6 +653,7 @@ function ModificationCours($id_session,$theme,$cours,$duree,$id_formation) {
   }
 }
 
+
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////            GESTION FORMATIONS       ////////////////////
 /////////////////////////////////////////////////////////////////////////////
@@ -713,6 +714,19 @@ function modifierFormation($id_formation,$intitule,$niveau_qualif,$groupe) {
   $modifierFormation ->execute(array($intitule,$niveau_qualif,$groupe,$id_formation));
   $BD = null;
   if ($modifierFormation -> rowCount() > 0 ){
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+function formationExisteDeja($intitule) {
+  $BD = connexionBD();
+  $intitule = htmlspecialchars($intitule);
+  $formationExiste = $BD ->prepare('SELECT * from formation WHERE intitule = ?');
+  $formationExiste ->execute(array($intitule));
+  $BD = null;
+  if($formationExiste->rowCount() > 0) {
     return TRUE;
   } else {
     return FALSE;
