@@ -21,6 +21,8 @@ include_once("../../APIFinale/fonctions.php");
 
 <h2>Liste des Éducateurs</h2>
 
+<form action="connexion_educateur.php" method="post">
+
 <table>
   <thead>
     <tr>
@@ -32,26 +34,19 @@ include_once("../../APIFinale/fonctions.php");
   <tbody>
 
     <?php
-      /*
       $persos = listeEducateur();
-      var_dump($persos);
-      */
+      foreach ($persos as $perso){
+        echo "<tr>";
+        echo "<td>".$perso["nom"]."</td>";
+        echo "<td>".$perso["prenom"]."</td>";
+        echo "<td><button name='".$perso["id_personnel"]."'>Se connecter</button></td>";
+        echo "</tr>";
+      }
     ?>
-
-    <tr>
-      <td>Jean-Charles</td>
-      <td>Delcaste</td>
-      <td><button onclick="window.location.href='connexion_educateur.html'">Se connecter</button></td>
-    </tr>
-    
-    <tr>
-      <td>Jean</td>
-      <td>Neymar</td>
-      <td><button onclick="window.location.href='connexion_educateur.html'">Se connecter</button></td>
-    </tr>
-    <!-- Ajoutez d'autres lignes d'éducateurs ici selon vos besoins -->
   </tbody>
 </table>
+
+</form>
 
 </body>
 </html>

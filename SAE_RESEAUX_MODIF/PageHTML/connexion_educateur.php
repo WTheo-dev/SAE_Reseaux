@@ -14,8 +14,24 @@
       <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
     </div>
   </header>
+  <?php
+  session_start();
+  include_once("../../APIFinale/fonctions.php");
+  $id = -1;
+  $i = 0;
+  while (true){
+    if (isset($_POST[$i])){
+      $id = $i;
+      break;
+    }
+    $i += 1;
+  }
+  $perso = unPersonnel($id);
+  $nomperso = $perso[0]["nom"];
+  ?>
+
     <div class="label_connexion_educ">
-        <input type="text" id="nom" name="nom" placeholder="Entrez votre nom" />
+        <input type="text" id="nom" name="nom" disabled placeholder="<?php echo $nomperso; ?>" />
     </div>
   <div class="content-container">
     <p class="p_connexion_eleve">Mettez votre code : </p>

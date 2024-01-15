@@ -4,6 +4,6 @@ document.getElementById("reset-button").addEventListener("click", function() {
     });
 
     document.getElementById("cancel-button").addEventListener("click", function() {
-        // Rediriger vers la page connexion_educateur.html
-        window.location.href = "connexion_educateur.html";
+        // Rediriger vers la page connexion_educateur.php
+        window.location.href = "connexion_educateur.php";
     });

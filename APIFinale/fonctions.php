@@ -429,7 +429,7 @@ function listeEducateur()
   $BD = connexionBD();
 
   try {
-    $listePersonnel = $BD->prepare('SELECT * FROM personnel p, utilisateur u, role r WHERE p.id_utilisateur = u.id_utilisateur AND u.id_role = r.id_role');
+    $listePersonnel = $BD->prepare('SELECT * FROM personnel p, utilisateur u, role r WHERE p.id_utilisateur = u.id_utilisateur AND u.id_role = r.id_role AND r.description = "Educ Simple"');
     $listePersonnel->execute(array());
     $BD = null;
     $resultat = [];
