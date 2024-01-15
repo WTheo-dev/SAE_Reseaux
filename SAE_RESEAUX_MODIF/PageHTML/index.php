@@ -1,7 +1,6 @@
 <?php
 session_start();
 include_once("../../APIFinale/fonctions.php");
-$bd = connexion_bd();
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +27,15 @@ $bd = connexion_bd();
 
         <div id="liste_photo_p_d">
             <!-- Placeholder pour les photos d'élève -->
+            <?php
+                $etus = listeApprenti();
+                foreach ($etus as $etu){
+                    echo "<a href='connexion_eleve.html'><img src='Image/".$etu["photo"]."' alt='".$etu["prenom"]."'>";
+                    echo "<p>Nom: ".$etu["nom"].", Prenom: ".$etu["prenom"]."</p>";
+                    echo "</a>";
+                }
+            ?>
+            <!--
             <a href="connexion_eleve.html"><img src="Image/utilisateur.png" alt="Élève 1"></a>
             <a href="connexion_eleve.html"><img src="Image/utilisateur.png" alt="Élève 2"></a>
             <a href="connexion_eleve.html"><img src="Image/utilisateur.png" alt="Élève 3"></a>
@@ -37,6 +45,7 @@ $bd = connexion_bd();
             <a href="connexion_eleve.html"><img src="Image/utilisateur.png" alt="Élève 7"></a>
             <a href="connexion_eleve.html"><img src="Image/utilisateur.png" alt="Élève 8"></a>
             <a href="connexion_eleve.html"><img src="Image/utilisateur.png" alt="Élève 1"></a>
+            -->
         </div>
     </main>
     <p class="p_p_d"> Ou connecte toi en temps qu'administrateur</p>

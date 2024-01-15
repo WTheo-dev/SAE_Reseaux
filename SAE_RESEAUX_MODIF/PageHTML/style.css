@@ -412,6 +412,8 @@
     background-color: #fff;
     border: 2px solid #ddd;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #liste_photo_p_d img {
