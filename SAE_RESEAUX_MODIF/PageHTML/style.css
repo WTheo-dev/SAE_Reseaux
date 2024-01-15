@@ -40,12 +40,7 @@
 }
 
 .rectangle2-connexion-eleve {
-
-    height: 15%;
-    padding: 10px;
-    box-sizing: border-box;
-    margin: 20px 0;
-    border-radius: 127px;
+    border-radius: 50px;
 }
 
 .logo img {
@@ -93,6 +88,10 @@
 .active-dot {
     background-color: rgb(130,106,251);   ;
     color: #fff;
+}
+
+#Imageenfant-connexion-eleve{
+    border-radius: 250px;
 }
 
 #connect-button,
