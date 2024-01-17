@@ -28,7 +28,7 @@ switch ($http_method) {
                     throw new Exception("Aucune Trace n'a été trouvé avec l'ID spécifié");
                 }
             } else {
-                $STATUS_MESSAGE = "Voici la liste des cours :";
+                $STATUS_MESSAGE = "Voici la liste des traces :";
                 $matchingData = listeTrace();
             }
         } catch (\Throwable $th) {
@@ -98,4 +98,3 @@ switch ($http_method) {
     deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         break;
 }
-?>

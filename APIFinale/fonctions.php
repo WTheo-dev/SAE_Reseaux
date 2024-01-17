@@ -442,7 +442,7 @@ function unPersonnel($id_personnel) {
 
 function personnelDejaExistant($nom,$prenom) {
   $BD = connexionBD();
-  $personnelExiste = $BD->prepare('SELECT * FROM personnel WHERE nom= ? AND prenom ?');
+  $personnelExiste = $BD->prepare('SELECT * FROM personnel WHERE nom = ? AND prenom = ?');
   $personnelExiste ->execute(array($nom,$prenom));
   $BD = null;
 
