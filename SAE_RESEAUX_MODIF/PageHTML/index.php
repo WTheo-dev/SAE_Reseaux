@@ -33,14 +33,15 @@ include_once("../../APIFinale/fonctions.php");
                 foreach ($etus as $etu){
                     echo "<button name=".$etu["id_apprenti"].">";
                     echo "<img src='Image/etu/".$etu["photo"]."' alt='".$etu["prenom"]."'>";
-                    echo "<p class='p_pd'>".$etu["nom"].", ".$etu["prenom"]."</p>";
+                    echo "<p class='p_pd'>" . strtoupper($etu["nom"]) . " " . $etu["prenom"] . "</p>";
+
                     echo "</button>";
                 }
             ?>
             </form>
         </div>
     </main>
-    <p class="p_p_d"> Ou connecte toi en temps qu'administrateur</p>
+    <p class="p_p_d"> Ou connecte toi en temps que personnel</p>
     <div class="boutons"> 
         <button class="Connexion_admin"><a href="liste_educateur.php">Educateur</a></button>
         <button class="Connexion_superadmin"><a href="connexion_superadmin.html">Super-Admin</a></button>

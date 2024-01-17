@@ -401,6 +401,7 @@
     display: flex;
     text-decoration: none;
     font-size: 40px;
+    color: #fff;
 }
 
 #liste_photo_p_d {
@@ -673,7 +674,7 @@ footer {
 .superadmin-wrapper {
     margin-top: 13em;
     box-shadow: 0 0 10px rgba(0,0,0,.2);
-    background: rgb(130, 106, 251);;
+    background: rgb(130, 106, 251);
     color: #ffff;
     border-radius: 40px;
     padding: 10em;
@@ -1017,7 +1018,7 @@ footer {
 
 .body_mdpsoubliésuperadmin {
     font-family: Arial, sans-serif;
-    background-color: #3498db;
+    background-color: #f0f0f0;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -1027,18 +1028,9 @@ footer {
     height: 100vh;
 }
 
-.body_mdpsoubliésuperadmin {
-    background-color: purple;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-}
-
 .reset-form_mdpsoubliésuperadmin {
     max-width: 11000px;
-    background-color: #fff;
+    background: rgb(130, 106, 251);
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
