@@ -40,7 +40,7 @@ function showSection() {
         window.location.href = "creer_cours_superadmin.html";
         break;
       case "modifiercours":
-        window.location.href = "modifier_cours.html";
+        window.location.href = "modifier_cours_superadmin.html";
         break;
         case "creereducateurs":
         window.location.href = "creer_compte_educateur.html";
