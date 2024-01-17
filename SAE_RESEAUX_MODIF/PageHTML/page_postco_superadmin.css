@@ -58,6 +58,7 @@
 }
 
 .actions, .liste{
+    cursor: pointer;
     margin-top: 2rem;
     font-family: 'Cormorant', sans-serif;
     display: flex;

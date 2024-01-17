@@ -59,7 +59,14 @@
 }
 
 #iconNomIntervenant, #texteNomIntervenant,
-#audioNomIntervenant{
+#audioNomIntervenant, #iconNomDemandeur, #audioNomDemandeur
+
+{
+    width:60px;
+    height:60px;
+}
+
+#texteNomDemandeur{
     width:60px;
     height:60px;
 }
@@ -92,4 +99,22 @@
     .noprint {
        visibility: hidden;
     }
+}
+
+#configTaille{
+    cursor: pointer;
+    font-family: 'Cormorant', 'sans-serif';
+    font-size: 50px;
+}
+
+#configPolice{
+    cursor: pointer;
+    display: flex;
+    font-family: 'Cormorant', 'sans-serif';
+    font-size: 50px;
+
+}
+
+#configPolice option{
+    font-size: 20px;
 }
