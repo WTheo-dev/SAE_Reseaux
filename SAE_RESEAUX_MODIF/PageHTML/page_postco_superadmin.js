@@ -52,7 +52,7 @@ function showSection() {
         window.location.href = "creer_formation_superadmin.html";
         break;
       case "modifierformations":
-        window.location.href = "modifier_formation.html";
+        window.location.href = "modifier_formation_superadmin.html";
         break;
     }
 
