@@ -28,10 +28,8 @@ $activeSheet = $spreadsheet->getActiveSheet();
 
 $activeSheet->setCellValue('A1', 'id_apprenti');
 $activeSheet->setCellValue('B1', 'nom');
-$activeSheet->setCellValue('C1', 'prénom');
-$activeSheet->setCellValue('D1', 'login');
-$activeSheet->setCellValue('E1', 'mdp');
-$activeSheet->setCellValue('F1', 'photo');
+$activeSheet->setCellValue('C1', 'prenom');
+$activeSheet->setCellValue('D1', 'photo');
 
 
 $query = $BD->query("SELECT * FROM apprenti");
@@ -42,9 +40,7 @@ if ($query->rowCount() > 0) {
         $activeSheet->setCellValue('A' . $i, $row['id_apprenti']);
         $activeSheet->setCellValue('B' . $i, $row['nom']);
         $activeSheet->setCellValue('C' . $i, $row['prenom']);
-        $activeSheet->setCellValue('D' . $i, $row['login']);
-        $activeSheet->setCellValue('E' . $i, $row['mdp']);
-        $activeSheet->setCellValue('F' . $i, $row['photo']);
+        $activeSheet->setCellValue('D' . $i, $row['photo']);
         $i++;
     }
 }
