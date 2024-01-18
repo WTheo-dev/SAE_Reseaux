@@ -24,8 +24,8 @@
     }
 
     if ($idcorrect == "no" || $mpdcorrect == "no"){
-        //header("Location: connexion_superadmin.php");
-        //exit();
+        header("Location: connexion_superadmin.php");
+        exit();
     }
 ?>
 
