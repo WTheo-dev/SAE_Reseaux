@@ -1,6 +1,6 @@
 <?php
 
-require 'C:\xampp\htdocs\SAE_Reseaux\vendor\autoload.php';
+require '../../vendor/autoload.php';
 
 $SERVER = '127.0.0.1';
 $BD_NAME = 'apeaj';
