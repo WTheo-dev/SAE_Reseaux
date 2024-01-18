@@ -18,9 +18,9 @@ include_once("../../APIFinale/fonctions.php");
 
 
 <body class="body-liste-educateur">
-
-<h2>Liste des Éducateurs</h2>
-
+  <div class="liste-educ">
+    <h2 >Liste des Éducateurs</h2>
+  </div>
 <form action="connexion_educateur.php" method="post">
 
 <table>
