@@ -29,13 +29,21 @@ $nofoot = "no";
 $nobutton = "no";
 $noform = "no";
 
+$numpage = "1";
 include("fiche1.php");
+$numpage = "1";
 include("fiche2.php");
+$numpage = "1";
 include("fiche3.php");
+$numpage = "1";
 include("fiche4.php");
+$numpage = "1";
 include("fiche5.php");
+$numpage = "1";
 include("fiche6.php");
+$numpage = "1";
 include("fiche7.php");
+$numpage = "1";
 include("fiche8.php");
 
 $nofoot = "yes";

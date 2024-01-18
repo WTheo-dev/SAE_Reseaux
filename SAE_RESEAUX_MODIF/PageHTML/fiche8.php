@@ -1,5 +1,6 @@
 <?php
 include_once("fiche_base.php");
+$numpage=8;
 include_once("fiche_head.php"); 
 ?>
 
@@ -28,7 +29,6 @@ include_once("fiche_head.php");
     </div>
 
     <?php
-    $numpage=8;
     $end="true";
     include_once("fiche_button.php");
     ?>

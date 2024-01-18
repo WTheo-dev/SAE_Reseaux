@@ -1,114 +1,86 @@
-body {
-    /*
-    font-size: 1.75rem;
-    */
-    height: calc(100vh - 60px);
-    margin: 0;
-    padding: 20px;
-    background-color: lightgray;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 
-form {
-    height: 100%;
-}
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
 
-.bordure {
-    border: solid green 0.4vh;
-    min-height: 90%;
-    align-items: center;
-}
-
-.block{
-    height: 93%;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-}
-
-.jsp {
-    height: fit-content;
-}
-
-.fiche_button {
-    display: flex;
-    justify-content: space-around;
-    height: fit-content;
-    padding-top: 2vh;
-}
-
-.block p {
-    position: absolute;
-    top: -0.5%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
-    background-color: lightgray;
-}
-
-.block textarea {
-    width: 99%;
-    margin-top: 1%;
-}
-
-#titre_mat_util {
-    margin: 0 auto;
-    width: fit-content;
-}
-
-#mat_util {
-    display: flex;
-    justify-content: space-around;
-}
-
-#mat_droit, #mat_gauche {
-    display: flex;
+.body_fiche {
     flex-direction: column;
-    gap: 100px;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    /*
+    font-family: 'Cormorant', sans-serif;
+    */
+    background-color: #f0f0f0;
 }
 
-#bouton_imprimer {
-    justify-content: center;
+.header_fiche{
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
 }
 
-.block *:disabled {
-    background-color: lightgray;
-}
-
-#checkouille {
-    border: red solid 3px;
-}
-
-select {
+.child-info{
     /*
-    font-size: 1.2rem;
+    font-family: 'Cinzel', 'sans-serif';
+    */
+    /*
+    font-size: 25px;
+    */
+    padding-right: 1em;
+}
+
+.texte-page1{
+    display: flex;
+    justify-content: center;
+    /*
+    font-size: 5em;
     */
 }
 
-button {
+.jsp{
+    padding: 3em;
+    display: flex;
+    justify-content: center;
+}
+
+.jsp label{
     /*
-    font-size: 1.2rem;
+    font-size: 5em;
     */
-    padding: 10px 15px;
+    
 }
 
-button i{
-    margin-right:10px;
+.jsp input{
+    margin: 20px;
+    /*
+    font-size: 3em;;
+    */
 }
 
-@media print {
-    .noprint {
-       visibility: hidden;
-    }
+.audio-fiche-1{
+    size: 5em;
 }
 
-.audiobutton {
-    background: none;
-	color: inherit;
-	border: none;
-	padding: 10px;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+.jsp span{
+    size: 5px;
+}
+
+.fa fa-user fa-2x{
+    /*
+    font-size: 9em;
+    */
+}   
+
+.audiobutton{
+    /*
+    font-size: 50px;
+    */
+}
+
+.fa fa-address-card fa-4x{
+    display: flex;
+    justify-content: center;
 }

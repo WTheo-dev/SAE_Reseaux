@@ -1,4 +1,5 @@
 <?php include_once("fiche_base.php"); ?>
+<?php $numpage=1; ?>
 <?php include("fiche_head.php"); ?>
 <body class="body_fiche">
 
