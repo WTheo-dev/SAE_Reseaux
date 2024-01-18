@@ -1,6 +1,7 @@
 const lockDots = document.querySelectorAll('.lock-dot');
 let enteredCode = '';
 
+/*
 lockDots.forEach(dot => {
   dot.addEventListener('click', () => {
     if (enteredCode.length < 4) {
@@ -11,6 +12,7 @@ lockDots.forEach(dot => {
     checkCode();
   });
 });
+*/
 
 function toggleColor(dot) {
   dot.classList.toggle('active-dot');
@@ -35,10 +37,11 @@ function hideConnectButton() {
 }
 
 function connect() {
-  window.location.href = 'page_postco_admin.html';
+  window.location.href = 'page_postco_admin.php';
 }
 
 function clearSelection() {
+  /*
   lockDots.forEach(dot => {
     if (dot.classList.contains('active-dot')) {
       toggleColor(dot);
@@ -46,6 +49,12 @@ function clearSelection() {
   });
   enteredCode = '';
   hideConnectButton();
+  */
+  get = document.getElementsByTagName('input');
+
+  for (var i = 0; i < get.length; i++) {
+    get[i].checked = false;
+  }
 }
 
 function goBack() {

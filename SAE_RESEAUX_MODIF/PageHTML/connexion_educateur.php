@@ -37,23 +37,65 @@
   <div class="content-container">
     <p class="p_connexion_eleve">Mettez votre code : </p>
     
+    <form action="page_postco_admin.php" method="post">
+    
     <div id="container">
       <div id="lock-container">
         <div id="lock-screen" class="lock-screen">
-          <div class="lock-dot" data-dot="1">1</div>
-          <div class="lock-dot" data-dot="2">2</div>
-          <div class="lock-dot" data-dot="3">3</div>
-          <div class="lock-dot" data-dot="4">4</div>
-          <div class="lock-dot" data-dot="5">5</div>
-          <div class="lock-dot" data-dot="6">6</div>
-          <div class="lock-dot" data-dot="7">7</div>
-          <div class="lock-dot" data-dot="8">8</div>
-          <div class="lock-dot" data-dot="9">9</div>
+<div class="lock-dot">
+<input type="checkbox" id="1" name="1" style="display: none;" />
+<label for="1">1</label>
+</div>
+
+<div class="lock-dot">
+<input type="checkbox" id="2" name="2" style="display: none;" />
+<label for="2">2</label>
+</div>
+
+<div class="lock-dot">
+<input type="checkbox" id="3" name="3" style="display: none;" />
+<label for="3">3</label>
+</div>
+
+<div class="lock-dot">
+<input type="checkbox" id="4" name="4" style="display: none;" />
+<label for="4">4</label>
+</div>
+
+<div class="lock-dot">
+<input type="checkbox" id="5" name="5" style="display: none;" />
+<label for="5">5</label>
+</div>
+
+<div class="lock-dot">
+<input type="checkbox" id="6" name="6" style="display: none;" />
+<label for="6">6</label>
+</div>
+
+<div class="lock-dot">
+<input type="checkbox" id="7" name="7" style="display: none;" />
+<label for="7">7</label>
+</div>
+
+<div class="lock-dot">
+<input type="checkbox" id="8" name="8" style="display: none;" />
+<label for="8">8</label>
+</div>
+
+<div class="lock-dot">
+<input type="checkbox" id="9" name="9" style="display: none;" />
+<label for="9">9</label>
+</div>
         </div>
       </div>
     </div>
+
+    </form>
   
+    <button id="connect-button_educ" style="display: none;">Se connecter</button>
+    <!--
     <button id="connect-button_educ" onclick="connect()" style="display: none;">Se connecter</button>
+    -->
 </div>
     <div class="btn_connexion_educ">
     <button id="a" onclick="clearSelection()">Effacer</button>

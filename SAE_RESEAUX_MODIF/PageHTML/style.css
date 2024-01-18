@@ -85,6 +85,11 @@
     transition: background-color 0.3s ease;
 }
 
+.lock-dot:has( > input:checked + label) {
+    background-color: rgb(130,106,251);   ;
+    color: #fff;
+}
+
 .active-dot {
     background-color: rgb(130,106,251);   ;
     color: #fff;
