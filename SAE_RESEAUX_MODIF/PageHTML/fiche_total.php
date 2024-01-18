@@ -1,4 +1,11 @@
-<?php include("fiche_head.php") ?>
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
+?>
+
+<?php include("fiche_head.php"); ?>
+
+<body>
 
 <style>
     .bordure {
@@ -39,7 +46,3 @@ include("fiche_button.php");
 ?>
 
 </form>
-
-<?php
-include("fiche_foot.php");
-?>
