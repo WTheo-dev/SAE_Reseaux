@@ -81,6 +81,19 @@ function id_login($login) {
   }
 }
 
+function get_utilisateur($id){
+  $BD = connexionBD();
+  $jsp = $BD->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+  $jsp->execute(array($id));
+  if ($jsp->rowCount() > 0) {
+    foreach($jsp as $row){
+      return $row;
+    }
+  } else {
+    return FALSE;
+  }
+}
+
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -430,6 +443,25 @@ function listeEducateur()
 
   try {
     $listePersonnel = $BD->prepare('SELECT * FROM personnel p, utilisateur u, role r WHERE p.id_utilisateur = u.id_utilisateur AND u.id_role = r.id_role AND r.description = "Educ Simple"');
+    $listePersonnel->execute(array());
+    $BD = null;
+    $resultat = [];
+
+    foreach ($listePersonnel as $row) {
+      array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom'], 'id_personnel' => $row['id_personnel'], 'id_utilisateur' => $row['id_utilisateur']));
+    }
+  } catch (PDOException $e) {
+    die('Erreur : ' . $e->getMessage());
+  }
+
+  return $resultat;
+}
+function listeSuperAdmin()
+{
+  $BD = connexionBD();
+
+  try {
+    $listePersonnel = $BD->prepare('SELECT * FROM personnel p, utilisateur u, role r WHERE p.id_utilisateur = u.id_utilisateur AND u.id_role = r.id_role AND r.description = "Super-Admin"');
     $listePersonnel->execute(array());
     $BD = null;
     $resultat = [];

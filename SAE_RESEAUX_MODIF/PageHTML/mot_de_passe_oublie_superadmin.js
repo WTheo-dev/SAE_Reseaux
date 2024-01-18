@@ -16,8 +16,8 @@ resetButton.addEventListener("click", function() {
 });
 
 cancelButton.addEventListener("click", function() {
-    // Rediriger vers la page connexion_superadmin.html
-    window.location.href = "connexion_superadmin.html";
+    // Rediriger vers la page connexion_superadmin.php
+    window.location.href = "connexion_superadmin.php";
 });
 
 modalClose.addEventListener("click", function() {

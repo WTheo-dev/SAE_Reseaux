@@ -16,18 +16,18 @@
   </header>
 <body class="body-superadmin">
     <div class="superadmin-wrapper">
-        <form action="page_postco_superadmin.html">
+        <form action="page_postco_superadmin.php" method="post">
             <h1>Se connecter</h1>
             <div class="superadmin-input-box">
-                <input type="text" placeholder="prenom.nom" required>
+                <input type="text" placeholder="prenom.nom" name="id" required>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="superadmin-input-box">
-                <input type="password" placeholder="Mot de passe" required>
+                <input type="password" placeholder="Mot de passe" name="mdp" required>
                 <i class='bx bxs-lock-alt' ></i>
             </div>
             <div class="superadmin-remember-forgot">
-                <label><input type="checkbox"> Se souvenir de moi</label>
+                <label><input type="checkbox" name="remember"> Se souvenir de moi</label>
                 <a href="mot_de_passe_oublie_superadmin.html"> Mot de passe oublié ?</a>
             </div>
 

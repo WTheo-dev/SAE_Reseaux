@@ -1,3 +1,34 @@
+<?php
+    //error_reporting(E_ALL);
+    //ini_set('display_errors', 'On');
+
+    include_once("../../APIFinale/fonctions.php");
+    $persos = listeSuperAdmin();
+
+    list($prenom, $nom) = explode('.', $_POST["id"]);
+    $mdp = $_POST["mdp"];
+
+    foreach ($persos as $perso){
+        if ($perso["nom"] == $nom && $perso["prenom"] == $prenom){
+            $idcorrect = "yes";
+            $user = get_utilisateur($perso["id_utilisateur"]);
+            if ($user["mdp"] == $mdp){
+                $mpdcorrect = "yes";
+            } else {
+                $mpdcorrect = "no";
+            }
+            break;
+        } else {
+            $idcorrect = "no";
+        }
+    }
+
+    if ($idcorrect == "no" || $mpdcorrect == "no"){
+        //header("Location: connexion_superadmin.php");
+        //exit();
+    }
+?>
+
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -8,10 +39,11 @@
         
     </head>
     <body class="body_page_postco_superadmin">  
+
         <header class="header_page_postco_superadmin">
             <div class="header_text"><img class="logo_page_postco_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
             <div class="child-info">
-                <h2 class="header_text_postcoeleve">Nom Prénom de l'admin</h2>
+                <h2 class="header_text_postcoeleve"><?php echo $prenom." ".strtoupper($nom); ?></h2>
             </div>
         </header>
     
@@ -19,6 +51,7 @@
             <h2 class="h2_pagepostco_superadmin">Vous êtes connecté en tant que Super Administrateur</h2>
            
         </div>
+
         
     <div class="container_central"> 
         <div class="container_2">

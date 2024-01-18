@@ -106,7 +106,7 @@ function afficherPopup() {
   // Fermer la popup après un certain délai (par exemple, 3 secondes)
   setTimeout(function () {
       document.body.removeChild(popup);
-      window.location.href = 'page_postco_superadmin.html';; // Ajout de cette ligne pour rediriger après la popup
+      window.location.href = 'page_postco_superadmin.php';; // Ajout de cette ligne pour rediriger après la popup
   }, 3000);
 }
 
@@ -163,5 +163,5 @@ function clearSelection() {
 }
 
 function goBack() {
-  window.location.href = 'page_postco_superadmin.html';
+  window.location.href = 'page_postco_superadmin.php';
 }

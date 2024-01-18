@@ -44,7 +44,7 @@ include_once("../../APIFinale/fonctions.php");
     <p class="p_p_d"> Ou connecte toi en temps que personnel</p>
     <div class="boutons"> 
         <button class="Connexion_admin"><a href="liste_educateur.php">Educateur</a></button>
-        <button class="Connexion_superadmin"><a href="connexion_superadmin.html">Super-Admin</a></button>
+        <button class="Connexion_superadmin"><a href="connexion_superadmin.php">Super-Admin</a></button>
     </div>
     <script src="page_daccueil.js"></script>
 </body>
