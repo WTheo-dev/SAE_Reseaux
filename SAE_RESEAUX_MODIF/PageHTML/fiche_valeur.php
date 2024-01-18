@@ -120,7 +120,6 @@ function formatBox($name){
     <label for="nomIntervenant">Nom de l'intervenant:</label>
     <input class="labelfichevaleur" type="text" disabled name="nomIntervenant" value="<?php if (isset($_COOKIE['nomIntervenant'])) { echo $_COOKIE['nomIntervenant']; } ?>">
     <?php formatBox("NomIntervenant", ""); ?>
-
     <br>
     <br>
 
