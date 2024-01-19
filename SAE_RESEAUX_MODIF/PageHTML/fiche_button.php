@@ -34,7 +34,7 @@
             </button>
             <?php else : ?>
                 <!-- boutton de retour -->
-                <button class="btn-suivant" type="submit" name="suivant" value="<?php echo $numpage; ?>">
+                <button class="btn-suivant" type="submit" name="quitter" value="<?php echo $numpage; ?>">
                 <i class="fa fa-arrow-right"  aria-hidden="true"></i>
                 <span>Enregistrer et quitter</span>
             </button>

@@ -25,6 +25,15 @@ if (isset($_POST['precedent'])){
         $direction = "sauvegarder";
         header("location: fiche".$_POST['sauvegarder'].".php");
     }
+} else if (isset($_POST['quitter'])) {
+    if ($_POST['quitter'] == "total"){
+        header("location: fiche_total.php");
+    }else{
+        $numpage = $_POST['quitter'];
+        $index = $numpage;
+        $direction = "quitter";
+        header("location: index.php");
+    }
 } else if (isset($_POST['suivant'])) {
     $numpage = $_POST['suivant'];
     $index = $numpage + 1;
