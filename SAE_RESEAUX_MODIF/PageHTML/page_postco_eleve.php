@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="page_postco_eleve.css">
-    <title>Page eleve</title>
+    <title>Page élève</title>
 </head>
 
 <body class="body_postcoeleve">
@@ -16,8 +16,8 @@
             <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
         </div>
         <div class="child-info">
-            <h2 class="header_text_postcoeleve">Nom Prénom de l'eleve</h2>
-            <p class="header_text_postcoeleve">Formation de l'eleve</p>
+            <h2 class="header_text_postcoeleve">Nom Prénom de l'élève</h2>
+            <p class="header_text_postcoeleve">Formation de l'élève</p>
         </div>
     </header>
 
@@ -47,7 +47,7 @@
     </div>
 
     <div class="bouton-deconnexion-container">
-        <a href="index.php" class="bouton-deconnexion">Deconnexion</a>
+        <a href="index.php" class="bouton-deconnexion">Déconnexion</a>
     </div>
 
 </body>
