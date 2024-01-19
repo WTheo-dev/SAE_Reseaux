@@ -57,175 +57,21 @@
     <div class="texte_pagepostco_educ">Selectionnez l'étudiant de votre choix</div>
 
     <div class="class-container-profile-switch">
-      
-        <div class="profile-switch-container" onclick="selectProfile(this)">
 
-          <div class="rectangle-container-photo-label">
+    <?php $etus = listeApprenti(); ?>
+    <?php foreach($etus as $etu): ?>
 
-            <label for="nom-prenom">John Doe</label>
-
-            <div class="rectangle-photo">
-
-              <img class="image" src="Image/utilisateur.png" alt="utilisateurphoto">
-            </div>
+    <div class="profile-switch-container" onclick="selectProfile(this)">
+        <div class="rectangle-container-photo-label">
+          <label for="nom-prenom"><?php echo strtoupper($etu["nom"]) . " " . $etu["prenom"]; ?></label>
+          <div class="rectangle-photo">
+              <img class="image" src="Image/etu/<?php echo $etu["photo"] ?>" alt="utilisateurphoto">
           </div>
-        </div>
-      <div class="profile-switch-container" onclick="selectProfile(this)">
-
-          <div class="rectangle-container-photo-label">
-
-            <label for="nom-prenom">John Doe  </label>
-
-            <div class="rectangle-photo">
-              
-              <img class="image" src="Image/utilisateur.png" alt="utilisateurphoto">
-            </div>
-            
-        </div>
-    </div>
-    <div class="profile-switch-container" onclick="selectProfile(this)">
-
-      <div class="rectangle-container-photo-label">
-
-        <label for="nom-prenom">John Doe</label>
-
-        <div class="rectangle-photo">
-
-          <img class="image" src="Image/utilisateur.png" alt="utilisateurphoto">
-        </div>
       </div>
     </div>
-    <div class="profile-switch-container" onclick="selectProfile(this)">
 
-      <div class="rectangle-container-photo-label">
-
-        <label for="nom-prenom">John Doe</label>
-
-        <div class="rectangle-photo">
-
-          <img class="image" src="Image/utilisateur.png" alt="utilisateurphoto">
-        </div>
-      </div>
-    </div>
-    <div class="profile-switch-container" onclick="selectProfile(this)">
-
-      <div class="rectangle-container-photo-label">
-
-        <label for="nom-prenom">John Doe</label>
-
-        <div class="rectangle-photo">
-
-          <img class="image" src="Image/utilisateur.png" alt="utilisateurphoto">
-        </div>
-      </div>
-    </div>
-    <div class="profile-switch-container" onclick="selectProfile(this)">
-
-      <div class="rectangle-container-photo-label">
-
-        <label for="nom-prenom">John Doe</label>
-
-        <div class="rectangle-photo">
-
-          <img class="image" src="Image/utilisateur.png" alt="utilisateurphoto">
-        </div>
-      </div>
-    </div>
-    <div class="profile-switch-container" onclick="selectProfile(this)">
-
-      <div class="rectangle-container-photo-label">
-
-        <label for="nom-prenom">John Doe</label>
-
-        <div class="rectangle-photo">
-
-          <img class="image" src="Image/utilisateur.png" alt="utilisateurphoto">
-        </div>
-      </div>
-    </div>
-    <div class="profile-switch-container" onclick="selectProfile(this)">
-
-      <div class="rectangle-container-photo-label">
-
-        <label for="nom-prenom">John Doe</label>
-
-        <div class="rectangle-photo">
-
-          <img class="image" src="Image/utilisateur.png" alt="utilisateurphoto">
-        </div>
-      </div>
-    </div>
-    <div class="profile-switch-container" onclick="selectProfile(this)">
-
-      <div class="rectangle-container-photo-label">
-
-        <label for="nom-prenom">John Doe</label>
-
-        <div class="rectangle-photo">
-
-          <img class="image" src="Image/utilisateur.png" alt="utilisateurphoto">
-        </div>
-      </div>
-    </div>
-    <div class="profile-switch-container" onclick="selectProfile(this)">
-
-      <div class="rectangle-container-photo-label">
-
-        <label for="nom-prenom">John Doe</label>
-
-        <div class="rectangle-photo">
-
-          <img class="image" src="Image/utilisateur.png" alt="utilisateurphoto">
-        </div>
-      </div>
-    </div>
-    <div class="profile-switch-container" onclick="selectProfile(this)">
-
-      <div class="rectangle-container-photo-label">
-
-        <label for="nom-prenom">John Doe</label>
-
-        <div class="rectangle-photo">
-
-          <img class="image" src="Image/utilisateur.png" alt="utilisateurphoto">
-        </div>
-      </div>
-    </div>
-    <div class="profile-switch-container" onclick="selectProfile(this)">
-
-      <div class="rectangle-container-photo-label">
-
-        <label for="nom-prenom">John Doe</label>
-
-        <div class="rectangle-photo">
-
-          <img class="image" src="Image/utilisateur.png" alt="utilisateurphoto">
-        </div>
-      </div>
-    </div>
-    <div class="profile-switch-container" onclick="selectProfile(this)">
-
-      <div class="rectangle-container-photo-label">
-
-        <label for="nom-prenom">John Doe</label>
-
-        <div class="rectangle-photo">
-
-          <img class="image" src="Image/utilisateur.png" alt="utilisateurphoto">
-        </div>
-      </div>
-    </div>
-    <div class="profile-switch-container" onclick="selectProfile(this)">
-
-      <div class="rectangle-container-photo-label">
-
-        <label for="nom-prenom">John Doe</label>
-
-        <div class="rectangle-photo">
-
-          <img class="image" src="Image/utilisateur.png" alt="utilisateurphoto">
-        </div>
-      </div>
+    <?php endforeach; ?>
+    
     </div>
     
       <!-- Ajoutez d'autres profils si nécessaire -->
