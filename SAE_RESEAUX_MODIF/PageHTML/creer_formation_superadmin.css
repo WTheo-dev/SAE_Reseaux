@@ -32,14 +32,14 @@ h1{
     cursor: pointer;
 }
 
-.btn_deconnexion-container {
+.button-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.btn_deconnexion {
+.btn_retour {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,3 +48,4 @@ h1{
     background-color: lightcoral;
     cursor: pointer;
 }
+
