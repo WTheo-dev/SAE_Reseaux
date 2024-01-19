@@ -11,7 +11,9 @@ include_once("fiche_head.php");
 <?php ifform() ?>
 
     <div class="block bordure" id="mat_util">
-    <p>Matériaux utilisés</p>
+    <div class="text-page8">
+    <p >Matériaux utilisés</p>
+</div>
     <div id="mat_droit">
     <?php
     for ($i=0; $i<5; $i++){

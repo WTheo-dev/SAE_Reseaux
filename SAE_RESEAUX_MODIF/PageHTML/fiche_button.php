@@ -27,22 +27,25 @@
     <?php endif; ?>
     
     <?php if (! isset($end)) : ?>
-       
-    <?php else : ?>
-        <!-- boutton de retour -->
+        
+        <button class="btn-suivant" type="submit" name="suivant" value="<?php echo $numpage; ?>">
+                <i class="fa fa-arrow-right"  aria-hidden="true"></i>
+                <span>Page suivante</span>
+            </button>
+            <?php else : ?>
+                <!-- boutton de retour -->
+                <button class="btn-suivant" type="submit" name="suivant" value="<?php echo $numpage; ?>">
+                <i class="fa fa-arrow-right"  aria-hidden="true"></i>
+                <span>Enregistrer et quitter</span>
+            </button>
     <?php endif; ?>
-    <button class="btn-suivant" type="submit" name="suivant" value="<?php echo $numpage; ?>">
-            <i class="fa fa-arrow-right"  aria-hidden="true"></i>
-            <span>Page suivante</span>
-        </button>
     </div>
     <div class="div-btn-fiche">
     <button class="fa fa_button" id="btn-save" type="submit" name="sauvegarder" value="<?php echo $numpage; ?>">
         <i class="fa fa-check" aria-hidden="true"></i>
         <span>Sauvegarder</span>
     </button>
-    </div>
-
+</div>
 <?php endif; ?>
 
 <!-- boutton d'impression
