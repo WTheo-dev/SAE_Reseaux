@@ -26,3 +26,25 @@
     */
     padding-right: 1em;
 }
+
+#mat_droit, #mat_gauche {
+    width: 80%;
+
+}
+
+#mat_droit select, #mat_gauche select {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    font-size: 2.2em;
+}
+
+#mat_droit option, #mat_gauche option{
+    font-size: 20px;
+    overflow-x: scroll;
+    }
+
+.text-page8{
+    display: flex;
+    justify-content: center;
+    }
