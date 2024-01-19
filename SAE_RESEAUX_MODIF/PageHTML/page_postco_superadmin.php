@@ -1,10 +1,21 @@
-<?php
+    <?php 
+    session_start(); // Démarrer la session
+
+    // Vérifier si le token est présent dans la session
+    if (isset($_SESSION['jwt_token'])) {
+        $token = $_SESSION['jwt_token'];
+    } else { // Rediriger vers la page de connexion si le token n'est pas présent
+        header('Location: connexion.php');
+        exit();
+    }
+    ?>
+
+    <?php
     //error_reporting(E_ALL);
     //ini_set('display_errors', 'On');
 
     include_once("../../APIFinale/fonctions.php");
     $persos = listeSuperAdmin();
-
     list($prenom, $nom) = explode('.', $_POST["id"]);
     $mdp = $_POST["mdp"];
 

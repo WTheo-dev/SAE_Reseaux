@@ -1,3 +1,15 @@
+<?php 
+    session_start(); // Démarrer la session
+    include 'header.php'; 
+
+    // Vérifier si le token est présent dans la session
+    if (isset($_SESSION['jwt_token'])) {
+        $token = $_SESSION['jwt_token'];
+    } else { // Rediriger vers la page de connexion si le token n'est pas présent
+        header('Location: connexion.php');
+        exit();
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
