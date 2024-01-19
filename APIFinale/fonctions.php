@@ -331,7 +331,7 @@ function unApprenti($id_apprenti) {
   $resultat = [];
 
   foreach ($ListeUnApprenti as $row) {
-    array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom'], 'photo' => $row['photo'],'id_apprenti' => $row['id_apprenti']));
+    array_push($resultat, array('nom' => $row['nom'], 'prenom' => $row['prenom'], 'photo' => $row['photo'],'id_apprenti' => $row['id_apprenti'], 'id_utilisateur' => $row['id_utilisateur']));
   }
 
   return $resultat;

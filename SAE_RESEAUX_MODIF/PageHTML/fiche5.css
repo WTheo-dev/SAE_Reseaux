@@ -26,3 +26,26 @@
     */
     padding-right: 1em;
 }
+
+#Aménagement{
+    width: 100px;
+    height: 100px;
+}
+
+.text-fiche5{
+    display: flex;
+    justify-content: center;
+}
+.jsp{
+    margin-bottom: 5em;
+}
+
+.audiobutton{
+    width: 100px;
+    height: 100px;
+}
+
+.audiobutton i{
+    width: 100%;
+    height: 100%;
+}

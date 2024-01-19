@@ -1,3 +1,21 @@
+<?php
+    include_once("../../APIFinale/fonctions.php");
+    $etu = unApprenti($_POST["id"])[0];
+
+    for ($i=0; $i<=9; $i++){
+      if (isset($_POST[$i])){
+        $mdp = $mdp.$i;
+      }
+    }
+
+    $user = get_utilisateur($etu["id_utilisateur"]);
+
+    if ($user["mdp"] != $mdp){
+        header("Location: index.php");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -16,7 +34,7 @@
             <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
         </div>
         <div class="child-info">
-            <h2 class="header_text_postcoeleve">Nom Prénom de l'élève</h2>
+            <h2 class="header_text_postcoeleve"><?php echo $etu["prenom"]." ".strtoupper($etu["nom"]); ?></h2>
             <p class="header_text_postcoeleve">Formation de l'élève</p>
         </div>
     </header>
@@ -41,7 +59,7 @@
 
     <div class="suivi-eleve">
         <h1 class="h1-pagepostco">Mon suivi :</h1>
-        <a href="suivi_eleve.html">
+        <a href="suivi_eleve.php">
             <img src="Image/image_suivi.png" alt="Image 2">
         </a>
     </div>

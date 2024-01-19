@@ -48,7 +48,7 @@ function hideConnectButton() {
 }
 
 function connect() {
-  window.location.href = 'page_postco_eleve.html';
+  window.location.href = 'page_postco_eleve.php';
 }
 
 function clearSelection() {

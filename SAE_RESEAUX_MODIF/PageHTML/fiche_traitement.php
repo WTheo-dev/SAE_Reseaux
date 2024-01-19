@@ -25,6 +25,15 @@ if (isset($_POST['precedent'])){
         $direction = "sauvegarder";
         header("location: fiche".$_POST['sauvegarder'].".php");
     }
+} else if (isset($_POST['quitter'])) {
+    if ($_POST['quitter'] == "total"){
+        header("location: fiche_total.php");
+    }else{
+        $numpage = $_POST['quitter'];
+        $index = $numpage;
+        $direction = "quitter";
+        header("location: index.php");
+    }
 } else if (isset($_POST['suivant'])) {
     $numpage = $_POST['suivant'];
     $index = $numpage + 1;
@@ -35,7 +44,7 @@ if (isset($_POST['precedent'])){
 }
 
 foreach ($_POST as $param => $value){
-    if ($param == "from-fiche-valeur") continue;
+    //if ($param == "from-fiche-valeur") continue;
     $value=htmlspecialchars($value);
     setcookie($param, $value, time() + (86400 * 60));
 
@@ -58,9 +67,9 @@ function uncheck_checkbox($name, $pagenum){
 uncheck_checkbox("Améliorative" , 4);
 uncheck_checkbox("Préventive"   , 4);
 uncheck_checkbox("Corrective"   , 4);
-uncheck_checkbox("Aménagement" , 5);
-uncheck_checkbox("Finitions"   , 5);
-uncheck_checkbox("Installation_sanitaire"   , 5);
-uncheck_checkbox("Nécessite_un_nouvelle_intervention", 7);
+uncheck_checkbox("Aménagement"  , 5);
+uncheck_checkbox("Finitions"    , 5);
+uncheck_checkbox("Installation_sanitaire"             , 5);
+uncheck_checkbox("Nécessite_un_nouvelle_intervention" , 7);
 exit;
 ?>

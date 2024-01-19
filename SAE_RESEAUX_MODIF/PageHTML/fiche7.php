@@ -38,8 +38,10 @@
 <?php ifform() ?>
 
     <div class="block" style="height:85%;">
-    <p>Travaux non réalisés</p>
+    <p class="text-fiche7">Travaux non réalisés</p>
+    <div class="label-fiche7">
     <textarea id="travauxNonRealises" name="travauxNonRealises" rows="10"><?php if (isset($_COOKIE['travauxNonRealises'])) { echo $_COOKIE['travauxNonRealises']; } ?></textarea>
+    </div>
     </div>
     <input type="checkbox" name="Nécessite_un_nouvelle_intervention" id="Nécessite_un_nouvelle_intervention" <?php if(isset($_COOKIE['Nécessite_un_nouvelle_intervention'])) echo "checked"; ?> />
     <label for="Nécessite_un_nouvelle_intervention">
