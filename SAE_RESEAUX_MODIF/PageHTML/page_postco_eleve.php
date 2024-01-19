@@ -1,6 +1,7 @@
 <?php
     include_once("../../APIFinale/fonctions.php");
     $etu = unApprenti($_POST["id"])[0];
+    $mdp = "0";
 
     for ($i=0; $i<=9; $i++){
       if (isset($_POST[$i])){

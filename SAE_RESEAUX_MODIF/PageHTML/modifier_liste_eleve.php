@@ -49,6 +49,7 @@
     margin-top: 10rem;
     background-color: blue;
     cursor: pointer;
+    color: white;
   }
   </style>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
