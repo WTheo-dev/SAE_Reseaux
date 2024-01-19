@@ -31,13 +31,13 @@
   $prenomperso = $perso[0]["prenom"];
   ?>
 
+    <form action="page_postco_admin.php" method="post">
+    
     <div class="label_connexion_educ">
-        <input type="text" id="nom" name="nom" disabled value="<?php echo $prenomperso." ".$nomperso; ?>" />
+        <input type="text" id="nom" name="nom" value="<?php echo $prenomperso." ".$nomperso; ?>" />
     </div>
   <div class="content-container">
     <p class="p_connexion_eleve">Mettez votre code : </p>
-    
-    <form action="page_postco_admin.php" method="post">
     
     <div id="container">
       <div id="lock-container">
@@ -90,13 +90,13 @@
       </div>
     </div>
 
-    </form>
-  
-    <button id="connect-button_educ" style="display: none;">Se connecter</button>
+    <button type="submit" id="connect-button_educ">Se connecter</button>
     <!--
     <button id="connect-button_educ" onclick="connect()" style="display: none;">Se connecter</button>
     -->
+
 </div>
+    </form>
     <div class="btn_connexion_educ">
     <button id="a" onclick="clearSelection()">Effacer</button>
     <button id="back-button" onclick="goBack()">Retour</button>
