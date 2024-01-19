@@ -34,7 +34,7 @@ function showSection() {
         window.location.href = "creer_compte_eleve.html";
         break;
       case "modifiereleves":
-        window.location.href = "modifier_liste_eleve.html";
+        window.location.href = "modifier_liste_eleve.php";
         break;
         case "creercours":
         window.location.href = "creer_cours_superadmin.html";
