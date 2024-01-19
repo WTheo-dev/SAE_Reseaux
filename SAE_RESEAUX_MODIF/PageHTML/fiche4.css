@@ -26,3 +26,19 @@
     */
     padding-right: 1em;
 }
+
+.check-amel{
+    padding: 1em;
+    width:100px;
+    height:100px;
+}
+
+.audiobutton{
+    width:100px;
+    height:100px;
+}
+
+.p-fiche4{
+    display: flex;
+    justify-content: center;
+}

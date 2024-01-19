@@ -26,3 +26,19 @@
     */
     padding-right: 1em;
 }
+
+#travauxRealises{
+    padding: 1em;
+    font-size : 5em;
+}
+
+.block{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.text-fiche6{
+    display: flex;
+    justify-content: center;
+}

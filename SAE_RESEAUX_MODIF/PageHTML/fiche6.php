@@ -32,7 +32,7 @@
 <?php ifform() ?>
 
     <div class="block">
-    <p>Travaux réalisés</p>
+    <p class="text-fiche6">Travaux réalisés</p>
     <textarea id="travauxRealises" name="travauxRealises" rows="10"><?php if (isset($_COOKIE['travauxRealises'])) { echo $_COOKIE['travauxRealises']; } ?></textarea>
     </div>
 

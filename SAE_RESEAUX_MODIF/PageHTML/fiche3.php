@@ -41,7 +41,7 @@
 <?php ifform() ?>
     <!-- Informations sur l'intervention -->
     <div class="block bordure">
-    <p>Intervention</p>
+    <p class="p-fiche3">INTERVENTION</p>
 
     <div class="jsp">
     <?php addIcon("dateIntervention", "fa-calendar-o"); ?>
@@ -53,7 +53,7 @@
     <div class="jsp">
     <?php addIcon("dureeIntervention", "fa-clock-o"); ?>
     <?php addTexte("dureeIntervention", "Durée de l'opération:") ?>
-    <select id="dureeIntervention" name="dureeIntervention">
+    <select class="duree-select" id="dureeIntervention" name="dureeIntervention">
     <?php if(isset($_COOKIE['dureeIntervention'])): ?>
     <br><option><?php echo $_COOKIE['dureeIntervention']; ?></option>
     <?php else: ?>

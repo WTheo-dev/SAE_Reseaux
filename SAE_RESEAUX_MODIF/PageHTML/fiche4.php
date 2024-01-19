@@ -43,30 +43,30 @@
 <?php ifform() ?>
 
     <div class="block bordure">
-    <p>Type de maintenance</p>
+    <p class="p-fiche4">Type de maintenance</p>
 
     <div class="jsp">
-    <input type="checkbox" name="Améliorative" id="Améliorative" <?php if(isset($_COOKIE['Améliorative'])) echo "checked"; ?> />
+    <input class="check-amel" type="checkbox" name="Améliorative" id="Améliorative" <?php if(isset($_COOKIE['Améliorative'])) echo "checked"; ?> />
     <label for="Améliorative">
-    <?php addIcon("Améliorative", "fa-arrow-circle-up"); ?>
-    <?php addTexteBox("Améliorative", "Améliorative"); ?>
+        <?php addTexteBox("Améliorative", "Améliorative"); ?>
+        <?php addIcon("Améliorative", "fa-arrow-circle-up","amel-icon"); ?>
     </label>
     <?php addAudio("Améliorative", "amel"); ?>
     </div>
 
     <div class="jsp">
-    <input type="checkbox" name="Préventive" id="Préventive" <?php if(isset($_COOKIE['Préventive'])) echo "checked"; ?> />
+    <input class="check-amel" type="checkbox" name="Préventive" id="Préventive" <?php if(isset($_COOKIE['Préventive'])) echo "checked"; ?> />
     <label for="Préventive">
-    <?php addIcon("Préventive", "fa-eye"); ?>
     <?php addTexteBox("Préventive", "Préventive"); ?>
+    <?php addIcon("Préventive", "fa-eye"); ?>
     </label>
     <?php addAudio("Préventive", "prev"); ?>
     </div>
     <div class="jsp">
-    <input type="checkbox" name="Corrective" id="Corrective" <?php if(isset($_COOKIE['Corrective'])) echo "checked"; ?> />
+    <input class="check-amel" type="checkbox" name="Corrective" id="Corrective" <?php if(isset($_COOKIE['Corrective'])) echo "checked"; ?> />
     <label for="Corrective">
-    <?php addIcon("Corrective", "fa-pencil-square-o"); ?>
     <?php addTexteBox("Corrective", "Corrective"); ?>
+    <?php addIcon("Corrective", "fa-pencil-square-o"); ?>
     </label>
     <?php addAudio("Corrective", "corr"); ?>
     </div>
