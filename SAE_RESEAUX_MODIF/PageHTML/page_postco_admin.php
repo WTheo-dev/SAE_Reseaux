@@ -1,6 +1,7 @@
   <?php
     include_once("../../APIFinale/fonctions.php");
     $persos = listeEducateur();
+    $mdp = "0";
 
     list($prenom, $nom) = explode(' ', $_POST["nom"]);
 
