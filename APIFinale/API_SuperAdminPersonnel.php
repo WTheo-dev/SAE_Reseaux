@@ -55,7 +55,7 @@ switch ($http_method) {
 
         case 'POST':
             $matchingData = null;
-            if(personnelDejaExistant($nom,$prenom)){
+            if(personnelDejaExistant($data['nom'],$data['prenom'])){
                 $RETURN_CODE = 400;
                 $STATUS_MESSAGE = "Création du personnel impossible pour cause de doublon";
             } else {

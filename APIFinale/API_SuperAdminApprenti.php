@@ -51,9 +51,7 @@ switch ($http_method) {
 
     case 'POST':
         $matchingData = null;
-        $nom = $data['nom'];
-        $prenom = $data['prenom'];
-        if (apprentiDejaExistant($nom,$prenom)) {
+        if (apprentiDejaExistant($data['nom'],$data['prenom'])) {
             $RETURN_CODE = 400;
             $STATUS_MESSAGE = "Création de l'apprenti impossible pour cause de doublon déjà existant";
         } else {

@@ -340,7 +340,7 @@ function unApprenti($id_apprenti) {
 
 function apprentiDejaExistant($nom,$prenom) {
   $BD = connexionBD();
-  $apprentiExiste = $BD->prepare('SELECT * FROM apprenti WHERE nom= ? AND prenom ?');
+  $apprentiExiste = $BD->prepare('SELECT * FROM apprenti WHERE nom = ? AND prenom  = ?');
   $apprentiExiste ->execute(array($nom,$prenom));
   $BD = null;
 
@@ -494,7 +494,7 @@ function unPersonnel($id_personnel) {
 
 function personnelDejaExistant($nom,$prenom) {
   $BD = connexionBD();
-  $personnelExiste = $BD->prepare('SELECT * FROM personnel WHERE nom= ? AND prenom ?');
+  $personnelExiste = $BD->prepare('SELECT * FROM personnel WHERE nom = ? AND prenom = ?');
   $personnelExiste ->execute(array($nom,$prenom));
   $BD = null;
 
@@ -630,6 +630,255 @@ function ficheInterventionDejaExistante($numero) {
     return FALSE;
   }
 }
+
+/////////////////////////////////////////////////////////////////////////////
+////////////////////          GESTION DES COURS          ////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
+function ListeCours() {
+  $BD = connexionBD();
+  $listeCours = $BD->prepare('SELECT * from session');
+  $listeCours ->execute(array());
+  $BD = null;
+  $resultat = [];
+
+  foreach($listeCours as $row) {
+    array_push($resultat, array('Thème' => $row['theme'],'Cours' => $row['cours'],'Durée du Cours' => $row['duree'], 'ID_Formation' => $row['id_formation']));
+  }
+
+  return $resultat;
+}
+
+
+function UnCours($cours) {
+  $BD = connexionBD();
+  $unCours = $BD->prepare('SELECT * from session WHERE cours = ?');
+  $unCours ->execute(array($cours));
+  $BD = null;
+  $resultat = [];
+
+  foreach($unCours as $row) {
+    array_push($resultat, array('Thème' => $row['theme'],'Cours' => $row['cours'],'Durée du Cours' => $row['duree'], 'ID_Formation' => $row['id_formation']));
+  }
+
+  return $resultat;
+}
+
+function CreationCours($theme, $cours, $duree, $id_formation) {
+  $BD = connexionBD();
+  $theme = htmlspecialchars($theme);
+  $cours = htmlspecialchars($cours);
+  $duree = htmlspecialchars($duree);
+  $id_formation = htmlspecialchars($id_formation);
+  $creerCours = $BD->prepare('INSERT INTO session(theme, cours, duree, id_formation) VALUES (?, ?, ?, ?)');
+  $creerCours->execute(array($theme, $cours, $duree, $id_formation));
+  $BD = null;
+  if ($creerCours->rowCount() > 0) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+
+function SuppressionCours($id_session) {
+  $BD = connexionBD();
+  $supprimerCours = $BD ->prepare('DELETE FROM session WHERE id_session = ?');
+  $supprimerCours ->execute(array($id_session));
+  $BD = null;
+  if($supprimerCours ->rowCount() > 0) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+function ModificationCours($id_session,$theme,$cours,$duree,$id_formation) {
+  $BD = connexionBD();
+  $modifierCours = $BD -> prepare('UPDATE session SET theme = ?, cours = ?, duree = ? , id_formation = ? WHERE id_session = ?');
+  $modifierCours ->execute(array($theme,$cours,$duree,$id_formation,$id_session)); 
+  $BD = null;
+  if($modifierCours -> rowCount() > 0){
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+////////////////////            GESTION FORMATIONS       ////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
+function listeFormations() {
+  $BD = connexionBD();
+  $listeFormations = $BD ->prepare('SELECT * from formation');
+  $listeFormations ->execute(array());
+  $BD = null;
+  $result = [];
+  foreach($listeFormations as $row) {
+    array_push($result,array('Intitulé de la Formation' => $row['intitule'], 'Niveau de Qualification' => $row['niveau_qualif'],'Groupe' =>$row['groupe'], 'ID de la formation' =>$row['id_formation']));
+  }
+
+  return $result;
+}
+
+function UneFormation($id_formation) {
+  $BD = connexionBD();
+  $uneFormation = $BD ->prepare('SELECT * FROM formation WHERE id_formation = ?');
+  $uneFormation ->execute(array($id_formation));
+  $BD = null;
+  $result = [];
+  foreach($uneFormation as $row) {
+    array_push($result,array('Intitulé de la Formation' => $row['intitule'], 'Niveau de Qualification' => $row['niveau_qualif'],'Groupe' =>$row['groupe']));
+  }
+
+  return $result;
+}
+
+function ajouterFormation($intitule,$niveau_qualif,$groupe) {
+  $BD = connexionBD();
+  $ajoutFormation = $BD ->prepare('INSERT INTO formation(intitule,niveau_qualif,groupe) VALUES (?, ?, ?)');
+  $ajoutFormation -> execute(array($intitule,$niveau_qualif,$groupe));
+  $BD = null;
+  if ($ajoutFormation -> rowCount() > 0) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+function suppresionFormation($id_formation) {
+  $BD = connexionBD();
+  $supprimerFormation = $BD ->prepare('DELETE FROM formation WHERE id_formation = ?');
+  $supprimerFormation ->execute(array($id_formation));
+  $BD = null;
+  if ($supprimerFormation -> rowCount() > 0 ){
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+function modifierFormation($id_formation,$intitule,$niveau_qualif,$groupe) {
+  $BD = connexionBD();
+  $modifierFormation = $BD ->prepare('UPDATE formation SET intitule = ?, niveau_qualif = ?, groupe = ? WHERE id_formation = ?');
+  $modifierFormation ->execute(array($intitule,$niveau_qualif,$groupe,$id_formation));
+  $BD = null;
+  if ($modifierFormation -> rowCount() > 0 ){
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+function formationExisteDeja($intitule) {
+  $BD = connexionBD();
+  $intitule = htmlspecialchars($intitule);
+  $formationExiste = $BD ->prepare('SELECT * from formation WHERE intitule = ?');
+  $formationExiste ->execute(array($intitule));
+  $BD = null;
+  if($formationExiste->rowCount() > 0) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+////////////////////           GESTION DES PHOTOS        ////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////
+////////////////////         GESTION DES TRACES          ////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
+function listeTrace() {
+   $BD = connexionBD();
+   $listeTrace = $BD -> prepare('SELECT * FROM laisser_trace');
+   $listeTrace ->execute(array());
+   $BD = null;
+   $result = [];
+
+   foreach($listeTrace as $row) {
+      array_push($result, array('ID Personnel' =>$row['id_personnel'], 'Horodatage' =>$row['horodatage'], 'Intitulé' =>$row['intitule'],'Evaluation Textuelle' =>$row['eval_texte'],'Commentaire Textuelle' =>$row['commentaire_texte'], 'Evaluation Audio' =>$row['eval_audio'],'Commentaire Audio' => $row['commentaire_audio'], 'ID de la Fiche' =>$row['id_fiche']));
+   }
+
+   return $result;
+}
+
+function UneTrace($intitule) {
+  $BD = connexionBD();
+  $intitule = htmlspecialchars($intitule);
+  $uneTrace = $BD -> prepare('SELECT * FROM laisser_tracer WHERE intitule = ?');
+  $uneTrace -> execute(array($intitule));
+  $BD = null;
+  $result = [];
+ 
+    foreach($uneTrace as $row) {
+       array_push($result, array('ID Personnel' =>$row['id_personnel'], 'Horodatage' =>$row['horodatage'], 'Intitulé' =>$row['intitule'],'Evaluation Textuelle' =>$row['eval_texte'],'Commentaire Textuelle' =>$row['commentaire_texte'], 'Evaluation Audio' =>$row['eval_audio'],'Commentaire Audio' => $row['commentaire_audio'], 'ID de la Fiche' =>$row['id_fiche']));
+    }
+ 
+    return $result;
+ }
+
+function ajouterTrace($id_personnel,$horodatage,$intitule,$eval_texte,$commentaire_texte,$eval_audio,$commentaire_audio, $id_fiche) {
+  $BD = connexionBD();
+  $id_personnel = htmlspecialchars($id_personnel);
+  $horodatage = htmlspecialchars($horodatage);
+  $intitule = htmlspecialchars($intitule);
+  $eval_texte = htmlspecialchars($eval_texte);
+  $commentaire_texte = htmlspecialchars($commentaire_texte);
+  $eval_audio = htmlspecialchars($eval_audio);
+  $commentaire_audio = htmlspecialchars($commentaire_audio);
+  $id_fiche = htmlspecialchars($id_fiche);
+
+  $ajoutTrace = $BD -> prepare('INSERT INTO laisser_trace(id_personnel,horodatage,intitule,eval_texte,commentaire_texte,eval_audio,commentaire_audio,id_fiche) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
+  $ajoutTrace ->execute(array($id_personnel,$horodatage,$intitule,$eval_texte,$commentaire_texte,$eval_audio,$commentaire_audio, $id_fiche));
+  $BD= null;
+  if ($ajoutTrace -> rowCount() > 0 ){
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+function supprimerTrace($intitule) {
+  $BD = connexionBD();
+  $intitule = htmlspecialchars($intitule);
+  $suppresionTrace = $BD -> prepare('DELETE INTO laisser_trace WHERE intitule = ?');
+  $suppresionTrace -> execute(array($intitule));
+  $BD = null;
+
+  if ($suppresionTrace -> rowCount() > 0 ) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+function modificationTrace($id_personnel,$horodatage,$intitule,$eval_texte,$commentaire_texte,$eval_audio,$commentaire_audio, $id_fiche) {
+  $BD = connexionBD();
+  $id_personnel = htmlspecialchars($id_personnel);
+  $horodatage = htmlspecialchars($horodatage);
+  $intitule = htmlspecialchars($intitule);
+  $eval_texte = htmlspecialchars($eval_texte);
+  $commentaire_texte = htmlspecialchars($commentaire_texte);
+  $eval_audio = htmlspecialchars($eval_audio);
+  $commentaire_audio = htmlspecialchars($commentaire_audio);
+  $id_fiche = htmlspecialchars($id_fiche);
+
+  $modifierTrace = $BD -> prepare('UPDATE laisser_trace SET id_personnel = ?, horodatage = ?, intitule = ?, eval_texte = ?, commentaire_texte = ?, eval_audio = ?, commentaire_audio = ?, id_fiche = ?');
+  $modifierTrace ->execute(array($id_personnel,$horodatage,$intitule,$eval_texte,$commentaire_texte,$eval_audio,$commentaire_audio, $id_fiche));
+  $BD = null;
+  if ($modifierTrace -> rowCount() > 0){
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+
 
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////             GESTION API             ////////////////////
