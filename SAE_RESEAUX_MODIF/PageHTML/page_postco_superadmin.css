@@ -16,6 +16,10 @@
     padding-right: 1em;
 }
 
+.header_text_postcoeleve{
+    color: white;
+}
+
 .body_page_postco_superadmin{
     flex-direction: column;
     margin: 0;

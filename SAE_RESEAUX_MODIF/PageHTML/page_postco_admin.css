@@ -23,6 +23,22 @@
   background-color: #f0f0f0;
 }
 
+.header_text_postcoeleve{
+  color: white;
+}
+
+.child-info{
+  font-family: 'Cinzel', 'sans-serif';
+  font-size: 25px;
+  padding-right: 1em;
+  margin-left: 350px;
+  margin-top: 100px;
+}
+
+.logo{
+  display: flex;
+}
+
 .texte_pagepostco_educ{
   font-family: 'Cormorant', sans-serif;
 
