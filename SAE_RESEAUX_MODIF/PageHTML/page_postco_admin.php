@@ -1,3 +1,36 @@
+  <?php
+    include_once("../../APIFinale/fonctions.php");
+    $persos = listeEducateur();
+
+    list($prenom, $nom) = explode(' ', $_POST["nom"]);
+
+    for ($i=0; $i<=9; $i++){
+      if (isset($_POST[$i])){
+        $mdp = $mdp.$i;
+      }
+    }
+
+    foreach ($persos as $perso){
+      if ($perso["nom"] == $nom && $perso["prenom"] == $prenom){
+        $idcorrect = "yes";
+        $user = get_utilisateur($perso["id_utilisateur"]);
+        if ($user["mdp"] == $mdp){
+          $mpdcorrect = "yes";
+        } else {
+            $mpdcorrect = "no";
+        }
+        break;
+      } else {
+          $idcorrect = "no";
+      }
+    }
+
+    if ($idcorrect == "no" || $mpdcorrect == "no"){
+        header("Location: index.php");
+        exit();
+    }
+  ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,6 +43,9 @@
   <header class="header-connexion-eleve">
     <div class="logo">
       <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
+      <div class="child-info">
+          <h2 class="header_text_postcoeleve"><?php echo $prenom." ".strtoupper($nom); ?></h2>
+      </div>
     </div>
   </header>
 
