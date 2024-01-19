@@ -28,7 +28,7 @@ function deconnecter() {
     }
   
   function voirCommentaires() {
-    window.location.href = "voir_commentaire_educ.html";  }
+    window.location.href = "voir_commentaire_educ.php";  }
   
   function deconnecter() {
     // Ajoutez ici le code pour déconnecter l'utilisateur, par exemple, en supprimant les cookies ou en effectuant une déconnexion côté serveur.

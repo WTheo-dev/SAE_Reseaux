@@ -286,5 +286,10 @@ for ($i=5; $i<10; $i++){
     <span>imprimer</span>
 </button>
 
+<button class="noprint" name="quitter" onClick="window.location.href = 'index.php';">
+    <i class="fa fa-ban" aria-hidden="true"></i>
+    <span>quitter</span>
+</button>
+
 </body>
 </html>

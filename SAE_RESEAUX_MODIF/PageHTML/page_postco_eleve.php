@@ -59,7 +59,7 @@
 
     <div class="suivi-eleve">
         <h1 class="h1-pagepostco">Mon suivi :</h1>
-        <a href="suivi_eleve.html">
+        <a href="suivi_eleve.php">
             <img src="Image/image_suivi.png" alt="Image 2">
         </a>
     </div>
