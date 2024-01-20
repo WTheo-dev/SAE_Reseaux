@@ -31,7 +31,7 @@ function showSection() {
     // Rediriger vers la page appropriée en fonction des sélections
     switch(selectedAction + selectedListe){
       case "creereleves":
-        window.location.href = "creer_compte_eleve.html";
+        window.location.href = "creer_compte_eleve.php";
         break;
       case "modifiereleves":
         window.location.href = "modifier_liste_eleve.php";

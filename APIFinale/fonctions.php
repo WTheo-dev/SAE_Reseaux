@@ -303,6 +303,35 @@ function supprimerApprenti($id_apprenti)
   }
 }
 
+function ajouterApprenti($nom, $prenom, $photo, $mdp){
+  $BD = connexionBD();
+ 
+  $nom    = htmlspecialchars($nom);
+  $prenom = htmlspecialchars($prenom);
+  $photo  = htmlspecialchars($photo);
+  $mdp    = htmlspecialchars($mdp);
+
+  $ajout = $BD->prepare("INSERT INTO `utilisateur` (`id_utilisateur`, `login`, `mdp`, `id_role`) VALUES (NULL, 'login', '".$mdp."', '1');");
+  $ajout->execute();
+
+  $ajout = $BD->prepare("SELECT id_utilisateur FROM `utilisateur` WHERE mdp = ?;");
+  $ajout->execute(array($mdp));
+  foreach ($ajout as $row){
+    $id =  $row["id_utilisateur"];
+    break;
+  }
+
+  $ajout = $BD->prepare("INSERT INTO `apprenti` (`id_apprenti`, `nom`, `prenom`, `photo`, `id_utilisateur`) VALUES (NULL, '".$nom."', '".$prenom."', '".$photo."', '".$id."')");
+  $ajout->execute();
+
+  $BD = null;
+  if ($ajout->rowCount() > 0) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
 
 
 function modifierApprenti($id_apprenti, $nom, $prenom, $photo)
