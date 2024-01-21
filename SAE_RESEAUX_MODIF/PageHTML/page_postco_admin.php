@@ -27,7 +27,7 @@
     }
 
     if ($idcorrect == "no" || $mpdcorrect == "no"){
-        header("Location: index.php");
+        header("Location: liste_educateur.php");
         exit();
     }
   ?>

@@ -332,6 +332,37 @@ function ajouterApprenti($nom, $prenom, $photo, $mdp){
   }
 }
 
+function ajouterEducateur($nom, $prenom, $mdp, $type, $num){
+  $BD = connexionBD();
+ 
+  $nom    = htmlspecialchars($nom);
+  $prenom = htmlspecialchars($prenom);
+  $mdp    = htmlspecialchars($mdp);
+  $type   = htmlspecialchars($type);
+  $num    = htmlspecialchars($num);
+
+  $ajout = $BD->prepare("INSERT INTO `utilisateur` (`id_utilisateur`, `login`, `mdp`, `id_role`) VALUES (NULL, 'login', '".$mdp."', '".$type."');");
+  $ajout->execute();
+
+  //$ajout = $BD->prepare("SELECT id_utilisateur FROM `utilisateur` WHERE mdp = ? AND id_role = ?;");
+  $ajout = $BD->prepare("SELECT * FROM utilisateur u WHERE u.mdp = ? AND u.id_role = ? AND NOT EXISTS (SELECT * FROM personnel p WHERE u.id_utilisateur = p.id_utilisateur);");
+  $ajout->execute(array($mdp, $type));
+  foreach ($ajout as $row){
+    $id =  $row["id_utilisateur"];
+    break;
+  }
+
+  $ajout = $BD->prepare("INSERT INTO `personnel` (`id_personnel`, `nom`, `prenom`, `id_utilisateur`) VALUES (NULL, '".$nom."', '".$prenom."', '".$id."')");
+  $ajout->execute();
+
+  $BD = null;
+  if ($ajout->rowCount() > 0) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
 
 
 function modifierApprenti($id_apprenti, $nom, $prenom, $photo)
