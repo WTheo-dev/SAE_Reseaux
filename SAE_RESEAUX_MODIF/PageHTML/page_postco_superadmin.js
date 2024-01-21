@@ -37,7 +37,7 @@ function showSection() {
         window.location.href = "modifier_liste_eleve.php";
         break;
         case "creercours":
-        window.location.href = "creer_cours_superadmin.html";
+        window.location.href = "creer_cours_superadmin.php";
         break;
       case "modifiercours":
         window.location.href = "modifier_cours_superadmin.html";
@@ -52,7 +52,7 @@ function showSection() {
         window.location.href = "creer_formation_superadmin.html";
         break;
       case "modifierformations":
-        window.location.href = "modifier_formation_superadmin.html";
+        window.location.href = "modifier_formation_superadmin.php";
         break;
     }
 

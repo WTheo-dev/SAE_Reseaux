@@ -1,3 +1,8 @@
+<?php
+include_once("../../APIFinale/fonctions.php");
+$forms = listeFormations();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +11,13 @@
     <title>Document</title>
 </head>
 <body>
+    <ul>
+    <?php foreach ($forms as $form): ?>
+       <li><?php echo $form['Intitulé de la Formation'] ?></li>
+        <br>
+    <?php endforeach; ?>
+    </ul>
+
     <button onclick="redirigerVersExportExcel()">Exporter vers Excel</button>
 
 <script>

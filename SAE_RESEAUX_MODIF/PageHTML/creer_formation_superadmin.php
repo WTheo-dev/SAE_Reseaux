@@ -1,3 +1,9 @@
+<?php
+include_once("../../APIFinale/fonctions.php");
+$forms = listeFormations();
+var_dump($forms);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,11 +22,23 @@
 
     <h1>Choisissez la formation que vous voulez créer</h1>
 
+<!--
+Agent Maintenance de Batiment
+Agent De Restauration
+Employe Technicien Vendeur En Materiel de Sport
+Ouvrier Paysage
+-->
+
     <div class="button-container">
+        <?php foreach ($forms as $form): ?>
+        <button class="service-button" data-page="<?php echo $form['Intitulé de la Formation'] ?>"><?php echo $form['Intitulé de la Formation'] ?></button>
+        <?php endforeach; ?>
+        <!--
         <button class="service-button" data-page="Agent Maintenance de Batiment">Agent de maintenance des bâtiments</button>
         <button class="service-button" data-page="Agent De Restauration">Agent de restauration</button>
         <button class="service-button" data-page="Employe Technicien Vendeur En Materiel de Sport">Employé technicien vendeur en matériel de sport</button>
         <button class="service-button" data-page="Ouvrier Paysage">Ouvrier du paysage</button>
+        -->
     </div>
 
     <div class="btn_retour-container">
