@@ -777,7 +777,7 @@ function listeFormations() {
   $BD = null;
   $result = [];
   foreach($listeFormations as $row) {
-    array_push($result,array('Intitulé de la Formation' => $row['intitule'], 'Niveau de Qualification' => $row['niveau_qualif'],'Groupe' =>$row['groupe'], 'ID de la formation' =>$row['id_formation']));
+    array_push($result,array('Intitulé de la Formation' => $row['intitule'], 'Niveau de Qualification' => $row['niveau_qualif'],'Groupe' =>$row['groupe'], 'ID' =>$row['id_formation']));
   }
 
   return $result;
