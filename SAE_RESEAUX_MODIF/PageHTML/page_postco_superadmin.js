@@ -49,7 +49,7 @@ function showSection() {
         window.location.href = "modifier_educateur.html";
         break;
            case "creerformations":
-        window.location.href = "creer_formation_superadmin.html";
+        window.location.href = "creer_formation_superadmin.php";
         break;
       case "modifierformations":
         window.location.href = "modifier_formation_superadmin.php";
