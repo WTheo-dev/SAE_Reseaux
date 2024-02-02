@@ -31,28 +31,28 @@ function showSection() {
     // Rediriger vers la page appropriée en fonction des sélections
     switch(selectedAction + selectedListe){
       case "creereleves":
-        window.location.href = "creer_compte_eleve.html";
+        window.location.href = "creer_compte_eleve.php";
         break;
       case "modifiereleves":
         window.location.href = "modifier_liste_eleve.php";
         break;
         case "creercours":
-        window.location.href = "creer_cours_superadmin.html";
+        window.location.href = "creer_cours_superadmin.php";
         break;
       case "modifiercours":
         window.location.href = "modifier_cours_superadmin.html";
         break;
         case "creereducateurs":
-        window.location.href = "creer_compte_educateur.html";
+        window.location.href = "creer_compte_educateur.php";
         break;
       case "modifiereducateurs":
         window.location.href = "modifier_educateur.html";
         break;
            case "creerformations":
-        window.location.href = "creer_formation_superadmin.html";
+        window.location.href = "creer_formation_superadmin.php";
         break;
       case "modifierformations":
-        window.location.href = "modifier_formation_superadmin.html";
+        window.location.href = "modifier_formation_superadmin.php";
         break;
     }
 

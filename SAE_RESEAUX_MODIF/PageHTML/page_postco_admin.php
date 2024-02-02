@@ -1,7 +1,7 @@
   <?php
     include_once("../../APIFinale/fonctions.php");
     $persos = listeEducateur();
-    $mdp = "0";
+    $mdp = "";
 
     list($prenom, $nom) = explode(' ', $_POST["nom"]);
 
@@ -27,7 +27,7 @@
     }
 
     if ($idcorrect == "no" || $mpdcorrect == "no"){
-        header("Location: index.php");
+        header("Location: liste_educateur.php");
         exit();
     }
   ?>

@@ -31,6 +31,9 @@
     
     <audio id="audioPlayer" controls></audio>
 
+    <br>
+    <button type="button" onclick="window.location.href = 'page_postco_admin.php';">retour</button>
+
     <script>
 
         const audioPlayer = document.getElementById('audioPlayer');

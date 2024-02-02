@@ -92,6 +92,7 @@ document.getElementById('btn-valider-creation-eleve').addEventListener('click', 
 
 
 function afficherPopup() {
+  /*
   // Créer l'élément de la popup
   var popup = document.createElement("div");
   popup.className = "popup";
@@ -106,24 +107,27 @@ function afficherPopup() {
   // Fermer la popup après un certain délai (par exemple, 3 secondes)
   setTimeout(function () {
       document.body.removeChild(popup);
-      window.location.href = 'page_postco_superadmin.php';; // Ajout de cette ligne pour rediriger après la popup
+      //window.location.href = 'page_postco_superadmin.php';; // Ajout de cette ligne pour rediriger après la popup
   }, 3000);
+  */
 }
 
 
 const   lockDots = document.querySelectorAll('.lock-dot');
 let enteredCode = '';
 
+/*
 lockDots.forEach(dot => {
   dot.addEventListener('click', () => {
     if (enteredCode.length < 4) {
       enteredCode += dot.dataset.dot;
-      toggleColor(dot);
     }
+      toggleColor(dot);
 
     checkCode();
   });
 });
+*/
 
 function toggleColor(dot) {
   dot.classList.toggle('active-dot');
@@ -149,10 +153,11 @@ function hideConnectButton() {
 }
 
 function connect() {
-  window.location.href = 'page_postco_eleve.php';
+  //window.location.href = 'page_postco_eleve.php';
 }
 
 function clearSelection() {
+  /*
   lockDots.forEach(dot => {
     if (dot.classList.contains('active-dot')) {
       toggleColor(dot);
@@ -160,6 +165,13 @@ function clearSelection() {
   });
   enteredCode = '';
   hideConnectButton();
+  */
+
+  get = document.getElementsByTagName('input');
+
+  for (var i = 0; i < get.length; i++) {
+    get[i].checked = false;
+  }
 }
 
 function goBack() {

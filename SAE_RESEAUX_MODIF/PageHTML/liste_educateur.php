@@ -48,5 +48,7 @@ include_once("../../APIFinale/fonctions.php");
 
 </form>
 
+<button type="button" onclick="window.location.href = 'index.php';">retour</button>
+
 </body>
 </html>
