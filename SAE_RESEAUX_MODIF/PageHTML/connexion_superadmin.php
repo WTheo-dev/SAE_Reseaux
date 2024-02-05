@@ -34,7 +34,7 @@
             <button a type="submit" class="superadmin-btn">Se connecter</button>
            
             <script src="connexion_superadmin.js"></script>
-            <button id="back-button" onclick="goBack()">Retour</button>
+            <button type="button" id="back-button" onclick="goBack()">Retour</button>
             </div>
         </form>
        
