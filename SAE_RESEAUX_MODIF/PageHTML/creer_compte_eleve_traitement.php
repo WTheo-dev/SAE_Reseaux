@@ -42,7 +42,7 @@ echo "<br>";
 echo "mdp: ".$mdp;
 echo "<br>";
 
-include_once("../../APIFinale/fonctions.php");
+include_once "../../APIFinale/fonctions.php";
 ajouterApprenti($nom, $prenom, $photo, $mdp);
 ?>
 

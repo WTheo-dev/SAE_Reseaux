@@ -1,11 +1,11 @@
 <?php
-include_once("fiche_base.php");
+include_once "fiche_base.php";
 $numpage=8;
-include_once("fiche_head.php"); 
+include_once "fiche_head.php"; 
 ?>
 
 <body class="body_fiche">
-    <?php include_once("fiche_base.php"); ?>
+    <?php include_once "fiche_base.php"; ?>
 
 <!-- Formulaire -->
 <?php ifform() ?>
@@ -32,7 +32,7 @@ include_once("fiche_head.php");
 
     <?php
     $end="true";
-    include_once("fiche_button.php");
+    include_once "fiche_button.php";
     ?>
 
 <?php ifformfin() ?>

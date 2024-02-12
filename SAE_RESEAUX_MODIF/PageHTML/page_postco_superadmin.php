@@ -2,7 +2,7 @@
     //error_reporting(E_ALL);
     //ini_set('display_errors', 'On');
 
-    include_once("../../APIFinale/fonctions.php");
+    include_once "../../APIFinale/fonctions.php";
     $persos = listeSuperAdmin();
 
     list($prenom, $nom) = explode('.', $_POST["id"]);

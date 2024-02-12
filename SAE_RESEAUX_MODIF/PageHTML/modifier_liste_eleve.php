@@ -61,7 +61,7 @@
 <body class="body_page_modifier_liste_eleve">
 
 <?php
-include_once("../../APIFinale/fonctions.php"); 
+include_once "../../APIFinale/fonctions.php"; 
 $apprentis = listeApprenti();
 ?>
 

@@ -1,5 +1,5 @@
 <?php
-include_once("../../APIFinale/fonctions.php");
+include_once "../../APIFinale/fonctions.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_apprenti = $_POST['id_apprenti'];

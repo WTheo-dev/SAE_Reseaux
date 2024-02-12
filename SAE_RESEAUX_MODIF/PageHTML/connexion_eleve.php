@@ -16,7 +16,7 @@
 
   <?php
   session_start();
-  include_once("../../APIFinale/fonctions.php");
+  include_once "../../APIFinale/fonctions.php";
   $idetu = -1;
   $i = 0;
   while (true){

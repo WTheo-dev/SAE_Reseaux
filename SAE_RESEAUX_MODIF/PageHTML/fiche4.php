@@ -1,6 +1,6 @@
-<?php include_once("fiche_base.php"); ?>
+<?php include_once "fiche_base.php"; ?>
 <?php $numpage=4; ?>
-<?php include_once("fiche_head.php"); ?>
+<?php include_once "fiche_head.php"; ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -26,7 +26,7 @@
     </style>
 </head>
 <body class="body_fiche">
-    <?php include_once("fiche_base.php"); ?>
+    <?php include_once "fiche_base.php"; ?>
 
     <audio id="amel">
         <source src="audio/Améliorative.mp3" type="audio/mp3">
@@ -75,7 +75,7 @@
 
     <?php
     $numpage=4;
-    include_once("fiche_button.php");
+    include_once "fiche_button.php";
     ?>
 
 <?php ifformfin() ?>

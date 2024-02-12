@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("../../APIFinale/fonctions.php");
+include_once "../../APIFinale/fonctions.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

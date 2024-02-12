@@ -9,7 +9,7 @@ if ($_POST["educ-type"] == "simp")
 else
     $type = 3;
 
-include("../../APIFinale/fonctions.php");
+include "../../APIFinale/fonctions.php";
 $succes = ajouterEducateur($nom, $prenom, $mdp, $type, $num);
 ?>
 

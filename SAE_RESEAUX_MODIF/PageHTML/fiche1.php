@@ -1,6 +1,6 @@
-<?php include_once("fiche_base.php"); ?>
+<?php include_once "fiche_base.php"; ?>
 <?php $numpage=1; ?>
-<?php include("fiche_head.php"); ?>
+<?php include "fiche_head.php"; ?>
 <body class="body_fiche">
 
     <audio id="nomInterv">
@@ -39,7 +39,7 @@
     <?php 
     $numpage=1;
     $begin="true";
-    include_once("fiche_button.php");
+    include_once "fiche_button.php";
     ?>
 
 <?php ifformfin() ?>

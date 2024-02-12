@@ -1,5 +1,5 @@
 <?php
-include_once("../../APIFinale/fonctions.php");
+include_once "../../APIFinale/fonctions.php";
 $formcreer = false;
 if (isset($_POST["nom-form"])){
     ajouterFormation($_POST["nom-form"], NULL, NULL);

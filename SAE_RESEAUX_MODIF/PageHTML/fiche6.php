@@ -1,6 +1,6 @@
-<?php include_once("fiche_base.php"); ?>
+<?php include_once "fiche_base.php"; ?>
 <?php $numpage=6; ?>
-<?php include_once("fiche_head.php"); ?>
+<?php include_once "fiche_head.php"; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -26,7 +26,7 @@
 </head>
 <body class="body_fiche">
 
-    <?php include_once("fiche_base.php"); ?>
+    <?php include_once "fiche_base.php"; ?>
 
 <!-- Formulaire -->
 <?php ifform() ?>
@@ -38,7 +38,7 @@
 
     <?php
     $numpage=6;
-    include_once("fiche_button.php");
+    include_once "fiche_button.php";
     ?>
 
 <?php ifformfin() ?>
