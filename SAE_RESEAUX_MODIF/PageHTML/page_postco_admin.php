@@ -1,6 +1,7 @@
   <?php
     include_once("../../APIFinale/fonctions.php");
     $persos = listeEducateur();
+    $mdp = "";
 
     list($prenom, $nom) = explode(' ', $_POST["nom"]);
 
@@ -26,7 +27,7 @@
     }
 
     if ($idcorrect == "no" || $mpdcorrect == "no"){
-        header("Location: index.php");
+        header("Location: liste_educateur.php");
         exit();
     }
   ?>
@@ -44,7 +45,7 @@
     <div class="logo">
       <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
       <div class="child-info">
-          <h2 class="header_text_postcoeleve"><?php echo $prenom." ".strtoupper($nom); ?></h2>
+        <h2 class="header_text_postcoeleve"><?php echo $prenom." ".strtoupper($nom); ?></h2>
       </div>
     </div>
   </header>

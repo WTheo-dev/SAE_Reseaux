@@ -8,15 +8,18 @@
   font-family: 'Cormorant', sans-serif;
   background-color: #f4f8ff;
   color: #333;
-  margin: 0; /* Supprime la marge par défaut du corps */
-  padding: 0; /* Supprime le rembourrage par défaut du corps */
-  height: 100vh; /* Ajuste la hauteur du corps à 100% de la vue */
+  margin: 0; 
+  padding: 0; 
+  height: 100vh; 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: #f0f0f0;
 }
 
+.header_text_postcoeleve{
+  color : white;
+}
 .main-header {
   background-color: rgb(130,106,251); 
   padding: 20px;

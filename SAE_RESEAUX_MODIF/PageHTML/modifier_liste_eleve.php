@@ -60,24 +60,10 @@
 </head>
 <body class="body_page_modifier_liste_eleve">
 
-  <?PHP include_once("../../APIFinale/fonctions.php"); 
-  
-$SERVER = '127.0.0.1';
-$BD_NAME = 'apeaj';
-$LOGIN = 'root';
-$MDP = '';
-
-try {
-    $BD = new PDO("mysql:host=$SERVER;dbname=$BD_NAME", $LOGIN, $MDP);
-} catch (PDOException $e) {
-    die('Erreur : ' . $e->getMessage());
-}
-  
-$BD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-$apprentis = $BD->query("SELECT * FROM apprenti");
-  
-  ?>
+<?php
+include_once("../../APIFinale/fonctions.php"); 
+$apprentis = listeApprenti();
+?>
 
   
 
