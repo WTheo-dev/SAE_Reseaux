@@ -35,11 +35,11 @@ $nofoot = "yes";
 $nobutton = "yes";
 $numpage = "total";
 
-include("fiche_button.php";
+include "fiche_button.php";
 ?>
 
 </form>
 
 <?php
-include("fiche_foot.php";
+include "fiche_foot.php";
 ?>
