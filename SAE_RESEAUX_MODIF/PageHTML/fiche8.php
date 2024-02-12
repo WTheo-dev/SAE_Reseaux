@@ -1,4 +1,4 @@
-<?php include_once("fiche_base.php"); ?>
+<?php include_once "fiche_base.php"; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -29,7 +29,7 @@
     </style>
 </head>
 <body class="body_fiche">
-    <?php include_once("fiche_base.php"); ?>
+    <?php include_once "fiche_base.php"; ?>
 
 <!-- Formulaire -->
 <?php ifform() ?>
@@ -55,7 +55,7 @@
     <?php
     $numpage=8;
     $end="true";
-    include_once("fiche_button.php");
+    include_once "fiche_button.php";
     ?>
 
 <?php ifformfin() ?>

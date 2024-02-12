@@ -16,7 +16,7 @@ foreach ($_COOKIE as $name => $value){
     }
 }
 */
-include_once("fiche_base.php");
+include_once "fiche_base.php";
 ?>
 
 <!DOCTYPE html>

@@ -1,4 +1,4 @@
-<?php include_once("fiche_base.php"); ?>
+<?php include_once "fiche_base.php"; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -23,7 +23,7 @@
     </style>
 </head> 
 <body class="body_fiche">
- <?php include_once("fiche_base.php"); ?>
+ <?php include_once "fiche_base.php"; ?>
 
     <audio id="nomInterv">
         <source src="audio/NomIntervenant.mp3" type="audio/mp3">
@@ -67,7 +67,7 @@
     <?php 
     $numpage=1;
     $begin="true";
-    include_once("fiche_button.php");
+    include_once "fiche_button.php";
     ?>
 
 <?php ifformfin() ?>
