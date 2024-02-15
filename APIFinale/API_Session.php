@@ -1,6 +1,6 @@
 <?php
-require_once("jwt_util.php");
-require_once("fonctions.php");
+require_once "jwt_util.php";
+require_once "fonctions.php";
 header("Content-Type:application/json");
 $http_method = $_SERVER['REQUEST_METHOD'];
 
@@ -18,6 +18,7 @@ $postedData = file_get_contents('php://input');
 $data = json_decode($postedData, true);
 
 switch ($http_method) {
+    default:
     case 'GET':
         try {
             $RETURN_CODE = 200;
@@ -26,7 +27,7 @@ switch ($http_method) {
                 $STATUS_MESSAGE = "Voici un cours :";
                 $matchingData = unCours($_GET['cours']);
                 if ($matchingData === null) {
-                    throw new Exception("Aucun Cours n'a été trouvé avec l'ID spécifié");
+                    throw new UnexpectedValueException("Aucun Cours n'a été trouvé avec l'ID spécifié");
                 }
             } else {
                 $STATUS_MESSAGE = "Voici la liste des cours :";
@@ -95,7 +96,8 @@ switch ($http_method) {
             }
         } else {
             $RETURN_CODE = 403;
-            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié, la méthode HTTP appropriée, ou l'id_fiche est manquant";
+            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié,
+             la méthode HTTP appropriée, ou l'id_fiche est manquant";
         }
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         break;

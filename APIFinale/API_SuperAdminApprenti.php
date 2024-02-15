@@ -1,6 +1,6 @@
 <?php
-require_once("jwt_util.php");
-require_once("fonctions.php");
+require_once "jwt_util.php" ;
+require_once "fonctions.php";
 header("Content-Type:application/json");
 $http_method = $_SERVER['REQUEST_METHOD'];
 $bearer_token = get_bearer_token();
@@ -17,6 +17,7 @@ $postedData = file_get_contents('php://input');
 $data = json_decode($postedData, true);
 
 switch ($http_method) {
+    default:
     case 'GET':
         if ($role == 2) {
             if(isset($_GET['id_apprenti'])) {
@@ -133,7 +134,8 @@ switch ($http_method) {
             }
         } else {
             $RETURN_CODE = 403;
-            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié, la méthode HTTP appropriée ou l'id_apprenti est manquant";
+            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié, 
+            la méthode HTTP appropriée ou l'id_apprenti est manquant";
         }
 
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);

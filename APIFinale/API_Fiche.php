@@ -1,6 +1,6 @@
 <?php
-require_once("jwt_util.php");
-require_once("fonctions.php");
+require_once "jwt_util.php";
+require_once "fonctions.php";
 header("Content-Type:application/json");
 $http_method = $_SERVER['REQUEST_METHOD'];
 
@@ -18,7 +18,7 @@ $postedData = file_get_contents('php://input');
 $data = json_decode($postedData, true);
 
 switch ($http_method) {
-
+    default:
     case 'GET':
         try {
             $RETURN_CODE = 200;
@@ -27,7 +27,7 @@ switch ($http_method) {
                 $STATUS_MESSAGE = "Voici une fiche :";
                 $matchingData = uneFicheIntervention($_GET['id_fiche']);
                 if ($matchingData === null) {
-                    throw new Exception("Aucune fiche n'a été trouvé avec l'ID spécifié");
+                    throw new UnexpectedValueException("Aucune fiche n'a été trouvé avec l'ID spécifié");
                 }
             } else {
                 $STATUS_MESSAGE = "Voici la liste des fiches :";
@@ -41,6 +41,11 @@ switch ($http_method) {
             deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         }
         break;
+        $RETURN_CODE = 405; // Method Not Allowed
+        $STATUS_MESSAGE = "Méthode HTTP non autorisée";
+        $matchingData = null;
+        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
+        break;
 
     case 'POST':
         $matchingData = null;
@@ -48,7 +53,11 @@ switch ($http_method) {
             $RETURN_CODE = 400;
             $STATUS_MESSAGE = "Création Impossible de la fiche pour cause de fiche déjà existante";
         } else {
-            if (creationFiche($data['numero'], $data['nom_du_demandeur'], $data['date_demande'], $data['date_intervention'], $data['duree_intervention'], $data['localisation'], $data['description_demande'], $data['degre_urgence'], $data['type_intervention'], $data['nature_intervention'], $data['couleur_intervention'], $data['etat_fiche'], $data['date_creation'], $data['id_apprenti'], $data['id_personnel'])) {
+            if (creationFiche($data['numero'], $data['nom_du_demandeur'], $data['date_demande'], 
+            $data['date_intervention'], $data['duree_intervention'], $data['localisation'], 
+            $data['description_demande'], $data['degre_urgence'], $data['type_intervention'], 
+            $data['nature_intervention'], $data['couleur_intervention'], $data['etat_fiche'], 
+            $data['date_creation'], $data['id_apprenti'], $data['id_personnel'])) {
                 $RETURN_CODE = 200;
                 $STATUS_MESSAGE = "Création de la fiche d'intervention correctement effectué.";
             } else {
@@ -92,7 +101,11 @@ switch ($http_method) {
         $matchingData = null;
         if ($role == 1 || $role == 3) {
             $id_fiche = $_GET['id_fiche'];
-            if (modifierFiche($id_fiche, $data['numero'], $data['nom_du_demandeur'], $data['date_demande'], $data['date_intervention'], $data['duree_intervention'], $data['localisation'], $data['description_demande'], $data['degre_urgence'], $data['type_intervention'], $data['nature_intervention'], $data['couleur_intervention'], $data['etat_fiche'], $data['date_creation'], $data['id_apprenti'], $data['id_personnel'])) {
+            if (modifierFiche($id_fiche, $data['numero'], $data['nom_du_demandeur'], $data['date_demande'], 
+            $data['date_intervention'], $data['duree_intervention'], $data['localisation'], 
+            $data['description_demande'], $data['degre_urgence'], $data['type_intervention'],
+            $data['nature_intervention'], $data['couleur_intervention'], $data['etat_fiche'], 
+            $data['date_creation'], $data['id_apprenti'], $data['id_personnel'])) {
                 $RETURN_CODE = 200;
                 $STATUS_MESSAGE = "Mise à jour de la fiche effectuée";
                 $matchingData = null;
@@ -103,7 +116,8 @@ switch ($http_method) {
             }
         } else {
             $RETURN_CODE = 403;
-            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié, la méthode HTTP appropriée, ou l'id_fiche est manquant";
+            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié, 
+            la méthode HTTP appropriée, ou l'id_fiche est manquant";
         }
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         break;
