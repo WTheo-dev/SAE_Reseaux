@@ -1,7 +1,7 @@
 <?php
 include_once "fiche_base.php";
 $numpage=8;
-include_once "fiche_head.php"; 
+include_once "fiche_head.php";
 ?>
 
 <body class="body_fiche">

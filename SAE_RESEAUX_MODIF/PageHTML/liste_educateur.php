@@ -24,6 +24,7 @@ include_once "../../APIFinale/fonctions.php";
 <form action="connexion_educateur.php" method="post">
 
 <table>
+  <caption>Table</caption>
   <thead>
     <tr>
       <th>Nom</th>

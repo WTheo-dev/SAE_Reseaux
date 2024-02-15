@@ -34,19 +34,18 @@ if (isset($_POST['precedent'])){
 foreach ($_POST as $param => $value){
     $value=htmlspecialchars($value);
     setcookie($param, $value, time() + (86400 * 60));
-    if (str_starts_with($name, "Texte") || str_starts_with($name, "Icon") || str_starts_with($name, "Audio")){
-        if (!isset($_POST[$name])){
+    if (str_starts_with($name, "Texte") || str_starts_with($name, "Icon") ||
+     str_starts_with($name, "Audio")) if (!isset($_POST[$name])){
             unset($_COOKIE[$name]);
             setcookie($name, '', -1);
         }
     }
-}
 
 function uncheck_checkbox($name, $pagenum){
     global $numpage;
     if (($numpage == $pagenum || $pagenum == "total") && !isset($_POST[$name])){
-        unset($_COOKIE[$name]); 
-        setcookie($name, '', -1); 
+        unset($_COOKIE[$name]);
+        setcookie($name, '', -1);
     }
 }
 uncheck_checkbox("Améliorative" , 4);

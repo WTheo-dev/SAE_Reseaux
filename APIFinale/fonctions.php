@@ -1,5 +1,4 @@
 <?php
-
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////   CONNEXION A LA BASE DE DONNEES    ////////////////////
 /////////////////////////////////////////////////////////////////////////////
@@ -14,7 +13,7 @@ function connexionBD()
   try {
     $BD = new PDO("mysql:host=$SERVER;dbname=$BD", $LOGIN, $MDP);
   } catch (PDOException $e) {
-    die('Erreur : ' . $e->getMessage());
+    die('Erreur: ' . $e->getMessage());
   }
   return $BD;
 }
@@ -28,9 +27,9 @@ function identification($login, $mdp)
   $verificationMembre->execute(array($login, $mdp));
   $BD = null;
   if ($verificationMembre->rowCount() > 0) {
-    return TRUE;
+    return true;
   } else {
-    return FALSE;
+    return false;
   }
 }
 
@@ -45,7 +44,7 @@ function recuperation_role($login)
       return $row['id_role'];
     }
   } else {
-    return FALSE;
+    return false;
   }
 }
 
@@ -54,6 +53,7 @@ function recuperation_role($login)
 /////////////////////////////////////////////////////////////////////////////
 
 function login_id($id_utilisateur) {
+
   $BD = connexionBD();
   $rechercheUtilisateur = $BD ->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
   $rechercheUtilisateur -> execute(array($id_utilisateur));
@@ -77,7 +77,7 @@ function id_login($login) {
       return $row['id_utilisateur'];
     }
   } else {
-    return FALSE;
+    return false;
   }
 }
 
@@ -90,7 +90,7 @@ function get_utilisateur($id){
       return $row;
     }
   } else {
-    return FALSE;
+    return false;
   }
 }
 
@@ -113,9 +113,9 @@ function connexionApprenti($id_apprenti)
 {
   $BD = connexionBD();
 
-  if (count($id_apprenti) > 0) {
+  if (count(($id_apprent)) > 0) {
     $identiteApprentiHTML = conversionHTML($id_apprenti);
-    if (count($id_apprenti) > 0) {
+    if (count(($id_apprenti)) > 0) {
       $verificationApprenti = $BD->prepare('SELECT $ from apprenti WHERE schema = ?');
       $verificationApprenti->execute(array($id_apprenti['0']));
       $BD = null;
@@ -125,17 +125,17 @@ function connexionApprenti($id_apprenti)
             $_SESSION['id'] = $row['id_apprenti'];
             $_SESSION['compteValide'] = $row['compteValide'];
             $_SESSION['coordinateur'] = $row['coordinateur'];
-            return TRUE;
+            return true;
           }
         }
       } else {
-        return FALSE;
+        return false;
       }
     } else {
-      return FALSE;
+      return false;
     }
   } else {
-    return FALSE;
+    return false;
   }
 
 }
@@ -144,9 +144,9 @@ function connexionEducateur($id_personnel)
 {
   $BD = connexionBD();
 
-  if (count($id_personnel) > 0) {
+  if (count(($id_personnel)) > 0) {
     $identiteApprentiHTML = conversionHTML($id_personnel);
-    if (count($id_personnel) > 0) {
+    if (count(($id_personnel)) > 0) {
       $verificationApprenti = $BD->prepare('SELECT $ from apprenti WHERE schema = ?');
       $verificationApprenti->execute(array($id_personnel['0']));
       $BD = null;
@@ -156,17 +156,17 @@ function connexionEducateur($id_personnel)
             $_SESSION['id'] = $row['id_apprenti'];
             $_SESSION['compteValide'] = $row['compteValide'];
             $_SESSION['coordinateur'] = $row['coordinateur'];
-            return TRUE;
+            return true;
           }
         }
       } else {
-        return FALSE;
+        return false;
       }
     } else {
-      return FALSE;
+      return false;
     }
   } else {
-    return FALSE;
+    return false;
   }
 
 }
@@ -179,7 +179,7 @@ function validationmdp($mdp, $mdpConfirmation)
   if ($mdp == $mdpConfirmation && strlen($mdp) >= 5) {
     return password_hash($mdp, PASSWORD_DEFAULT);
   } else {
-    return FALSE;
+    return false;
   }
 }
 
@@ -191,14 +191,14 @@ function verificationPremiereInscription($PersonnelIdentite)
   $recherchePresence->execute(array($PersonnelIdentite['7']));
   $BD = null;
   if ($recherchePresence->rowCount() > 0) {
-    return FALSE;
+    return false;
   } else {
-    return TRUE;
+    return true;
   }
 }
 
 
-function envoiMail($adresseMail, $nouveauMotDePasse)
+function envoiMail($nouveauMotDePasse)
 {
   $destinataire = "someone@example.com";
   $sujet = "Mot de passe temporaire";
@@ -311,7 +311,8 @@ function ajouterApprenti($nom, $prenom, $photo, $mdp){
   $photo  = htmlspecialchars($photo);
   $mdp    = htmlspecialchars($mdp);
 
-  $ajout = $BD->prepare("INSERT INTO `utilisateur` (`id_utilisateur`, `login`, `mdp`, `id_role`) VALUES (NULL, 'login', '".$mdp."', '1');");
+  $ajout = $BD->prepare("INSERT INTO `utilisateur` (`id_utilisateur`, `login`, `mdp`, `id_role`) 
+  VALUES (NULL, 'login', '".$mdp."', '1');");
   $ajout->execute();
 
   $ajout = $BD->prepare("SELECT id_utilisateur FROM `utilisateur` WHERE mdp = ?;");
@@ -861,23 +862,19 @@ function ajouterElement($libelle, $type, $picto=null, $text=null, $audio=null){
     $req = $BD->prepare('INSERT INTO element_defaut (libelle, type, picto, id_personnel) VALUES (?, ?, ?, 1);');
     $req->execute(array($libelle, $type, $picto));
   }
-  else if ($type == "text" && isset($text)){
+  elseif ($type == "text" && isset($text)){
     $text = htmlspecialchars($text);
     $req = $BD->prepare('INSERT INTO element_defaut (libelle, type, text, id_personnel) VALUES (?, ?, ?, 1);');
     $req->execute(array($libelle, $type, $text));
   }
-  else if ($type == "audio" && isset($audio)){
+  elseif ($type == "audio" && isset($audio)){
     $audio = htmlspecialchars($audio);
     $req = $BD->prepare('INSERT INTO element_defaut (libelle, type, audio, id_personnel) VALUES (?, ?, ?, 1);');
     $req->execute(array($libelle, $type, $audio));
   }
 
   $BD = null;
-  if($req->rowCount() > 0) {
-    return TRUE;
-  } else {
-    return FALSE;
-  }
+  return $req->rowCount() > 0;
 }
 
 function listeElement(){

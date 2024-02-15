@@ -3,9 +3,6 @@
     margin: 0;
     padding: 0;
     height: 100vh;
-    /*
-    font-family: 'Cormorant', sans-serif;
-    */
     background-color: #f0f0f0;
 }
 
@@ -19,11 +16,10 @@
 
 .child-info{
 
-    font-family: 'Cinzel', 'sans-serif';
+    font-family: 'Cinzel', sans-serif;
 
 
     font-size: 25px;
-
     padding-right: 1em;
 }
 

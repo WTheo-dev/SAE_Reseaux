@@ -33,7 +33,7 @@
   ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <meta charset="UTF-8">
     <title>Page connectée éducateur technique</title>
@@ -85,7 +85,7 @@
     </div>
 
     <div class="btn-deconnexion_page_postco_admin">
-      <button onclick="deconnecter()">Deconnexion</button>  
+      <button onclick="deconnecter()">Deconnexion</button>
     </div>
 
     <script src="page_postco_admin.js"></script>

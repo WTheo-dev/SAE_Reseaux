@@ -40,10 +40,12 @@
     <div class="block" style="height:85%;">
     <p class="text-fiche7">Travaux non réalisés</p>
     <div class="label-fiche7">
-    <textarea id="travauxNonRealises" name="travauxNonRealises" rows="10"><?php if (isset($_COOKIE['travauxNonRealises'])) { echo $_COOKIE['travauxNonRealises']; } ?></textarea>
+    <textarea id="travauxNonRealises" name="travauxNonRealises" rows="10">
+        <?php if (isset($_COOKIE['travauxNonRealises'])) { echo $_COOKIE['travauxNonRealises']; } ?></textarea>
     </div>
     </div>
-    <input type="checkbox" name="Nécessite_un_nouvelle_intervention" id="Nécessite_un_nouvelle_intervention" <?php if(isset($_COOKIE['Nécessite_un_nouvelle_intervention'])) echo "checked"; ?> />
+    <input type="checkbox" name="Nécessite_un_nouvelle_intervention" id="Nécessite_un_nouvelle_intervention"
+    <?php if(isset($_COOKIE['Nécessite_un_nouvelle_intervention'])) {echo "checked";} ?> />
     <label for="Nécessite_un_nouvelle_intervention">
     <?php addIcon("Nécessite_un_nouvelle_intervention", "fa-refresh"); ?>
     <?php addTexteBox("Nécessite_un_nouvelle_intervention", "Nécessite un nouvelle intervention"); ?>

@@ -90,12 +90,12 @@
 }
 
 .lock-dot:has( > input:checked + label) {
-    background-color: rgb(130,106,251);   ;
+    background-color: rgb(130,106,251);
     color: #fff;
 }
 
 .active-dot {
-    background-color: rgb(130,106,251);   ;
+    background-color: rgb(130,106,251);
     color: #fff;
 }
 
@@ -168,7 +168,6 @@
     height: 100vh; /* Ajuste la hauteur du corps à 100% de la vue */
     display: flex;
     flex-direction: column;
-    background-color: #f0f0f0;
 }
 
 
@@ -200,7 +199,7 @@
 .boutons-create, .boutons-delete{    
     font-size: 50px;
     font-family: 'Cormorant', sans-serif;
-    background-color: rgb(130,106,251); ;
+    background-color: rgb(130,106,251);
     border-radius: 10px;
     margin-top: 3rem;
     padding: 10px;
@@ -261,12 +260,7 @@
 
 }
 
-#lock-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+
 
 .btn-valider-creation-eleve-div{
     display: flex;
@@ -277,27 +271,9 @@
 
 .btn-valider-creation-eleve{
     margin-top: 2rem;
-    font-family: "Cormorant", "sans-serif";
+    font-family: "Cormorant", sans-serif;
     font-size: 50px;
     text-align: center;
-}
-
-.lock-dot {
-    width: 150px; /* Augmentez la taille du cercle */
-    height: 150px; /* Augmentez la taille du cercle */
-    border-radius: 50%;
-    background-color: lightgray; /* Couleur de base */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 75px; /* Augmentez la taille de la police */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.active-dot {
-    background-color: rgb(130,106,251);   ;
-    color: #fff;
 }
 
 .popup {
@@ -422,7 +398,6 @@
     text-align: center;
     display: flex;
     flex-wrap: wrap;
-    text-align: center;
 }
 
 #liste_photo_p_d button {
@@ -557,7 +532,6 @@ footer {
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-       /* background: url('Image/img.jpg') no-repeat;*/
        background: rgb(130, 106, 251);
         background-size: cover;
         background-position: center;
@@ -596,7 +570,6 @@ footer {
         background: transparent;
         border: none;
         outline: none;
-        border: 2px solid rgba(255,255,255,.2);
         border-radius: 40px;
         font-size: 50px;
         color: #fff;
@@ -693,11 +666,8 @@ footer {
 
 .superadmin-wrapper h1 {
     font-family: 'Cormorant', sans-serif;
-
     font-size: 100px;
     text-align: center;
-    font-family: 'Cormorant', sans-serif;
-
 }
 
 .superadmin-input-box {
@@ -715,7 +685,6 @@ footer {
     background: transparent;
     border: none;
     outline: none;
-    border: 4px solid rgba(255,255,255,.2);
     border-radius: 40px;
     font-size: 50px;
     color: #fff;
@@ -876,10 +845,6 @@ footer {
   }
   .creer_compte_educateur-form .creer_compte_educateur-gender {
     column-gap: 5px;
-  }
-
-  .creer_compte_educateur-gender input {
-    accent-color: rgb(130, 106, 251);
   }
 
   .creer_compte_educateur-form :where(.creer_compte_educateur-gender input, .creer_compte_educateur-gender label) {
@@ -1166,14 +1131,6 @@ footer {
     font-size: 70px;
 }
 
-#cancel-button {
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 70px;
-}
-
 #reset-button:hover, #cancel-button:hover {
     opacity: 0.8;
 }
@@ -1196,9 +1153,7 @@ footer {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    /*background: rgb(130, 106, 251);*/
 }
-    
 #comment-voircom{
     border-radius: 10px;
     background-color: lightgray;
@@ -1234,7 +1189,6 @@ footer {
     word-wrap: break-word; /* Force le retour à la ligne */
     font-size: 50px;
     border: 1px solid black;
-    word-wrap: break-word;
 }
 
 .button-voircom {

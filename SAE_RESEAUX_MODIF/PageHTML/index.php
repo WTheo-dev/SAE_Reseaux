@@ -17,7 +17,7 @@ include_once "../../APIFinale/fonctions.php";
         <div class="header_text"><img class="logo_p_d" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
     </header>
    
-    <main class="main_p_d"> 
+    <main class="main_p_d">
         <h1 class="h1p_d">Bienvenue sur votre espace </h1>
         <h1 class="h1p_d_2"> scolaire !</h1>
         
@@ -42,7 +42,7 @@ include_once "../../APIFinale/fonctions.php";
         </div>
     </main>
     <p class="p_p_d"> Ou connecte toi en tant que personnel</p>
-    <div class="boutons"> 
+    <div class="boutons">
         <button class="Connexion_admin"><a href="liste_educateur.php">Educateur</a></button>
         <button class="Connexion_superadmin"><a href="connexion_superadmin.php">Super-Admin</a></button>
     </div>

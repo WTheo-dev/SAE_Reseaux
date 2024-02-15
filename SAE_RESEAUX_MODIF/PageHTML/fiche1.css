@@ -24,7 +24,7 @@
 
 .child-info{
     
-    font-family: 'Cinzel', 'sans-serif';
+    font-family: 'Cinzel', sans-serif;
     
     
     font-size: 25px;
@@ -52,9 +52,7 @@
 
 .jsp input{
     margin: 20px;
-    /*
-    font-size: 3em;;
-    */
+
 }
 
 .audio-fiche-1{
@@ -63,18 +61,6 @@
 
 .jsp span{
     size: 5px;
-}
-
-.fa fa-user fa-2x{
-    /*
-    font-size: 9em;
-    */
-}   
-
-.audiobutton{
-    /*
-    font-size: 50px;
-    */
 }
 
 .fa fa-address-card fa-4x{

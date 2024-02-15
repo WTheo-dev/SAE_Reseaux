@@ -56,7 +56,8 @@
     <?php addAudio("NomDemandeur", "nomDem"); ?>
 </div>
 <?php addTexte("nomDemandeur", "Nom du demandeur") ?>
-<input disabled type="text" id="nomDemandeur" value="<?php if (isset($_COOKIE['nomDemandeur'])){ echo $_COOKIE['nomDemandeur']; } ?>">
+<input disabled type="text" id="nomDemandeur" value=
+"<?php if (isset($_COOKIE['nomDemandeur'])){ echo $_COOKIE['nomDemandeur']; } ?>">
     </div>
 
     <br>
@@ -67,7 +68,8 @@
     <?php addAudio("DateDemande", "dateDem"); ?>
 </div>
 <?php addTexte("dateDemande", "Date de la demande") ?>
-<input disabled type="date" id="dateDemande" value="<?php if (isset($_COOKIE['dateDemande'])){ echo $_COOKIE['dateDemande']; } ?>">
+<input disabled type="date" id="dateDemande"
+value="<?php if (isset($_COOKIE['dateDemande'])){ echo $_COOKIE['dateDemande']; } ?>">
   
     <br>
 <div class="jsp">
@@ -76,7 +78,8 @@
     <?php addAudio("Localisation", "local"); ?>
 </div>
 <?php addTexte("localisation", "Localisation") ?>
-<input disabled type="text" id="localisation" value="<?php if (isset($_COOKIE['localisation'])){ echo $_COOKIE['localisation']; } ?>">
+<input disabled type="text" id="localisation"
+value="<?php if (isset($_COOKIE['localisation'])){ echo $_COOKIE['localisation']; } ?>">
 </div>
         <br>
         <div class="jsp">
@@ -85,7 +88,8 @@
     <?php addAudio("descDemande", "descDem"); ?>
 </div>
 <?php addTexte("descDemande", "Description de la demande") ?>
-<br><textarea disabled id="descDemande" rows="4"><?php if (isset($_COOKIE['descDemande'])){ echo $_COOKIE['descDemande']; } ?></textarea>
+<br><textarea disabled id="descDemande" rows="4">
+    <?php if (isset($_COOKIE['descDemande'])){ echo $_COOKIE['descDemande']; } ?></textarea>
     </div>
 
     <br>
@@ -97,7 +101,8 @@
     <?php addAudio("degreeUrgence", "degre"); ?>
 </div>
 <?php addTexte("degreeUrgence", "Degré d'urgence") ?>
-<input disabled type="text" id="degreeUrgence" value="<?php if (isset($_COOKIE['degreeUrgence'])){ echo $_COOKIE['degreeUrgence']; } ?>">
+<input disabled type="text" id="degreeUrgence"
+value="<?php if (isset($_COOKIE['degreeUrgence'])){ echo $_COOKIE['degreeUrgence']; } ?>">
 
     </div>
     </div>

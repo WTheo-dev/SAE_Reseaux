@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang= fr>
   <head>
     <title>Page éducateur technique</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
@@ -30,6 +30,7 @@
       
       <div class="w3-responsive-voircom">
         <table id="commentTablevoircom" class="w3-table-all-voircom">
+          <caption>table</caption>
           <tr>
             <th class="th-voircom">Nom Educateur</th>
             <th class="th-voircom">Prénom Educateur</th>

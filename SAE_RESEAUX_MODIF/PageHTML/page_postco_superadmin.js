@@ -6,11 +6,11 @@ function deconnecter() {
 }
 
 function showSection() {
-    var selectActions = document.getElementById("actions");
-    var selectedAction = selectActions.options[selectActions.selectedIndex].value;
+    let selectActions = document.getElementById("actions");
+    let selectedAction = selectActions.options[selectActions.selectedIndex].value;
 
-    var selectListe = document.getElementById("liste");
-    var selectedListe = selectListe.options[selectListe.selectedIndex].value;
+    let selectListe = document.getElementById("liste");
+    let selectedListe = selectListe.options[selectListe.selectedIndex].value;
 
     // Cacher toutes les sections
     document.getElementById("modifierSection").classList.add("hidden");
@@ -22,11 +22,11 @@ function showSection() {
   }
 
   function goToPage() {
-    var selectActions = document.getElementById("actions");
-    var selectedAction = selectActions.options[selectActions.selectedIndex].value;
+    let selectActions = document.getElementById("actions");
+    let selectedAction = selectActions.options[selectActions.selectedIndex].value;
 
-    var selectListe = document.getElementById("liste");
-    var selectedListe = selectListe.options[selectListe.selectedIndex].value;
+    let selectListe = document.getElementById("liste");
+    let selectedListe = selectListe.options[selectListe.selectedIndex].value;
 
     // Rediriger vers la page appropriée en fonction des sélections
     switch(selectedAction + selectedListe){
