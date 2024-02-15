@@ -25,10 +25,13 @@
     <script src="fiche_audio.js"></script>
 
     <?php
-
+    error_reporting(E_ALL);
+    ini_set('display_errors', 'On');
     ?>
 
     <?php
+        include_once "../../APIFinale/fonctions.php";
+
         if (!is_dir("icon")){
             mkdir("icon");
             shell_exec("chmod 777 icon");
@@ -117,6 +120,7 @@
                     $uploadOk = 1;
                 } else {
                     try {
+                        ajouterElement("NIY", "picto", $target_file);
                         $succes=move_uploaded_file($_FILES['icon-file']['tmp_name'], $target_file);
                     } catch (Exception $e) {
                         echo "Erreur : ".$e->getMessage();
@@ -130,6 +134,8 @@
             }
         }
     }
+    $liste = listeElement();
+    var_dump($liste);
     ?>
 
     <h3 class="h2_textpagebanque">Liste de vos pictogrammes :</h3>

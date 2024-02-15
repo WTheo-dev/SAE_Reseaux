@@ -849,6 +849,44 @@ function formationExisteDeja($intitule) {
 ////////////////////           GESTION DES PHOTOS        ////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
+function ajouterElement($libelle, $type, $picto=null, $text=null, $audio=null){
+  $BD = connexionBD();
+  static $req;
+
+  $libelle = htmlspecialchars($libelle);
+  $type = htmlspecialchars($type);
+
+  if ($type == "picto" && isset($picto)){
+    $picto = htmlspecialchars($picto);
+    $req = $BD->prepare('INSERT INTO element_defaut (libelle, type, picto, id_personnel) VALUES (?, ?, ?, 1);');
+    $req->execute(array($libelle, $type, $picto));
+  }
+  else if ($type == "text" && isset($text)){
+    $text = htmlspecialchars($text);
+    $req = $BD->prepare('INSERT INTO element_defaut (libelle, type, text, id_personnel) VALUES (?, ?, ?, 1);');
+    $req->execute(array($libelle, $type, $text));
+  }
+  else if ($type == "audio" && isset($audio)){
+    $audio = htmlspecialchars($audio);
+    $req = $BD->prepare('INSERT INTO element_defaut (libelle, type, audio, id_personnel) VALUES (?, ?, ?, 1);');
+    $req->execute(array($libelle, $type, $audio));
+  }
+
+  $BD = null;
+  if($req->rowCount() > 0) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+function listeElement(){
+  $BD = connexionBD();
+  $req = $BD->prepare('SELECT id_element, libelle, type, picto, text, audio FROM element_defaut');
+  $req->execute();
+  return $req->fetchall();
+}
+
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////         GESTION DES TRACES          ////////////////////
 /////////////////////////////////////////////////////////////////////////////
