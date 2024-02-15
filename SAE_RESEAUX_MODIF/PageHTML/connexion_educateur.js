@@ -1,19 +1,6 @@
 const lockDots = document.querySelectorAll('.lock-dot');
 let enteredCode = '';
 
-/*
-lockDots.forEach(dot => {
-  dot.addEventListener('click', () => {
-    if (enteredCode.length < 4) {
-      enteredCode += dot.dataset.dot;
-      toggleColor(dot);
-    }
-
-    checkCode();
-  });
-});
-*/
-
 function toggleColor(dot) {
   dot.classList.toggle('active-dot');
 }
@@ -41,19 +28,11 @@ function connect() {
 }
 
 function clearSelection() {
-  /*
-  lockDots.forEach(dot => {
-    if (dot.classList.contains('active-dot')) {
-      toggleColor(dot);
-    }
-  });
-  enteredCode = '';
-  hideConnectButton();
-  */
-  get = document.getElementsByTagName('input');
 
-  for (var i = 0; i < get.length; i++) {
-    get[i].checked = false;
+  const get  = document.getElementsByTagName('input');
+
+  for (const element of get) {
+    element.checked = false;
   }
 }
 

@@ -2,7 +2,7 @@
 include_once "../../APIFinale/fonctions.php";
 $formcreer = false;
 if (isset($_POST["nom-form"])){
-    ajouterFormation($_POST["nom-form"], NULL, NULL);
+    ajouterFormation($_POST["nom-form"], null, null);
     $formcreer = true;
 }
 ?>
@@ -17,32 +17,21 @@ if (isset($_POST["nom-form"])){
 </head>
 <body>
     <header class="header_page_creer_formation_superadmin">
-        <div class="header_text"><img class="logo_page_creer_formation_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
+        <div class="header_text"><img class="logo_page_creer_formation_superadmin"
+        src="Image/APEAJ_color2.png" alt="pictogramme"></div>
         <div class="child-info">
             <h2 class="header_page_creer_formation_superadmin">Nom Prénom du SuperAdmin</h2>
         </div>
     </header>
 
-    <?php if ($formcreer == true): ?>
+    <?php if ($formcreer): ?>
         <h2>Formations : "<?php echo $_POST["nom-form"]; ?>" crée avec succée.</h2>
     <?php endif; ?>
 
     <h1>Choisissez la formation que vous voulez créer</h1>
 
-<!--
-Agent Maintenance de Batiment
-Agent De Restauration
-Employe Technicien Vendeur En Materiel de Sport
-Ouvrier Paysage
--->
-
     <div class="button-container">
-        <!--
-        <button class="service-button" data-page="Agent Maintenance de Batiment">Agent de maintenance des bâtiments</button>
-        <button class="service-button" data-page="Agent De Restauration">Agent de restauration</button>
-        <button class="service-button" data-page="Employe Technicien Vendeur En Materiel de Sport">Employé technicien vendeur en matériel de sport</button>
-        <button class="service-button" data-page="Ouvrier Paysage">Ouvrier du paysage</button>
-        -->
+
         <form action="creer_formation_superadmin.php" method="post">
             <input type="text" name="nom-form" value="Entrez nom formations"/>
             <button type="submit">enregistrez</button>

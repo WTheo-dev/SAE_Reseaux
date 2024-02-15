@@ -12,9 +12,11 @@
     />
 </head>
 
-<body class="body_page_banque_de_donnee">  
+
+<body class="body_page_banque_de_donnee">
         <header class="header_page-banque-de-donnee">
-            <div class="header_text"><img class="logo_page_postco_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
+            <div class="header_text"><img class="logo_page_postco_superadmin"
+             src="Image/APEAJ_color2.png" alt="pictogramme"></div>
             <div class="child-info">
                 <h2 class="header_text_pagebanque">Nom Prénom de l'admin</h2>
             </div>
@@ -23,8 +25,7 @@
     <script src="fiche_audio.js"></script>
 
     <?php
-    // error_reporting(E_ALL);
-    // ini_set('display_errors', 'On');
+
     ?>
 
     <?php
@@ -47,7 +48,9 @@
         if (is_dir("audio")){
             $files=scandir("audio");
             foreach ($files as $file){
-                if ($file == "." || $file == "..") continue;
+                if ($file == "." || $file == ".."){
+                    continue;
+                }
                 echo '<audio id="'.$file.'">';
                 echo '<source src="audio/'.$file.'" type="audio/mp3">';
                 echo '</audio>';
@@ -105,11 +108,11 @@
         if(isset($_POST["enregistrer_icon"])) {
             if(in_array($imageFileType, $extAutoriser) === false){
                 echo "Extension non autorisée, choisisez parmi : jpeg, jpg, png<br>";
-            } else if (str_contains($name, "_") || str_contains($name, " ")) {
+            } elseif (str_contains($name, "_") || str_contains($name, " ")) {
                 echo $name." Nom incorrect, ne pas mettre de _ ou d'espace dans le nom";
             } else {
                 $check = getimagesize($_FILES["icon-file"]["tmp_name"]);
-                if($check == false) {
+                if(!$check) {
                     echo "Ce fichier n'est pas une image correcte.";
                     $uploadOk = 1;
                 } else {
@@ -135,7 +138,7 @@
             if (is_dir("icon")){
                 $files=scandir("icon");
                 foreach ($files as $file){
-                    if ($file == "." || $file == "..") continue;
+                    if ($file == "." || $file == ".."){continue;}
                     echo "<input type='checkbox' id='checkimg-".$file."' name='checkimg-".$file."' class='img-check'>";
                     echo "<label class='image-icon-container' for='checkimg-".$file."'>";
                     echo "<img class='icon-img' src='icon/".$file."' name='".$file."' />";
@@ -192,11 +195,12 @@
         if(isset($_POST["enregistrer_audio"])) {
             if(in_array($imageFileType, $extAutoriser) === false){
                 echo "Extension non autorisée, choisisez parmi : mp3, wav, ogg<br>";
-            } else if (str_contains($name, "_") || str_contains($name, " ")) {
-                echo $name." <div class='mot'>Nom de fichier incorrect, ne pas mettre de _ ou d'espace dans le nom></div";
+            } elseif (str_contains($name, "_") || str_contains($name, " ")) {
+                echo $name." <div class='mot'>Nom de fichier incorrect,
+                 ne pas mettre de _ ou d'espace dans le nom></div";
             } else {
                 $check = explode("/", mime_content_type($_FILES['audio-file']['tmp_name']))[0] === "audio";
-                if($check == false) {
+                if($check) {
                     echo "<div class='mot'>Ce fichier n'est pas un audio correct.></div>";
                     $uploadOk = 1;
                 } else {
@@ -222,10 +226,11 @@
             if (is_dir("audio")){
                 $files=scandir("audio");
                 foreach ($files as $file){
-                    if ($file == "." || $file == "..") continue;
+                    if ($file == "." || $file == "..") {continue;}
                     echo "<input type='checkbox' id='checkaud-".$file."' name='checkaud-".$file."' class='aud-check'>";
                     echo "<label class='aud-icon-container' for='checkaud-".$file."'>";
-                    echo '<button type="button" class="audiobutton" onclick="toggleAudio(\''.$file.'\')"><i class="fa fa-volume-up" aria-hidden="true"></i></button>';
+                    echo '<button type="button" class="audiobutton" onclick="toggleAudio
+                    (\''.$file.'\')"><i class="fa fa-volume-up" aria-hidden="true"></i></button>';
                     echo "<span>".$file."</span>";
                     echo "</label>";
                 }

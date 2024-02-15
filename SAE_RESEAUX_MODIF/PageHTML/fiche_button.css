@@ -13,7 +13,7 @@
 }
 
 .fiche_button span{
-    font-family: 'Cormorant', 'sans-serif';
+    font-family: 'Cormorant', sans-serif;
     font-size: 4em;
 }
 
@@ -27,7 +27,6 @@
 .btn-suivant, .btn-precedent{
     justify-content: space-between;
     display: flex;
-    justify-content: center;
     font-size: 1.5em;
 }
 

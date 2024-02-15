@@ -1,7 +1,8 @@
 <?php
 function matchFontSize() {
-    if (!isset($_COOKIE["configTaille"])) return "1em";
+    if (!isset($_COOKIE["configTaille"])){return "1em";}
     switch ($_COOKIE["configTaille"]) {
+        default:
         case '75%':
             return '1.75em';
             break;
@@ -36,8 +37,8 @@ function matchFontSize() {
     return "1em";
 }
 function getFontName(){
-if (isset($_COOKIE["configPolice"]))
-    return $_COOKIE["configPolice"];
+if (isset($_COOKIE["configPolice"])){return $_COOKIE["configPolice"];}
+    
 }
 
 function addIcon($cookie, $name, $id = "noid"){
@@ -57,7 +58,8 @@ function addTexteBox($cookie, $name){
 }
 function addAudio($cookie, $path){
     if (isset($_COOKIE['audio'.ucfirst($cookie)]) && $_COOKIE['audio'.ucfirst($cookie)] == "on"){
-        echo '<button type="button" style class="audiobutton" onclick="toggleAudio(\''.$path.'\')"><i class="fa fa-volume-up" aria-hidden="true"></i></button>';
+        echo '<button type="button" style class="audiobutton" onclick="toggleAudio(\''
+        .$path.'\')"><i class="fa fa-volume-up" aria-hidden="true"></i></button>';
     }
 }
 
@@ -150,4 +152,3 @@ function echoMateriaux($i){
     echo '<option>Vis TTPC 35</option>';
     echo '</select>';
 }
-?>
