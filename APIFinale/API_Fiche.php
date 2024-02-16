@@ -40,8 +40,6 @@ switch ($http_method) {
         } finally {
             deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         }
-        break;
-        $RETURN_CODE = 405; // Method Not Allowed
         $STATUS_MESSAGE = "Méthode HTTP non autorisée";
         $matchingData = null;
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
