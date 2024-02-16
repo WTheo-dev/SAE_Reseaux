@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_POST['precedent'])){
     $numpage = $_POST['precedent'];
     $index = $numpage - 1;

@@ -16,7 +16,7 @@ if (is_jwt_valid($bearer_token, "pass")) {
 $postedData = file_get_contents('php://input');
 $data = json_decode($postedData, true);
 
-switch ($http_method) { 
+switch ($http_method) {
     default:
     case 'GET':
         try {
@@ -52,7 +52,7 @@ switch ($http_method) {
             $RETURN_CODE = 400;
             $STATUS_MESSAGE = "Création de la trace impossible ";
         }
-        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);  
+        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         break;
     
     case 'PUT' :
@@ -72,7 +72,7 @@ switch ($http_method) {
             }
         } else {
             $RETURN_CODE = 403;
-            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié, 
+            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié,
             la méthode HTTP appropriée, ou l'id_fiche est manquant";
         }
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
