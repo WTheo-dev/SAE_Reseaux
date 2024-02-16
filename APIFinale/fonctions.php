@@ -924,10 +924,26 @@ function ajouterElement($libelle, $type, $picto=null, $text=null, $audio=null){
   return $req->rowCount() > 0;
 }
 
-function listeElement(){
+function listeElement($type=null){
   $BD = connexionBD();
-  $req = $BD->prepare('SELECT id_element, libelle, type, picto, text, audio FROM element_defaut');
-  $req->execute();
+  static $req;
+
+  if (isset($type)){
+    $req = $BD->prepare('SELECT id_element, libelle, picto, text, audio FROM element_defaut WHERE type = ?');
+    $req->execute(array($type));
+  } else {
+    $req = $BD->prepare('SELECT id_element, libelle, type, picto, text, audio FROM element_defaut');
+    $req->execute();
+  }
+  return $req->fetchall();
+}
+
+function supprimerElement($id){
+  $BD = connexionBD();
+  
+  $req = $BD->prepare('DELETE FROM element_defaut WHERE id_element = ?');
+  $req->execute(array($id));
+  
   return $req->fetchall();
 }
 
