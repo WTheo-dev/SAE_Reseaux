@@ -1,6 +1,6 @@
 <?php
-require_once("jwt_util.php");
-require_once("fonctions.php");
+require_once "jwt_util.php";
+require_once "fonctions.php";
 header("Content-Type:application/json");
 $http_method = $_SERVER['REQUEST_METHOD'];
 
@@ -18,22 +18,23 @@ $postedData = file_get_contents('php://input');
 $data = json_decode($postedData, true);
 
 switch ($http_method) {
+    default:
     case 'GET':
         try {
             $RETURN_CODE = 200;
-        
+
             if (isset($_GET['id_formation'])) {
                 $STATUS_MESSAGE = "Voici la formation :";
                 $matchingData = UneFormation($_GET['id_formation']);
                 if ($matchingData === null) {
-                    throw new Exception("Aucune Formation n'a été trouvé avec l'ID spécifié");
+                    throw new UnexpectedValueException("Aucune Formation n'a été trouvé avec l'ID spécifié");
                 }
             } else {
                 $STATUS_MESSAGE = "Voici la liste des formations :";
                 $matchingData = listeFormations();
             }
         } catch (\Throwable $th) {
-            $RETURN_CODE = $th ->getCode();
+            $RETURN_CODE = $th->getCode();
             $STATUS_MESSAGE = $th->getMessage();
             $matchingData = null;
         } finally {
@@ -42,7 +43,7 @@ switch ($http_method) {
         break;
 
     case 'POST':
-        $matchingData=null;
+        $matchingData = null;
         if (ajouterFormation($data['intitule'], $data['niveau_qualif'], $data['groupe'])) {
             $RETURN_CODE = 200;
             $STATUS_MESSAGE = "Création de la formation correctement effectué.";
@@ -52,8 +53,8 @@ switch ($http_method) {
         }
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         break;
-    
-    
+
+
     case 'DELETE':
         if ($role == 2) {
             $id_formation = $_GET['id_formation'];
@@ -82,7 +83,7 @@ switch ($http_method) {
 
     case 'PUT':
         $matchingData = null;
-        if ($role == 2 ) {
+        if ($role == 2) {
             $id_formation = $_GET['id_formation'];
             if (modifierFormation($id_formation, $data['intitule'], $data['niveau_qualif'], $data['groupe'])) {
                 $RETURN_CODE = 200;
@@ -95,7 +96,8 @@ switch ($http_method) {
             }
         } else {
             $RETURN_CODE = 403;
-            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié, la méthode HTTP appropriée, ou l'id_fiche est manquant";
+            $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié, 
+            la méthode HTTP appropriée, ou l'id_fiche est manquant";
         }
         deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         break;

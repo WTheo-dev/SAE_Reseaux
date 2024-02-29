@@ -1,6 +1,7 @@
 <?php
 
-function generate_jwt($headers, $payload, $secret = 'secret') {
+function generate_jwt($headers, $payload, $secret = 'secret')
+{
 	$headers_encoded = base64url_encode(json_encode($headers));
 
 	$payload_encoded = base64url_encode(json_encode($payload));
@@ -13,7 +14,8 @@ function generate_jwt($headers, $payload, $secret = 'secret') {
 	return $jwt;
 }
 
-function is_jwt_valid($jwt, $secret = 'secret') {
+function is_jwt_valid($jwt, $secret = 'secret')
+{
 	// split the jwt
 	$tokenParts = explode('.', $jwt);
 	$header = base64_decode($tokenParts[0]);
@@ -40,11 +42,13 @@ function is_jwt_valid($jwt, $secret = 'secret') {
 	}
 }
 
-function base64url_encode($data) {
-    return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
+function base64url_encode($data)
+{
+	return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
 }
 
-function get_authorization_header(){
+function get_authorization_header()
+{
 	$headers = null;
 
 	if (isset($_SERVER['Authorization'])) {
@@ -64,16 +68,17 @@ function get_authorization_header(){
 	return $headers;
 }
 
-function get_bearer_token() {
-    $headers = get_authorization_header();
+function get_bearer_token()
+{
+	$headers = get_authorization_header();
 
-    // HEADER: Get the access token from the header
-    if (!empty($headers)) {
-        if (preg_match('/Apeaj\s(\S+)/', $headers, $matches)) {
-            return $matches[1];
-        }
-    }
-    return null;
+	// HEADER: Get the access token from the header
+	if (!empty($headers)) {
+		if (preg_match('/Apeaj\s(\S+)/', $headers, $matches)) {
+			return $matches[1];
+		}
+	}
+	return null;
 }
 
 ?>
