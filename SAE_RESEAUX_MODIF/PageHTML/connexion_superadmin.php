@@ -1,4 +1,22 @@
-<!DOCTYPE html>
+<?php 
+session_start();
+include '../fonction.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $password = $_POST["mdp"];
+
+    if (connexionPersonnel($password)) {
+        // Authentication successful
+        $_SESSION["username"] = $username; // Store the username in the session
+        header("Location: page_postco_superadmin.php"); // Redirect to a welcome page after successful login
+        exit();
+    } else {
+        // Authentication failed
+        $error_message = "Invalid credentials"; // You can customize this message
+    }
+}
+
+?>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">

@@ -140,36 +140,36 @@ function connexionApprenti($id_apprenti)
 
 }
 
-function connexionEducateur($id_personnel)
+function connexionPersonnel($id_personnel)
 {
-  $BD = connexionBD();
+    $BD = connexionBD();
 
-  if (count(($id_personnel)) > 0) {
-    $identiteApprentiHTML = conversionHTML($id_personnel);
-    if (count(($id_personnel)) > 0) {
-      $verificationApprenti = $BD->prepare('SELECT $ from apprenti WHERE schema = ?');
-      $verificationApprenti->execute(array($id_personnel['0']));
-      $BD = null;
-      if ($verificationApprenti->rowCount() > 0) {
-        foreach ($verificationApprenti as $row) {
-          if (password_verify($id_personnel['1'], $row['mdp'])) {
-            $_SESSION['id'] = $row['id_apprenti'];
-            $_SESSION['compteValide'] = $row['compteValide'];
-            $_SESSION['coordinateur'] = $row['coordinateur'];
-            return true;
-          }
+    if (count($id_personnel) == 2) {
+        $identitePersonnelHTML = array_map('conversionHTML', $id_personnel);
+
+        $verificationPersonnel = $BD->prepare('SELECT * FROM personnel WHERE schema = ?');
+        $verificationPersonnel->execute(array($identitePersonnelHTML[0]));
+        $BD = null;
+
+        if ($verificationPersonnel->rowCount() > 0) {
+            foreach ($verificationPersonnel as $row) {
+                if (password_verify($identitePersonnelHTML[1], $row['mdp'])) {
+                    // Assuming 'id_apprenti' is the correct column name, update it if needed
+                    $_SESSION['id'] = $row['id_apprenti'];
+                    $_SESSION['compteValide'] = $row['compteValide'];
+                    return true;
+                }
+            }
         }
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
-  } else {
-    return false;
-  }
 
+        // If the loop doesn't return true, it means the password verification failed
+        return false;
+    }
+
+    // Invalid input format
+    return false;
 }
+
 
 
 
