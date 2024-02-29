@@ -100,6 +100,7 @@
     <br>
 
     <?php
+    #var_dump(listeElement("picto"));
     if (!empty($_FILES) && isset($_POST['enregistrer_icon'])){
         $target_dir="icon/";
         $name=basename($_FILES["icon-file"]["name"]);
@@ -134,20 +135,22 @@
             }
         }
     }
-    $liste = listeElement();
-    var_dump($liste);
     ?>
 
     <h3 class="h2_textpagebanque">Liste de vos pictogrammes :</h3>
+    </form>
+    <form action="supprimer_element.php" method="post">
     <div class="icon-container">
         <?php
             if (is_dir("icon")){
-                $files=scandir("icon");
-                foreach ($files as $file){
-                    if ($file == "." || $file == ".."){continue;}
-                    echo "<input type='checkbox' id='checkimg-".$file."' name='checkimg-".$file."' class='img-check'>";
-                    echo "<label class='image-icon-container' for='checkimg-".$file."'>";
-                    echo "<img class='icon-img' src='icon/".$file."' name='".$file."' />";
+                $icons = listeElement("picto");
+                foreach ($icons as $icon){
+                    $file = $icon['picto'];
+                    $name = str_replace("icon/", "", $file);
+                    echo "<input type='checkbox' id='checkimg-".$name."' name='checkimg-".$name."' class='img-check'>";
+                    echo "<label class='image-icon-container' for='checkimg-".$name."'>";
+                    echo "<input hidden name='id-".$name."' value='".$icon['id_element']."' />";
+                    echo "<img class='icon-img' src='".$file."' name='".$name."' />";
                     echo "<span>".$file."</span>";
                     echo "</label>";
                 }
@@ -159,6 +162,8 @@
         <i class="fa fa-trash" aria-hidden="true"></i>
         <span>Supprimer le/les pictogramme(s) sélectionné(s)</span>
     </button>
+    </form>
+    <form action="banque.php" method="post" enctype="multipart/form-data">
     <br>
 
     <?php
