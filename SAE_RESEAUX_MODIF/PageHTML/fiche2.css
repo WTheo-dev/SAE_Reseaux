@@ -1,0 +1,32 @@
+.body_fiche {
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+
+    background-color: #f0f0f0;
+}
+
+.header_fiche{
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.child-info{
+margin-right: 1em;
+}
+
+.texte-page2{
+    display: flex;
+    justify-content: center;
+
+}
+
+.jsp{
+    
+    padding: 3em;
+
+}

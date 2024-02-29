@@ -1,0 +1,138 @@
+/* Style de base pour la table */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+
+.header-connexion-eleve {
+  background-color: rgb(130,106,251); 
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.body-postco-admin{
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Cormorant', sans-serif;
+  background-color: #f0f0f0;
+}
+
+.header_text_postcoeleve{
+  color: white;
+}
+
+.child-info{
+  font-family: 'Cinzel', sans-serif;
+  font-size: 25px;
+  padding-right: 1em;
+  margin-left: 350px;
+  margin-top: 100px;
+}
+
+.logo{
+  display: flex;
+}
+
+.texte_pagepostco_educ{
+  font-family: 'Cormorant', sans-serif;
+
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+}
+
+.zone-texte_page_postco-admin{
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.text_tableau{
+  display: flex;
+  justify-content: center;
+  font-size: 60px;
+}
+.class-container-profile-switch{
+  margin-top: 5rem;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.profile-switch-container{
+  justify-content: center;
+  width: 40%;
+  display: flex;
+  background-color: lightgray;  
+}
+
+.rectangle-container-photo-label{
+  padding: 1rem;
+  display: grid;
+  justify-content: center;
+}
+.rectangle-container-photo-label label{
+  font-size: 50px;
+  text-align: center;
+}
+
+
+.rectangle-photo{
+  margin: 10px;
+  background-color: white;
+  padding: 1em;
+  display: flex;
+  width: 300px; /* ou toute autre valeur souhaitée */
+}
+.image {
+  width: 100%;
+  height: 100%; /* Cela remplira la hauteur de la div-container */
+}
+
+.btn-deconnexion_page_postco_admin{
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+
+}
+
+.btn-deconnexion_page_postco_admin button{
+  font-size: 50px;
+  background-color: red; 
+  color: #f0f0f0  ;
+  cursor: pointer;
+  padding: 20px;
+
+}
+
+
+.profile-switch-container.selected {
+  border: 10px solid green;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+/* ... (votre code CSS existant) */
+
+.profile-buttons {
+  display: none;
+  margin-top: 8em;
+  padding: 1em;
+  
+}
+
+.profile-buttons button{
+  
+  padding: 1rem;
+  margin-top: 1em;
+  font-size: 50px;
+  background-color: rgb(130,106,251); 
+  color: #f0f0f0  ;
+  cursor: pointer;
+}

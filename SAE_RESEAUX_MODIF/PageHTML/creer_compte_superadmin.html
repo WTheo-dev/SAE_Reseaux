@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Creation du compte SuperAdmin</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="body-creer-compte-superadmin">
+    <section class="creer_compte_superadmin-container">
+      <header>Creation du compte SuperAdmin</header>
+      <form action="#" class="creer_compte_superadmin-form" onsubmit="return validateForm()">
+
+        <div class="creer_compte_superadmin-input-box">
+          <label>Nom</label>
+          <input type="text" placeholder="Entrez un Nom" required />
+        </div>
+
+        <div class="creer_compte_superadmin-input-box">
+            <label>Prénom</label>
+            <input type="text" placeholder="Entrez un prénom" required />
+          </div>
+        
+          <div class="creer_compte_superadmin-input-box">
+            <label>Mot de passe</label>
+            <input type="password" placeholder="Entrez un mot de passe" required />
+          </div>
+
+        <div class="creer_compte_superadmin-input-box">
+          <label>Adresse email</label>
+          <input type="email" placeholder="Entrez une adresse email" required />
+        </div>
+
+          <div class="creer_compte_superadmin-input-box">
+            <label>Numero de téléphone (optionnel)</label>
+            <input type="tel" placeholder="Numéro de téléphone"/>
+          </div>
+        
+        <button type="submit">Créer le compte</button>
+        <button onclick="redirectToPostcoAdmin()">Annuler</button>
+      </form>
+    </section>
+
+    <script src="creer_compte_superadmin.js"></script>
+  </body>
+</html>

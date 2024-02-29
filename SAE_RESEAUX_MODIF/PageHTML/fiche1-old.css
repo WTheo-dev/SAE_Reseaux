@@ -1,0 +1,103 @@
+body {
+    height: calc(100vh - 60px);
+    margin: 0;
+    padding: 20px;
+    background-color: lightgray;
+}
+
+form {
+    height: 100%;
+}
+
+.bordure {
+    border: solid green 0.4vh;
+    min-height: 90%;
+    align-items: center;
+}
+
+.block{
+    height: 93%;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+
+.jsp {
+    height: fit-content;
+}
+
+.fiche_button {
+    display: flex;
+    justify-content: space-around;
+    height: fit-content;
+    padding-top: 2vh;
+}
+
+.block p {
+    position: absolute;
+    top: -0.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    background-color: lightgray;
+}
+
+.block textarea {
+    width: 99%;
+    margin-top: 1%;
+}
+
+#titre_mat_util {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+#mat_util {
+    display: flex;
+    justify-content: space-around;
+}
+
+#mat_droit, #mat_gauche {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+#bouton_imprimer {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.block *:disabled {
+    background-color: lightgray;
+}
+
+#checkouille {
+    border: red solid 3px;
+}
+
+
+button {
+    padding: 10px 15px;
+}
+
+button i{
+    margin-right:10px;
+}
+
+@media print {
+    .noprint {
+       visibility: hidden;
+    }
+}
+
+.audiobutton {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 10px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

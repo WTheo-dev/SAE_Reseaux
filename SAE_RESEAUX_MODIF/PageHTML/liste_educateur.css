@@ -1,0 +1,63 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Importez Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
+
+
+.body-liste-educateur{
+  font-family: 'Cormorant', sans-serif;
+  background-color: #f4f8ff;
+  color: #333;
+  margin: 0; /* Supprime la marge par défaut du corps */
+  padding: 0; /* Supprime le rembourrage par défaut du corps */
+  height: 100vh; /* Ajuste la hauteur du corps à 100% de la vue */
+  display: flex;
+  flex-direction: column;
+}
+.header-connexion-eleve {
+  background-color: rgb(130,106,251); 
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+table {
+  font-family: 'Cormorant', sans-serif;
+
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 70px;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 70px;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  button {
+    font-family: 'Cormorant', sans-serif;
+
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 70px;
+  }
+
+  h2 {
+      font-size: 70px;
+  }
+
+
+.liste-educ{
+    display: flex;
+    justify-content: center;
+}
