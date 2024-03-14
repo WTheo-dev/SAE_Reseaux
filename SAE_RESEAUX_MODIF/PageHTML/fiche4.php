@@ -26,7 +26,14 @@
     </style>
 </head>
 <body class="body_fiche">
-    <?php include_once("fiche_base.php"); ?>
+
+<?php include_once("../../APIFinale/fonctions.php"); ?>
+    <?php 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $type_intervention = $_POST["TypeIntervention"];
+    }
+    ?>
+
 
     <audio id="amel">
         <source src="audio/Améliorative.mp3" type="audio/mp3">
@@ -39,7 +46,7 @@
     </audio>
     <script src="fiche_audio.js"></script>
 
-<!-- Formulaire -->
+
 <?php ifform() ?>
 
     <div class="block bordure">

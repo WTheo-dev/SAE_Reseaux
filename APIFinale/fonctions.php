@@ -584,7 +584,7 @@ function listeFiche()
   return $resultat;
 }
 
-function creationFiche($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation, $id_apprenti, $id_personnel) {
+function creationFiche($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $travaux_realises, $travaux_non_realises, $couleur_intervention, $etat_fiche, $date_creation, $id_apprenti, $id_personnel) {
   $BD = connexionBD();
   $numero = htmlspecialchars($numero);
   $nom_du_demandeur = htmlspecialchars($nom_du_demandeur);
@@ -596,6 +596,8 @@ function creationFiche($numero, $nom_du_demandeur, $date_demande, $date_interven
   $degre_urgence = htmlspecialchars($degre_urgence);
   $type_intervention = htmlspecialchars($type_intervention);
   $nature_intervention = htmlspecialchars($nature_intervention);
+  $travaux_realises = htmlspecialchars($travaux_realises);
+  $travaux_non_realises = htmlspecialchars($travaux_non_realises);
   $couleur_intervention = htmlspecialchars($couleur_intervention);
   $etat_fiche = htmlspecialchars($etat_fiche);
   $date_creation = htmlspecialchars($date_creation);
@@ -603,7 +605,7 @@ function creationFiche($numero, $nom_du_demandeur, $date_demande, $date_interven
   $id_personnel = htmlspecialchars($id_personnel);
 
   $creerFiche = $BD->prepare('INSERT INTO fiche_intervention(numero, nom_du_demandeur, date_demande, date_intervention, duree_intervention, localisation, description_demande, degre_urgence, type_intervention, nature_intervention, couleur_intervention, etat_fiche, date_creation, id_apprenti, id_personnel) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-  $creerFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation, $id_apprenti, $id_personnel));
+  $creerFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $travaux_realises, $travaux_non_realises, $couleur_intervention, $etat_fiche, $date_creation, $id_apprenti, $id_personnel));
   $BD = null;
 
   if ($creerFiche->rowCount() > 0) {
@@ -629,7 +631,7 @@ function supprimerFiche($id_fiche)
 }
 
 
-function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation,$id_apprenti,$id_personnel) {
+function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $travaux_realises, $travaux_non_realises, $couleur_intervention, $etat_fiche, $date_creation,$id_apprenti,$id_personnel) {
   $BD = connexionBD();
   $id_fiche = htmlspecialchars($id_fiche);
   $numero = htmlspecialchars($numero);
@@ -642,6 +644,8 @@ function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande, $da
   $degre_urgence = htmlspecialchars($degre_urgence);
   $type_intervention = htmlspecialchars($type_intervention);
   $nature_intervention = htmlspecialchars($nature_intervention);
+  $travaux_realises = htmlspecialchars($travaux_realises);
+  $travaux_non_realises = htmlspecialchars($travaux_non_realises);
   $couleur_intervention = htmlspecialchars($couleur_intervention);
   $etat_fiche = htmlspecialchars($etat_fiche);
   $date_creation = htmlspecialchars($date_creation);
@@ -651,7 +655,7 @@ function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande, $da
 
   $modifierFiche = $BD->prepare('UPDATE fiche_intervention SET numero = ?, nom_du_demandeur = ?, date_demande = ?, date_intervention = ?, duree_intervention = ?, localisation = ?, description_demande = ?, degre_urgence = ?, type_intervention = ?, nature_intervention = ?, couleur_intervention = ?, etat_fiche = ?, date_creation = ?, id_apprenti = ?, id_personnel = ? WHERE id_fiche = ?');
 
-  $modifierFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $couleur_intervention, $etat_fiche, $date_creation,$id_apprenti,$id_personnel,$id_fiche));
+  $modifierFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $travaux_realises, $travaux_non_realises, $couleur_intervention, $etat_fiche, $date_creation,$id_apprenti,$id_personnel,$id_fiche));
 
   $BD = null;
 

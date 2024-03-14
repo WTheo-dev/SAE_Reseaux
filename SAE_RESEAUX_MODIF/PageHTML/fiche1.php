@@ -1,6 +1,15 @@
 <?php include_once("fiche_base.php"); ?>
 <?php $numpage=1; ?>
 <?php include("fiche_head.php"); ?>
+<?php include_once("../../APIFinale/fonctions.php"); ?>
+
+<?php 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nomIntervenant = $_POST["nomIntervenant"];
+    $prenomIntervenant = $_POST["prenomIntervenant"];
+}
+?>
+
 <body class="body_fiche">
 
     <audio id="nomInterv">
@@ -11,9 +20,9 @@
     </audio>
     <script src="fiche_audio.js"></script>
 
-<!-- Formulaire -->
+
 <?php ifform() ?>
-    <!-- Informations sur l'intervenant -->
+
     <div class="block bordure">
     <p class="texte-page1">Intervenant</p>
     

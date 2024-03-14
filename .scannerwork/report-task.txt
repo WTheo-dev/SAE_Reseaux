@@ -1,0 +1,6 @@
+projectKey=SAE
+serverUrl=http://localhost:9000
+serverVersion=10.4.0.87286
+dashboardUrl=http://localhost:9000/dashboard?id=SAE
+ceTaskId=80801ae1-b4da-45fa-bba7-4ea04cece3b2
+ceTaskUrl=http://localhost:9000/api/ce/task?id=80801ae1-b4da-45fa-bba7-4ea04cece3b2
