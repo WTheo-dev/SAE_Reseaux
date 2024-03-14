@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 ?>
 
-<?php include_once("fiche_base.php"); ?>
+<?php include_once "fiche_base.php"; ?>
 
 <?php if (!isset($nohead) || $nohead != "no"): ?>
 <!DOCTYPE html>
@@ -21,7 +21,8 @@ ini_set('display_errors', 'On');
     referrerpolicy="no-referrer"
     />
     <header class="header_fiche">
-            <div class="header_text"><img class="logo_page_postco_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
+            <div class="header_text"><img class="logo_page_postco_superadmin"
+            src="Image/APEAJ_color2.png" alt="pictogramme"></div>
             <div class="child-info">
                 <h2 class="header_text_postcoeleve">Nom Prénom de l'admin</h2>
             </div>
@@ -36,3 +37,4 @@ ini_set('display_errors', 'On');
     </style>
 </head>
 <?php endif; ?>
+

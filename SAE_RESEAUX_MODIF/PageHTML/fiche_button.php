@@ -13,7 +13,7 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
     />
-</head> 
+</head>
 <?php if (! (isset($nobutton))): ?>
 
     <div class="fiche_button">
@@ -48,9 +48,3 @@
 </div>
 <?php endif; ?>
 
-<!-- boutton d'impression
-    <button type="submit" name="imprimer" onClick="window.print()">
-        <i class="fa fa-print" aria-hidden="true"></i>
-        <span>imprimer</span>
-    </button>
--->

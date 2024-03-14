@@ -1,8 +1,5 @@
 <?php
-    //error_reporting(E_ALL);
-    //ini_set('display_errors', 'On');
-
-    include_once("../../APIFinale/fonctions.php");
+    include_once "../../APIFinale/fonctions.php";
     $persos = listeSuperAdmin();
 
     list($prenom, $nom) = explode('.', $_POST["id"]);
@@ -38,10 +35,11 @@
         <title>Accueil SuperAdmin</title>
         
     </head>
-    <body class="body_page_postco_superadmin">  
+    <body class="body_page_postco_superadmin">
 
         <header class="header_page_postco_superadmin">
-            <div class="header_text"><img class="logo_page_postco_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
+            <div class="header_text"><img class="logo_page_postco_superadmin"
+            src="Image/APEAJ_color2.png" alt="pictogramme"></div>
             <div class="child-info">
                 <h2 class="header_text_postcoeleve"><?php echo $prenom." ".strtoupper($nom); ?></h2>
             </div>
@@ -53,21 +51,21 @@
         </div>
 
         
-    <div class="container_central"> 
+    <div class="container_central">
         <div class="container_2">
             <label for="actions"> Que voulez vous faire?</label>
         </div>
-        <div class="btnaction"> 
+        <div class="btnaction">
             <select class="actions" id="actions" onchange="showSection()">
                 <option value="creer">Créer</option>
                 <option value="modifier">Modifier / Supprimer</option>
             </select>
-            <div class="btnliste"> 
+            <div class="btnliste">
                 <select class="liste" id="liste" onchange="showSection()">
                     <option value="eleves">Elèves</option>
                     <option value="cours">Cours</option>
                     <option value="educateurs">Educateurs</option>
-                    <option value="formations">Formations</option>   
+                    <option value="formations">Formations</option>
                 </select>
             </div>
         </div>
@@ -76,7 +74,8 @@
             <button class="btnGO" onclick="goToPage()">GO</button>
         </div>
         <div class="colonne_liste">
-            <button id="btnredirection" onclick="goToPageBanque()">Cliquez ici pour accéder a la banque de données</button>
+            <button id="btnredirection"
+            onclick="goToPageBanque()">Cliquez ici pour accéder a la banque de données</button>
         </div>
     </div>
 <div class="colonne_liste">

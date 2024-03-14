@@ -16,7 +16,7 @@
 
   <?php
   session_start();
-  include_once("../../APIFinale/fonctions.php");
+  include_once "../../APIFinale/fonctions.php";
   $idetu = -1;
   $i = 0;
   while (true){
@@ -92,9 +92,6 @@
     </div>
   
     <button type="submit" id="connect-button_educ" >Se connecter</button>
-    <!--
-    <button id="connect-button" onclick="connect()" style="display: none;">Se connecter</button>
-    -->
 
 </form>
 

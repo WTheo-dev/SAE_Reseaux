@@ -7,7 +7,7 @@
   }
 
   .child-info{
-    font-family: 'Cinzel', 'sans-serif';
+    font-family: 'Cinzel', sans-serif;
     font-size: 25px;
     padding-right: 1em;
 }
@@ -42,5 +42,5 @@
 }
 
 #audioPlayer {
-    width: 500px;;
+    width: 500px;
 }

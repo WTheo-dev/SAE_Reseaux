@@ -1,6 +1,6 @@
-<?php include_once("fiche_base.php"); ?>
+<?php include_once "fiche_base.php"; ?>
 <?php $numpage=3; ?>
-<?php include_once("fiche_head.php"); ?>
+<?php include_once "fiche_head.php"; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -50,7 +50,8 @@
     <div class="jsp">
     <?php addIcon("dateIntervention", "fa-calendar-o"); ?>
     <?php addTexte("dateIntervention", "Date d'intervention:") ?>
-    <input type="date" id="dateIntervention" name="dateIntervention" value="<?php if (isset($_COOKIE['dateIntervention'])) { echo $_COOKIE['dateIntervention']; } ?>">
+    <input type="date" id="dateIntervention" name="dateIntervention"
+     value="<?php if (isset($_COOKIE['dateIntervention'])) { echo $_COOKIE['dateIntervention']; } ?>">
     <?php addAudio("dateIntervention", "dateInt"); ?>
     </div>
 
@@ -87,7 +88,7 @@
 
     <?php
     $numpage=3;
-    include_once("fiche_button.php");
+    include_once "fiche_button.php";
     ?>
 
 <?php ifformfin() ?>

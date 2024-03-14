@@ -4,12 +4,15 @@ $prenom = $_POST["prenom"];
 $mdp    = $_POST["mdp"];
 $num    = $_POST["num"];
 
-if ($_POST["educ-type"] == "simp")
+if ($_POST["educ-type"] == "simp"){
     $type = 4;
-else
-    $type = 3;
+}
 
-include("../../APIFinale/fonctions.php");
+else{
+    $type = 3;
+}
+
+include_once "../../APIFinale/fonctions.php";
 $succes = ajouterEducateur($nom, $prenom, $mdp, $type, $num);
 ?>
 
@@ -40,7 +43,8 @@ $succes = ajouterEducateur($nom, $prenom, $mdp, $type, $num);
 
         <!-- menfou de la class, je veut juste le meme style que les autre bouton -->
         <div class="btn_creercompteleve">
-            <button type="button" id="back-button" onclick="window.location.href = 'page_postco_superadmin.php';">Retour</button>
+            <button type="button" id="back-button"
+            onclick="window.location.href = 'page_postco_superadmin.php';">Retour</button>
         </div>
     </main>
 </body>

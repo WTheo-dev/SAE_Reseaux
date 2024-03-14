@@ -1,6 +1,6 @@
-<?php include_once("fiche_base.php"); ?>
+<?php include_once "fiche_base.php"; ?>
 <?php $numpage=6; ?>
-<?php include_once("fiche_head.php"); ?>
+<?php include_once "fiche_head.php"; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -38,12 +38,13 @@
 
     <div class="block">
     <p class="text-fiche6">Travaux réalisés</p>
-    <textarea id="travauxRealises" name="travauxRealises" rows="10"><?php if (isset($_COOKIE['travauxRealises'])) { echo $_COOKIE['travauxRealises']; } ?></textarea>
+    <textarea id="travauxRealises" name="travauxRealises" rows="10">
+        <?php if (isset($_COOKIE['travauxRealises'])) { echo $_COOKIE['travauxRealises']; } ?></textarea>
     </div>
 
     <?php
     $numpage=6;
-    include_once("fiche_button.php");
+    include_once "fiche_button.php";
     ?>
 
 <?php ifformfin() ?>

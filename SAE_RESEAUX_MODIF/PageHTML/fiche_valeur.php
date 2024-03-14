@@ -1,22 +1,5 @@
 <?php
-/*
-foreach ($_POST as $param => $value){
-    //echo $param." : ".$value."<br>";
-    $value=htmlspecialchars($value);
-    setcookie($param, $value, time() + (86400 * 60));
-}
-
-foreach ($_COOKIE as $name => $value){
-    //echo $name.' : '.$value.'<br>';
-    if (str_starts_with($name, "Texte") || str_starts_with($name, "Icon") || str_starts_with($name, "Audio")){
-        if (!isset($_POST[$name])){
-            unset($_COOKIE[$name]); 
-            setcookie($name, '', -1); 
-        }
-    }
-}
-*/
-include_once("fiche_base.php");
+include_once "fiche_base.php";
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +17,8 @@ include_once("fiche_base.php");
     />
 </head>
 <header class="header_page_postco_superadmin">
-            <div class="header_text"><img class="logo_page_postco_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
+            <div class="header_text"><img class="logo_page_postco_superadmin"
+            src="Image/APEAJ_color2.png" alt="pictogramme"></div>
             <div class="child-info">
                 <h2 class="header_text_postcoeleve">Nom Prénom de l'admin</h2>
             </div>
@@ -45,7 +29,7 @@ include_once("fiche_base.php");
 function valEns($name){
     if (isset($_REQUEST[$name])){
         return $_REQUEST[$name];
-    }else if (isset($_COOKIE[$name])){
+    }elseif (isset($_COOKIE[$name])){
         return $_COOKIE[$name];
     }
 }
@@ -55,23 +39,26 @@ function valEns($name){
 function formatBox($name){
     echo "<br>";
     echo '<input class="noprint" type="checkbox" id="texte'.$name.'" name="texte'.$name.'" ';
-    if (valEns('texte'.$name) == "on") echo "checked";
-    echo '/>';
-    echo '<label class="noprint" for="texte'.$name.'"> Texte </label>';
+    if (valEns('texte'.$name) == "on"){
+        echo "checked";
+        echo '/>';
+        echo '<label class="noprint" for="texte'.$name.'"> Texte </label>';
+    }
 
     echo '<input class="noprint" type="checkbox" id="icon'.$name.'" name="icon'.$name.'" ';
-    if (valEns('icon'.$name) == "on") echo "checked";
+    if (valEns('icon'.$name) == "on"){echo "checked";
     echo '/>';
     echo '<label class="noprint" for="icon'.$name.'"> Icône </label>';
+    }
 
     echo '<input class="noprint" type="checkbox" id="audio'.$name.'" name="audio'.$name.'" ';
-    if (valEns('audio'.$name) == "on") echo "checked";
-    echo '/>';
-    echo '<label class="noprint" for="audio'.$name.'"> Audio </label>';
+    if (valEns('audio'.$name) == "on") {echo "checked";
+        echo '/>';
+        echo '<label class="noprint" for="audio'.$name.'"> Audio </label>';
+    }
+    
 }
 ?>
-
-<!--<form action="fiche_valeur.php" method="post">-->
 <form action="fiche_traitement.php" method="post">
 <input type="hidden" name="from-fiche-valeur" value="OUI, je suis raciste">
 
@@ -118,14 +105,16 @@ function formatBox($name){
     <div class="blockbordure1">
     <p class="titrepagevaleur">Intervenant</p>
     <label for="nomIntervenant">Nom de l'intervenant:</label>
-    <input class="labelfichevaleur" type="text" disabled name="nomIntervenant" value="<?php if (isset($_COOKIE['nomIntervenant'])) { echo $_COOKIE['nomIntervenant']; } ?>">
-    <?php formatBox("NomIntervenant", ""); ?>
+    <input class="labelfichevaleur" type="text" disabled name="nomIntervenant"
+    value="<?php if (isset($_COOKIE['nomIntervenant'])) { echo $_COOKIE['nomIntervenant']; } ?>">
+    <?php formatBox("NomIntervenant"); ?>
     <br>
     <br>
 
     <label for="prenomIntervenant">Prénom de l'intervenant</label>
-    <input class="labelfichevaleur" type="text" disabled  name="prenomIntervenant" value="<?php if (isset($_COOKIE['prenomIntervenant'])) { echo $_COOKIE['prenomIntervenant']; } ?>">
-    <?php formatBox("PrenomIntervenant", ""); ?>
+    <input class="labelfichevaleur" type="text" disabled  name="prenomIntervenant"
+    value="<?php if (isset($_COOKIE['prenomIntervenant'])) { echo $_COOKIE['prenomIntervenant']; } ?>">
+    <?php formatBox("PrenomIntervenant"); ?>
 
     </div>
     <br>
@@ -162,8 +151,10 @@ function formatBox($name){
 <p class="titrepagevaleur">Intervention</p>
 <div class="jsp">
 <label for="dateIntervention">Date d'intervention:</label>
-<input class="labelfichevaleur"disabled type="date" id="dateIntervention" name="dateIntervention" value="<?php if (isset($_COOKIE['dateIntervention'])) { echo $_COOKIE['dateIntervention']; } ?>">
-<?php formatBox("DateIntervention", ""); ?>
+<input class="labelfichevaleur"disabled type="date" id="dateIntervention"
+name="dateIntervention" value="<?php if (isset($_COOKIE['dateIntervention']))
+{ echo $_COOKIE['dateIntervention']; } ?>">
+<?php formatBox("DateIntervention"); ?>
 </div>
 
 <div class="jsp">
@@ -171,7 +162,7 @@ function formatBox($name){
 <select disabled id="dureeIntervention" name="dureeIntervention">
 <br><option><?php if (isset($_COOKIE['dureeIntervention'])) { echo $_COOKIE['dureeIntervention']; } ?></option>
 <br></select>
-<?php formatBox("DureeIntervention", ""); ?>
+<?php formatBox("DureeIntervention"); ?>
 </div>
 </div>
 
@@ -180,19 +171,22 @@ function formatBox($name){
 <div class="blockbordure4">
 <p class="titrepagevaleur">Type de maintenance</p>
 
-<input disabled type="checkbox" name="Améliorative" id="Améliorative" <?php if(isset($_COOKIE['Améliorative'])) echo "checked"; ?> />
+<input disabled type="checkbox" name="Améliorative" id="Améliorative"
+<?php if(isset($_COOKIE['Améliorative'])){echo "checked";}  ?> />
 <label for="Améliorative">Améliorative</label>
-<?php formatBox("Améliorative", ""); ?>
+<?php formatBox("Améliorative"); ?>
 <br>
 
-<input disabled type="checkbox" name="Préventive" id="Préventive" <?php if(isset($_COOKIE['Préventive'])) echo "checked"; ?> />
+<input disabled type="checkbox" name="Préventive" id="Préventive"
+<?php if(isset($_COOKIE['Préventive'])) {echo "checked";} ?> />
 <label for="Préventive">Préventive</label>
-<?php formatBox("Préventive", ""); ?>
+<?php formatBox("Préventive"); ?>
 <br>
 
-<input disabled type="checkbox" name="Corrective" id="Corrective" <?php if(isset($_COOKIE['Corrective'])) echo "checked"; ?> />
+<input disabled type="checkbox" name="Corrective" id="Corrective"
+<?php if(isset($_COOKIE['Corrective'])) {echo "checked";} ?> />
 <label for="Corrective">Corrective</label>
-<?php formatBox("Corrective", ""); ?>
+<?php formatBox("Corrective"); ?>
 </div>
 
 <br>
@@ -201,42 +195,51 @@ function formatBox($name){
 <div class="blockbordure5">
 <p class="titrepagevaleur">Nature de l'intervention</p>
 
-<input disabled type="checkbox" name="Aménagement" id="Aménagement" <?php if(isset($_COOKIE['Aménagement'])) echo "checked"; ?> />
+<input disabled type="checkbox" name="Aménagement" id="Aménagement"
+ <?php if(isset($_COOKIE['Aménagement']))
+ {echo "checked";} ?> />
 <label for="Aménagement">Aménagement</label>
-<?php formatBox("Aménagement", ""); ?>
+<?php formatBox("Aménagement"); ?>
 <br>
 
-<input disabled type="checkbox" name="Finitions" id="Finitions" <?php if(isset($_COOKIE['Finitions'])) echo "checked"; ?> />
+<input disabled type="checkbox" name="Finitions" id="Finitions"
+<?php if(isset($_COOKIE['Finitions'])) {echo "checked";} ?> />
 <label for="Finitions">Finitions</label>
-<?php formatBox("Finitions", ""); ?>
+<?php formatBox("Finitions"); ?>
 <br>
 
-<input disabled type="checkbox" name="Installation_sanitaire" id="Installation_sanitaire" <?php if(isset($_COOKIE['Installation_sanitaire'])) echo "checked"; ?> />
+<input disabled type="checkbox" name="Installation_sanitaire"
+ id="Installation_sanitaire" <?php if(isset($_COOKIE['Installation_sanitaire'])){echo "checked";}  ?> />
 <label for="Installation_sanitaire">Installation sanitaire</label>
-<?php formatBox("Installation_sanitaire", ""); ?>
+<?php formatBox("Installation_sanitaire"); ?>
 <br>
 
-<input disabled type="checkbox" name="Installation_électrique" id="Installation_électrique" <?php if(isset($_COOKIE['Installation_électrique'])) echo "checked"; ?> />
+<input disabled type="checkbox" name="Installation_électrique"
+ id="Installation_électrique" <?php if(isset($_COOKIE['Installation_électrique'])){echo "checked";}  ?> />
 <label for="Installation_électrique">Installation électrique</label>
-<?php formatBox("Installation_électrique", ""); ?>
+<?php formatBox("Installation_électrique"); ?>
 </div>
 
 <br>
 
 <div class="blockbordure6">
 <p class="titrepagevaleur">Travaux réalisés</p>
-<textarea disabled id="travauxRealises" name="travauxRealises" rows="10"><?php if (isset($_COOKIE['travauxRealises'])) { echo $_COOKIE['travauxRealises']; } ?></textarea>
+<textarea disabled id="travauxRealises" name="travauxRealises" rows="10">
+    <?php if (isset($_COOKIE['travauxRealises'])) { echo $_COOKIE['travauxRealises']; } ?></textarea>
 </div>
 
 <br>
 
 <div class="blockbordure7">
 <p class="titrepagevaleur">Travaux non réalisés</p>
-<textarea disabled id="travauxNonRealises" name="travauxNonRealises" rows="10"><?php if (isset($_COOKIE['travauxNonRealises'])) { echo $_COOKIE['travauxNonRealises']; } ?></textarea>
+<textarea disabled id="travauxNonRealises" name="travauxNonRealises" rows="10">
+    <?php if (isset($_COOKIE['travauxNonRealises'])) { echo $_COOKIE['travauxNonRealises']; } ?></textarea>
 <br>
-<input disabled type="checkbox" name="Nécessite_un_nouvelle_intervention" id="Nécessite_un_nouvelle_intervention" <?php if(isset($_COOKIE['Nécessite_un_nouvelle_intervention'])) echo "checked"; ?> />
+<input disabled type="checkbox" name="Nécessite_un_nouvelle_intervention"
+id="Nécessite_un_nouvelle_intervention" <?php if(isset($_COOKIE['Nécessite_un_nouvelle_intervention']))
+{echo "checked";} ?> />
 <label for="Nécessite_un_nouvelle_intervention">Nécessite une nouvelle intervention</label>
-<?php formatBox("Nécessite_un_nouvelle_intervention", ""); ?>
+<?php formatBox("Nécessite_un_nouvelle_intervention"); ?>
 </div>
 
 <br>

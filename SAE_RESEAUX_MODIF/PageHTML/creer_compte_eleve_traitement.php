@@ -42,7 +42,7 @@ echo "<br>";
 echo "mdp: ".$mdp;
 echo "<br>";
 
-include_once("../../APIFinale/fonctions.php");
+include_once "../../APIFinale/fonctions.php";
 ajouterApprenti($nom, $prenom, $photo, $mdp);
 ?>
 
@@ -73,7 +73,8 @@ ajouterApprenti($nom, $prenom, $photo, $mdp);
 
         <!-- menfou de la class, je veut juste le meme style que les autre bouton -->
         <div class="btn_creercompteleve">
-            <button type="button" id="back-button" onclick="window.location.href = 'page_postco_superadmin.php';">Retour</button>
+            <button type="button" id="back-button" 
+            onclick="window.location.href = 'page_postco_superadmin.php';">Retour</button>
         </div>
     </main>
 </body>

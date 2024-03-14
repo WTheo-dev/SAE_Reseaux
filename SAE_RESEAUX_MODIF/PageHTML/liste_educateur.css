@@ -14,7 +14,6 @@
   height: 100vh; /* Ajuste la hauteur du corps à 100% de la vue */
   display: flex;
   flex-direction: column;
-  background-color: #f0f0f0;
 }
 .header-connexion-eleve {
   background-color: rgb(130,106,251); 
@@ -39,7 +38,6 @@ table {
     padding: 8px;
     text-align: left;
     font-size: 70px;
-    padding: 40px;
   }
 
   th {

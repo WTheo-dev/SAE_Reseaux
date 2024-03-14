@@ -1,4 +1,4 @@
-<?php include_once("fiche_base.php"); ?>
+<?php include_once "fiche_base.php"; ?>
 <?php $numpage=1; ?>
 <?php include("fiche_head.php"); ?>
 <?php include_once("../../APIFinale/fonctions.php"); ?>
@@ -32,7 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     <?php addIcon("NomIntervenant", "fa-user"); ?>
     <?php addTexte("nomIntervenant", "Nom de l'intervenant") ?>
-    <input type="text" name="nomIntervenant" value="<?php if (isset($_COOKIE['nomIntervenant'])){ echo $_COOKIE['nomIntervenant']; } ?>">
+    <input type="text" name="nomIntervenant" value="<?php if
+    (isset($_COOKIE['nomIntervenant'])){ echo $_COOKIE['nomIntervenant']; } ?>">
 </div>
     <div class="jsp">
     <div class="audio-fiche-1">
@@ -40,15 +41,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     <?php addIcon("PrenomIntervenant", "fa-address-card"); ?>
     <?php addTexte("prenomIntervenant", "Prénom de l'intervenant") ?>
-    <input type="text" name="prenomIntervenant" value="<?php if (isset($_COOKIE['prenomIntervenant'])) { echo $_COOKIE['prenomIntervenant']; } ?>">
+    <input type="text" name="prenomIntervenant" value="<?php if
+    (isset($_COOKIE['prenomIntervenant'])) { echo $_COOKIE['prenomIntervenant']; } ?>">
     </div>
 
     </div>
 
-    <?php 
+    <?php
     $numpage=1;
     $begin="true";
-    include_once("fiche_button.php");
+    include_once "fiche_button.php";
     ?>
 
 <?php ifformfin() ?>

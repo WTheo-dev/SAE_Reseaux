@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("../../APIFinale/fonctions.php");
+include_once "../../APIFinale/fonctions.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +24,7 @@ include_once("../../APIFinale/fonctions.php");
 <form action="connexion_educateur.php" method="post">
 
 <table>
+  <caption>Table</caption>
   <thead>
     <tr>
       <th>Nom</th>

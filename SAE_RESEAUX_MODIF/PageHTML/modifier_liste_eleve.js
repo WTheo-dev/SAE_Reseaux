@@ -8,7 +8,7 @@ function goToPagePostCoSuperAdmin(){
 }
 
 function supprimerLigne(button) {
-    var row = button.parentNode.parentNode;
+    let row = button.parentNode.parentNode;
     row.parentNode.removeChild(row);
 }
 
@@ -20,7 +20,7 @@ function closeModal() {
     $('#modifierModal').modal('hide');
 }
 
-var apprentiIdToModifier = null;
+let apprentiIdToModifier = null;
 
 function setModifierApprentiId(id, prenom, nom) {
     apprentiIdToModifier = id;
@@ -32,8 +32,8 @@ function setModifierApprentiId(id, prenom, nom) {
 
 
 function modifierApprenti() {
-    var nouveauNom = document.getElementById("nouveauNom").value;
-    var nouveauPrenom = document.getElementById("nouveauPrenom").value;
+    let nouveauNom = document.getElementById("nouveauNom").value;
+    let nouveauPrenom = document.getElementById("nouveauPrenom").value;
 
     if (apprentiIdToModifier !== null) {
         $.ajax({
@@ -65,11 +65,11 @@ function modifierApprenti() {
 }
 
 function updateTableRow(id, nouveauNom, nouveauPrenom) {
-    var rows = document.getElementsByTagName("tr");
+    let rows = document.getElementsByTagName("tr");
 
-    for (var i = 0; i < rows.length; i++) {
-        var cells = rows[i].getElementsByTagName("td");
-        var idCell = cells[2]; // Assuming your ID is in the third cell, adjust if needed
+    for (const element of rows) {
+        let cells = element.getElementsByTagName("td");
+        let idCell = cells[2]; // Assuming your ID is in the third cell, adjust if needed
 
         if (idCell.innerText == id) {
             // Assuming the first and second cells contain the 'nom' and 'prenom' values
@@ -84,10 +84,10 @@ function updateTableRow(id, nouveauNom, nouveauPrenom) {
 document.getElementById("modificationForm").addEventListener("submit", function (event) {
     event.preventDefault(); 
 
-    var nouveauNom = document.getElementById("nouveauNom").value;
-    var nouveauPrenom = document.getElementById("nouveauPrenom").value;
+    let nouveauNom = document.getElementById("nouveauNom").value;
+    let nouveauPrenom = document.getElementById("nouveauPrenom").value;
 
-    var cells = document.querySelector("tbody tr").getElementsByTagName("td");
+    let cells = document.querySelector("tbody tr").getElementsByTagName("td");
     cells[0].innerText = nouveauNom;
     cells[1].innerText = nouveauPrenom;
 

@@ -24,7 +24,7 @@
     }
 
     .header_modifier_liste_eleve{
-    background-color: rgb(130,106,251); 
+    background-color: rgb(130,106,251);
     padding: 20px;
     display: flex;
     justify-content: space-between;
@@ -61,19 +61,21 @@
 <body class="body_page_modifier_liste_eleve">
 
 <?php
-include_once("../../APIFinale/fonctions.php"); 
+include_once "../../APIFinale/fonctions.php";
 $apprentis = listeApprenti();
 ?>
 
   
 
   <header class="header_modifier_liste_eleve">
-    <div class="header_text"><img class="logo_modifier_liste_eleve" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
+    <div class="header_text">
+      <img class="logo_modifier_liste_eleve" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
   </header>
 
   <h2>Liste d'élèves</h2>
 
   <table>
+  <caption>Table</caption>
     <thead>
       <tr>
         <th>Prénom</th>
@@ -87,7 +89,9 @@ $apprentis = listeApprenti();
         <td><?= $apprenti['prenom'] ?></td>
         <td><?= $apprenti['nom'] ?></td>
         <td>
-            <button class="btn btn-primary" onclick="setModifierApprentiId(<?= $apprenti['id_apprenti'] ?>, '<?= $apprenti['prenom'] ?>', '<?= $apprenti['nom'] ?>')" data-toggle="modal" data-target="#modifierModal">Modifier</button>
+            <button class="btn btn-primary" onclick="setModifierApprentiId(<?= $apprenti['id_apprenti'] ?>, 
+            '<?= $apprenti['prenom'] ?>', '<?= $apprenti['nom'] ?>')" data-toggle="modal"
+             data-target="#modifierModal">Modifier</button>
             <button onclick="supprimerLigne(this)">Supprimer</button>
         </td>
     </tr>

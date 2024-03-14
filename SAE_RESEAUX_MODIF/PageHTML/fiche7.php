@@ -1,6 +1,6 @@
-<?php include_once("fiche_base.php"); ?>
+<?php include_once "fiche_base.php"; ?>
 <?php $numpage=7; ?>
-<?php include_once("fiche_head.php"); ?>
+<?php include_once "fiche_head.php"; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -45,10 +45,12 @@
     <div class="block" style="height:85%;">
     <p class="text-fiche7">Travaux non réalisés</p>
     <div class="label-fiche7">
-    <textarea id="travauxNonRealises" name="travauxNonRealises" rows="10"><?php if (isset($_COOKIE['travauxNonRealises'])) { echo $_COOKIE['travauxNonRealises']; } ?></textarea>
+    <textarea id="travauxNonRealises" name="travauxNonRealises" rows="10">
+        <?php if (isset($_COOKIE['travauxNonRealises'])) { echo $_COOKIE['travauxNonRealises']; } ?></textarea>
     </div>
     </div>
-    <input type="checkbox" name="Nécessite_un_nouvelle_intervention" id="Nécessite_un_nouvelle_intervention" <?php if(isset($_COOKIE['Nécessite_un_nouvelle_intervention'])) echo "checked"; ?> />
+    <input type="checkbox" name="Nécessite_un_nouvelle_intervention" id="Nécessite_un_nouvelle_intervention"
+    <?php if(isset($_COOKIE['Nécessite_un_nouvelle_intervention'])) {echo "checked";} ?> />
     <label for="Nécessite_un_nouvelle_intervention">
     <?php addIcon("Nécessite_un_nouvelle_intervention", "fa-refresh"); ?>
     <?php addTexteBox("Nécessite_un_nouvelle_intervention", "Nécessite un nouvelle intervention"); ?>
@@ -57,7 +59,7 @@
 
     <?php
     $numpage=7;
-    include_once("fiche_button.php");
+    include_once "fiche_button.php";
     ?>
 
 <?php ifformfin() ?>

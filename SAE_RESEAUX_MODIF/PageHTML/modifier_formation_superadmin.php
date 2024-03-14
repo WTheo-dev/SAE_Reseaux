@@ -1,5 +1,5 @@
 <?php
-include_once("../../APIFinale/fonctions.php");
+include_once "../../APIFinale/fonctions.php";
 $forms = listeFormations();
 $update = false;
 
@@ -14,7 +14,7 @@ foreach ($forms as $form){
     }
     if (isset($_POST["modi".$stripnomform])){
         $nouvnom = $_POST["nom".$stripnomform];
-        modifierFormation($id, $nouvnom, NULL, NULL);
+        modifierFormation($id, $nouvnom, null, null);
         $update = true;
         break;
     }
@@ -33,18 +33,17 @@ $forms = listeFormations();
 </head>
 <body>
     <header class="header_page_creer_formation_superadmin">
-        <div class="header_text"><img class="logo_page_creer_formation_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
+        <div class="header_text"><img class="logo_page_creer_formation_superadmin"
+         src="Image/APEAJ_color2.png" alt="pictogramme"></div>
         <div class="child-info">
-            <!--
-            <h2 class="header_page_creer_formation_superadmin">Nom Prénom du SuperAdmin</h2>
-            -->
+
         </div>
     </header>
     <?php
-    if ($update == true){
+    if ($update){
         if (isset($nouvnom)){
             echo "<br>formations modifier: ".$nomform." --> ".$nouvnom.".<br>";
-        } else if (isset($nomform)) {
+        } elseif (isset($nomform)) {
             echo "<br>formations supprimer: ".$nomform.".<br>";
         }
     }

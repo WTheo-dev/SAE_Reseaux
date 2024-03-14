@@ -1,11 +1,29 @@
-<!DOCTYPE html>
+<?php 
+session_start();
+include '../fonction.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $password = $_POST["mdp"];
+
+    if (connexionPersonnel($password)) {
+        // Authentication successful
+        $_SESSION["username"] = $username; // Store the username in the session
+        header("Location: page_postco_superadmin.php"); // Redirect to a welcome page after successful login
+        exit();
+    } else {
+        // Authentication failed
+        $error_message = "Invalid credentials"; // You can customize this message
+    }
+}
+
+?>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Connexion</title>
-    <link rel="stylesheet" href="style.css">  
+    <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>

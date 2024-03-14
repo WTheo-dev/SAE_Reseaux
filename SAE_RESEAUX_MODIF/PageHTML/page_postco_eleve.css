@@ -14,7 +14,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #f0f0f0;
 }
 
 .header_text_postcoeleve{
@@ -44,10 +43,6 @@
   justify-content: center;
   font-size: 60px;
   
-}
-.header_text_postcoeleve {
-  font-family: 'Cormorant', sans-serif;
-  font-size: 40px;
 }
 
 .bubbles-container {

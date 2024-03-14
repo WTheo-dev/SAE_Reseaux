@@ -25,11 +25,12 @@
                 <img id="selected-image" src="" alt="Image sélectionnée">
                 <div id="container-buttons-page-creation-eleve"> <!-- Nouveau conteneur pour les boutons -->
                 </div>
-            </div>          
+            </div>
         </div>
         <div class="button-container">
             <button type="button" class="boutons-create" onclick="openFileExplorer()">Sélectionner une photo</button>
-            <button type="button" class="boutons-delete" onclick="deleteSelectedPhoto()" style="display: none;">Supprimer la photo</button>
+            <button type="button" class="boutons-delete"
+             onclick="deleteSelectedPhoto()" style="display: none;">Supprimer la photo</button>
         </div>
 
         <!-- Section pour le nom et prénom de l'élève -->
@@ -93,9 +94,6 @@
         </div>
       <div class="btn_creercompteleve2">
         <button type="submit" id="btn-valider-creation-eleve">Créer le compte de l'élève</button>
-        <!--
-        <button id="btn-valider-creation-eleve" onclick="afficherPopup()" style="display: none;">Créer le compte de l'élève</button>
-        -->
       </div>
       <div class="btn_creercompteleve">
         <button type="button" id="a" onclick="clearSelection()">Effacer</button>

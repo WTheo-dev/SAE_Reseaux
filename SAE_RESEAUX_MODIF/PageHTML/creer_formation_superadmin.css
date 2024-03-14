@@ -7,7 +7,7 @@
 }
 
 .child-info{
-    font-family: 'Cinzel', 'sans-serif';
+    font-family: 'Cinzel', sans-serif;
     font-size: 25px;
     padding-right: 1em;
 }
@@ -30,13 +30,6 @@ h1{
     padding: 10px 20px;
     font-size: 75px;
     cursor: pointer;
-}
-
-.button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 .btn_retour {

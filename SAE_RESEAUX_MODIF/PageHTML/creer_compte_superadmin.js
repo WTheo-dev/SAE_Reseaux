@@ -1,9 +1,9 @@
 function validateForm() {
-    var emailInput = document.querySelector('input[type="email"]');
-    var email = emailInput.value;
+    let emailInput = document.querySelector('input[type="email"]');
+    let email = emailInput.value;
 
     // Simple email validation using regular expression
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/
 
     if (!emailRegex.test(email)) {
       alert("Veuillez entrer une adresse email valide.");

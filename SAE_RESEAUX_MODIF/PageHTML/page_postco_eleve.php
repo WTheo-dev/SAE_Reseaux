@@ -1,5 +1,5 @@
 <?php
-    include_once("../../APIFinale/fonctions.php");
+    include_once "../../APIFinale/fonctions.php";
     $etu = unApprenti($_POST["id"])[0];
     $mdp = "";
 

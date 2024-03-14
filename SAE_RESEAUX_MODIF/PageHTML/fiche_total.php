@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 ?>
 
-<?php include("fiche_head.php"); ?>
+<?php include_once "fiche_head.php"; ?>
 
 <body>
 
@@ -30,27 +30,27 @@ $nobutton = "no";
 $noform = "no";
 
 $numpage = "1";
-include("fiche1.php");
+include_once "fiche1.php";
 $numpage = "1";
-include("fiche2.php");
+include_once "fiche2.php";
 $numpage = "1";
-include("fiche3.php");
+include_once "fiche3.php";
 $numpage = "1";
-include("fiche4.php");
+include_once "fiche4.php";
 $numpage = "1";
-include("fiche5.php");
+include_once "fiche5.php";
 $numpage = "1";
-include("fiche6.php");
+include_once "fiche6.php";
 $numpage = "1";
-include("fiche7.php");
+include_once "fiche7.php";
 $numpage = "1";
-include("fiche8.php");
+include_once "fiche8.php";
 
 $nofoot = "yes";
 $nobutton = "yes";
 $numpage = "total";
 
-include("fiche_button.php");
+include_once "fiche_button.php";
 ?>
 
 </form>
