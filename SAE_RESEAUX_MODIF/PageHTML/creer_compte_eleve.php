@@ -22,7 +22,7 @@
         <div class="rectangle2_creercompteeleve">
             <input name="etu-photo" type="file" id="file-input" style="display: none;">
             <div id="image-container">
-                <img id="selected-image" src="" alt="Image sélectionnée">
+                <img id="selected-image" src="" alt="Sélectionnée">
                 <div id="container-buttons-page-creation-eleve"> <!-- Nouveau conteneur pour les boutons -->
                 </div>
             </div>

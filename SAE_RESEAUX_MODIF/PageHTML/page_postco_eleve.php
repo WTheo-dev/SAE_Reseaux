@@ -9,7 +9,7 @@
       }
     }
 
-    $user = get_utilisateur($etu["id_utilisateur"]);
+    $user = getUtilisateur($etu["id_utilisateur"]);
 
     if ($user["mdp"] != $mdp){
         header("Location: index.php");

@@ -1,6 +1,6 @@
 <?php
 
-include_once("../../APIFinale/fonctions.php");
+include_once "../../APIFinale/fonctions.php";
 
 function matchFontSize() {
     if (!isset($_COOKIE["configTaille"])){return "1em";}
@@ -80,7 +80,7 @@ function ifformfin(){
     }
 }
 
-function afficherMateriaux($description_demande, $i) {
+function afficherMateriaux($descriptionDemande, $i) {
     echo '<select id="materiaux'.$i.'" name="materiaux'.$i.'">';
     if(isset($_COOKIE['materiaux'.$i])){
         echo "<option>".$_COOKIE['materiaux'.$i]."</option>";
@@ -89,7 +89,7 @@ function afficherMateriaux($description_demande, $i) {
     }
     $materiaux = array();
 
-    switch ($description_demande) {
+    switch ($descriptionDemande) {
         case "Finition":
             $materiaux = array(
                 "Champlat",

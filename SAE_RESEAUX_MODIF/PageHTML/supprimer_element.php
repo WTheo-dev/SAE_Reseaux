@@ -19,7 +19,7 @@ if (isset($_POST['supprimer_icon'])){
     }
 }
 
-#var_dump($_POST);
+
 
 header("Location: banque.php");
 exit();

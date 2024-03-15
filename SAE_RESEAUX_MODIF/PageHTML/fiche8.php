@@ -3,7 +3,7 @@ include_once "fiche_base.php";
 $numpage=8;
 include_once "fiche_head.php";
 ?>
-<?php include_once("../../APIFinale/fonctions.php"); ?>
+<?php include_once "../../APIFinale/fonctions.php"; ?>
 <body class="body_fiche">
     
 

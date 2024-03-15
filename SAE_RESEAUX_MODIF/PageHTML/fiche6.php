@@ -27,7 +27,7 @@
 <body class="body_fiche">
 
     
-<?php include_once("../../APIFinale/fonctions.php"); ?>
+<?php include_once "../../APIFinale/fonctions.php"; ?>
     <?php 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $travaux_realises = $_POST["TravauxRealises"];

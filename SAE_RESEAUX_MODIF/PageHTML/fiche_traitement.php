@@ -42,19 +42,19 @@ foreach ($_POST as $param => $value){
         }
     }
 
-function uncheck_checkbox($name, $pagenum){
+function uncheckCheckbox($name, $pagenum){
     global $numpage;
     if (($numpage == $pagenum || $pagenum == "total") && !isset($_POST[$name])){
         unset($_COOKIE[$name]);
         setcookie($name, '', -1);
     }
 }
-uncheck_checkbox("Améliorative" , 4);
-uncheck_checkbox("Préventive"   , 4);
-uncheck_checkbox("Corrective"   , 4);
-uncheck_checkbox("Aménagement"  , 5);
-uncheck_checkbox("Finitions"    , 5);
-uncheck_checkbox("Installation_sanitaire"             , 5);
-uncheck_checkbox("Nécessite_un_nouvelle_intervention" , 7);
+uncheckCheckbox("Améliorative" , 4);
+uncheckCheckbox("Préventive"   , 4);
+uncheckCheckbox("Corrective"   , 4);
+uncheckCheckbox("Aménagement"  , 5);
+uncheckCheckbox("Finitions"    , 5);
+uncheckCheckbox("Installation_sanitaire"             , 5);
+uncheckCheckbox("Nécessite_un_nouvelle_intervention" , 7);
 exit;
 

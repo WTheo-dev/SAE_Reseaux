@@ -6,26 +6,26 @@
 function connexionBD()
 {
   $SERVER = '127.0.0.1';
-  $BD = 'apeaj';
+  $bd = 'apeaj';
   $LOGIN = 'root';
   $MDP = '';
 
   try {
-    $BD = new PDO("mysql:host=$SERVER;dbname=$BD", $LOGIN, $MDP);
+    $bd = new PDO("mysql:host=$SERVER;dbname=$bd", $LOGIN, $MDP);
   } catch (PDOException $e) {
     die('Erreur: ' . $e->getMessage());
   }
-  return $BD;
+  return $bd;
 }
 
 function identification($login, $mdp)
 {
   $login = htmlspecialchars($login);
   $mdp = htmlspecialchars($mdp);
-  $BD = connexionBD();
-  $verificationMembre = $BD->prepare('SELECT * FROM utilisateur WHERE login = ? AND mdp = ?');
+  $bd = connexionBD();
+  $verificationMembre = $bd->prepare('SELECT * FROM utilisateur WHERE login = ? AND mdp = ?');
   $verificationMembre->execute(array($login, $mdp));
-  $BD = null;
+  $bd = null;
   if ($verificationMembre->rowCount() > 0) {
     return true;
   } else {
@@ -35,10 +35,10 @@ function identification($login, $mdp)
 
 function recuperation_role($login)
 {
-  $BD = connexionBD();
-  $recuperationRoleUtilisateur = $BD->prepare('SELECT id_role FROM utilisateur WHERE login = ?');
+  $bd = connexionBD();
+  $recuperationRoleUtilisateur = $bd->prepare('SELECT id_role FROM utilisateur WHERE login = ?');
   $recuperationRoleUtilisateur->execute(array($login));
-  $BD = null;
+  $bd = null;
   if ($recuperationRoleUtilisateur->rowCount() > 0) {
     foreach ($recuperationRoleUtilisateur as $row) {
       return $row['id_role'];
@@ -52,26 +52,26 @@ function recuperation_role($login)
 ////////////////////       GESTION DES UTILISATEURS      ////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
-function login_id($id_utilisateur) {
+function login_id($idUtilisateur) {
 
-  $BD = connexionBD();
-  $rechercheUtilisateur = $BD ->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
-  $rechercheUtilisateur -> execute(array($id_utilisateur));
-  $BD = null;
+  $bd = connexionBD();
+  $rechercheUtilisateur = $bd ->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+  $rechercheUtilisateur -> execute(array($idUtilisateur));
+  $bd = null;
   if ($rechercheUtilisateur -> rowCount() > 0) {
     foreach($rechercheUtilisateur as $row) {
       return $row['login'];
     }
   } else {
-    return FALSE;
+    return false;
   }
 }
 
 function id_login($login) {
-  $BD = connexionBD();
-  $rechercheUtilisateur = $BD ->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+  $bd = connexionBD();
+  $rechercheUtilisateur = $bd ->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
   $rechercheUtilisateur -> execute(array($login));
-  $BD = null;
+  $bd = null;
   if ($rechercheUtilisateur -> rowCount() > 0) {
     foreach($rechercheUtilisateur as $row) {
       return $row['id_utilisateur'];
@@ -81,9 +81,9 @@ function id_login($login) {
   }
 }
 
-function get_utilisateur($id){
-  $BD = connexionBD();
-  $jsp = $BD->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+function getUtilisateur($id){
+  $bd = connexionBD();
+  $jsp = $bd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
   $jsp->execute(array($id));
   if ($jsp->rowCount() > 0) {
     foreach($jsp as $row){
@@ -111,14 +111,14 @@ function conversionHTML($tableauAConvertir)
 
 function connexionApprenti($id_apprenti)
 {
-  $BD = connexionBD();
+  $bd = connexionBD();
 
   if (count(($id_apprenti)) > 0) {
     $identiteApprentiHTML = conversionHTML($id_apprenti);
     if (count(($id_apprenti)) > 0) {
-      $verificationApprenti = $BD->prepare('SELECT $ from apprenti WHERE schema = ?');
+      $verificationApprenti = $bd->prepare('SELECT $ from apprenti WHERE schema = ?');
       $verificationApprenti->execute(array($id_apprenti['0']));
-      $BD = null;
+      $bd = null;
       if ($verificationApprenti->rowCount() > 0) {
         foreach ($verificationApprenti as $row) {
           if (password_verify($id_apprenti['1'], $row['mdp'])) {
@@ -140,16 +140,16 @@ function connexionApprenti($id_apprenti)
 
 }
 
-function connexionPersonnel($id_personnel)
+function connexionPersonnel($idPersonnel)
 {
-    $BD = connexionBD();
+    $bd = connexionBD();
 
-    if (count($id_personnel) == 2) {
-        $identitePersonnelHTML = array_map('conversionHTML', $id_personnel);
+    if (count($idPersonnel) == 2) {
+        $identitePersonnelHTML = array_map('conversionHTML', $idPersonnel);
 
-        $verificationPersonnel = $BD->prepare('SELECT * FROM personnel WHERE schema = ?');
+        $verificationPersonnel = $bd->prepare('SELECT * FROM personnel WHERE schema = ?');
         $verificationPersonnel->execute(array($identitePersonnelHTML[0]));
-        $BD = null;
+        $bd = null;
 
         if ($verificationPersonnel->rowCount() > 0) {
             foreach ($verificationPersonnel as $row) {
@@ -185,11 +185,11 @@ function validationmdp($mdp, $mdpConfirmation)
 
 function verificationPremiereInscription($PersonnelIdentite)
 {
-  $BD = connexionBD();
+  $bd = connexionBD();
 
-  $recherchePresence = $BD->prepare('SELECT * FROM apprenti WHERE nom = ?');
+  $recherchePresence = $bd->prepare('SELECT * FROM apprenti WHERE nom = ?');
   $recherchePresence->execute(array($PersonnelIdentite['7']));
-  $BD = null;
+  $bd = null;
   if ($recherchePresence->rowCount() > 0) {
     return false;
   } else {
@@ -226,10 +226,10 @@ function clean($champEntrant)
 
 function listeApprenti()
 {
-  $BD = connexionBD();
-  $listeApprenti = $BD->prepare('SELECT * FROM apprenti');
+  $bd = connexionBD();
+  $listeApprenti = $bd->prepare('SELECT * FROM apprenti');
   $listeApprenti->execute(array());
-  $BD = null;
+  $bd = null;
   $resultat = [];
 
   foreach ($listeApprenti as $row) {
@@ -250,39 +250,39 @@ function listeApprenti()
 function inscriptionApprenti($nom, $prenom, $photo, $utilisateur)
 {
   try {
-    $BD = connexionBD();
+    $bd = connexionBD();
     $nom = htmlspecialchars($nom);
     $prenom = htmlspecialchars($prenom);
     $photo = htmlspecialchars($photo);
 
-    $BD->beginTransaction();
+    $bd->beginTransaction();
 
-    $ajoutUtilisateur = $BD->prepare('INSERT INTO utilisateur(login, mdp, id_role) VALUES (?, ?, ?)');
+    $ajoutUtilisateur = $bd->prepare('INSERT INTO utilisateur(login, mdp, id_role) VALUES (?, ?, ?)');
     $ajoutUtilisateur->execute(array($utilisateur['login'], $utilisateur['mdp'], $utilisateur['id_role']));
-    $id_utilisateur = $BD->lastInsertId();
+    $idUtilisateur = $bd->lastInsertId();
 
     if (!empty($nom) && !empty($prenom) && !empty($photo)) {
-      $ajoutApprenti = $BD->prepare('INSERT INTO apprenti(nom, prenom, photo, id_utilisateur) VALUES (?, ?, ?, ?)');
-      $ajoutApprenti->execute(array($nom, $prenom, $photo, $id_utilisateur));
+      $ajoutApprenti = $bd->prepare('INSERT INTO apprenti(nom, prenom, photo, id_utilisateur) VALUES (?, ?, ?, ?)');
+      $ajoutApprenti->execute(array($nom, $prenom, $photo, $idUtilisateur));
 
-      $BD->commit();
+      $bd->commit();
 
       if ($ajoutApprenti->rowCount() > 0) {
-        $BD = null;
+        $bd = null;
         return true;
       } else {
-        $BD->rollBack();
-        $BD = null;
+        $bd->rollBack();
+        $bd = null;
         return false;
       }
     } else {
-      $BD->rollBack();
-      $BD = null;
+      $bd->rollBack();
+      $bd = null;
       return false;
     }
   } catch (PDOException $e) {
-    $BD->rollBack();
-    $BD = null;
+    $bd->rollBack();
+    $bd = null;
     return false;
   }
 }
@@ -291,53 +291,51 @@ function inscriptionApprenti($nom, $prenom, $photo, $utilisateur)
 
 function supprimerApprenti($id_apprenti)
 {
-  $BD = connexionBD();
+  $bd = connexionBD();
  
   $id_apprenti = htmlspecialchars($id_apprenti);
-  $suppressionApprenti = $BD->prepare('DELETE FROM apprenti WHERE id_apprenti = ?');
+  $suppressionApprenti = $bd->prepare('DELETE FROM apprenti WHERE id_apprenti = ?');
   $suppressionApprenti->execute(array($id_apprenti));
-  $BD = null;
+  $bd = null;
   if ($suppressionApprenti->rowCount() > 0) {
-    return TRUE;
+    return true;
   } else {
-    return FALSE;
+    return false;
   }
 }
 
 function ajouterApprenti($nom, $prenom, $photo, $mdp){
-  $BD = connexionBD();
+  $bd = connexionBD();
  
   $nom    = htmlspecialchars($nom);
   $prenom = htmlspecialchars($prenom);
   $photo  = htmlspecialchars($photo);
   $mdp    = htmlspecialchars($mdp);
 
-  $ajout = $BD->prepare("INSERT INTO `utilisateur` (`id_utilisateur`, `login`, `mdp`, `id_role`) 
-  VALUES (NULL, 'login', '".$mdp."', '1');");
+  $ajout = $bd->prepare("INSERT INTO `utilisateur` (`id_utilisateur`, `login`, `mdp`, `id_role`) VALUES (NULL, 'login', '".$mdp."', '1');");
   $ajout->execute();
 
-  $ajout = $BD->prepare("SELECT id_utilisateur FROM `utilisateur` WHERE mdp = ?;");
+  $ajout = $bd->prepare("SELECT id_utilisateur FROM `utilisateur` WHERE mdp = ?;");
   $ajout->execute(array($mdp));
   foreach ($ajout as $row){
     $id =  $row["id_utilisateur"];
     break;
   }
 
-  $ajout = $BD->prepare("INSERT INTO `apprenti` 
-  (`id_apprenti`, `nom`, `prenom`, `photo`, `id_utilisateur`) 
-  VALUES (NULL, '".$nom."', '".$prenom."', '".$photo."', '".$id."')");
+  $ajout = $bd->prepare("INSERT INTO `apprenti` (`id_apprenti`, `nom`, `prenom`, `photo`, `id_utilisateur`) VALUES (NULL, '".$nom."', '".$prenom."', '".$photo."', '".$id."')");
   $ajout->execute();
 
-  $BD = null;
+  $bd = null;
   if ($ajout->rowCount() > 0) {
-    return TRUE;
+    return true;
   } else {
-    return FALSE;
+    return false;
   }
 }
 
 function ajouterEducateur($nom, $prenom, $mdp, $type, $num){
-  $BD = connexionBD();
+
+  $bd = connexionBD();
  
   $nom    = htmlspecialchars($nom);
   $prenom = htmlspecialchars($prenom);
@@ -345,12 +343,11 @@ function ajouterEducateur($nom, $prenom, $mdp, $type, $num){
   $type   = htmlspecialchars($type);
   $num    = htmlspecialchars($num);
 
-  $ajout = $BD->prepare("INSERT INTO `utilisateur` 
-  (`id_utilisateur`, `login`, `mdp`, `id_role`) VALUES (NULL, 'login', '".$mdp."', '".$type."');");
+  $ajout = $bd->prepare("INSERT INTO `utilisateur` (`id_utilisateur`, `login`, `mdp`, `id_role`) VALUES (NULL, 'login', '".$mdp."', '".$type."');");
   $ajout->execute();
 
-  //$ajout = $BD->prepare("SELECT id_utilisateur FROM `utilisateur` WHERE mdp = ? AND id_role = ?;");
-  $ajout = $BD->prepare("SELECT * FROM utilisateur
+  //$ajout = $bd->prepare("SELECT id_utilisateur FROM `utilisateur` WHERE mdp = ? AND id_role = ?;");
+  $ajout = $bd->prepare("SELECT * FROM utilisateur
   u WHERE u.mdp = ? AND u.id_role = ? AND NOT EXISTS
    (SELECT * FROM personnel p WHERE u.id_utilisateur = p.id_utilisateur);");
   $ajout->execute(array($mdp, $type));
@@ -359,11 +356,11 @@ function ajouterEducateur($nom, $prenom, $mdp, $type, $num){
     break;
   }
 
-  $ajout = $BD->prepare("INSERT INTO `personnel`
+  $ajout = $bd->prepare("INSERT INTO `personnel`
    (`id_personnel`, `nom`, `prenom`, `id_utilisateur`) VALUES (NULL, '".$nom."', '".$prenom."', '".$id."')");
   $ajout->execute();
 
-  $BD = null;
+  $bd = null;
   if ($ajout->rowCount() > 0) {
     return true;
   } else {
@@ -375,14 +372,14 @@ function ajouterEducateur($nom, $prenom, $mdp, $type, $num){
 
 function modifierApprenti($id_apprenti, $nom, $prenom, $photo)
 {
-  $BD = connexionBD();
+  $bd = connexionBD();
   $id_apprenti = htmlspecialchars($id_apprenti);
   $nom = htmlspecialchars($nom);
   $prenom = htmlspecialchars($prenom);
   $photo = htmlspecialchars($photo);
-  $modifierApprenti = $BD->prepare('UPDATE apprenti SET nom = ?, prenom = ?, photo = ? where id_apprenti = ?');
+  $modifierApprenti = $bd->prepare('UPDATE apprenti SET nom = ?, prenom = ?, photo = ? where id_apprenti = ?');
   $modifierApprenti->execute(array($nom, $prenom, $photo, $id_apprenti));
-  $BD = null;
+  $bd = null;
   if ($modifierApprenti->rowCount() > 0) {
     return true;
   } else {
@@ -391,14 +388,14 @@ function modifierApprenti($id_apprenti, $nom, $prenom, $photo)
 }
 
 function unApprenti($id_apprenti) {
-  $BD = connexionBD();
+  $bd = connexionBD();
   $id_apprenti = htmlspecialchars($id_apprenti);
-  $ListeUnApprenti = $BD ->prepare('SELECT * from apprenti WHERE id_apprenti= ?');
-  $ListeUnApprenti->execute(array($id_apprenti));
-  $BD = null;
+  $listeUnApprenti = $bd ->prepare('SELECT * from apprenti WHERE id_apprenti= ?');
+  $listeUnApprenti->execute(array($id_apprenti));
+  $bd = null;
   $resultat = [];
 
-  foreach ($ListeUnApprenti as $row) {
+  foreach ($listeUnApprenti as $row) {
     array_push($resultat, array('nom' => $row['nom'], 'prenom' =>
     $row['prenom'], 'photo' => $row['photo'],'id_apprenti' =>
     $row['id_apprenti'], 'id_utilisateur' => $row['id_utilisateur']));
@@ -409,10 +406,10 @@ function unApprenti($id_apprenti) {
 }
 
 function apprentiDejaExistant($nom,$prenom) {
-  $BD = connexionBD();
-  $apprentiExiste = $BD->prepare('SELECT * FROM apprenti WHERE nom = ? AND prenom  = ?');
+  $bd = connexionBD();
+  $apprentiExiste = $bd->prepare('SELECT * FROM apprenti WHERE nom = ? AND prenom  = ?');
   $apprentiExiste ->execute(array($nom,$prenom));
-  $BD = null;
+  $bd = null;
 
   if ($apprentiExiste ->rowCount() > 0){
     return true;
@@ -426,48 +423,48 @@ function apprentiDejaExistant($nom,$prenom) {
 function inscriptionPersonnel($nom, $prenom, $utilisateur)
 {
   try {
-    $BD = connexionBD();
+    $bd = connexionBD();
     $nom = htmlspecialchars($nom);
     $prenom = htmlspecialchars($prenom);
-    $BD->beginTransaction();
+    $bd->beginTransaction();
 
-    $ajoutUtilisateur = $BD->prepare('INSERT INTO utilisateur(login, mdp, id_role) VALUES (?, ?, ?)');
+    $ajoutUtilisateur = $bd->prepare('INSERT INTO utilisateur(login, mdp, id_role) VALUES (?, ?, ?)');
     $ajoutUtilisateur->execute(array($utilisateur['login'], $utilisateur['mdp'], $utilisateur['id_role']));
-    $id_utilisateur = $BD->lastInsertId();
+    $idUtilisateur = $bd->lastInsertId();
 
     if (!empty($nom) && !empty($prenom)) {
-      $ajoutPersonnel = $BD->prepare('INSERT INTO personnel(nom, prenom, id_utilisateur) VALUES (?, ?, ?)');
-      $ajoutPersonnel ->execute(array($nom, $prenom, $id_utilisateur));
+      $ajoutPersonnel = $bd->prepare('INSERT INTO personnel(nom, prenom, id_utilisateur) VALUES (?, ?, ?)');
+      $ajoutPersonnel ->execute(array($nom, $prenom, $idUtilisateur));
 
-      $BD->commit();
+      $bd->commit();
 
       if ($ajoutPersonnel->rowCount() > 0) {
-        $BD = null;
+        $bd = null;
         return true;
       } else {
-        $BD->rollBack();
-        $BD = null;
+        $bd->rollBack();
+        $bd = null;
         return false;
       }
     } else {
-      $BD->rollBack();
-      $BD = null;
+      $bd->rollBack();
+      $bd = null;
       return false;
     }
   } catch (PDOException $e) {
-    $BD->rollBack();
-    $BD = null;
+    $bd->rollBack();
+    $bd = null;
     return false;
   }
 }
 
-function supprimerPersonnel($id_personnel)
+function supprimerPersonnel($idPersonnel)
 {
-  $BD = connexionBD();
-  $id_personnel = htmlspecialchars($id_personnel);
-  $suppressionPersonnel = $BD->prepare('DELETE FROM personnel WHERE id_personnel = ?');
-  $suppressionPersonnel->execute(array($id_personnel));
-  $BD = null;
+  $bd = connexionBD();
+  $idPersonnel = htmlspecialchars($idPersonnel);
+  $suppressionPersonnel = $bd->prepare('DELETE FROM personnel WHERE id_personnel = ?');
+  $suppressionPersonnel->execute(array($idPersonnel));
+  $bd = null;
   if ($suppressionPersonnel->rowCount() > 0) {
     return true;
   } else {
@@ -475,15 +472,15 @@ function supprimerPersonnel($id_personnel)
   }
 }
 
-function modifierPersonnel($id_personnel, $nom, $prenom)
+function modifierPersonnel($idPersonnel, $nom, $prenom)
 {
-  $BD = connexionBD();
-  $id_personnel = htmlspecialchars($id_personnel);
+  $bd = connexionBD();
+  $idPersonnel = htmlspecialchars($idPersonnel);
   $nom = htmlspecialchars($nom);
   $prenom = htmlspecialchars($prenom);
-  $modifierPersonnel = $BD->prepare('UPDATE personnel SET nom = ? , prenom = ? where id_personnel = ?');
-  $modifierPersonnel->execute(array($nom, $prenom, $id_personnel));
-  $BD = null;
+  $modifierPersonnel = $bd->prepare('UPDATE personnel SET nom = ? , prenom = ? where id_personnel = ?');
+  $modifierPersonnel->execute(array($nom, $prenom, $idPersonnel));
+  $bd = null;
   if ($modifierPersonnel->rowCount() > 0) {
     return true;
   } else {
@@ -493,11 +490,11 @@ function modifierPersonnel($id_personnel, $nom, $prenom)
 
 function listePersonnel()
 {
-  $BD = connexionBD();
+  $bd = connexionBD();
 
-  $listePersonnel = $BD->prepare('SELECT * FROM personnel');
+  $listePersonnel = $bd->prepare('SELECT * FROM personnel');
   $listePersonnel->execute(array());
-  $BD = null;
+  $bd = null;
   $resultat = [];
 
   foreach ($listePersonnel as $row) {
@@ -511,13 +508,13 @@ function listePersonnel()
 
 function listeEducateur()
 {
-  $BD = connexionBD();
+  $bd = connexionBD();
 
   try {
-    $listePersonnel = $BD->prepare('SELECT * FROM personnel p, utilisateur u,
+    $listePersonnel = $bd->prepare('SELECT * FROM personnel p, utilisateur u,
      role r WHERE p.id_utilisateur = u.id_utilisateur AND u.id_role = r.id_role AND r.description = "Educ Simple"');
     $listePersonnel->execute(array());
-    $BD = null;
+    $bd = null;
     $resultat = [];
 
     foreach ($listePersonnel as $row) {
@@ -532,14 +529,14 @@ function listeEducateur()
 }
 function listeSuperAdmin()
 {
-  $BD = connexionBD();
+  $bd = connexionBD();
 
   try {
-    $listePersonnel = $BD->prepare('SELECT * FROM personnel p,
+    $listePersonnel = $bd->prepare('SELECT * FROM personnel p,
     utilisateur u, role r WHERE p.id_utilisateur = u.id_utilisateur
     AND u.id_role = r.id_role AND r.description = "Super-Admin"');
     $listePersonnel->execute(array());
-    $BD = null;
+    $bd = null;
     $resultat = [];
 
     foreach ($listePersonnel as $row) {
@@ -553,15 +550,15 @@ function listeSuperAdmin()
   return $resultat;
 }
 
-function unPersonnel($id_personnel) {
-  $BD = connexionBD();
-  $id_personnel = htmlspecialchars($id_personnel);
-  $ListeUnPersonnel = $BD ->prepare('SELECT * from personnel WHERE id_personnel= ?');
-  $ListeUnPersonnel->execute(array($id_personnel));
-  $BD = null;
+function unPersonnel($idPersonnel) {
+  $bd = connexionBD();
+  $idPersonnel = htmlspecialchars($idPersonnel);
+  $listeUnPersonnel = $bd ->prepare('SELECT * from personnel WHERE id_personnel= ?');
+  $listeUnPersonnel->execute(array($idPersonnel));
+  $bd = null;
   $resultat = [];
 
-  foreach ($ListeUnPersonnel as $row) {
+  foreach ($listeUnPersonnel as $row) {
     array_push($resultat, array('nom' => $row['nom'], 'prenom' => 
     $row['prenom'], 'id_personnel' => $row['id_personnel'],'id_utilisateur' => $row['id_utilisateur']));
   }
@@ -571,10 +568,10 @@ function unPersonnel($id_personnel) {
 }
 
 function personnelDejaExistant($nom,$prenom) {
-  $BD = connexionBD();
-  $personnelExiste = $BD->prepare('SELECT * FROM personnel WHERE nom = ? AND prenom = ?');
+  $bd = connexionBD();
+  $personnelExiste = $bd->prepare('SELECT * FROM personnel WHERE nom = ? AND prenom = ?');
   $personnelExiste ->execute(array($nom,$prenom));
-  $BD = null;
+  $bd = null;
 
   if ($personnelExiste ->rowCount() > 0){
     return true;
@@ -589,10 +586,10 @@ function personnelDejaExistant($nom,$prenom) {
 
 function listeFiche()
 {
-  $BD = connexionBD();
-  $listeFiche = $BD->prepare('SELECT * from fiche_intervention');
+  $bd = connexionBD();
+  $listeFiche = $bd->prepare('SELECT * from fiche_intervention');
   $listeFiche ->execute(array());
-  $BD = null;
+  $bd = null;
   $resultat = [];
 
   foreach($listeFiche as $row) {
@@ -609,8 +606,8 @@ function listeFiche()
   return $resultat;
 }
 
-function creationFiche($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $travaux_realises, $travaux_non_realises, $couleur_intervention, $etat_fiche, $date_creation, $id_apprenti, $id_personnel) {
-  $BD = connexionBD();
+function creationFiche($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $travaux_realises, $travaux_non_realises, $couleur_intervention, $etat_fiche, $date_creation, $id_apprenti, $idPersonnel) {
+  $bd = connexionBD();
   $numero = htmlspecialchars($numero);
   $nom_du_demandeur = htmlspecialchars($nom_du_demandeur);
   $date_demande = htmlspecialchars($date_demande);
@@ -627,11 +624,11 @@ function creationFiche($numero, $nom_du_demandeur, $date_demande, $date_interven
   $etat_fiche = htmlspecialchars($etat_fiche);
   $date_creation = htmlspecialchars($date_creation);
   $id_apprenti = htmlspecialchars($id_apprenti);
-  $id_personnel = htmlspecialchars($id_personnel);
+  $idPersonnel = htmlspecialchars($idPersonnel);
 
-  $creerFiche = $BD->prepare('INSERT INTO fiche_intervention(numero, nom_du_demandeur, date_demande, date_intervention, duree_intervention, localisation, description_demande, degre_urgence, type_intervention, nature_intervention, couleur_intervention, etat_fiche, date_creation, id_apprenti, id_personnel) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-  $creerFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $travaux_realises, $travaux_non_realises, $couleur_intervention, $etat_fiche, $date_creation, $id_apprenti, $id_personnel));
-  $BD = null;
+  $creerFiche = $bd->prepare('INSERT INTO fiche_intervention(numero, nom_du_demandeur, date_demande, date_intervention, duree_intervention, localisation, description_demande, degre_urgence, type_intervention, nature_intervention, couleur_intervention, etat_fiche, date_creation, id_apprenti, id_personnel) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+  $creerFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $travaux_realises, $travaux_non_realises, $couleur_intervention, $etat_fiche, $date_creation, $id_apprenti, $idPersonnel));
+  $bd = null;
 
   if ($creerFiche->rowCount() > 0) {
     return true;
@@ -642,23 +639,23 @@ function creationFiche($numero, $nom_du_demandeur, $date_demande, $date_interven
 
 
 
-function supprimerFiche($id_fiche)
+function supprimerFiche($idFiche)
 {
-  $BD = connexionBD();
-  $id_fiche = htmlspecialchars($id_fiche);
-  $suppressionFiche = $BD->prepare('DELETE FROM fiche_intervention WHERE id_fiche = ?');
-  $suppressionFiche->execute(array($id_fiche));
+  $bd = connexionBD();
+  $idFiche = htmlspecialchars($idFiche);
+  $suppressionFiche = $bd->prepare('DELETE FROM fiche_intervention WHERE id_fiche = ?');
+  $suppressionFiche->execute(array($idFiche));
   if ($suppressionFiche->rowCount() > 0) {
-    return TRUE;
+    return true;
   } else {
-    return FALSE;
+    return false;
   }
 }
 
 
-function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $travaux_realises, $travaux_non_realises, $couleur_intervention, $etat_fiche, $date_creation,$id_apprenti,$id_personnel) {
-  $BD = connexionBD();
-  $id_fiche = htmlspecialchars($id_fiche);
+function modifierFiche($idFiche, $numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $travaux_realises, $travaux_non_realises, $couleur_intervention, $etat_fiche, $date_creation,$id_apprenti,$idPersonnel) {
+  $bd = connexionBD();
+  $idFiche = htmlspecialchars($idFiche);
   $numero = htmlspecialchars($numero);
   $nom_du_demandeur = htmlspecialchars($nom_du_demandeur);
   $date_demande = htmlspecialchars($date_demande);
@@ -675,28 +672,28 @@ function modifierFiche($id_fiche, $numero, $nom_du_demandeur, $date_demande, $da
   $etat_fiche = htmlspecialchars($etat_fiche);
   $date_creation = htmlspecialchars($date_creation);
   $id_apprenti = htmlspecialchars($id_apprenti);
-  $id_personnel = htmlspecialchars($id_personnel);
+  $idPersonnel = htmlspecialchars($idPersonnel);
 
 
-  $modifierFiche = $BD->prepare('UPDATE fiche_intervention SET numero = ?, nom_du_demandeur = ?, date_demande = ?, date_intervention = ?, duree_intervention = ?, localisation = ?, description_demande = ?, degre_urgence = ?, type_intervention = ?, nature_intervention = ?, couleur_intervention = ?, etat_fiche = ?, date_creation = ?, id_apprenti = ?, id_personnel = ? WHERE id_fiche = ?');
+  $modifierFiche = $bd->prepare('UPDATE fiche_intervention SET numero = ?, nom_du_demandeur = ?, date_demande = ?, date_intervention = ?, duree_intervention = ?, localisation = ?, description_demande = ?, degre_urgence = ?, type_intervention = ?, nature_intervention = ?, couleur_intervention = ?, etat_fiche = ?, date_creation = ?, id_apprenti = ?, id_personnel = ? WHERE id_fiche = ?');
 
-  $modifierFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $travaux_realises, $travaux_non_realises, $couleur_intervention, $etat_fiche, $date_creation,$id_apprenti,$id_personnel,$id_fiche));
+  $modifierFiche->execute(array($numero, $nom_du_demandeur, $date_demande, $date_intervention, $duree_intervention, $localisation, $description_demande, $degre_urgence, $type_intervention, $nature_intervention, $travaux_realises, $travaux_non_realises, $couleur_intervention, $etat_fiche, $date_creation,$id_apprenti,$idPersonnel,$idFiche));
 
-  $BD = null;
+  $bd = null;
 
   if ($modifierFiche->rowCount() > 0) {
-    return TRUE;
+    return true;
   } else {
-    return FALSE;
+    return false;
   }
 }
 
-function uneFicheIntervention($id_fiche) {
-  $BD = connexionBD();
-  $id_fiche = htmlspecialchars($id_fiche);
-  $uneFicheIntervention = $BD->prepare('SELECT * from fiche_intervention WHERE id_fiche = ?');
-  $uneFicheIntervention ->execute(array($id_fiche));
-  $BD = null;
+function uneFicheIntervention($idFiche) {
+  $bd = connexionBD();
+  $idFiche = htmlspecialchars($idFiche);
+  $uneFicheIntervention = $bd->prepare('SELECT * from fiche_intervention WHERE id_fiche = ?');
+  $uneFicheIntervention ->execute(array($idFiche));
+  $bd = null;
   $resultat = [];
 
   foreach($uneFicheIntervention as $row) {
@@ -714,11 +711,11 @@ function uneFicheIntervention($id_fiche) {
 }
 
 function ficheInterventionDejaExistante($numero) {
-  $BD = connexionBD();
+  $bd = connexionBD();
   $numero = htmlspecialchars($numero);
-  $ficheExiste = $BD ->prepare('SELECT * from fiche_intervention WHERE numero = ?');
+  $ficheExiste = $bd ->prepare('SELECT * from fiche_intervention WHERE numero = ?');
   $ficheExiste ->execute(array($numero));
-  $BD = null;
+  $bd = null;
   if($ficheExiste->rowCount() > 0) {
     return true;
   } else {
@@ -730,11 +727,11 @@ function ficheInterventionDejaExistante($numero) {
 ////////////////////          GESTION DES COURS          ////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
-function ListeCours() {
-  $BD = connexionBD();
-  $listeCours = $BD->prepare('SELECT * from session');
+function listeCours() {
+  $bd = connexionBD();
+  $listeCours = $bd->prepare('SELECT * from session');
   $listeCours ->execute(array());
-  $BD = null;
+  $bd = null;
   $resultat = [];
 
   foreach($listeCours as $row) {
@@ -746,11 +743,11 @@ function ListeCours() {
 }
 
 
-function UnCours($cours) {
-  $BD = connexionBD();
-  $unCours = $BD->prepare('SELECT * from session WHERE cours = ?');
+function unCours($cours) {
+  $bd = connexionBD();
+  $unCours = $bd->prepare('SELECT * from session WHERE cours = ?');
   $unCours ->execute(array($cours));
-  $BD = null;
+  $bd = null;
   $resultat = [];
 
   foreach($unCours as $row) {
@@ -761,15 +758,15 @@ function UnCours($cours) {
   return $resultat;
 }
 
-function CreationCours($theme, $cours, $duree, $id_formation) {
-  $BD = connexionBD();
+function creationCours($theme, $cours, $duree, $idFormation) {
+  $bd = connexionBD();
   $theme = htmlspecialchars($theme);
   $cours = htmlspecialchars($cours);
   $duree = htmlspecialchars($duree);
-  $id_formation = htmlspecialchars($id_formation);
-  $creerCours = $BD->prepare('INSERT INTO session(theme, cours, duree, id_formation) VALUES (?, ?, ?, ?)');
-  $creerCours->execute(array($theme, $cours, $duree, $id_formation));
-  $BD = null;
+  $idFormation = htmlspecialchars($idFormation);
+  $creerCours = $bd->prepare('INSERT INTO session(theme, cours, duree, id_formation) VALUES (?, ?, ?, ?)');
+  $creerCours->execute(array($theme, $cours, $duree, $idFormation));
+  $bd = null;
   if ($creerCours->rowCount() > 0) {
     return true;
   } else {
@@ -778,11 +775,11 @@ function CreationCours($theme, $cours, $duree, $id_formation) {
 }
 
 
-function SuppressionCours($id_session) {
-  $BD = connexionBD();
-  $supprimerCours = $BD ->prepare('DELETE FROM session WHERE id_session = ?');
-  $supprimerCours ->execute(array($id_session));
-  $BD = null;
+function suppressionCours($idSession) {
+  $bd = connexionBD();
+  $supprimerCours = $bd ->prepare('DELETE FROM session WHERE id_session = ?');
+  $supprimerCours ->execute(array($idSession));
+  $bd = null;
   if($supprimerCours ->rowCount() > 0) {
     return true;
   } else {
@@ -790,12 +787,11 @@ function SuppressionCours($id_session) {
   }
 }
 
-function ModificationCours($id_session,$theme,$cours,$duree,$id_formation) {
-  $BD = connexionBD();
-  $modifierCours = $BD -> prepare('UPDATE session SET theme = ?, cours = ?, duree = ? , 
-  id_formation = ? WHERE id_session = ?');
-  $modifierCours ->execute(array($theme,$cours,$duree,$id_formation,$id_session)); 
-  $BD = null;
+function modificationCours($idSession,$theme,$cours,$duree,$idFormation) {
+  $bd = connexionBD();
+  $modifierCours = $bd -> prepare('UPDATE session SET theme = ?, cours = ?, duree = ? , id_formation = ? WHERE id_session = ?');
+  $modifierCours ->execute(array($theme,$cours,$duree,$idFormation,$idSession)); 
+  $bd = null;
   if($modifierCours -> rowCount() > 0){
     return true;
   } else {
@@ -809,10 +805,10 @@ function ModificationCours($id_session,$theme,$cours,$duree,$id_formation) {
 /////////////////////////////////////////////////////////////////////////////
 
 function listeFormations() {
-  $BD = connexionBD();
-  $listeFormations = $BD ->prepare('SELECT * from formation');
+  $bd = connexionBD();
+  $listeFormations = $bd ->prepare('SELECT * from formation');
   $listeFormations ->execute(array());
-  $BD = null;
+  $bd = null;
   $result = [];
   foreach($listeFormations as $row) {
     array_push($result,array('Intitulé de la Formation' => $row['intitule'], 
@@ -822,11 +818,11 @@ function listeFormations() {
   return $result;
 }
 
-function UneFormation($id_formation) {
-  $BD = connexionBD();
-  $uneFormation = $BD ->prepare('SELECT * FROM formation WHERE id_formation = ?');
-  $uneFormation ->execute(array($id_formation));
-  $BD = null;
+function uneFormation($idFormation) {
+  $bd = connexionBD();
+  $uneFormation = $bd ->prepare('SELECT * FROM formation WHERE id_formation = ?');
+  $uneFormation ->execute(array($idFormation));
+  $bd = null;
   $result = [];
   foreach($uneFormation as $row) {
     array_push($result,array('Intitulé de la Formation' => $row['intitule'], 
@@ -837,10 +833,10 @@ function UneFormation($id_formation) {
 }
 
 function ajouterFormation($intitule,$niveau_qualif,$groupe) {
-  $BD = connexionBD();
-  $ajoutFormation = $BD ->prepare('INSERT INTO formation(intitule,niveau_qualif,groupe) VALUES (?, ?, ?)');
+  $bd = connexionBD();
+  $ajoutFormation = $bd ->prepare('INSERT INTO formation(intitule,niveau_qualif,groupe) VALUES (?, ?, ?)');
   $ajoutFormation -> execute(array($intitule,$niveau_qualif,$groupe));
-  $BD = null;
+  $bd = null;
   if ($ajoutFormation -> rowCount() > 0) {
     return true;
   } else {
@@ -848,11 +844,11 @@ function ajouterFormation($intitule,$niveau_qualif,$groupe) {
   }
 }
 
-function suppresionFormation($id_formation) {
-  $BD = connexionBD();
-  $supprimerFormation = $BD ->prepare('DELETE FROM formation WHERE id_formation = ?');
-  $supprimerFormation ->execute(array($id_formation));
-  $BD = null;
+function suppresionFormation($idFormation) {
+  $bd = connexionBD();
+  $supprimerFormation = $bd ->prepare('DELETE FROM formation WHERE id_formation = ?');
+  $supprimerFormation ->execute(array($idFormation));
+  $bd = null;
   if ($supprimerFormation -> rowCount() > 0 ){
     return true;
   } else {
@@ -860,12 +856,12 @@ function suppresionFormation($id_formation) {
   }
 }
 
-function modifierFormation($id_formation,$intitule,$niveau_qualif,$groupe) {
-  $BD = connexionBD();
-  $modifierFormation = $BD ->prepare('UPDATE formation SET intitule = ?, 
+function modifierFormation($idFormation,$intitule,$niveau_qualif,$groupe) {
+  $bd = connexionBD();
+  $modifierFormation = $bd ->prepare('UPDATE formation SET intitule = ?, 
   niveau_qualif = ?, groupe = ? WHERE id_formation = ?');
-  $modifierFormation ->execute(array($intitule,$niveau_qualif,$groupe,$id_formation));
-  $BD = null;
+  $modifierFormation ->execute(array($intitule,$niveau_qualif,$groupe,$idFormation));
+  $bd = null;
   if ($modifierFormation -> rowCount() > 0 ){
     return true;
   } else {
@@ -874,11 +870,11 @@ function modifierFormation($id_formation,$intitule,$niveau_qualif,$groupe) {
 }
 
 function formationExisteDeja($intitule) {
-  $BD = connexionBD();
+  $bd = connexionBD();
   $intitule = htmlspecialchars($intitule);
-  $formationExiste = $BD ->prepare('SELECT * from formation WHERE intitule = ?');
+  $formationExiste = $bd ->prepare('SELECT * from formation WHERE intitule = ?');
   $formationExiste ->execute(array($intitule));
-  $BD = null;
+  $bd = null;
   if($formationExiste->rowCount() > 0) {
     return true;
   } else {
@@ -891,7 +887,7 @@ function formationExisteDeja($intitule) {
 /////////////////////////////////////////////////////////////////////////////
 
 function ajouterElement($libelle, $type, $picto=null, $text=null, $audio=null){
-  $BD = connexionBD();
+  $bd = connexionBD();
   static $req;
 
   $libelle = htmlspecialchars($libelle);
@@ -899,42 +895,42 @@ function ajouterElement($libelle, $type, $picto=null, $text=null, $audio=null){
 
   if ($type == "picto" && isset($picto)){
     $picto = htmlspecialchars($picto);
-    $req = $BD->prepare('INSERT INTO element_defaut (libelle, type, picto, id_personnel) VALUES (?, ?, ?, 1);');
+    $req = $bd->prepare('INSERT INTO element_defaut (libelle, type, picto, id_personnel) VALUES (?, ?, ?, 1);');
     $req->execute(array($libelle, $type, $picto));
   }
   elseif ($type == "text" && isset($text)){
     $text = htmlspecialchars($text);
-    $req = $BD->prepare('INSERT INTO element_defaut (libelle, type, text, id_personnel) VALUES (?, ?, ?, 1);');
+    $req = $bd->prepare('INSERT INTO element_defaut (libelle, type, text, id_personnel) VALUES (?, ?, ?, 1);');
     $req->execute(array($libelle, $type, $text));
   }
   elseif ($type == "audio" && isset($audio)){
     $audio = htmlspecialchars($audio);
-    $req = $BD->prepare('INSERT INTO element_defaut (libelle, type, audio, id_personnel) VALUES (?, ?, ?, 1);');
+    $req = $bd->prepare('INSERT INTO element_defaut (libelle, type, audio, id_personnel) VALUES (?, ?, ?, 1);');
     $req->execute(array($libelle, $type, $audio));
   }
 
-  $BD = null;
+  $bd = null;
   return $req->rowCount() > 0;
 }
 
 function listeElement($type=null){
-  $BD = connexionBD();
+  $bd = connexionBD();
   static $req;
 
   if (isset($type)){
-    $req = $BD->prepare('SELECT id_element, libelle, picto, text, audio FROM element_defaut WHERE type = ?');
+    $req = $bd->prepare('SELECT id_element, libelle, picto, text, audio FROM element_defaut WHERE type = ?');
     $req->execute(array($type));
   } else {
-    $req = $BD->prepare('SELECT id_element, libelle, type, picto, text, audio FROM element_defaut');
+    $req = $bd->prepare('SELECT id_element, libelle, type, picto, text, audio FROM element_defaut');
     $req->execute();
   }
   return $req->fetchall();
 }
 
 function supprimerElement($id){
-  $BD = connexionBD();
+  $bd = connexionBD();
   
-  $req = $BD->prepare('DELETE FROM element_defaut WHERE id_element = ?');
+  $req = $bd->prepare('DELETE FROM element_defaut WHERE id_element = ?');
   $req->execute(array($id));
   
   return $req->fetchall();
@@ -945,10 +941,10 @@ function supprimerElement($id){
 /////////////////////////////////////////////////////////////////////////////
 
 function listeTrace() {
-   $BD = connexionBD();
-   $listeTrace = $BD -> prepare('SELECT * FROM laisser_trace');
+   $bd = connexionBD();
+   $listeTrace = $bd -> prepare('SELECT * FROM laisser_trace');
    $listeTrace ->execute(array());
-   $BD = null;
+   $bd = null;
    $result = [];
 
    foreach($listeTrace as $row) {
@@ -962,12 +958,12 @@ function listeTrace() {
    return $result;
 }
 
-function UneTrace($intitule) {
-  $BD = connexionBD();
+function uneTrace($intitule) {
+  $bd = connexionBD();
   $intitule = htmlspecialchars($intitule);
-  $uneTrace = $BD -> prepare('SELECT * FROM laisser_tracer WHERE intitule = ?');
+  $uneTrace = $bd -> prepare('SELECT * FROM laisser_tracer WHERE intitule = ?');
   $uneTrace -> execute(array($intitule));
-  $BD = null;
+  $bd = null;
   $result = [];
  
     foreach($uneTrace as $row) {
@@ -981,23 +977,23 @@ function UneTrace($intitule) {
     return $result;
  }
 
-function ajouterTrace($id_personnel,$horodatage,$intitule,
-$eval_texte,$commentaire_texte,$eval_audio,$commentaire_audio, $id_fiche) {
-  $BD = connexionBD();
-  $id_personnel = htmlspecialchars($id_personnel);
+function ajouterTrace($idPersonnel,$horodatage,$intitule,
+$eval_texte,$commentaire_texte,$eval_audio,$commentaire_audio, $idFiche) {
+  $bd = connexionBD();
+  $idPersonnel = htmlspecialchars($idPersonnel);
   $horodatage = htmlspecialchars($horodatage);
   $intitule = htmlspecialchars($intitule);
   $eval_texte = htmlspecialchars($eval_texte);
   $commentaire_texte = htmlspecialchars($commentaire_texte);
   $eval_audio = htmlspecialchars($eval_audio);
   $commentaire_audio = htmlspecialchars($commentaire_audio);
-  $id_fiche = htmlspecialchars($id_fiche);
+  $idFiche = htmlspecialchars($idFiche);
 
-  $ajoutTrace = $BD -> prepare('INSERT INTO laisser_trace(id_personnel,horodatage,intitule,
+  $ajoutTrace = $bd -> prepare('INSERT INTO laisser_trace(id_personnel,horodatage,intitule,
   eval_texte,commentaire_texte,eval_audio,commentaire_audio,id_fiche) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
-  $ajoutTrace ->execute(array($id_personnel,$horodatage,$intitule,$eval_texte,
-  $commentaire_texte,$eval_audio,$commentaire_audio, $id_fiche));
-  $BD= null;
+  $ajoutTrace ->execute(array($idPersonnel,$horodatage,$intitule,$eval_texte,
+  $commentaire_texte,$eval_audio,$commentaire_audio, $idFiche));
+  $bd= null;
   if ($ajoutTrace -> rowCount() > 0 ){
     return true;
   } else {
@@ -1006,11 +1002,11 @@ $eval_texte,$commentaire_texte,$eval_audio,$commentaire_audio, $id_fiche) {
 }
 
 function supprimerTrace($intitule) {
-  $BD = connexionBD();
+  $bd = connexionBD();
   $intitule = htmlspecialchars($intitule);
-  $suppresionTrace = $BD -> prepare('DELETE INTO laisser_trace WHERE intitule = ?');
+  $suppresionTrace = $bd -> prepare('DELETE INTO laisser_trace WHERE intitule = ?');
   $suppresionTrace -> execute(array($intitule));
-  $BD = null;
+  $bd = null;
 
   if ($suppresionTrace -> rowCount() > 0 ) {
     return true;
@@ -1019,24 +1015,24 @@ function supprimerTrace($intitule) {
   }
 }
 
-function modificationTrace($id_personnel,$horodatage,$intitule,
-$eval_texte,$commentaire_texte,$eval_audio,$commentaire_audio, $id_fiche) {
-  $BD = connexionBD();
-  $id_personnel = htmlspecialchars($id_personnel);
+function modificationTrace($idPersonnel,$horodatage,$intitule,
+$eval_texte,$commentaire_texte,$eval_audio,$commentaire_audio, $idFiche) {
+  $bd = connexionBD();
+  $idPersonnel = htmlspecialchars($idPersonnel);
   $horodatage = htmlspecialchars($horodatage);
   $intitule = htmlspecialchars($intitule);
   $eval_texte = htmlspecialchars($eval_texte);
   $commentaire_texte = htmlspecialchars($commentaire_texte);
   $eval_audio = htmlspecialchars($eval_audio);
   $commentaire_audio = htmlspecialchars($commentaire_audio);
-  $id_fiche = htmlspecialchars($id_fiche);
+  $idFiche = htmlspecialchars($idFiche);
 
-  $modifierTrace = $BD -> prepare('UPDATE laisser_trace SET id_personnel = ?, 
+  $modifierTrace = $bd -> prepare('UPDATE laisser_trace SET id_personnel = ?, 
   horodatage = ?, intitule = ?, eval_texte = ?, commentaire_texte = ?, eval_audio = 
   ?, commentaire_audio = ?, id_fiche = ?');
-  $modifierTrace ->execute(array($id_personnel,$horodatage,$intitule,
-  $eval_texte,$commentaire_texte,$eval_audio,$commentaire_audio, $id_fiche));
-  $BD = null;
+  $modifierTrace ->execute(array($idPersonnel,$horodatage,$intitule,
+  $eval_texte,$commentaire_texte,$eval_audio,$commentaire_audio, $idFiche));
+  $bd = null;
   if ($modifierTrace -> rowCount() > 0){
     return true;
   } else {
@@ -1051,7 +1047,7 @@ $eval_texte,$commentaire_texte,$eval_audio,$commentaire_audio, $id_fiche) {
 /////////////////////////////////////////////////////////////////////////////
 
 
-function deliver_response($status, $status_message, $data)
+function deliverResponse($status, $status_message, $data)
 {
   header("HTTP/1.1 $status $status_message");
   $response['status'] = $status;
@@ -1061,14 +1057,14 @@ function deliver_response($status, $status_message, $data)
   echo $json_response;
 }
 
-function get_body_token(string $bearer_token): array
+function getBodyToken(string $bearer_token): array
 {
   $tokenParts = explode('.', $bearer_token);
   $payload = base64_decode($tokenParts[1]);
   return (array) json_decode($payload);
 }
 
-function is_connected(): void
+function isConnected(): void
 {
   if (1 == 2) {
     throw new ExceptionLoginRequire();
@@ -1076,7 +1072,7 @@ function is_connected(): void
 }
 
 //function action_permited(string $action, string $ressource, int $id = null) : void
-function action_permited(): void
+function actionPermited(): void
 {
   if (1 == 2) {
     throw new ExceptionIssuficiantPermission();
