@@ -2,13 +2,13 @@
 
 require_once '../../vendor/autoload.php';
 
-$SERVER = '127.0.0.1';
-$BD_NAME = 'apeaj';
-$LOGIN = 'root';
-$MDP = '';
+$server = '127.0.0.1';
+$bdName = 'apeaj';
+$login = 'root';
+$mdp = '';
 
 try {
-    $BD = new PDO("mysql:host=$SERVER;dbname=$BD_NAME", $LOGIN, $mdp);
+    $BD = new PDO("mysql:host=$server;dbname=$bdName", $login, $mdp);
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());
 }

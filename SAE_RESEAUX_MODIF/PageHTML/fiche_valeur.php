@@ -128,21 +128,26 @@ function formatBox($name){
     <?php formatBox("NomDemandeur"); ?>
     <br>
     <label for="degreeUrgence">Degré d'urgence: </label>
-    <input class="labelfichevaleur" type="text" disabled name="degreeUrgence" value="<?php if (isset($_COOKIE['degreeUrgence'])) { echo $_COOKIE['degreeUrgence']; } ?>">
+    <input class="labelfichevaleur" type="text" disabled name="degreeUrgence"
+       value="<?php if (isset($_COOKIE['degreeUrgence'])) { echo $_COOKIE['degreeUrgence']; } ?>">
+
     <?php formatBox("DegreeUrgence"); ?>
     <br>
     <label for="dateDemande">Date demande: </label>
-    <input  class="labelfichevaleur"type="date" disabled name="dateDemande" value="<?php if (isset($_COOKIE['dateDemande'])) { echo $_COOKIE['dateDemande']; } ?>">
+    <input  class="labelfichevaleur"type="date" disabled name="dateDemande"
+       value="<?php if (isset($_COOKIE['dateDemande'])) { echo $_COOKIE['dateDemande']; } ?>">
     <?php formatBox("DateDemande"); ?>
     <br>
     <label for="localisation">Localisation: </label>
-    <input class="labelfichevaleur" type="text" disabled name="localisation" value="<?php if (isset($_COOKIE['localisation'])) { echo $_COOKIE['localisation']; } ?>">
+    <input class="labelfichevaleur" type="text" disabled name="localisation"
+       value="<?php if (isset($_COOKIE['localisation'])) { echo $_COOKIE['localisation']; } ?>">
     <?php formatBox("Localisation"); ?>
     <br>
     <label for="descDemande">Description demande: </label>
     <?php formatBox("DescDemande"); ?>
     <br>
-    <textarea id="descDemance" disabled name="descDemande" rows="5" value="<?php if (isset($_COOKIE['descDemande'])) { echo $_COOKIE['descDemande']; } ?>"></textarea>
+    <textarea id="descDemance" disabled name="descDemande" rows="5"
+       value="<?php if (isset($_COOKIE['descDemande'])) { echo $_COOKIE['descDemande']; } ?>"></textarea>
     <br>
     </div>
 

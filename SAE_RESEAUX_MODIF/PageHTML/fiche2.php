@@ -97,7 +97,12 @@ value="<?php if (isset($_COOKIE['localisation'])){ echo $_COOKIE['localisation']
     <?php addAudio("descDemande", "descDem"); ?>
     </div>
     <?php addTexte("descDemande", "Description de la demande") ?>
-    <br><textarea disabled id="descDemande" rows="4"><?php if (isset($_COOKIE['descDemande'])){ echo $_COOKIE['descDemande']; } ?></textarea>
+    <br>
+    <textarea disabled id="descDemande" rows="4"><?php
+        if (isset($_COOKIE['descDemande'])){
+             echo $_COOKIE['descDemande'];
+    }
+?></textarea>
     </div>
 
     <br>

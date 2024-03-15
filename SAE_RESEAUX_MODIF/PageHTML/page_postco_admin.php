@@ -66,7 +66,7 @@
         <div class="rectangle-container-photo-label">
           <label for="nom-prenom"><?php echo strtoupper($etu["nom"]) . " " . $etu["prenom"]; ?></label>
           <div class="rectangle-photo">
-              <img class="image" src="Image/etu/<?php echo $etu["photo"] ?>" alt="utilisateurphoto">
+              <img class="image" src="Image/etu/<?php echo $etu["photo"] ?>" alt="utilisateur">
           </div>
       </div>
     </div>

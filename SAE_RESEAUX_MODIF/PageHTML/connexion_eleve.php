@@ -36,7 +36,7 @@
 
   <div class="content-container">
     <div class="rectangle2-connexion-eleve">
-      <img id="Imageenfant-connexion-eleve" src="Image/etu/<?php echo $photoetu; ?>" alt="Description de l'image">
+      <img id="Imageenfant-connexion-eleve" src="Image/etu/<?php echo $photoetu; ?>" alt="description">
     </div>
     <p class="p_connexion_eleve">Mettez votre code : </p>
     

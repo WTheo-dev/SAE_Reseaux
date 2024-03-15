@@ -25,8 +25,7 @@
     <script src="fiche_audio.js"></script>
 
     <?php
-    //error_reporting(E_ALL);
-    //ini_set('display_errors', 'On');
+    
     ?>
 
     <?php
@@ -100,7 +99,7 @@
     <br>
 
     <?php
-    #var_dump(listeElement("picto"));
+    
     if (!empty($_FILES) && isset($_POST['enregistrer_icon'])){
         $target_dir="icon/";
         $name=basename($_FILES["icon-file"]["name"]);
