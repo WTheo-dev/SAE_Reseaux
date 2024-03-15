@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include '../fonction.php';
+include_once '../../APIFinale/fonctions.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["mdp"];
