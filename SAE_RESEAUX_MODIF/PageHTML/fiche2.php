@@ -25,7 +25,16 @@
     </style>
 </head>
 <body class="body_fiche">
-    <?php include_once "fiche_base.php"; ?>
+<?php include_once("../../APIFinale/fonctions.php"); ?>
+    <?php 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nom_du_demandeur = $_POST["NomDemandeur"];
+        $date_demande = $_POST["DateDemande"];
+        $localisation = $_POST["Localisation"];
+        $description_demande = $_POST["DescriptionDemande"];
+        $degre_urgence = $_POST["DegréUrgence"];
+    }
+    ?>
 
     <audio id="nomDem">
         <source src="audio/NomDemandeur.mp3" type="audio/mp3">
@@ -44,9 +53,9 @@
     </audio>
     <script src="fiche_audio.js"></script>
 
-<!-- Formulaire -->
+
 <?php ifform() ?>
-    <!-- Informations sur la demande -->
+
     <div class="block bordure">
     <p class="texte-page2">Demande</p>
 
@@ -81,15 +90,14 @@ value="<?php if (isset($_COOKIE['dateDemande'])){ echo $_COOKIE['dateDemande']; 
 <input disabled type="text" id="localisation"
 value="<?php if (isset($_COOKIE['localisation'])){ echo $_COOKIE['localisation']; } ?>">
 </div>
-        <br>
-        <div class="jsp">
+<br>
+    <div class="jsp">
     <div class="icon-page2">
     <?php addIcon("descDemande", "fa-info-circle"); ?>
     <?php addAudio("descDemande", "descDem"); ?>
-</div>
-<?php addTexte("descDemande", "Description de la demande") ?>
-<br><textarea disabled id="descDemande" rows="4">
-    <?php if (isset($_COOKIE['descDemande'])){ echo $_COOKIE['descDemande']; } ?></textarea>
+    </div>
+    <?php addTexte("descDemande", "Description de la demande") ?>
+    <br><textarea disabled id="descDemande" rows="4"><?php if (isset($_COOKIE['descDemande'])){ echo $_COOKIE['descDemande']; } ?></textarea>
     </div>
 
     <br>

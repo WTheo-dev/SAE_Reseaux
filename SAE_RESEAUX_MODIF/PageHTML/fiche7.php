@@ -19,21 +19,26 @@
         p, label, span, input, .fa{
             font-size:<?php echo matchFontSize(); ?> !important;
         }
-        *{
+        {
             font-family:<?php echo getFontName(); ?>;
         }
     </style>
 </head>
 <body class="body_fiche">
 
-    <?php include_once "fiche_base.php"; ?>
+<?php include_once("../../APIFinale/fonctions.php"); ?>
+    <?php 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $travaux_non_realises = $_POST["TravauxNonRealises"];
+    }
+    ?>
 
     <audio id="nuni">
         <source src="audio/NécessiteUneNouvelleIntervention.mp3" type="audio/mp3">
     </audio>
     <script src="fiche_audio.js"></script>
 
-<!-- Formulaire -->
+
 
 <?php ifform() ?>
 

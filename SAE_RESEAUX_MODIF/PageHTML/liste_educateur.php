@@ -49,7 +49,7 @@ include_once "../../APIFinale/fonctions.php";
 
 </form>
 
-<button type="button" onclick="window.location.href = 'index.php';">retour</button>
+<button type="button" onclick="window.location.href = 'index.php';">Retour</button>
 
 </body>
 </html>

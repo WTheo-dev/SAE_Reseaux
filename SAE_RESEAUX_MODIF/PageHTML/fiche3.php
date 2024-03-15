@@ -25,9 +25,13 @@
     </style>
 </head>
 <body class="body_fiche">
-    
-
-    <?php include_once "fiche_base.php"; ?>
+<?php include_once("../../APIFinale/fonctions.php"); ?>
+    <?php 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $date_intervention = $_POST["DateIntervention"];
+        $duree_intervention = $_POST["DuréeOpération"];
+    }
+?>
 
     <audio id="dateInt">
         <source src="audio/DateIntervention.mp3" type="audio/mp3">
@@ -37,9 +41,9 @@
     </audio>
     <script src="fiche_audio.js"></script>
 
-<!-- Formulaire -->
+
 <?php ifform() ?>
-    <!-- Informations sur l'intervention -->
+   
     <div class="block bordure">
     <p class="p-fiche3">INTERVENTION</p>
 

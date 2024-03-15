@@ -25,7 +25,13 @@
     </style>
 </head>
 <body class="body_fiche">
-    <?php include_once "fiche_base.php"; ?>
+
+<?php include_once("../../APIFinale/fonctions.php"); ?>
+    <?php 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nature_intervention = $_POST["NatureIntervention"];
+    }
+    ?>
 
     <audio id="amen">
         <source src="audio/Aménagement.mp3" type="audio/mp3">
@@ -41,8 +47,8 @@
     </audio>
     <script src="fiche_audio.js"></script>
 
-<!-- Formulaire -->
-<?php ifform() ?>
+
+    <?php ifform() ?>
 
     <div class="block bordure">
     <p class="text-fiche5">Nature de l'intervention</p>
