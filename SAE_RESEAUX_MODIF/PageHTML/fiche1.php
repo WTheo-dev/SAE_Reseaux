@@ -1,6 +1,6 @@
 <?php include_once "fiche_base.php"; ?>
 <?php $numpage=1; ?>
-<?php include("fiche_head.php"); ?>
+<?php include_once("fiche_head.php"); ?>
 <?php include_once("../../APIFinale/fonctions.php"); ?>
 
 <?php 
