@@ -2,7 +2,8 @@
 
 include_once "../../APIFinale/fonctions.php";
 
-function matchFontSize() {
+function matchFontSize()
+{
     if (!isset($_COOKIE["configTaille"])){return "1em";}
     switch ($_COOKIE["configTaille"]) {
         default:
@@ -39,50 +40,58 @@ function matchFontSize() {
     }
     return "1em";
 }
-function getFontName(){
+function getFontName()
+{
 if (isset($_COOKIE["configPolice"])){return $_COOKIE["configPolice"];}
     
 }
 
-function addIcon($cookie, $name, $id = "noid"){
+function addIcon($cookie, $name, $id = "noid")
+{
     if (isset($_COOKIE['icon'.ucfirst($cookie)]) && $_COOKIE['icon'.ucfirst($cookie)] == "on"){
         echo '<span><i class="icon fa '.$name.'" id="'.$id.'" aria-hidden="true"></i></span>';
     }
 }
-function addTexte($id, $name){
+function addTexte($id, $name)
+{
     if (isset($_COOKIE['texte'.ucfirst($id)]) && $_COOKIE['texte'.ucfirst($id)] == "on"){
         echo '<label for="'.$id.'">'.$name.'</label>';
     }
 }
-function addTexteBox($cookie, $name){
+function addTexteBox($cookie, $name)
+{
     if (isset($_COOKIE['texte'.ucfirst($cookie)]) && $_COOKIE['texte'.ucfirst($cookie)] == "on"){
         echo $name;
     }
 }
-function addAudio($cookie, $path){
+function addAudio($cookie, $path)
+{
     if (isset($_COOKIE['audio'.ucfirst($cookie)]) && $_COOKIE['audio'.ucfirst($cookie)] == "on"){
         echo '<button type="button" style class="audiobutton" onclick="toggleAudio(\''
         .$path.'\')"><i class="fa fa-volume-up" aria-hidden="true"></i></button>';
     }
 }
 
-function ifform(){
+function ifform()
+{
     global $noform;
     if ($noform != "no"){
         echo '<form action="fiche_traitement.php" method="post">';
     }
 }
 
-function ifformfin(){
+function ifformfin()
+{
     global $noform;
     if ($noform != "no"){
         echo '</form>';
     }
 }
 
-function afficherMateriaux($descriptionDemande, $i) {
+function afficherMateriaux($descriptionDemande, $i)
+{
     echo '<select id="materiaux'.$i.'" name="materiaux'.$i.'">';
-    if(isset($_COOKIE['materiaux'.$i])){
+    if (isset($_COOKIE['materiaux'.$i])){
         echo "<option>".$_COOKIE['materiaux'.$i]."</option>";
     }else{
         echo '<option>-- Choisir un matériau --</option>';
@@ -327,8 +336,5 @@ function afficherMateriaux($descriptionDemande, $i) {
 
     return $materiaux;
 }
-
-
-
 
 ?>

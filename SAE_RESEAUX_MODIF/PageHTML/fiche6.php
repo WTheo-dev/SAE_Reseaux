@@ -28,7 +28,7 @@
 
     
 <?php include_once "../../APIFinale/fonctions.php"; ?>
-    <?php 
+    <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $travaux_realises = $_POST["TravauxRealises"];
     }

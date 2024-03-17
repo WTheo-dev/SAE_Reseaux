@@ -1,6 +1,12 @@
 <?php include_once "fiche_base.php"; ?>
 <?php $numpage=5; ?>
 <?php include_once "fiche_head.php"; ?>
+<?php
+define("TYPE_AMENAGEMENT", "Aménagement");
+define("TYPE_FINITIONS", "Finitions");
+define("TYPE_SANITAIRE", "Installation_sanitaire");
+define("TYPE_ELECTRIQUE", "Installation_électrique");
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -54,44 +60,44 @@
     <p class="text-fiche5">Nature de l'intervention</p>
 
     <div class="jsp">
-    <input type="checkbox" name="Aménagement"
-    id="Aménagement" <?php if(isset($_COOKIE['Aménagement'])) {echo "checked";} ?> />
-    <label for="Aménagement">
-    <?php addIcon("Aménagement", "fa-building"); ?>
-    <?php addTexteBox("Aménagement", "Aménagement"); ?>
+    <input type="checkbox" name="<?php echo TYPE_AMENAGEMENT; ?>"
+    id="<?php echo TYPE_AMENAGEMENT; ?>" <?php if (isset($_COOKIE[TYPE_AMENAGEMENT])) {echo "checked";} ?> />
+    <label for="<?php echo TYPE_AMENAGEMENT; ?>">
+    <?php addIcon(TYPE_AMENAGEMENT, "fa-building"); ?>
+    <?php addTexteBox(TYPE_AMENAGEMENT, TYPE_AMENAGEMENT); ?>
     </label>
-    <?php addAudio("Aménagement", "amen"); ?>
-    </div>
+    <?php addAudio(TYPE_AMENAGEMENT, "amen"); ?>
+</div>
 
-    <div class="jsp">
-    <input type="checkbox" name="Finitions" id="Aménagement"
-     <?php if(isset($_COOKIE['Finitions'])) {echo "checked";}?> />
-    <label for="Finitions">
-    <?php addIcon("Finitions", "fa-magic"); ?>
-    <?php addTexteBox("Finitions", "Finitions"); ?>
+<div class="jsp">
+    <input type="checkbox" name="<?php echo TYPE_FINITIONS; ?>"
+    id="<?php echo TYPE_FINITIONS; ?>" <?php if (isset($_COOKIE[TYPE_FINITIONS])) {echo "checked";} ?> />
+    <label for="<?php echo TYPE_FINITIONS; ?>">
+    <?php addIcon(TYPE_FINITIONS, "fa-magic"); ?>
+    <?php addTexteBox(TYPE_FINITIONS, TYPE_FINITIONS); ?>
     </label>
-    <?php addAudio("Finitions", "fini"); ?>
-    </div>
+    <?php addAudio(TYPE_FINITIONS, "fini"); ?>
+</div>
     
-    <div class="jsp">
-    <input type="checkbox" name="Installation_sanitaire"
-    id="Aménagement" <?php if(isset($_COOKIE['Installation_sanitaire'])) {echo "checked";} ?> />
-    <label for="Installation_sanitaire">
-    <?php addIcon("Installation_sanitaire", "fa-bath"); ?>
-    <?php addTexteBox("Installation_sanitaire", "Installation sanitaire"); ?>
+<div class="jsp">
+    <input type="checkbox" name="<?php echo TYPE_SANITAIRE; ?>"
+    id="<?php echo TYPE_SANITAIRE; ?>" <?php if (isset($_COOKIE[TYPE_SANITAIRE])) {echo "checked";} ?> />
+    <label for="<?php echo TYPE_SANITAIRE; ?>">
+    <?php addIcon(TYPE_SANITAIRE, "fa-bath"); ?>
+    <?php addTexteBox(TYPE_SANITAIRE, "Installation sanitaire"); ?>
     </label>
-    <?php addAudio("Installation_sanitaire", "inst_sani"); ?>
-    </div>
+    <?php addAudio(TYPE_SANITAIRE, "inst_sani"); ?>
+</div>
 
-    <div class="jsp">
-    <input type="checkbox" name="Installation_électrique"
-    id="Aménagement" <?php if(isset($_COOKIE['Installation_électrique'])) {echo "checked";} ?> />
-    <label for="Installation_électrique">
-    <?php addIcon("Installation_électrique", "fa-bolt"); ?>
-    <?php addTexteBox("Installation_électrique", "Installation électrique"); ?>
+<div class="jsp">
+    <input type="checkbox" name="<?php echo TYPE_ELECTRIQUE; ?>"
+    id="<?php echo TYPE_ELECTRIQUE; ?>" <?php if (isset($_COOKIE[TYPE_ELECTRIQUE])) {echo "checked";} ?> />
+    <label for="<?php echo TYPE_ELECTRIQUE; ?>">
+    <?php addIcon(TYPE_ELECTRIQUE, "fa-bolt"); ?>
+    <?php addTexteBox(TYPE_ELECTRIQUE, "Installation électrique"); ?>
     </label>
-    <?php addAudio("Installation_électrique", "inst_elec"); ?>
-    </div>
+    <?php addAudio(TYPE_ELECTRIQUE, "inst_elec"); ?>
+</div>
     
     </div>
 

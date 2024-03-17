@@ -5,14 +5,14 @@
 
     list($prenom, $nom) = explode(' ', $_POST["nom"]);
 
-    for ($i=0; $i<=9; $i++){
-      if (isset($_POST[$i])){
+    for ($i=0; $i<=9; $i++) {
+      if (isset($_POST[$i])) {
         $mdp = $mdp.$i;
       }
     }
 
-    foreach ($persos as $perso){
-      if ($perso["nom"] == $nom && $perso["prenom"] == $prenom){
+    foreach ($persos as $perso) {
+      if ($perso["nom"] == $nom && $perso["prenom"] == $prenom) {
         $idcorrect = "yes";
         $user = get_utilisateur($perso["id_utilisateur"]);
         if ($user["mdp"] == $mdp){
@@ -26,7 +26,7 @@
       }
     }
 
-    if ($idcorrect == "no" || $mpdcorrect == "no"){
+    if ($idcorrect == "no" || $mpdcorrect == "no") {
         header("Location: liste_educateur.php");
         exit();
     }

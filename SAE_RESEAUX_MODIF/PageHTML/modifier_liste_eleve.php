@@ -97,7 +97,7 @@ $apprentis = listeApprenti();
         <td><?= $apprenti['prenom'] ?></td>
         <td><?= $apprenti['nom'] ?></td>
         <td>
-            <button class="btn btn-primary" onclick="setModifierApprentiId(<?= $apprenti['id_apprenti'] ?>, 
+            <button class="btn btn-primary" onclick="setModifierApprentiId(<?= $apprenti['id_apprenti'] ?>,
             '<?= $apprenti['prenom'] ?>', '<?= $apprenti['nom'] ?>')" data-toggle="modal"
              data-target="#modifierModal">Modifier</button>
             <button onclick="supprimerLigne(this)">Supprimer</button>

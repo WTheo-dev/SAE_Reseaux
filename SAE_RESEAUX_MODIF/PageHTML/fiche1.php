@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php addIcon("NomIntervenant", "fa-user"); ?>
     <?php addTexte("nomIntervenant", "Nom de l'intervenant") ?>
     <input type="text" name="nomIntervenant" value="<?php if
-    (isset($_COOKIE['nomIntervenant'])){ echo $_COOKIE['nomIntervenant']; } ?>">
+    (isset($_COOKIE['nomIntervenant'])) { echo $_COOKIE['nomIntervenant']; } ?>">
 </div>
     <div class="jsp">
     <div class="audio-fiche-1">

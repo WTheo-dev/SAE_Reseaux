@@ -26,7 +26,7 @@
 </head>
 <body class="body_fiche">
 <?php include_once "../../APIFinale/fonctions.php"; ?>
-    <?php 
+    <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nom_du_demandeur = $_POST["NomDemandeur"];
         $date_demande = $_POST["DateDemande"];
@@ -66,7 +66,7 @@
 </div>
 <?php addTexte("nomDemandeur", "Nom du demandeur") ?>
 <input disabled type="text" id="nomDemandeur" value=
-"<?php if (isset($_COOKIE['nomDemandeur'])){ echo $_COOKIE['nomDemandeur']; } ?>">
+"<?php if (isset($_COOKIE['nomDemandeur'])) { echo $_COOKIE['nomDemandeur']; } ?>">
     </div>
 
     <br>
@@ -78,7 +78,7 @@
 </div>
 <?php addTexte("dateDemande", "Date de la demande") ?>
 <input disabled type="date" id="dateDemande"
-value="<?php if (isset($_COOKIE['dateDemande'])){ echo $_COOKIE['dateDemande']; } ?>">
+value="<?php if (isset($_COOKIE['dateDemande'])) { echo $_COOKIE['dateDemande']; } ?>">
   
     <br>
 <div class="jsp">
@@ -88,7 +88,7 @@ value="<?php if (isset($_COOKIE['dateDemande'])){ echo $_COOKIE['dateDemande']; 
 </div>
 <?php addTexte("localisation", "Localisation") ?>
 <input disabled type="text" id="localisation"
-value="<?php if (isset($_COOKIE['localisation'])){ echo $_COOKIE['localisation']; } ?>">
+value="<?php if (isset($_COOKIE['localisation'])) { echo $_COOKIE['localisation']; } ?>">
 </div>
 <br>
     <div class="jsp">
@@ -115,7 +115,7 @@ value="<?php if (isset($_COOKIE['localisation'])){ echo $_COOKIE['localisation']
 </div>
 <?php addTexte("degreeUrgence", "Degré d'urgence") ?>
 <input disabled type="text" id="degreeUrgence"
-value="<?php if (isset($_COOKIE['degreeUrgence'])){ echo $_COOKIE['degreeUrgence']; } ?>">
+value="<?php if (isset($_COOKIE['degreeUrgence'])) { echo $_COOKIE['degreeUrgence']; } ?>">
 
     </div>
     </div>

@@ -4,11 +4,9 @@ $prenom = $_POST["prenom"];
 $mdp    = $_POST["mdp"];
 $num    = $_POST["num"];
 
-if ($_POST["educ-type"] == "simp"){
+if ($_POST["educ-type"] == "simp") {
     $type = 4;
-}
-
-else{
+}else {
     $type = 3;
 }
 

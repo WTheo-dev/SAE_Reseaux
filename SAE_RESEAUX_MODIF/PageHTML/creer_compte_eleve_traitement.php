@@ -71,7 +71,7 @@ ajouterApprenti($nom, $prenom, $photo, $mdp);
 
         <!-- menfou de la class, je veut juste le meme style que les autre bouton -->
         <div class="btn_creercompteleve">
-            <button type="button" id="back-button" 
+            <button type="button" id="back-button"
             onclick="window.location.href = 'page_postco_superadmin.php';">Retour</button>
         </div>
     </main>
