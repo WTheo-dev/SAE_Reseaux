@@ -2,14 +2,14 @@
 
 function generateJwt($headers, $payload, $secret = 'secret')
 {
-	$headersEncoded= base64url_encode(json_encode($headers));
+    $headersEncoded = base64url_encode(json_encode($headers));
 
-	$payloadEncoded = base64url_encode(json_encode($payload));
+    $payloadEncoded = base64url_encode(json_encode($payload));
 
-	$signature = hash_hmac('SHA256', "$headersEncoded.$payloadEncoded", $secret, true);
-	$signatureEncoded = base64url_encode($signature);
+    $signature = hash_hmac('SHA256', "$headersEncoded.$payloadEncoded", $secret, true);
+    $signatureEncoded = base64url_encode($signature);
 
-	return "$headersEncoded.$payloadEncoded.$signatureEncoded";
+    return "$headersEncoded.$payloadEncoded.$signatureEncoded";
 }
 
 function isJwtValid($jwt, $secret = 'secret')

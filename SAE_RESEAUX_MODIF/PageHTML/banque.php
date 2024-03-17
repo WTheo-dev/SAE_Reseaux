@@ -205,7 +205,7 @@
         $extAutoriser=array("mp3", "wav", "ogg");
 
         if (isset($_POST["enregistrer_audio"])) {
-            if (in_array($imageFileType, $extAutoriser) === false){
+            if (in_array($imageFileType, $extAutoriser) === false) {
                 echo "Extension non autorisée, choisisez parmi : mp3, wav, ogg<br>";
             } elseif (str_contains($name, "_") || str_contains($name, " ")) {
                 echo $name." <div class='mot'>Nom de fichier incorrect,
