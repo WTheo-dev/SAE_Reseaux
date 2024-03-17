@@ -379,7 +379,7 @@ function ajouterEducateur($nom, $prenom, $mdp, $type, $num)
   u WHERE u.mdp = ? AND u.id_role = ? AND NOT EXISTS
    (SELECT * FROM personnel p WHERE u.id_utilisateur = p.id_utilisateur);");
   $ajout->execute(array($mdp, $type));
-  foreach ($ajout as $row){
+  foreach ($ajout as $row) {
 
     $id =  $row["id_utilisateur"];
     break;
@@ -518,8 +518,7 @@ function listePersonnel()
             'id_utilisateur'=> $row['id_utilisateur']
         )
     );
-}
-
+  }
 
   return $resultat;
 }
@@ -774,9 +773,46 @@ function modifierFiche(
   $idPersonnel = htmlspecialchars($idPersonnel);
 
 
-  $modifierFiche = $bd->prepare('UPDATE fiche_intervention SET numero = ?, nom_du_demandeur = ?, date_demande = ?, date_intervention = ?, duree_intervention = ?, localisation = ?, description_demande = ?, degre_urgence = ?, type_intervention = ?, nature_intervention = ?, couleur_intervention = ?, etat_fiche = ?, date_creation = ?, id_apprenti = ?, id_personnel = ? WHERE id_fiche = ?');
+  $modifierFiche = $bd->prepare('UPDATE fiche_intervention
+    SET numero = ?,
+        nom_du_demandeur = ?,
+        date_demande = ?,
+        date_intervention = ?,
+        duree_intervention = ?,
+        localisation = ?,
+        description_demande = ?,
+        degre_urgence = ?,
+        type_intervention = ?,
+        nature_intervention = ?,
+        couleur_intervention = ?,
+        etat_fiche = ?,
+        date_creation = ?,
+        id_apprenti = ?,
+        id_personnel = ?
+    WHERE id_fiche = ?');
 
-  $modifierFiche->execute(array($numero, $nomDuDemandeur, $dateDemande, $dateIntervention, $dureeIntervention, $localisation, $descriptionDemande, $degreUrgence, $typeIntervention, $natureIntervention, $travauxRealises, $travauxNonRealises, $couleurIntervention, $etatFiche, $dateCreation,$idApprenti,$idPersonnel,$idFiche));
+
+$modifierFiche->execute(array(
+  $numero,
+  $nomDuDemandeur,
+  $dateDemande,
+  $dateIntervention,
+  $dureeIntervention,
+  $localisation,
+  $descriptionDemande,
+  $degreUrgence,
+  $typeIntervention,
+  $natureIntervention,
+  $travauxRealises,
+  $travauxNonRealises,
+  $couleurIntervention,
+  $etatFiche,
+  $dateCreation,
+  $idApprenti,
+  $idPersonnel,
+  $idFiche
+));
+
 
   $bd = null;
 
@@ -1126,14 +1162,14 @@ function supprimerTrace($intitule)
 }
 
 function modificationTrace(
-  $idPersonnel,
-  $horodatage,
-  $intitule,
-  $evalTexte,
-  $commentaireTexte,
-  $evalAudio,
-  $commentaireAudio,
-  $idFiche
+      $idPersonnel,
+      $horodatage,
+      $intitule,
+      $evalTexte,
+      $commentaireTexte,
+      $evalAudio,
+      $commentaireAudio,
+      $idFiche
 ) {
   $bd = connexionBD();
   $idPersonnel = htmlspecialchars($idPersonnel);
