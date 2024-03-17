@@ -650,7 +650,7 @@ function creationFiche(
   $dureeIntervention,
   $localisation,
   $descriptionDemande,
-  $degre_urgence,
+  $degreUrgence,
   $typeIntervention,
   $natureIntervention,
   $travauxRealises,
@@ -669,7 +669,7 @@ function creationFiche(
   $dureeIntervention = htmlspecialchars($dureeIntervention);
   $localisation = htmlspecialchars($localisation);
   $descriptionDemande = htmlspecialchars($descriptionDemande);
-  $degre_urgence = htmlspecialchars($degre_urgence);
+  $degreUrgence = htmlspecialchars($degreUrgence);
   $typeIntervention = htmlspecialchars($typeIntervention);
   $natureIntervention = htmlspecialchars($natureIntervention);
   $travauxRealises = htmlspecialchars($travauxRealises);
@@ -695,7 +695,7 @@ $creerFiche->execute(array(
   $dureeIntervention,
   $localisation,
   $descriptionDemande,
-  $degre_urgence,
+  $degreUrgence,
   $typeIntervention,
   $natureIntervention,
   $travauxRealises,
@@ -731,11 +731,11 @@ function modifierFiche(
   $numero,
   $nomDuDemandeur,
   $dateDemande,
-  $dateIntervention 
+  $dateIntervention,
   $dureeIntervention,
   $localisation,
   $descriptionDemande,
-  $degre_urgence,
+  $degreUrgence,
   $typeIntervention,
   $natureIntervention,
   $travauxRealises,
@@ -756,7 +756,7 @@ function modifierFiche(
   $dureeIntervention = htmlspecialchars($dureeIntervention);
   $localisation = htmlspecialchars($localisation);
   $descriptionDemande = htmlspecialchars($descriptionDemande);
-  $degre_urgence = htmlspecialchars($degre_urgence);
+  $degreUrgence = htmlspecialchars($degreUrgence);
   $typeIntervention = htmlspecialchars($typeIntervention);
   $natureIntervention = htmlspecialchars($natureIntervention);
   $travauxRealises = htmlspecialchars($travauxRealises);
@@ -770,7 +770,7 @@ function modifierFiche(
 
   $modifierFiche = $bd->prepare('UPDATE fiche_intervention SET numero = ?, nom_du_demandeur = ?, date_demande = ?, date_intervention = ?, duree_intervention = ?, localisation = ?, description_demande = ?, degre_urgence = ?, type_intervention = ?, nature_intervention = ?, couleur_intervention = ?, etat_fiche = ?, date_creation = ?, id_apprenti = ?, id_personnel = ? WHERE id_fiche = ?');
 
-  $modifierFiche->execute(array($numero, $nomDuDemandeur, $dateDemande, $dateIntervention, $dureeIntervention, $localisation, $descriptionDemande, $degre_urgence, $typeIntervention, $natureIntervention, $travauxRealises, $travauxNonRealises, $couleurIntervention, $etatFiche, $dateCreation,$idApprenti,$idPersonnel,$idFiche));
+  $modifierFiche->execute(array($numero, $nomDuDemandeur, $dateDemande, $dateIntervention, $dureeIntervention, $localisation, $descriptionDemande, $degreUrgence, $typeIntervention, $natureIntervention, $travauxRealises, $travauxNonRealises, $couleurIntervention, $etatFiche, $dateCreation,$idApprenti,$idPersonnel,$idFiche));
 
   $bd = null;
 
