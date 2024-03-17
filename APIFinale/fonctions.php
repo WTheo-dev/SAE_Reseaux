@@ -167,7 +167,44 @@ function connexionPersonnel($idPersonnel)
     return false;
 }
 
+function saltHash(string $mdp): string
+{
+    // ajout du sel au mdp
+    $code = $mdp . 'BrIc3 4rNaUlT 3sT &$ Le MeIlLeUr d3s / pRoFesSeUrs DU.Mond3 !';
+    // hashage du mdp 
+    return password_hash($code, PASSWORD_DEFAULT);
+}
 
+function modifierMdp(string $mdp, int $idMembre): void
+{
+    // connexion a la base de donnees
+    $linkpdo = connexionBd();
+    //on supprime le membre
+    $req = $linkpdo->prepare($GLOBALS['qModifierMotDePasseUnMembre']);
+    if ($req == false) {
+        die('Erreur ! Il y a un problème lors de la préparation de la requête : qModifierMotDePasseUnMembre');
+    }
+    // execution de la Requête sql
+    $req->execute(array(
+        ':mdp' => saltHash($mdp),
+        ':idMembre' => $idMembre
+    ));
+    if ($req == false) {
+        die('Erreur ! Il y a un problème lors l\'exécution de la requête : qModifierMotDePasseUnMembre');
+    }
+}
+function resetPassword($id) {
+    $linkpdo = connexionBd();
+    $req = $linkpdo->prepare($GLOBALS['qResetPassword']);
+    if ($req == false) {
+        die('Erreur ! Il y a un problème lors de la préparation de la requête : qResetPassword');
+    }
+    // execution de la Requête sql
+    $req->execute(array(
+        ':password' => saltHash('password'),
+        ':id' => $id
+    ));
+}
 
 
 
