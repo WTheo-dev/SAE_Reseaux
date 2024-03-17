@@ -648,23 +648,23 @@ function listeFiche()
 }
 
 function creationFiche(
-  $numero,
-  $nomDuDemandeur,
-  $dateDemande,
-  $dateIntervention,
-  $dureeIntervention,
-  $localisation,
-  $descriptionDemande,
-  $degreUrgence,
-  $typeIntervention,
-  $natureIntervention,
-  $travauxRealises,
-  $travauxNonRealises,
-  $couleurIntervention,
-  $etatFiche,
-  $dateCreation,
-  $idApprenti,
-  $idPersonnel
+    $numero,
+    $nomDuDemandeur,
+    $dateDemande,
+    $dateIntervention,
+    $dureeIntervention,
+    $localisation,
+    $descriptionDemande,
+    $degreUrgence,
+    $typeIntervention,
+    $natureIntervention,
+    $travauxRealises,
+    $travauxNonRealises,
+    $couleurIntervention,
+    $etatFiche,
+    $dateCreation,
+    $idApprenti,
+    $idPersonnel
 ) {
   $bd = connexionBD();
   $numero = htmlspecialchars($numero);
@@ -732,24 +732,24 @@ function supprimerFiche($idFiche)
 
 
 function modifierFiche(
-  $idFiche,
-  $numero,
-  $nomDuDemandeur,
-  $dateDemande,
-  $dateIntervention,
-  $dureeIntervention,
-  $localisation,
-  $descriptionDemande,
-  $degreUrgence,
-  $typeIntervention,
-  $natureIntervention,
-  $travauxRealises,
-  $travauxNonRealises,
-  $couleurIntervention,
-  $etatFiche,
-  $dateCreation,
-  $idApprenti,
-  $idPersonnel
+    $idFiche,
+    $numero,
+    $nomDuDemandeur,
+    $dateDemande,
+    $dateIntervention,
+    $dureeIntervention,
+    $localisation,
+    $descriptionDemande,
+    $degreUrgence,
+    $typeIntervention,
+    $natureIntervention,
+    $travauxRealises,
+    $travauxNonRealises,
+    $couleurIntervention,
+    $etatFiche,
+    $dateCreation,
+    $idApprenti,
+    $idPersonnel
 ) {
 
   $bd = connexionBD();
@@ -1105,14 +1105,14 @@ function uneTrace($intitule)
  }
 
  function ajouterTrace(
-  $idPersonnel,
-  $horodatage,
-  $intitule,
-  $evalTexte,
-  $commentaireTexte,
-  $evalAudio,
-  $commentaireAudio,
-  $idFiche
+    $idPersonnel,
+    $horodatage,
+    $intitule,
+    $evalTexte,
+    $commentaireTexte,
+    $evalAudio,
+    $commentaireAudio,
+    $idFiche
 ) {
   $bd = connexionBD();
   $idPersonnel = htmlspecialchars($idPersonnel);
