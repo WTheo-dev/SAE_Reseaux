@@ -535,8 +535,16 @@ function listeEducateur()
     $resultat = [];
 
     foreach ($listePersonnel as $row) {
-      array_push($resultat, array('nom' => $row['nom'], 'prenom' =>
-       $row['prenom'], 'id_personnel' => $row['id_personnel'], 'id_utilisateur' => $row['id_utilisateur']));
+      array_push(
+        $resultat,
+        array(
+            'nom' => $row['nom'],
+            'prenom' => $row['prenom'],
+            'id_personnel' => $row['id_personnel'],
+            'id_utilisateur' => $row['id_utilisateur']
+        )
+    );
+    
     }
   } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());
@@ -585,14 +593,14 @@ function unPersonnel($idPersonnel)
 
   foreach ($listeUnPersonnel as $row) {
     array_push(
-      $resultat,
-      array(
-          'nom' => $row['nom'],
-          'prenom' => $row['prenom'],
-          'id_personnel' => $row['id_personnel'],
-          'id_utilisateur' => $row['id_utilisateur']
+        $resultat,
+        array(
+            'nom' => $row['nom'],
+            'prenom' => $row['prenom'],
+            'id_personnel' => $row['id_personnel'],
+            'id_utilisateur' => $row['id_utilisateur']
       )
-  );
+    );
   }
 
   return $resultat;
@@ -624,24 +632,24 @@ function listeFiche()
 
   foreach ($listeFiche as $row) {
     array_push(
-      $resultat,
-      array(
-          'numero' => $row['numero'],
-          'nom_du_demandeur' => $row['nom_du_demandeur'],
-          'date_demande' => $row['date_demande'],
-          'date_intervention' => $row['date_intervention'],
-          'duree_intervention' => $row['duree_intervention'],
-          'localisation' => $row['localisation'],
-          'description_demande' => $row['description_demande'],
-          'degre_urgence' => $row['degre_urgence'],
-          'type_intervention' => $row['type_intervention'],
-          'nature_intervention' => $row['nature_intervention'],
-          'couleur_intervention' => $row['couleur_intervention'],
-          'etat_fiche' => $row['etat_fiche'],
-          'date_creation' => $row['date_creation'],
-          'id_fiche' => $row['id_fiche']
-      )
-  );
+        $resultat,
+        array(
+            'numero' => $row['numero'],
+            'nom_du_demandeur' => $row['nom_du_demandeur'],
+            'date_demande' => $row['date_demande'],
+            'date_intervention' => $row['date_intervention'],
+            'duree_intervention' => $row['duree_intervention'],
+            'localisation' => $row['localisation'],
+            'description_demande' => $row['description_demande'],
+            'degre_urgence' => $row['degre_urgence'],
+            'type_intervention' => $row['type_intervention'],
+            'nature_intervention' => $row['nature_intervention'],
+            'couleur_intervention' => $row['couleur_intervention'],
+            'etat_fiche' => $row['etat_fiche'],
+            'date_creation' => $row['date_creation'],
+            'id_fiche' => $row['id_fiche']
+        )
+    );
   }
 
   return $resultat;
