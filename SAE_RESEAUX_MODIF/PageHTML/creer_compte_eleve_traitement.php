@@ -3,7 +3,7 @@
 $succes = false;
 
 $imgdir = "Image/etu/";
-if (!is_dir($imgdir)){
+if (!is_dir($imgdir)) {
     mkdir($imgdir);
     shell_exec("chmod 777 ".$imgdir);
     shell_exec("chown www-data ".$imgdir);
@@ -18,15 +18,15 @@ try {
 } catch (Exception $e) {
     echo "Erreur : ".$e->getMessage();
 }
-if (!$succes){
+if (!$succes) {
     echo "<br>erreur a l'enregistrement, verifier que l'image est bonne.<br>";
 }
 
 list($nom, $prenom) = explode(" ", $_POST["nom-prenom"]);
 
 $mdp = "";
-for ($i=0; $i<=9; $i++){
-  if (isset($_POST[$i])){
+for ($i=0; $i<=9; $i++) {
+  if (isset($_POST[$i])) {
     $mdp = $mdp.$i;
   }
 }

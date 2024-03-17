@@ -17,4 +17,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Appelez votre fonction de mise à jour depuis votre API
     modifierApprenti($idApprenti, $nouveauNom, $nouveauPrenom, $nouvellePhoto);
 }
-?>
+
+

@@ -26,7 +26,8 @@ include_once "fiche_base.php";
 <body class="body_fiche_valeur">
 
 <?php
-function valEns($name) {
+function valEns($name)
+{
     if (isset($_REQUEST[$name])) {
         return $_REQUEST[$name];
     }elseif (isset($_COOKIE[$name])) {

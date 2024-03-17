@@ -30,7 +30,7 @@ include_once "../../APIFinale/fonctions.php";
             <form action="connexion_eleve.php" method="post">
             <?php
                 $etus = listeApprenti();
-                foreach ($etus as $etu){
+                foreach ($etus as $etu) {
                     echo "<button name=".$etu["id_apprenti"].">";
                     echo "<img src='Image/etu/".$etu["photo"]."' alt='".$etu["prenom"]."'>";
                     echo "<p class='p_pd'>" . strtoupper($etu["nom"]) . " " . $etu["prenom"] . "</p>";

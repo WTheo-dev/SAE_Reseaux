@@ -3,7 +3,7 @@
 <?php include_once "fiche_head.php"; ?>
 <?php include_once "../../APIFinale/fonctions.php"; ?>
 
-<?php 
+<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nomIntervenant = $_POST["nomIntervenant"];
     $prenomIntervenant = $_POST["prenomIntervenant"];

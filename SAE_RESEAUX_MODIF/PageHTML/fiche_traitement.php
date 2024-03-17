@@ -6,9 +6,9 @@ if (isset($_POST['precedent'])) {
     $direction = "precedent";
     header("location: fiche".$index.".php");
 } elseif (isset($_POST['sauvegarder'])) {
-    if ($_POST['sauvegarder'] == "total"){
+    if ($_POST['sauvegarder'] == "total") {
         header("location: fiche_total.php");
-    }else{
+    }else {
         $numpage = $_POST['sauvegarder'];
         $index = $numpage;
         $direction = "sauvegarder";

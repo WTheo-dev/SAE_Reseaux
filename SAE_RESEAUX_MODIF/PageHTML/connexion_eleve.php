@@ -19,8 +19,8 @@
   include_once "../../APIFinale/fonctions.php";
   $idetu = -1;
   $i = 0;
-  while (true){
-    if (isset($_POST[$i])){
+  while (true) {
+    if (isset($_POST[$i])) {
       $idetu = $i;
       break;
     }
@@ -102,4 +102,4 @@
   <script src="connexion_eleve.js"></script>
 </body>
 </html>
-  
+

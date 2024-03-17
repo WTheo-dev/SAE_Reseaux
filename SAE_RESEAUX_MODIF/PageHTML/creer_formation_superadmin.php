@@ -1,7 +1,7 @@
 <?php
 include_once "../../APIFinale/fonctions.php";
 $formcreer = false;
-if (isset($_POST["nom-form"])){
+if (isset($_POST["nom-form"])) {
     ajouterFormation($_POST["nom-form"], null, null);
     $formcreer = true;
 }

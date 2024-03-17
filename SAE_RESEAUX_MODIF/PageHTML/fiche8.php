@@ -16,14 +16,14 @@ include_once "fiche_head.php";
 </div>
     <div id="mat_droit">
     <?php
-    for ($i=0; $i<5; $i++){
+    for ($i=0; $i<5; $i++) {
         afficherMateriaux($description_demande, $i);
     }
     ?>
     </div>
     <div id="mat_gauche">
     <?php
-    for ($i=0; $i<5; $i++){
+    for ($i=0; $i<5; $i++) {
         afficherMateriaux($description_demande, $i+5);
     }
     ?>

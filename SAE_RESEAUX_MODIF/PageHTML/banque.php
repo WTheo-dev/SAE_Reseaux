@@ -50,7 +50,7 @@
     <?php
         if (is_dir("audio")) {
             $files=scandir("audio");
-            foreach ($files as $file){
+            foreach ($files as $file) {
                 if ($file == "." || $file == "..") {
                     continue;
                 }
@@ -63,7 +63,7 @@
 
     <?php
         if (isset($_POST['supprimer_icon'])) {
-            foreach ($_POST as $file => $check){
+            foreach ($_POST as $file => $check) {
                 if ($check == "on" && str_starts_with($file, "checkimg-")) {
                     $file=ICON_DIR.str_replace("_", ".", str_replace("checkimg-", "", $file));
                     unlink($file);
@@ -71,9 +71,9 @@
             }
         }
 
-        if (isset($_POST['supprimer_audio'])){
-            foreach ($_POST as $file => $check){
-                if ($check == "on" && str_starts_with($file, "checkaud-")){
+        if (isset($_POST['supprimer_audio'])) {
+            foreach ($_POST as $file => $check) {
+                if ($check == "on" && str_starts_with($file, "checkaud-")) {
                     $file="audio/".str_replace("_", ".", str_replace("checkaud-", "", $file));
                     unlink($file);
                 }
@@ -110,7 +110,7 @@
         $extAutoriser=array("jpeg", "jpg", "png");
 
         if (isset($_POST["enregistrer_icon"])) {
-            if(in_array($imageFileType, $extAutoriser) === false) {
+            if (in_array($imageFileType, $extAutoriser) === false) {
                 echo "Extension non autorisée, choisisez parmi : jpeg, jpg, png<br>";
             } elseif (str_contains($name, "_") || str_contains($name, " ")) {
                 echo $name." Nom incorrect, ne pas mettre de _ ou d'espace dans le nom";
@@ -205,7 +205,7 @@
         $extAutoriser=array("mp3", "wav", "ogg");
 
         if (isset($_POST["enregistrer_audio"])) {
-            if(in_array($imageFileType, $extAutoriser) === false){
+            if (in_array($imageFileType, $extAutoriser) === false){
                 echo "Extension non autorisée, choisisez parmi : mp3, wav, ogg<br>";
             } elseif (str_contains($name, "_") || str_contains($name, " ")) {
                 echo $name." <div class='mot'>Nom de fichier incorrect,
@@ -221,7 +221,7 @@
                     } catch (Exception $e) {
                         echo "Erreur : ".$e->getMessage();
                     }
-                    if (!$succes){
+                    if (!$succes) {
                         echo "Erreur a l'enregistrement, verifier que l'audio est bon.<br>";
                     } else {
                         echo "Votre audio a été enregistré avec succès.<br>";

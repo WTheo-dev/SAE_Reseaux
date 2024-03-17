@@ -536,15 +536,14 @@ function listeEducateur()
 
     foreach ($listePersonnel as $row) {
       array_push(
-        $resultat,
-        array(
-            'nom' => $row['nom'],
-            'prenom' => $row['prenom'],
-            'id_personnel' => $row['id_personnel'],
-            'id_utilisateur' => $row['id_utilisateur']
-        )
-    );
-    
+          $resultat,
+          array(
+              'nom' => $row['nom'],
+              'prenom' => $row['prenom'],
+              'id_personnel' => $row['id_personnel'],
+              'id_utilisateur' => $row['id_utilisateur']
+          )
+      );
     }
   } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());
@@ -566,14 +565,14 @@ function listeSuperAdmin()
 
     foreach ($listePersonnel as $row) {
       array_push(
-        $resultat,
-        array(
-            'nom' => $row['nom'],
-            'prenom' => $row['prenom'],
-            'id_personnel' => $row['id_personnel'],
-            'id_utilisateur' => $row['id_utilisateur']
-        )
-    );
+          $resultat,
+          array(
+              'nom' => $row['nom'],
+              'prenom' => $row['prenom'],
+              'id_personnel' => $row['id_personnel'],
+              'id_utilisateur' => $row['id_utilisateur']
+          )
+      );
     }
   } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());

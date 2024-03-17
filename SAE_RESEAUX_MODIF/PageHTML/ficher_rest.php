@@ -3,4 +3,4 @@
     <p>Click sur imprimer quand vous avez tout terminé</p>
     <input type="button" value="Imprimer" onClick="window.print()">
     </div>
-    
+

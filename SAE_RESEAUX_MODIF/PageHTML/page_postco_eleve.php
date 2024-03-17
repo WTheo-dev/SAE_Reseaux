@@ -4,14 +4,14 @@
     $mdp = "";
 
     for ($i=0; $i<=9; $i++){
-      if (isset($_POST[$i])){
+      if (isset($_POST[$i])) {
         $mdp = $mdp.$i;
       }
     }
 
     $user = getUtilisateur($etu["id_utilisateur"]);
 
-    if ($user["mdp"] != $mdp){
+    if ($user["mdp"] != $mdp) {
         header("Location: index.php");
         exit();
     }
