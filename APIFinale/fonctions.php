@@ -1105,14 +1105,14 @@ function uneTrace($intitule)
  }
 
  function ajouterTrace(
-    $idPersonnel,
-    $horodatage,
-    $intitule,
-    $evalTexte,
-    $commentaireTexte,
-    $evalAudio,
-    $commentaireAudio,
-    $idFiche
+     $idPersonnel,
+     $horodatage,
+     $intitule,
+     $evalTexte,
+     $commentaireTexte,
+     $evalAudio,
+     $commentaireAudio,
+     $idFiche
 ) {
   $bd = connexionBD();
   $idPersonnel = htmlspecialchars($idPersonnel);
