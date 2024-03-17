@@ -218,13 +218,13 @@ if (isset($_COOKIE['dateIntervention'])) {
 <br>
 
 <input disabled type="checkbox" name="Installation_sanitaire"
- id="Installation_sanitaire" <?php if(isset($_COOKIE['Installation_sanitaire'])) {echo "checked";}  ?> />
+ id="Installation_sanitaire" <?php if (isset($_COOKIE['Installation_sanitaire'])) {echo "checked";}  ?> />
 <label for="Installation_sanitaire">Installation sanitaire</label>
 <?php formatBox("Installation_sanitaire"); ?>
 <br>
 
 <input disabled type="checkbox" name="Installation_électrique"
- id="Installation_électrique" <?php if(isset($_COOKIE['Installation_électrique'])) {echo "checked";}  ?> />
+ id="Installation_électrique" <?php if (isset($_COOKIE['Installation_électrique'])) {echo "checked";}  ?> />
 <label for="Installation_électrique">Installation électrique</label>
 <?php formatBox("Installation_électrique"); ?>
 </div>

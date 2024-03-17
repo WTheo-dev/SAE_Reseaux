@@ -15,7 +15,7 @@
       if ($perso["nom"] == $nom && $perso["prenom"] == $prenom) {
         $idcorrect = "yes";
         $user = get_utilisateur($perso["id_utilisateur"]);
-        if ($user["mdp"] == $mdp){
+        if ($user["mdp"] == $mdp) {
           $mpdcorrect = "yes";
         } else {
             $mpdcorrect = "no";

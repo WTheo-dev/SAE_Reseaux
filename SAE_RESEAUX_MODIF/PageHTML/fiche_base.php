@@ -4,7 +4,7 @@ include_once "../../APIFinale/fonctions.php";
 
 function matchFontSize()
 {
-    if (!isset($_COOKIE["configTaille"])){return "1em";}
+    if (!isset($_COOKIE["configTaille"])) {return "1em";}
     switch ($_COOKIE["configTaille"]) {
         default:
         case '75%':
