@@ -1,6 +1,9 @@
 <?php
 session_start();
+
 use apifinale\connexionPersonnel;
+
+
 include_once '../../APIFinale/fonctions.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
