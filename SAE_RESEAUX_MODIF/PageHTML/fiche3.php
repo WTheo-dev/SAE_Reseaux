@@ -26,7 +26,7 @@
 </head>
 <body class="body_fiche">
 <?php include_once "../../APIFinale/fonctions.php"; ?>
-    <?php 
+    <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $date_intervention = $_POST["DateIntervention"];
         $duree_intervention = $_POST["DuréeOpération"];

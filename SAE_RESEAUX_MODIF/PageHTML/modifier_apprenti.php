@@ -8,7 +8,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nouvellePhoto = $_POST['nouvellephoto'];
 
     // Ajoutez des messages de débogage ici
-    echo "ID Apprenti: $idApprenti, Nouveau Nom: $nouveauNom, Nouveau Prénom: $nouveauPrenom, Nouvelle photo: $nouvellePhoto";
+    echo "ID Apprenti: $idApprenti,
+    Nouveau Nom: $nouveauNom,
+    Nouveau Prénom: $nouveauPrenom,
+    Nouvelle photo: $nouvellePhoto";
+
 
     // Appelez votre fonction de mise à jour depuis votre API
     modifierApprenti($idApprenti, $nouveauNom, $nouveauPrenom, $nouvellePhoto);
