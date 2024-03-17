@@ -1162,14 +1162,14 @@ function supprimerTrace($intitule)
 }
 
 function modificationTrace(
-        $idPersonnel,
-        $horodatage,
-        $intitule,
-        $evalTexte,
-        $commentaireTexte,
-        $evalAudio,
-        $commentaireAudio,
-        $idFiche
+    $idPersonnel,
+    $horodatage,
+    $intitule,
+    $evalTexte,
+    $commentaireTexte,
+    $evalAudio,
+    $commentaireAudio,
+    $idFiche
 ) {
   $bd = connexionBD();
   $idPersonnel = htmlspecialchars($idPersonnel);
