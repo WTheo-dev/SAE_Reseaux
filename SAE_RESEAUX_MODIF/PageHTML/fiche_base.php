@@ -155,7 +155,7 @@ function afficherMateriaux($descriptionDemande, $i)
                 "Coude cuivre 90° à souder FF Ø 12",
                 "Coude PVC 87°30° FF Ø 100",
                 "Coude PVC 87°30° FF Ø 32",
-                "Coude PVC 87°30° FF Ø 40",               
+                "Coude PVC 87°30° FF Ø 40",
                 "Faïence mur 20 x 20",
                 "Mortier colle poudre",
                 "Joint poudre carrelage",
@@ -253,7 +253,7 @@ function afficherMateriaux($descriptionDemande, $i)
                 "Vis à bois 30 mm",
                 "Vis TRPF",
                 "Vis TTPC 25",
-                "Vis TTPC 35",   
+                "Vis TTPC 35",
             );
             break;
         case "Serrurerie":

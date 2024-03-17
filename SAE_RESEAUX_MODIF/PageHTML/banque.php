@@ -116,7 +116,7 @@
                 echo $name." Nom incorrect, ne pas mettre de _ ou d'espace dans le nom";
             } else {
                 $check = getimagesize($_FILES["icon-file"]["tmp_name"]);
-                if(!$check) {
+                if (!$check) {
                     echo "Ce fichier n'est pas une image correcte.";
                     $uploadOk = 1;
                 } else {

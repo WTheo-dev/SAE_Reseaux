@@ -59,7 +59,7 @@ function loginId($idUtilisateur)
   $rechercheUtilisateur -> execute(array($idUtilisateur));
   $bd = null;
   if ($rechercheUtilisateur -> rowCount() > 0) {
-    foreach($rechercheUtilisateur as $row) {
+    foreach ($rechercheUtilisateur as $row) {
       return $row['login'];
     }
   } else {
@@ -67,13 +67,14 @@ function loginId($idUtilisateur)
   }
 }
 
-function idLogin($login) {
+function idLogin($login)
+{
   $bd = connexionBD();
   $rechercheUtilisateur = $bd->prepare(SQL_QUERY);
   $rechercheUtilisateur -> execute(array($login));
   $bd = null;
   if ($rechercheUtilisateur -> rowCount() > 0) {
-    foreach($rechercheUtilisateur as $row) {
+    foreach ($rechercheUtilisateur as $row) {
       return $row['id_utilisateur'];
     }
   } else {
@@ -81,12 +82,13 @@ function idLogin($login) {
   }
 }
 
-function getUtilisateur($id){
+function getUtilisateur($id)
+{
   $bd = connexionBD();
   $utilisateur = $bd->prepare(SQL_QUERY);
   $utilisateur->execute(array($id));
   if ($utilisateur->rowCount() > 0) {
-    foreach($utilisateur as $row){
+    foreach ($utilisateur as $row) {
       return $row;
     }
   } else {
@@ -171,7 +173,7 @@ function saltHash(string $mdp): string
 {
     // ajout du sel au mdp
     $code = $mdp . 'BrIc3 4rNaUlT 3sT &$ Le MeIlLeUr d3s / pRoFesSeUrs DU.Mond3 !';
-    // hashage du mdp 
+    // hashage du mdp
     return password_hash($code, PASSWORD_DEFAULT);
 }
 
@@ -181,7 +183,7 @@ function modifierMdp(string $mdp, int $idMembre): void
     $linkpdo = connexionBd();
     //on supprime le membre
     $req = $linkpdo->prepare($GLOBALS['qModifierMotDePasseUnMembre']);
-    if ($req == false) {
+    if (!$req) {
         die('Erreur ! Il y a un problème lors de la préparation de la requête : qModifierMotDePasseUnMembre');
     }
     // execution de la Requête sql
@@ -189,14 +191,15 @@ function modifierMdp(string $mdp, int $idMembre): void
         ':mdp' => saltHash($mdp),
         ':idMembre' => $idMembre
     ));
-    if ($req == false) {
+    if (!$req) {
         die('Erreur ! Il y a un problème lors l\'exécution de la requête : qModifierMotDePasseUnMembre');
     }
 }
-function resetPassword($id) {
+function resetPassword($id)
+{
     $linkpdo = connexionBd();
     $req = $linkpdo->prepare($GLOBALS['qResetPassword']);
-    if ($req == false) {
+    if (!$req) {
         die('Erreur ! Il y a un problème lors de la préparation de la requête : qResetPassword');
     }
     // execution de la Requête sql
@@ -339,7 +342,7 @@ function ajouterApprenti($nom, $prenom, $photo, $mdp)
 
   $ajout = $bd->prepare("SELECT id_utilisateur FROM `utilisateur` WHERE mdp = ?;");
   $ajout->execute(array($mdp));
-  foreach ($ajout as $row){
+  foreach ($ajout as $row) {
 
     $id =  $row["id_utilisateur"];
     break;
@@ -409,7 +412,8 @@ function modifierApprenti($idApprenti, $nom, $prenom, $photo)
 
 }
 
-function unApprenti($idApprenti) {
+function unApprenti($idApprenti)
+{
   $bd = connexionBD();
   $idApprenti = htmlspecialchars($idApprenti);
   $listeUnApprenti = $bd ->prepare('SELECT * from apprenti WHERE id_apprenti= ?');
@@ -427,7 +431,8 @@ function unApprenti($idApprenti) {
 
 }
 
-function apprentiDejaExistant($nom, $prenom) {
+function apprentiDejaExistant($nom, $prenom)
+{
   $bd = connexionBD();
   $apprentiExiste = $bd->prepare('SELECT * FROM apprenti WHERE nom = ? AND prenom  = ?');
   $apprentiExiste ->execute(array($nom, $prenom));
@@ -505,15 +510,16 @@ function listePersonnel()
 
   foreach ($listePersonnel as $row) {
     array_push(
-      $resultat,
-      array(
-          'nom' => $row['nom'],
-          'prenom' => $row['prenom'],
-          'id_personnel' => $row['id_personnel'],
-          'id_utilisateur' => $row['id_utilisateur']
-      )
-  );
-  }
+        $resultat,
+        array(
+            'nom'           => $row['nom'],
+            'prenom'        => $row['prenom'],
+            'id_personnel'  => $row['id_personnel'],
+            'id_utilisateur'=> $row['id_utilisateur']
+        )
+    );
+}
+
 
   return $resultat;
 }
@@ -617,7 +623,7 @@ function listeFiche()
   $bd = null;
   $resultat = [];
 
-  foreach($listeFiche as $row) {
+  foreach ($listeFiche as $row) {
     array_push(
       $resultat,
       array(
@@ -659,8 +665,8 @@ function creationFiche(
   $etatFiche,
   $dateCreation,
   $idApprenti,
-  $idPersonnel)
-{
+  $idPersonnel
+) {
   $bd = connexionBD();
   $numero = htmlspecialchars($numero);
   $nomDuDemandeur = htmlspecialchars($nomDuDemandeur);
@@ -744,8 +750,8 @@ function modifierFiche(
   $etatFiche,
   $dateCreation,
   $idApprenti,
-  $idPersonnel)
-{
+  $idPersonnel
+) {
 
   $bd = connexionBD();
   $idFiche = htmlspecialchars($idFiche);
@@ -787,7 +793,7 @@ function uneFicheIntervention($idFiche)
   $bd = null;
   $resultat = [];
 
-  foreach($uneFicheIntervention as $row) {
+  foreach ($uneFicheIntervention as $row) {
     array_push($resultat, array('numero' => $row['numero'],'nom_du_demandeur' =>
     $row['nom_du_demandeur'],'date_demande' => $row['date_demande'],'date_intervention' =>
      $row['date_intervention'],'duree_intervention' => $row['duree_intervention'],'localisation' =>
@@ -823,7 +829,7 @@ function listeCours()
   $bd = null;
   $resultat = [];
 
-  foreach($listeCours as $row) {
+  foreach ($listeCours as $row) {
     array_push($resultat, array('Thème' => $row['theme'],'Cours' => $row['cours'],
     'Durée du Cours' => $row['duree'], 'ID_Formation' => $row['id_formation']));
   }
@@ -840,7 +846,7 @@ function unCours($cours)
   $bd = null;
   $resultat = [];
 
-  foreach($unCours as $row) {
+  foreach ($unCours as $row) {
     array_push($resultat, array('Thème' => $row['theme'],'Cours' => $row['cours'],
     'Durée du Cours' => $row['duree'], 'ID_Formation' => $row['id_formation']));
   }
@@ -898,7 +904,7 @@ function listeFormations()
   $listeFormations ->execute(array());
   $bd = null;
   $result = [];
-  foreach($listeFormations as $row) {
+  foreach ($listeFormations as $row) {
     array_push($result, array('Intitulé de la Formation' => $row['intitule'],
     'Niveau de Qualification' => $row['niveau_qualif'],'Groupe' =>$row['groupe'], 'ID' =>$row['id_formation']));
   }
@@ -913,7 +919,7 @@ function uneFormation($idFormation)
   $uneFormation ->execute(array($idFormation));
   $bd = null;
   $result = [];
-  foreach($uneFormation as $row) {
+  foreach ($uneFormation as $row) {
     array_push($result, array('Intitulé de la Formation' => $row['intitule'],
     'Niveau de Qualification' => $row['niveau_qualif'],'Groupe' =>$row['groupe']));
   }
@@ -976,15 +982,15 @@ function ajouterElement($libelle, $type, $picto=null, $text=null, $audio=null)
   $libelle = htmlspecialchars($libelle);
   $type = htmlspecialchars($type);
 
-  if ($type == "picto" && isset($picto)){
+  if ($type == "picto" && isset($picto)) {
     $picto = htmlspecialchars($picto);
     $req = $bd->prepare('INSERT INTO element_defaut (libelle, type, picto, id_personnel) VALUES (?, ?, ?, 1);');
     $req->execute(array($libelle, $type, $picto));
-  }elseif ($type == "text" && isset($text)){
+  }elseif ($type == "text" && isset($text)) {
     $text = htmlspecialchars($text);
     $req = $bd->prepare('INSERT INTO element_defaut (libelle, type, text, id_personnel) VALUES (?, ?, ?, 1);');
     $req->execute(array($libelle, $type, $text));
-  }elseif ($type == "audio" && isset($audio)){
+  }elseif ($type == "audio" && isset($audio)) {
     $audio = htmlspecialchars($audio);
     $req = $bd->prepare('INSERT INTO element_defaut (libelle, type, audio, id_personnel) VALUES (?, ?, ?, 1);');
     $req->execute(array($libelle, $type, $audio));
@@ -1031,7 +1037,7 @@ function listeTrace()
    $bd = null;
    $result = [];
 
-   foreach($listeTrace as $row) {
+   foreach ($listeTrace as $row) {
       array_push($result, array('ID Personnel' =>$row['id_personnel'],
       'Horodatage' =>$row['horodatage'], 'Intitulé' =>$row['intitule'],
       'Evaluation Textuelle' =>$row['eval_texte'],'Commentaire Textuelle' =>
@@ -1051,7 +1057,7 @@ function uneTrace($intitule)
   $bd = null;
   $result = [];
  
-    foreach($uneTrace as $row) {
+    foreach ($uneTrace as $row) {
        array_push($result, array('ID Personnel' =>$row['id_personnel'],
        'Horodatage' =>$row['horodatage'], 'Intitulé' =>$row['intitule'],
        'Evaluation Textuelle' =>$row['eval_texte'],'Commentaire Textuelle' =>
@@ -1062,25 +1068,49 @@ function uneTrace($intitule)
     return $result;
  }
 
-function ajouterTrace($idPersonnel, $horodatage, $intitule,
-$eval_texte, $commentaire_texte, $eval_audio, $commentaire_audio, $idFiche) {
+ function ajouterTrace(
+  $idPersonnel,
+  $horodatage,
+  $intitule,
+  $evalTexte,
+  $commentaireTexte,
+  $evalAudio,
+  $commentaireAudio,
+  $idFiche
+) {
   $bd = connexionBD();
   $idPersonnel = htmlspecialchars($idPersonnel);
   $horodatage = htmlspecialchars($horodatage);
   $intitule = htmlspecialchars($intitule);
-  $eval_texte = htmlspecialchars($eval_texte);
-  $commentaire_texte = htmlspecialchars($commentaire_texte);
-  $eval_audio = htmlspecialchars($eval_audio);
-  $commentaire_audio = htmlspecialchars($commentaire_audio);
+  $evalTexte = htmlspecialchars($evalTexte);
+  $commentaireTexte = htmlspecialchars($commentaireTexte);
+  $evalAudio = htmlspecialchars($evalAudio);
+  $commentaireAudio = htmlspecialchars($commentaireAudio);
   $idFiche = htmlspecialchars($idFiche);
 
-  $ajoutTrace = $bd -> prepare('INSERT INTO laisser_trace(id_personnel,horodatage,intitule,
-  eval_texte,commentaire_texte,eval_audio,commentaire_audio,id_fiche) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
-  $ajoutTrace ->execute(array($idPersonnel,$horodatage,$intitule,$eval_texte,
-  $commentaire_texte,$eval_audio,$commentaire_audio, $idFiche));
-  $bd= null;
-  return $ajoutTrace->rowCount() > 0;
+  $ajoutTrace = $bd->prepare('INSERT INTO laisser_trace(
+    id_personnel,
+    horodatage,
+    intitule,
+    eval_texte,
+    commentaire_texte,
+    eval_audio,
+    commentaire_audio,
+    id_fiche
+) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
+  $ajoutTrace->execute(array(
+    $idPersonnel,
+    $horodatage,
+    $intitule,
+    $evalTexte,
+    $commentaireTexte,
+    $evalAudio,
+    $commentaireAudio,
+    $idFiche
+));
 
+  $bd = null;
+  return $ajoutTrace->rowCount() > 0;
 }
 
 function supprimerTrace($intitule)
@@ -1095,27 +1125,51 @@ function supprimerTrace($intitule)
 
 }
 
-function modificationTrace($idPersonnel, $horodatage, $intitule,
-$eval_texte, $commentaire_texte, $eval_audio, $commentaire_audio, $idFiche) {
+function modificationTrace(
+  $idPersonnel,
+  $horodatage,
+  $intitule,
+  $evalTexte,
+  $commentaireTexte,
+  $evalAudio,
+  $commentaireAudio,
+  $idFiche
+) {
   $bd = connexionBD();
   $idPersonnel = htmlspecialchars($idPersonnel);
   $horodatage = htmlspecialchars($horodatage);
   $intitule = htmlspecialchars($intitule);
-  $eval_texte = htmlspecialchars($eval_texte);
-  $commentaire_texte = htmlspecialchars($commentaire_texte);
-  $eval_audio = htmlspecialchars($eval_audio);
-  $commentaire_audio = htmlspecialchars($commentaire_audio);
+  $evalTexte = htmlspecialchars($evalTexte);
+  $commentaireTexte = htmlspecialchars($commentaireTexte);
+  $evalAudio = htmlspecialchars($evalAudio);
+  $commentaireAudio = htmlspecialchars($commentaireAudio);
   $idFiche = htmlspecialchars($idFiche);
 
-  $modifierTrace = $bd -> prepare('UPDATE laisser_trace SET id_personnel = ?, 
-  horodatage = ?, intitule = ?, eval_texte = ?, commentaire_texte = ?, eval_audio = 
-  ?, commentaire_audio = ?, id_fiche = ?');
-  $modifierTrace ->execute(array($idPersonnel, $horodatage, $intitule,
-  $eval_texte, $commentaire_texte, $eval_audio, $commentaire_audio, $idFiche));
+  $modifierTrace = $bd->prepare('UPDATE laisser_trace
+    SET id_personnel = ?,
+        horodatage = ?,
+        intitule = ?,
+        eval_texte = ?,
+        commentaire_texte = ?,
+        eval_audio = ?,
+        commentaire_audio = ?,
+        id_fiche = ?');
+
+$modifierTrace->execute(array(
+  $idPersonnel,
+  $horodatage,
+  $intitule,
+  $evalTexte,
+  $commentaireTexte,
+  $evalAudio,
+  $commentaireAudio,
+  $idFiche
+));
+
   $bd = null;
   return $modifierTrace->rowCount() > 0;
-
 }
+
 
 
 
@@ -1124,19 +1178,19 @@ $eval_texte, $commentaire_texte, $eval_audio, $commentaire_audio, $idFiche) {
 /////////////////////////////////////////////////////////////////////////////
 
 
-function deliverResponse($status, $status_message, $data)
+function deliverResponse($status, $statusMessage, $data)
 {
-  header("HTTP/1.1 $status $status_message");
+  header("HTTP/1.1 $status $statusMessage");
   $response['status'] = $status;
-  $response['status_message'] = $status_message;
+  $response['status_message'] = $statusMessage;
   $response['data'] = $data;
-  $json_response = json_encode($response);
-  echo $json_response;
+  $jsonResponse = json_encode($response);
+  echo $jsonResponse;
 }
 
-function getBodyToken(string $bearer_token): array
+function getBodyToken(string $bearerToken): array
 {
-  $tokenParts = explode('.', $bearer_token);
+  $tokenParts = explode('.', $bearerToken);
   $payload = base64_decode($tokenParts[1]);
   return (array) json_decode($payload);
 }
