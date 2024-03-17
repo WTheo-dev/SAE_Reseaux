@@ -1,10 +1,12 @@
 <?php
 
+define('FICHE_LOCATION', 'location: fiche');
+
 if (isset($_POST['precedent'])) {
     $numpage = $_POST['precedent'];
     $index = $numpage - 1;
     $direction = "precedent";
-    header("location: fiche".$index.".php");
+    header(FICHE_LOCATION . $index.".php");
 } elseif (isset($_POST['sauvegarder'])) {
     if ($_POST['sauvegarder'] == "total") {
         header("location: fiche_total.php");
@@ -12,7 +14,7 @@ if (isset($_POST['precedent'])) {
         $numpage = $_POST['sauvegarder'];
         $index = $numpage;
         $direction = "sauvegarder";
-        header("location: fiche".$_POST['sauvegarder'].".php");
+        header(FICHE_LOCATION . $_POST['sauvegarder'].".php");
     }
 } elseif (isset($_POST['quitter'])) {
     if ($_POST['quitter'] == "total") {
@@ -27,7 +29,7 @@ if (isset($_POST['precedent'])) {
     $numpage = $_POST['suivant'];
     $index = $numpage + 1;
     $direction = "suivant";
-    header("location: fiche".$index.".php");
+    header(FICHE_LOCATION . $index.".php");
 } elseif (isset($_POST['from-fiche-valeur'])) {
     header("location: fiche_valeur.php");
 }
