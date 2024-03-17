@@ -163,7 +163,13 @@ function connexionPersonnel($idPersonnel)
     return false;
 }
 
-
+function saltHash(string $mdp): string
+{
+    // ajout du sel au mdp
+    $code = $mdp . 'BrIc3 4rNaUlT 3sT &$ Le MeIlLeUr d3s / pRoFesSeUrs DU.Mond3 !';
+    // hashage du mdp 
+    return password_hash($code, PASSWORD_DEFAULT);
+}
 
 
 
