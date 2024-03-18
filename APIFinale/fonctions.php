@@ -115,9 +115,6 @@ function connexionApprenti($idApprenti)
 {
   $bd = connexionBD();
 
-  if (!empty($idApprenti)) {
-   $identiteApprentiHTML = conversionHTML($idApprenti);
-    
     if (!empty($idApprenti)) {
       $verificationApprenti = $bd->prepare('SELECT * from apprenti WHERE schema = ?');
       $verificationApprenti->execute(array($idApprenti[0]));
@@ -134,7 +131,6 @@ function connexionApprenti($idApprenti)
         }
       }
     }
-  }
   
   return false;
 }
