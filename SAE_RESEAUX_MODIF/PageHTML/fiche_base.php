@@ -293,7 +293,7 @@ function afficherMateriaux($description_demande, $i) {
                 "Vis TTPC 35",
             );
             break;
-        case "ELECTRICITE":
+        case "Electricite":
             $materiaux = array(
                 "Ampoule E 27",
                 "Bornes connection rapide - 3 entrées",
