@@ -8,8 +8,8 @@ function connexionBD()
 {
   $server = '127.0.0.1';
   $bd = 'apeaj';
-  $login = 'root';
-  $mdp = '';
+  $login = 'maxlamenace';
+  $mdp = 'hamza';
 
   try {
     $bd = new PDO("mysql:host=$server;dbname=$bd", $login, $mdp);
