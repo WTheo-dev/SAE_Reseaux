@@ -1,18 +1,9 @@
 <?php
 
 require_once '../../vendor/autoload.php';
-
-$server = '127.0.0.1';
-$bdName = 'apeaj';
-$login = 'root';
-$mdp = '';
-
-try {
-    $BD = new PDO("mysql:host=$server;dbname=$bdName", $login, $mdp);
-} catch (PDOException $e) {
-    die('Erreur : ' . $e->getMessage());
-}
-
+require_once '../../APIFinale/fonctions.php';
+ 
+$bd=connexionBD();
 
 $BD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

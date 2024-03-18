@@ -1,20 +1,11 @@
 <?php
 
 require_once '../../vendor/autoload.php';
+require_once '../../APIFinale/fonctions.php';
+ 
+$bd=connexionBD();
 
-$server = '127.0.0.1';
-$bdName = 'apeaj';
-$login = 'root';
-$mdp = '';
-
-try {
-    $BD = new PDO("mysql:host=$server;dbname=$bdName", $login, $mdp);
-} catch (PDOException $e) {
-    die('Erreur : ' . $e->getMessage());
-}
-
-
-$BD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -43,7 +34,7 @@ $activeSheet->setCellValue('N1', 'etat_fiche');
 $activeSheet->setCellValue('O1', 'date_creation');
 
 
-$query = $BD->query("SELECT * FROM fiche_intervention");
+$query = $bd->query("SELECT * FROM fiche_intervention");
 
 if ($query->rowCount() > 0) {
     $i = 2;
