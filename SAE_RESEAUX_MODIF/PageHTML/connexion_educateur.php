@@ -19,8 +19,8 @@
   include_once "../../APIFinale/fonctions.php";
   $id = -1;
   $i = 0;
-  while (true){
-    if (isset($_POST[$i])){
+  while (true) {
+    if (isset($_POST[$i])) {
       $id = $i;
       break;
     }

@@ -19,8 +19,8 @@
   include_once "../../APIFinale/fonctions.php";
   $idetu = -1;
   $i = 0;
-  while (true){
-    if (isset($_POST[$i])){
+  while (true) {
+    if (isset($_POST[$i])) {
       $idetu = $i;
       break;
     }
@@ -36,7 +36,7 @@
 
   <div class="content-container">
     <div class="rectangle2-connexion-eleve">
-      <img id="Imageenfant-connexion-eleve" src="Image/etu/<?php echo $photoetu; ?>" alt="Description de l'image">
+      <img id="Imageenfant-connexion-eleve" src="Image/etu/<?php echo $photoetu; ?>" alt="description">
     </div>
     <p class="p_connexion_eleve">Mettez votre code : </p>
     
@@ -102,4 +102,4 @@
   <script src="connexion_eleve.js"></script>
 </body>
 </html>
-  
+

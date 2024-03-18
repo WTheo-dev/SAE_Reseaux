@@ -2,6 +2,12 @@
 <?php $numpage=4; ?>
 <?php include_once "fiche_head.php"; ?>
 
+<?php
+define("TYPE_MAINTENANCE", "Améliorative");
+define("TYPE_PREVENTIVE", "Préventive");
+define("TYPE_CORRECTIVE", "Corrective");
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -27,8 +33,8 @@
 </head>
 <body class="body_fiche">
 
-<?php include_once("../../APIFinale/fonctions.php"); ?>
-    <?php 
+<?php include_once "../../APIFinale/fonctions.php"; ?>
+    <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $type_intervention = $_POST["TypeIntervention"];
     }
@@ -53,33 +59,40 @@
     <p class="p-fiche4">Type de maintenance</p>
 
     <div class="jsp">
-    <input class="check-amel" type="checkbox"
-    name="Améliorative" id="Améliorative" <?php if(isset($_COOKIE['Améliorative'])) {echo "checked";} ?> />
-    <label for="Améliorative">
-        <?php addTexteBox("Améliorative", "Améliorative"); ?>
-        <?php addIcon("Améliorative", "fa-arrow-circle-up","amel-icon"); ?>
-    </label>
-    <?php addAudio("Améliorative", "amel"); ?>
+        <input class="check-amel" type="checkbox"
+        name="<?php echo TYPE_MAINTENANCE; ?>"
+        id="<?php echo TYPE_MAINTENANCE; ?>"
+        <?php if (isset($_COOKIE[TYPE_MAINTENANCE])) {echo "checked";} ?> />
+        <label for="<?php echo TYPE_MAINTENANCE; ?>">
+            <?php addTexteBox(TYPE_MAINTENANCE, TYPE_MAINTENANCE); ?>
+            <?php addIcon(TYPE_MAINTENANCE, "fa-arrow-circle-up", "amel-icon"); ?>
+        </label>
+        <?php addAudio(TYPE_MAINTENANCE, "amel"); ?>
     </div>
 
     <div class="jsp">
     <input class="check-amel" type="checkbox"
-    name="Préventive" id="Préventive" <?php if(isset($_COOKIE['Préventive'])){echo "checked";} ?> />
-    <label for="Préventive">
-    <?php addTexteBox("Préventive", "Préventive"); ?>
-    <?php addIcon("Préventive", "fa-eye"); ?>
+           name="<?php echo TYPE_PREVENTIVE; ?>"
+           id="<?php echo TYPE_PREVENTIVE; ?>"
+           <?php if (isset($_COOKIE[TYPE_PREVENTIVE])) {echo "checked";} ?> />
+    <label for="<?php echo TYPE_PREVENTIVE; ?>">
+        <?php addTexteBox(TYPE_PREVENTIVE, TYPE_PREVENTIVE); ?>
+        <?php addIcon(TYPE_PREVENTIVE, "fa-eye"); ?>
     </label>
-    <?php addAudio("Préventive", "prev"); ?>
-    </div>
-    <div class="jsp">
+    <?php addAudio(TYPE_PREVENTIVE, "prev"); ?>
+</div>
+
+<div class="jsp">
     <input class="check-amel" type="checkbox"
-    name="Corrective" id="Corrective" <?php if(isset($_COOKIE['Corrective'])){echo "checked";} ?> />
-    <label for="Corrective">
-    <?php addTexteBox("Corrective", "Corrective"); ?>
-    <?php addIcon("Corrective", "fa-pencil-square-o"); ?>
+           name="<?php echo TYPE_CORRECTIVE; ?>"
+           id="<?php echo TYPE_CORRECTIVE; ?>"
+           <?php if (isset($_COOKIE[TYPE_CORRECTIVE])) {echo "checked";} ?> />
+    <label for="<?php echo TYPE_CORRECTIVE; ?>">
+        <?php addTexteBox(TYPE_CORRECTIVE, TYPE_CORRECTIVE); ?>
+        <?php addIcon(TYPE_CORRECTIVE, "fa-pencil-square-o"); ?>
     </label>
-    <?php addAudio("Corrective", "corr"); ?>
-    </div>
+    <?php addAudio(TYPE_CORRECTIVE, "corr"); ?>
+</div>
 
     </div>
 

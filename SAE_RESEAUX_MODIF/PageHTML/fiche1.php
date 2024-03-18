@@ -1,9 +1,9 @@
 <?php include_once "fiche_base.php"; ?>
 <?php $numpage=1; ?>
-<?php include("fiche_head.php"); ?>
-<?php include_once("../../APIFinale/fonctions.php"); ?>
+<?php include_once "fiche_head.php"; ?>
+<?php include_once "../../APIFinale/fonctions.php"; ?>
 
-<?php 
+<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nomIntervenant = $_POST["nomIntervenant"];
     $prenomIntervenant = $_POST["prenomIntervenant"];
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php addIcon("NomIntervenant", "fa-user"); ?>
     <?php addTexte("nomIntervenant", "Nom de l'intervenant") ?>
     <input type="text" name="nomIntervenant" value="<?php if
-    (isset($_COOKIE['nomIntervenant'])){ echo $_COOKIE['nomIntervenant']; } ?>">
+    (isset($_COOKIE['nomIntervenant'])) { echo $_COOKIE['nomIntervenant']; } ?>">
 </div>
     <div class="jsp">
     <div class="audio-fiche-1">

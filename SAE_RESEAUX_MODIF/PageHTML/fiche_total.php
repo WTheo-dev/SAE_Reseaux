@@ -1,8 +1,3 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
-?>
-
 <?php include_once "fiche_head.php"; ?>
 
 <body>

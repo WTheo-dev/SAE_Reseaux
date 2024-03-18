@@ -1,11 +1,9 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
 
 $succes = false;
 
 $imgdir = "Image/etu/";
-if (!is_dir($imgdir)){
+if (!is_dir($imgdir)) {
     mkdir($imgdir);
     shell_exec("chmod 777 ".$imgdir);
     shell_exec("chown www-data ".$imgdir);
@@ -20,15 +18,15 @@ try {
 } catch (Exception $e) {
     echo "Erreur : ".$e->getMessage();
 }
-if (!$succes){
+if (!$succes) {
     echo "<br>erreur a l'enregistrement, verifier que l'image est bonne.<br>";
 }
 
 list($nom, $prenom) = explode(" ", $_POST["nom-prenom"]);
 
 $mdp = "";
-for ($i=0; $i<=9; $i++){
-  if (isset($_POST[$i])){
+for ($i=0; $i<=9; $i++) {
+  if (isset($_POST[$i])) {
     $mdp = $mdp.$i;
   }
 }
@@ -73,7 +71,7 @@ ajouterApprenti($nom, $prenom, $photo, $mdp);
 
         <!-- menfou de la class, je veut juste le meme style que les autre bouton -->
         <div class="btn_creercompteleve">
-            <button type="button" id="back-button" 
+            <button type="button" id="back-button"
             onclick="window.location.href = 'page_postco_superadmin.php';">Retour</button>
         </div>
     </main>

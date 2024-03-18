@@ -6,4 +6,4 @@ SAE_RESEAUX_MODIF/PageIntervention/audio-copy/*
 SAE_RESEAUX_MODIF/.scannerwork/*
 
 .sonar_lock
-report-task.txt
+.scannerwork/*
