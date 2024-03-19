@@ -1,3 +1,5 @@
+USE apeaj
+
 -- Insertion des données d'apprentis
 INSERT INTO `apprenti` (`nom`, `prenom`, `photo`, `id_utilisateur`) VALUES
 ('Dupont', 'Jean', 'jean.jpg', 1),
