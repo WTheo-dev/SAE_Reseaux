@@ -1,1 +1,11 @@
-../docker-compose.yml
+version: "3.8"
+
+services:
+  sae:
+    image: "tomsik68/xampp"
+    container_name: "sae"
+    ports:
+      - "8080:80"
+    volumes:
+      - "./SAE_Reseaux/:/opt/lampp/htdocs"
+      - "./saebdd/:/opt/lampp/var/mysql"
