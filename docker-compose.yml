@@ -7,4 +7,5 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ".:/opt/lampp/htdocs"
+      - "./SAE_Reseaux/:/opt/lampp/htdocs"
+      - "./saebdd/:/opt/lampp/var/mysql"
