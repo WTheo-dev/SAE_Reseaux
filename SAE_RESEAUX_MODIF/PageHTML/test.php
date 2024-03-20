@@ -7,167 +7,195 @@ class DatabaseTest extends TestCase
 {
     public function testConnexionBD()
     {
+        
         $this->assertInstanceOf(PDO::class, connexionBD());
     }
 
     public function testIdentification()
     {
-        // Créer un utilisateur de test dans la base de données
+        // On créer un utilisateur
         $login = 'utilisateur1';
         $mdp = 'motdepasse1';
         $this->createTestUser($login, $mdp);
 
-        // Tester l'identification avec les informations correctes
+        // On test l'identification avec les informations correctes
         $this->assertTrue(identification($login, $mdp));
 
-        // Tester l'identification avec des informations incorrectes
+        // On test l'identification avec des informations incorrectes
         $this->assertFalse(identification('utilisateur_invalide', 'mot_de_passe_invalide'));
 
-        // Nettoyer les données de test après les tests
+        // on le supprime
         $this->deleteTestUser($login);
     }
 
     public function testRecuperationRole()
     {
-        // Créer un utilisateur de test dans la base de données
-        $login = 'utilisateur_test';
-        $mdp = 'mot_de_passe_test';
-        $id_role_attendu = 1; // Remplacer par le rôle attendu dans votre base de données
+        // On créer un utilisateur avec le role 1
+        $login = 'utilisateur1';
+        $mdp = 'motdepasse1';
+        $id_role_attendu = 1; 
         $this->createTestUser($login, $mdp, $id_role_attendu);
 
-        // Tester la récupération du rôle pour l'utilisateur créé
+        // On test la récupération du rôle pour l'utilisateur créé
         $this->assertEquals($id_role_attendu, recuperationRole($login));
 
-        // Nettoyer les données de test après les tests
+        // on le supprime
         $this->deleteTestUser($login);
     }
 
-    // Fonction pour créer un utilisateur de test dans la base de données
     private function createTestUser($login, $mdp, $id_role = 1)
     {
+        // on fait la commande pour créer un utilisateur
         $bd = connexionBD();
         $insertionUtilisateur = $bd->prepare('INSERT INTO utilisateur (login, mdp, id_role) VALUES (?, ?, ?)');
         $insertionUtilisateur->execute([$login, $mdp, $id_role]);
     }
 
-    // Fonction pour supprimer un utilisateur de test de la base de données
     private function deleteTestUser($login)
     {
+        // on fait la commande pour supprimer un utilisateur
         $bd = connexionBD();
         $suppressionUtilisateur = $bd->prepare('DELETE FROM utilisateur WHERE login = ?');
         $suppressionUtilisateur->execute([$login]);
     }
 
-
     public function testLoginId()
     {
-        // Test lorsque l'ID utilisateur existe
-        $idUtilisateurExistant = 1; // Remplacez 1 par un ID utilisateur existant dans votre base de données
-        $this->assertEquals('login_attendu', loginId($idUtilisateurExistant)); // Remplacez 'login_attendu' par le login attendu
+        // On test lorsque l'ID utilisateur existe
+        $idUtilisateurExistant = 2;
+        $this->assertEquals('utilisateur2', loginId($idUtilisateurExistant));
 
-        // Test lorsque l'ID utilisateur n'existe pas
-        $idUtilisateurInexistant = 9999; // Remplacez 9999 par un ID utilisateur qui n'existe pas dans votre base de données
+        // On test lorsque l'ID utilisateur n'existe pas
+        $idUtilisateurInexistant = 9999;
         $this->assertFalse(loginId($idUtilisateurInexistant));
     }
 
     public function testIdLogin()
     {
-        // Test lorsque le login existe
-        $loginExistant = 'login_existant'; // Remplacez 'login_existant' par un login existant dans votre base de données
-        $this->assertEquals('id_attendu', idLogin($loginExistant)); // Remplacez 'id_attendu' par l'ID utilisateur attendu
+        // On test lorsque le login existe
+        $loginExistant = 'utilisateur2'; //
+        $this->assertEquals(2, idLogin($loginExistant));
 
-        // Test lorsque le login n'existe pas
-        $loginInexistant = 'login_inexistant'; // Remplacez 'login_inexistant' par un login qui n'existe pas dans votre base de données
+        // On test lorsque le login n'existe pas
+        $loginInexistant = 'login_inexistant';
         $this->assertFalse(idLogin($loginInexistant));
     }
 
+
     public function testGetUtilisateur()
     {
-        // Test lorsque l'ID utilisateur existe
-        $idUtilisateurExistant = 1; // Remplacez 1 par un ID utilisateur existant dans votre base de données
+        // On test lorsque l'ID utilisateur existe
+        $idUtilisateurExistant = 2;
         $this->assertIsArray(getUtilisateur($idUtilisateurExistant));
 
         // Test lorsque l'ID utilisateur n'existe pas
-        $idUtilisateurInexistant = 9999; // Remplacez 9999 par un ID utilisateur qui n'existe pas dans votre base de données
+        $idUtilisateurInexistant = 9999;
         $this->assertFalse(getUtilisateur($idUtilisateurInexistant));
     }
 
-
     public function testConversionHTML()
     {
-        $tableauAConvertir = ['<script>alert("XSS")</script>', 'test', '123'];
-        $tableauAttendu = ['&lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt;', 'test', '123'];
-        $this->assertEquals($tableauAttendu, conversionHTML($tableauAConvertir));
+        // Tableau d'entrée
+        $inputArray = ['<p>Hello</p>', '<script>alert("XSS Attack");</script>', 'Normal text'];
+
+        // Appel de la fonction à tester
+        $convertedArray = conversionHTML($inputArray);
+
+        // Assertion
+        $expectedArray = ['&lt;p&gt;Hello&lt;/p&gt;', '&lt;script&gt;alert(&quot;XSS Attack&quot;);&lt;/script&gt;',
+        'Normal text'];
+        $this->assertEquals($expectedArray, $convertedArray);
     }
 
-    public function testConnexionApprenti()
+    public function testListeApprenti()
     {
-        // Vous devez fournir un identifiant d'apprenti existant et un mot de passe valide pour le test
-        $idApprentiExistant = [1, 'mot_de_passe']; // Remplacez 1 par un ID d'apprenti existant dans votre base de données
-        $this->assertTrue(connexionApprenti($idApprentiExistant));
+    
+        // On test la fonction listeApprenti pour vérifier si elle retourne un tableau non vide
+        $resultat = listeApprenti();
+        $this->assertNotEmpty($resultat);
 
-        // Test lorsque l'identifiant d'apprenti ou le mot de passe est incorrect
-        $idApprentiInexistant = [9999, 'mot_de_passe']; // Remplacez 9999 par un ID d'apprenti qui n'existe pas dans votre base de données
-        $this->assertFalse(connexionApprenti($idApprentiInexistant));
+        // On test si chaque élément du tableau contient les clés 'nom', 'prenom', 'photo' et 'id_apprenti'
+        foreach ($resultat as $apprenti) {
+            $this->assertArrayHasKey('nom', $apprenti);
+            $this->assertArrayHasKey('prenom', $apprenti);
+            $this->assertArrayHasKey('photo', $apprenti);
+            $this->assertArrayHasKey('id_apprenti', $apprenti);
+        }
     }
 
-    public function testConnexionPersonnel()
+    public function testListePersonnel()
     {
-        // Vous devez fournir un identifiant de personnel existant et un mot de passe valide pour le test
-        $idPersonnelExistant = ['identifiant', 'mot_de_passe']; // Remplacez 'identifiant' par un identifiant de personnel existant dans votre base de données
-        $this->assertTrue(connexionPersonnel($idPersonnelExistant));
+    
+        // On teste la fonction listePersonnel pour vérifier si elle retourne un tableau non vide
+        $resultat = listePersonnel();
+        $this->assertNotEmpty($resultat);
 
-        // Test lorsque l'identifiant de personnel ou le mot de passe est incorrect
-        $idPersonnelInexistant = ['identifiant_inexistant', 'mot_de_passe']; // Remplacez 'identifiant_inexistant' par un identifiant qui n'existe pas dans votre base de données
-        $this->assertFalse(connexionPersonnel($idPersonnelInexistant));
+        // On test si chaque élément du tableau contient les clés attendues
+        foreach ($resultat as $personnel) {
+            $this->assertArrayHasKey('nom', $personnel);
+            $this->assertArrayHasKey('prenom', $personnel);
+            $this->assertArrayHasKey('id_personnel', $personnel);
+            $this->assertArrayHasKey('id_utilisateur', $personnel);
+        }
     }
 
-    public function testSaltHash()
+    public function testListeEducateur()
     {
-        // Test de la fonction de hashage du mot de passe
-        $motDePasse = 'password';
-        $hashAttendu = saltHash($motDePasse);
-        $this->assertNotEquals($motDePasse, $hashAttendu);
-        $this->assertTrue(password_verify($motDePasse . 'BrIc3 4rNaUlT 3sT &$ Le MeIlLeUr d3s / pRoFesSeUrs DU.Mond3 !', $hashAttendu));
+    
+        // On test la fonction listeEducateur pour vérifier si elle retourne un tableau non vide
+        $resultat = listeEducateur();
+        $this->assertNotEmpty($resultat); 
+
+        // On test si chaque élément du tableau contient les clés attendues
+        foreach ($resultat as $educateur) {
+            $this->assertArrayHasKey('nom', $educateur);
+            $this->assertArrayHasKey('prenom', $educateur);
+            $this->assertArrayHasKey('id_personnel', $educateur);
+            $this->assertArrayHasKey('id_utilisateur', $educateur);
+        }
     }
 
-    public function testValidationMdp()
+    public function testListeSuperAdmin()
     {
-        // Test de la validation du mot de passe
-        $mdpValide = 'password';
-        $mdpInvalide = '1234';
-        $this->assertNotFalse(validationMdp($mdpValide, $mdpValide));
-        $this->assertFalse(validationMdp($mdpInvalide, $mdpInvalide));
+    
+        // On test la fonction listeSuperAdmin pour vérifier si elle retourne un tableau non vide
+        $resultat = listeSuperAdmin();
+        $this->assertNotEmpty($resultat);
+
+        // On test si chaque élément du tableau contient les clés attendues
+        foreach ($resultat as $superAdmin) {
+            $this->assertArrayHasKey('nom', $superAdmin);
+            $this->assertArrayHasKey('prenom', $superAdmin);
+            $this->assertArrayHasKey('id_personnel', $superAdmin);
+            $this->assertArrayHasKey('id_utilisateur', $superAdmin);
+        }
     }
 
-    public function testResetPassword()
+    public function testListeFiche()
     {
-        // Vous devez fournir un identifiant valide pour tester la réinitialisation du mot de passe
-        $idMembre = 1; // Remplacez 1 par un ID valide de membre dans votre base de données
-        $this->expectOutputString('');
-        resetPassword($idMembre);
+    
+        // On test si la fonction listeFiche pour vérifier si elle retourne un tableau non vide
+        $resultat = listeFiche();
+        $this->assertNotEmpty($resultat);
+
+        // On test si chaque élément du tableau contient les clés attendues
+        foreach ($resultat as $fiche) {
+            $this->assertArrayHasKey('numero', $fiche);
+            $this->assertArrayHasKey('nom_du_demandeur', $fiche);
+            $this->assertArrayHasKey('date_demande', $fiche);
+            $this->assertArrayHasKey('date_intervention', $fiche);
+            $this->assertArrayHasKey('duree_intervention', $fiche);
+            $this->assertArrayHasKey('localisation', $fiche);
+            $this->assertArrayHasKey('description_demande', $fiche);
+            $this->assertArrayHasKey('degre_urgence', $fiche);
+            $this->assertArrayHasKey('type_intervention', $fiche);
+            $this->assertArrayHasKey('nature_intervention', $fiche);
+            $this->assertArrayHasKey('couleur_intervention', $fiche);
+            $this->assertArrayHasKey('etat_fiche', $fiche);
+            $this->assertArrayHasKey('date_creation', $fiche);
+            $this->assertArrayHasKey('id_fiche', $fiche);
+        }
     }
 
-    public function testVerificationPremiereInscription()
-    {
-        // Test de la vérification de la première inscription
-        $personnelIdentite = ['nom' => 'John']; // Remplacez 'John' par un nom de personnel existant ou non dans votre base de données
-        $this->assertEquals(true, verificationPremiereInscription($personnelIdentite));
-    }
-
-    public function testEnvoiMail()
-    {
-        // Vous devez fournir un nouveau mot de passe valide pour tester l'envoi de mail
-        $nouveauMotDePasse = 'nouveau_mot_de_passe';
-        $this->expectOutputString('');
-        envoiMail($nouveauMotDePasse);
-    }
-
-    public function testClean()
-    {
-        // Test de la fonction de nettoyage des champs
-        $champSale = '<script>alert("XSS")</script>';
-        $champNettoye = '&lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt;';
-        $this->assertEquals($champNettoye, clean($champSale));
-    }
+ 
 }

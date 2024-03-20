@@ -49,13 +49,14 @@ function recuperationRole($login)
 ////////////////////       GESTION DES UTILISATEURS      ////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
-define('SQL_QUERY', 'SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+define('LOGINDID', 'SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+define('IDLOGIN', 'SELECT * FROM utilisateur WHERE login = ?');
 
 function loginId($idUtilisateur)
 {
 
   $bd = connexionBD();
-  $rechercheUtilisateur = $bd->prepare(SQL_QUERY);
+  $rechercheUtilisateur = $bd->prepare(LOGINDID);
   $rechercheUtilisateur -> execute(array($idUtilisateur));
   $bd = null;
   if ($rechercheUtilisateur -> rowCount() > 0) {
@@ -70,7 +71,7 @@ function loginId($idUtilisateur)
 function idLogin($login)
 {
   $bd = connexionBD();
-  $rechercheUtilisateur = $bd->prepare(SQL_QUERY);
+  $rechercheUtilisateur = $bd->prepare(IDLOGIN);
   $rechercheUtilisateur -> execute(array($login));
   $bd = null;
   if ($rechercheUtilisateur -> rowCount() > 0) {
@@ -85,7 +86,7 @@ function idLogin($login)
 function getUtilisateur($id)
 {
   $bd = connexionBD();
-  $utilisateur = $bd->prepare(SQL_QUERY);
+  $utilisateur = $bd->prepare(LOGINDID);
   $utilisateur->execute(array($id));
   if ($utilisateur->rowCount() > 0) {
     foreach ($utilisateur as $row) {
