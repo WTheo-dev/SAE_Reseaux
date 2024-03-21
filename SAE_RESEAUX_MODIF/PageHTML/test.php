@@ -464,5 +464,267 @@ public function testModifierPersonnel()
 
 }
 
+public function testCreationFiche()
+{
+    $numero = "4"; // Remplacez "123" par le numéro de la fiche
+    $nomDuDemandeur = "Maxou Doe"; // Remplacez "John Doe" par le nom du demandeur
+    $dateDemande = "2024-03-17"; // Remplacez "2024-03-17" par la date de la demande
+    $dateIntervention = "2024-03-18"; // Remplacez "2024-03-18" par la date d'intervention
+    $dureeIntervention = "2 heures"; // Remplacez "2 heures" par la durée de l'intervention
+    $localisation = "Lieu"; // Remplacez "Lieu" par la localisation de l'intervention
+    $descriptionDemande = "Description"; // Remplacez "Description" par la description de la demande
+    $degreUrgence = "Haute"; // Remplacez "Haute" par le degré d'urgence
+    $typeIntervention = "Type"; // Remplacez "Type" par le type d'intervention
+    $natureIntervention = "Nature"; // Remplacez "Nature" par la nature de l'intervention
+    $travauxRealises = "Travaux réalisés"; // Remplacez "Travaux réalisés" par les travaux réalisés
+    $travauxNonRealises = "Travaux non réalisés"; // Remplacez "Travaux non réalisés" par les travaux non réalisés
+    $couleurIntervention = "Couleur"; // Remplacez "Couleur" par la couleur de l'intervention
+    $etatFiche = "En cours"; // Remplacez "En cours" par l'état de la fiche
+    $dateCreation = "2024-03-17"; // Remplacez "2024-03-17" par la date de création de la fiche
+    $idApprenti = 11; // Remplacez 1 par l'ID de l'apprenti
+    $idPersonnel = 2; // Remplacez 1 par l'ID du personnel
+
+    // Appeler la fonction pour créer une nouvelle fiche et récupérer son ID
+    $idNouvelleFiche = creationFiche(
+        $numero,
+        $nomDuDemandeur,
+        $dateDemande,
+        $dateIntervention,
+        $dureeIntervention,
+        $localisation,
+        $descriptionDemande,
+        $degreUrgence,
+        $typeIntervention,
+        $natureIntervention,
+        $travauxRealises,
+        $travauxNonRealises,
+        $couleurIntervention,
+        $etatFiche,
+        $dateCreation,
+        $idApprenti,
+        $idPersonnel
+    );
+
+    // Vérifier si la création de la fiche a réussi en vérifiant si l'ID est valide
+    $this->assertNotEmpty($idNouvelleFiche);
+
+    // Retourner l'ID de la fiche pour une utilisation dans d'autres tests
+    return $idNouvelleFiche;
+}
+
+public function testSupprimerFiche()
+{
+    // Appel de la fonction testCreationFiche pour obtenir l'ID de la fiche créée
+    $idFiche = $this->testCreationFiche();
+
+    // Vérification que l'ajout de la fiche s'est bien déroulé en vérifiant si l'ID n'est pas vide
+    $this->assertNotEmpty($idFiche);
+
+    // Appel de la fonction pour supprimer la fiche à partir de son ID
+    $resultatSuppression = supprimerFiche($idFiche);
+
+    // Vérification si la suppression a réussi en vérifiant si le résultat est vrai
+    $this->assertTrue($resultatSuppression);
+}
+
+public function testModifierFiche()
+{
+    // Création d'une nouvelle fiche d'intervention pour la modifier ensuite
+    $idFiche = $this->testCreationFiche();
+
+    // Vérification que la création de la fiche s'est bien déroulée
+    $this->assertNotEmpty($idFiche);
+
+    // Paramètres de modification de la fiche
+    $numero = "58"; // Nouveau numéro de fiche
+    $nomDuDemandeur = "Jane Doe"; // Nouveau nom du demandeur
+    $dateDemande = "2024-03-18"; // Nouvelle date de demande
+    $dateIntervention = "2024-03-19"; // Nouvelle date d'intervention
+    $dureeIntervention = "3 heures"; // Nouvelle durée de l'intervention
+    $localisation = "Nouveau lieu"; // Nouvelle localisation
+    $descriptionDemande = "Nouvelle description"; // Nouvelle description de la demande
+    $degreUrgence = "Moyenne"; // Nouveau degré d'urgence
+    $typeIntervention = "Nouveau type"; // Nouveau type d'intervention
+    $natureIntervention = "Nouvelle nature"; // Nouvelle nature de l'intervention
+    $travauxRealises = "Nouveaux travaux réalisés"; // Nouveaux travaux réalisés
+    $travauxNonRealises = "Nouveaux travaux non réalisés"; // Nouveaux travaux non réalisés
+    $couleurIntervention = "Nouvelle couleur"; // Nouvelle couleur de l'intervention
+    $etatFiche = "Terminée"; // Nouvel état de la fiche
+    $dateCreation = "2024-03-18"; // Nouvelle date de création de la fiche
+    $idApprenti = 12; // Nouvel ID de l'apprenti
+    $idPersonnel = 3; // Nouvel ID du personnel
+
+    // Appel de la fonction pour modifier la fiche avec les nouveaux paramètres
+    $resultatModification = modifierFiche(
+        $idFiche,
+        $numero,
+        $nomDuDemandeur,
+        $dateDemande,
+        $dateIntervention,
+        $dureeIntervention,
+        $localisation,
+        $descriptionDemande,
+        $degreUrgence,
+        $typeIntervention,
+        $natureIntervention,
+        $travauxRealises,
+        $travauxNonRealises,
+        $couleurIntervention,
+        $etatFiche,
+        $dateCreation,
+        $idApprenti,
+        $idPersonnel
+    );
+
+    // Vérification si la modification de la fiche a réussi en vérifiant si le résultat retourné est vrai
+    $this->assertTrue($resultatModification);
+}
+
+public function testUneFicheIntervention()
+{
+    // Création d'une nouvelle fiche d'intervention
+    $idFiche = $this->testCreationFiche();
+
+    // Appel de la fonction uneFicheIntervention pour obtenir les détails de la fiche créée
+    $ficheDetails = uneFicheIntervention($idFiche);
+
+    // Vérification que la fonction a retourné des détails de la fiche
+    $this->assertNotEmpty($ficheDetails);
+
+}
+
+public function testFicheInterventionDejaExistante()
+{
+    // Création d'une nouvelle fiche d'intervention
+    $idFiche = $this->testCreationFiche();
+    
+    // Obtention du numéro de la fiche créée
+    $ficheDetails = uneFicheIntervention($idFiche);
+    $numeroFiche = $ficheDetails[0]['numero'];
+
+    // Vérification que la fonction retourne true pour une fiche existante
+    $this->assertTrue(ficheInterventionDejaExistante($numeroFiche));
+
+    // Vérification que la fonction retourne false pour une fiche inexistante
+    $this->assertFalse(ficheInterventionDejaExistante('numero_inexistant'));
+}
+
+public function testCreationCours()
+{
+    // Paramètres du cours
+    $theme = "cours";
+    $cours = "Contenu du cours";
+    $duree = "2 heures";
+    $idFormation = 1; // Remplacez par l'ID de la formation existante
+
+    // Appel de la fonction pour créer un nouveau cours
+    $idCours = creationCours($theme, $cours, $duree, $idFormation);
+
+    // Vérification que la création du cours a réussi en vérifiant si l'ID est un entier positif
+    $this->assertGreaterThan(0, $idCours);
+}
+
+
+
+public function testListeCours()
+{
+    // Appel de la fonction pour récupérer la liste des cours
+    $listeCours = listeCours();
+
+    // Vérification que la liste des cours n'est pas vide
+    $this->assertNotEmpty($listeCours);
+
+    // Vérification que la structure de chaque cours dans la liste est correcte
+    foreach ($listeCours as $cours) {
+        $this->assertArrayHasKey('Thème', $cours);
+        $this->assertArrayHasKey('Cours', $cours);
+        $this->assertArrayHasKey('Durée du Cours', $cours);
+        $this->assertArrayHasKey('ID_Formation', $cours);
+    }
+}
+
+public function testUnCours()
+{
+    // Supposons que le cours 'PHP Basics' existe dans la base de données
+    $cours = 'Contenu du cours';
+
+    // Appel de la fonction pour récupérer les détails du cours
+    $detailsCours = unCours($cours);
+
+    // Vérification que les détails du cours sont retournés
+    $this->assertNotEmpty($detailsCours);
+
+    // Vérification que les détails du cours ont la structure attendue
+    foreach ($detailsCours as $details) {
+        $this->assertArrayHasKey('Thème', $details);
+        $this->assertArrayHasKey('Cours', $details);
+        $this->assertArrayHasKey('Durée du Cours', $details);
+        $this->assertArrayHasKey('ID_Formation', $details);
+    }
+}
+
+public function testSuppressionCours()
+{
+    // Créer un cours avant de le supprimer
+    $theme = "Web Development";
+    $cours = "HTML Basics";
+    $duree = "2 heures";
+    $idFormation = 1; // Remplacez par l'ID de la formation appropriée
+
+    // Appel de la fonction pour créer un nouveau cours
+    $idCours = creationCours($theme, $cours, $duree, $idFormation);
+
+    // Vérifier que l'ID du cours créé est un entier positif
+    $this->assertGreaterThan(0, $idCours);
+
+    // Supprimer le cours
+    $resultatSuppression = suppressionCours($idCours);
+
+    // Vérifier si la suppression a réussi
+    $this->assertTrue($resultatSuppression);
+}
+
+public function testModificationCours()
+{
+    // Paramètres du cours initial
+    $themeInitial = "Web Development";
+    $coursInitial = "HTML Basics";
+    $dureeInitial = "2 heures";
+    $idFormationInitial = 1; // ID de la formation existante
+
+    // Création du cours initial
+    $idCours = creationCours($themeInitial, $coursInitial, $dureeInitial, $idFormationInitial);
+
+    // Vérification que l'ID du cours initial est un entier positif
+    $this->assertGreaterThan(0, $idCours);
+
+    // Nouveaux paramètres pour la modification du cours
+    $themeModifie = "Nouveau thème";
+    $coursModifie = "Nouveau contenu du cours";
+    $dureeModifie = "3 heures";
+    $idFormationModifie = 2; // Nouvel ID de formation
+
+    // Appel de la fonction pour modifier le cours
+    $resultatModification = modificationCours($idCours, $themeModifie,
+    $coursModifie, $dureeModifie, $idFormationModifie);
+
+    // Vérification que la modification du cours a réussi
+    $this->assertTrue($resultatModification);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
