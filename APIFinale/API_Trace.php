@@ -3,13 +3,13 @@ require_once "jwt_util.php";
 require_once "fonctions.php";
 header("Content-Type:application/json");
 $http_method = $_SERVER['REQUEST_METHOD'];
-$bearer_token = get_bearer_token();
-if (is_jwt_valid($bearer_token, "pass")) {
-    $decoded_jwt = get_body_token($bearer_token);
+$bearer_token = getBearerToken();
+if (isJwtValid($bearer_token, "pass")) {
+    $decoded_jwt = getBodyToken($bearer_token);
     $role = $decoded_jwt['role'];
     $utilisateur = $decoded_jwt['utilisateur'];
 } else {
-    deliver_response(403, "Connexion obligatoire", null);
+    deliverResponse(403, "Connexion obligatoire", null);
     die("Acces echoue");
 }
 
@@ -37,7 +37,7 @@ switch ($http_method) {
             $STATUS_MESSAGE = $th->getMessage();
             $matchingData = null;
         } finally {
-            deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
+            deliverResponse($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         }
         break;
 
@@ -61,7 +61,7 @@ switch ($http_method) {
             $RETURN_CODE = 400;
             $STATUS_MESSAGE = "Création de la trace impossible ";
         }
-        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
+        deliverResponse($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         break;
 
     case 'PUT':
@@ -93,7 +93,7 @@ switch ($http_method) {
             $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié,
             la méthode HTTP appropriée, ou l'id_fiche est manquant";
         }
-        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
+        deliverResponse($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         break;
 
     case 'DELETE':
@@ -119,6 +119,6 @@ switch ($http_method) {
             $RETURN_CODE = 403;
             $STATUS_MESSAGE = "Vous ne possédez pas le rôle approprié.";
         }
-        deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
+        deliverResponse($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
         break;
 }

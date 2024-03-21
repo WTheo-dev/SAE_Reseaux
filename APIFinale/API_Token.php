@@ -24,7 +24,7 @@ switch ($methodeHTTP) {
 					$RETURN_CODE = 201;
 					$duree = 2592000;
 					$body = array(
-						"role" => recuperation_role($data['login']),
+						"role" => recuperationRole($data['login']),
 						"utilisateur" => $data['login'],
 						"exp" => (time() + $duree)
 					);
@@ -36,7 +36,7 @@ switch ($methodeHTTP) {
 			}
 			if ($RETURN_CODE < 400) {
 				$STATUS_MESSAGE = "Connexion valide";
-				$matchingData = generate_jwt($header, $body, $cle);
+				$matchingData = generateJwt($header, $body, $cle);
 			}
 
 		} catch (\Throwable $th) {
@@ -44,12 +44,12 @@ switch ($methodeHTTP) {
 			$STATUS_MESSAGE = $th->getMessage();
 			$matchingData = null;
 		} finally {
-			deliver_response($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
+			deliverResponse($RETURN_CODE, $STATUS_MESSAGE, $matchingData);
 		}
 		break;
 
 	default:
-		deliver_response(405, "not implemented method", null);
+		deliverResponse(405, "not implemented method", null);
 		break;
 }
 ?>

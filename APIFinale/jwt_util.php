@@ -2,12 +2,12 @@
 
 function generateJwt($headers, $payload, $secret = 'secret')
 {
-    $headersEncoded = base64url_encode(json_encode($headers));
+    $headersEncoded = base64urlEncode(json_encode($headers));
 
-    $payloadEncoded = base64url_encode(json_encode($payload));
+    $payloadEncoded = base64urlEncode(json_encode($payload));
 
     $signature = hash_hmac('SHA256', "$headersEncoded.$payloadEncoded", $secret, true);
-    $signatureEncoded = base64url_encode($signature);
+    $signatureEncoded = base64urlEncode($signature);
 
     return "$headersEncoded.$payloadEncoded.$signatureEncoded";
 }
@@ -25,10 +25,10 @@ function isJwtValid($jwt, $secret = 'secret')
 	$isTokenExpired = ($expiration - time()) < 0;
 
 	// build a signature based on the header and payload using the secret
-	$base64UrlHeader = base64url_encode($header);
-	$base64UrlPayload = base64url_encode($payload);
+	$base64UrlHeader = base64urlEncode($header);
+	$base64UrlPayload = base64urlEncode($payload);
 	$signature = hash_hmac('SHA256', $base64UrlHeader . "." . $base64UrlPayload, $secret, true);
-	$base64UrlSignature = base64url_encode($signature);
+	$base64UrlSignature = base64urlEncode($signature);
 
 	// verify it matches the signature provided in the jwt
 	$isSignatureValid = ($base64UrlSignature === $signatureProvided);
