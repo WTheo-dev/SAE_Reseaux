@@ -419,7 +419,7 @@ function apprentiDejaExistant($nom, $prenom)
 /////////////////////////////////////////////////////////////////////////////
 function inscriptionPersonnel($nom, $prenom, $utilisateur)
 {
-  try {
+
     $bd = connexionBD();
     $nom = htmlspecialchars($nom);
     $prenom = htmlspecialchars($prenom);
@@ -436,17 +436,11 @@ function inscriptionPersonnel($nom, $prenom, $utilisateur)
 
     $ajoutPersonnel = $bd->prepare('INSERT INTO personnel(nom, prenom, id_utilisateur) VALUES (?, ?, ?)');
     $ajoutPersonnel->execute(array($nom, $prenom, $idUtilisateur));
+    $idPersonnel = $bd->lastInsertId();
 
     $bd->commit();
 
-    $success = $ajoutPersonnel->rowCount() > 0;
-    $bd = null;
-    return $success;
-  } catch (PDOException $e) {
-    $bd->rollBack();
-    $bd = null;
-    return false;
-  }
+    return $idPersonnel;
 }
 
 function supprimerPersonnel($idPersonnel)

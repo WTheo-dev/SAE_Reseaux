@@ -228,8 +228,19 @@ class Test extends TestCase
 
     public function testPersonnelConnexionReussieAvecIdentifiantsValides()
     {
+        // Définissez des valeurs pour les paramètres de la fonction
+        $nom = 'NomTestLolCoucou';
+        $prenom = 'PrenomTest';
+        $utilisateur = array(
+            'login' => 'loginTest',
+            'mdp' => 'motdepasse3',
+            'id_role' => '1'
+        );
+
+    // Appelez la fonction pour inscrire du personnel
+    $idPersonnel = inscriptionPersonnel($nom, $prenom, $utilisateur);
         // Appel de la fonction à tester
-        $resultat = connexionPersonnel('1', 'motdepasse3');
+        $resultat = connexionPersonnel($idPersonnel, 'motdepasse3');
         
         // Vérifier si la connexion a réussi
         $this->assertTrue($resultat);
@@ -386,6 +397,73 @@ public function testAjouterEducateur()
     // Vérifiez si l'ajout a réussi en vérifiant si le nombre de lignes affectées est supérieur à 0
     $this->assertTrue($resultat);
 }
+
+public function testInscriptionPersonnel()
+{
+   
+    // Définissez des valeurs pour les paramètres de la fonction
+    $nom = 'NomTestLolCoucou';
+    $prenom = 'PrenomTest';
+    $utilisateur = array(
+        'login' => 'loginTest',
+        'mdp' => 'MotDePasseTest',
+        'id_role' => '1'
+    );
+
+    // Appelez la fonction pour inscrire du personnel
+    $resultat = inscriptionPersonnel($nom, $prenom, $utilisateur);
+
+    // Vérifiez si l'inscription a réussi en vérifiant si le résultat est vrai
+    $this->assertTrue($resultat > 0);
+}
+
+public function testSupprimerPersonnel()
+{
+    // Définissez des valeurs pour les paramètres de la fonction
+    $nom = 'NomTestLolCoucou';
+    $prenom = 'PrenomTest';
+    $utilisateur = array(
+        'login' => 'loginTest',
+        'mdp' => 'MotDePasseTest',
+        'id_role' => '1'
+    );
+
+    $idPersonnel = inscriptionPersonnel($nom, $prenom, $utilisateur);
+
+    
+    // Appelez la fonction pour supprimer le personnel
+    $resultatSuppression = supprimerPersonnel($idPersonnel);
+
+    // Vérifiez si la suppression a réussi en vérifiant si le résultat est vrai
+    $this->assertTrue($resultatSuppression > 0);
+}
+
+public function testModifierPersonnel()
+{
+    // Définissez des valeurs pour les paramètres de la fonction
+    $nom = 'NomTestLolCoucou';
+    $prenom = 'PrenomTest';
+    $utilisateur = array(
+        'login' => 'loginTest',
+        'mdp' => 'MotDePasseTest',
+        'id_role' => '1'
+    );
+
+    $idPersonnel = inscriptionPersonnel($nom, $prenom, $utilisateur);
+
+    // Définissez de nouvelles valeurs pour le nom, le prénom et la photo de l'apprenti
+    $nouveauNom = "NouveauNom";
+    $nouveauPrenom = "NouveauPrenom";
+
+    // Appelez la fonction pour modifier l'apprenti
+    $resultatModification = modifierPersonnel($idPersonnel, $nouveauNom, $nouveauPrenom);
+
+    // Vérifiez si la modification a été effectuée avec succès
+    $this->assertTrue($resultatModification > 0);
+
+}
+
+
 
 
 
