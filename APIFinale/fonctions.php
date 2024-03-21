@@ -579,51 +579,6 @@ function listeFiche()
 }
 
 function creationFiche(
-    $numero,
-    $nomDuDemandeur,
-    $dateDemande,
-    $dateIntervention,
-    $dureeIntervention,
-    $localisation,
-    $descriptionDemande,
-    $degreUrgence,
-    $typeIntervention,
-    $natureIntervention,
-    $travauxRealises,
-    $travauxNonRealises,
-    $couleurIntervention,
-    $etatFiche,
-    $dateCreation,
-    $idApprenti,
-    $idPersonnel
-) {
-  $bd = connexionBD();
-  $numero = htmlspecialchars($numero);
-  $nomDuDemandeur = htmlspecialchars($nomDuDemandeur);
-  $dateDemande = htmlspecialchars($dateDemande);
-  $dateIntervention = htmlspecialchars($dateIntervention);
-  $dureeIntervention = htmlspecialchars($dureeIntervention);
-  $localisation = htmlspecialchars($localisation);
-  $descriptionDemande = htmlspecialchars($descriptionDemande);
-  $degreUrgence = htmlspecialchars($degreUrgence);
-  $typeIntervention = htmlspecialchars($typeIntervention);
-  $natureIntervention = htmlspecialchars($natureIntervention);
-  $travauxRealises = htmlspecialchars($travauxRealises);
-  $travauxNonRealises = htmlspecialchars($travauxNonRealises);
-  $couleurIntervention = htmlspecialchars($couleurIntervention);
-  $etatFiche = htmlspecialchars($etatFiche);
-  $dateCreation = htmlspecialchars($dateCreation);
-  $idApprenti = htmlspecialchars($idApprenti);
-  $idPersonnel = htmlspecialchars($idPersonnel);
-
-  $creerFiche = $bd->prepare(
-    'INSERT INTO fiche_intervention(numero, nom_du_demandeur, date_demande, ' .
-    'date_intervention, duree_intervention, localisation, description_demande, ' .
-    'degre_urgence, type_intervention, nature_intervention, couleur_intervention, ' .
-    'etat_fiche, date_creation, id_apprenti, id_personnel) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
-);
-
-$creerFiche->execute(array(
   $numero,
   $nomDuDemandeur,
   $dateDemande,
@@ -641,13 +596,61 @@ $creerFiche->execute(array(
   $dateCreation,
   $idApprenti,
   $idPersonnel
+) {
+$bd = connexionBD();
+$numero = htmlspecialchars($numero);
+$nomDuDemandeur = htmlspecialchars($nomDuDemandeur);
+$dateDemande = htmlspecialchars($dateDemande);
+$dateIntervention = htmlspecialchars($dateIntervention);
+$dureeIntervention = htmlspecialchars($dureeIntervention);
+$localisation = htmlspecialchars($localisation);
+$descriptionDemande = htmlspecialchars($descriptionDemande);
+$degreUrgence = htmlspecialchars($degreUrgence);
+$typeIntervention = htmlspecialchars($typeIntervention);
+$natureIntervention = htmlspecialchars($natureIntervention);
+$travauxRealises = htmlspecialchars($travauxRealises);
+$travauxNonRealises = htmlspecialchars($travauxNonRealises);
+$couleurIntervention = htmlspecialchars($couleurIntervention);
+$etatFiche = htmlspecialchars($etatFiche);
+$dateCreation = htmlspecialchars($dateCreation);
+$idApprenti = htmlspecialchars($idApprenti);
+$idPersonnel = htmlspecialchars($idPersonnel);
+
+$creerFiche = $bd->prepare(
+  'INSERT INTO fiche_intervention(numero, nom_du_demandeur, date_demande, ' .
+  'date_intervention, duree_intervention, localisation, description_demande, ' .
+  'degre_urgence, type_intervention, nature_intervention, travaux_realises, ' . // Correction ici
+  'travaux_non_realises, couleur_intervention, etat_fiche, date_creation, ' .
+  'id_apprenti, id_personnel) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)' // Correction ici
+);
+
+$creerFiche->execute(array(
+$numero,
+$nomDuDemandeur,
+$dateDemande,
+$dateIntervention,
+$dureeIntervention,
+$localisation,
+$descriptionDemande,
+$degreUrgence,
+$typeIntervention,
+$natureIntervention,
+$travauxRealises,
+$travauxNonRealises,
+$couleurIntervention,
+$etatFiche,
+$dateCreation,
+$idApprenti,
+$idPersonnel
 ));
 
-  $bd = null;
+$idNouvelleFiche = $bd->lastInsertId();
 
-  return $creerFiche->rowCount() > 0;
+$bd = null;
 
+return $idNouvelleFiche;
 }
+
 
 
 
@@ -715,6 +718,8 @@ function modifierFiche(
         degre_urgence = ?,
         type_intervention = ?,
         nature_intervention = ?,
+        travaux_realises = ?,
+        travaux_non_realises = ?,
         couleur_intervention = ?,
         etat_fiche = ?,
         date_creation = ?,
@@ -830,9 +835,13 @@ function creationCours($theme, $cours, $duree, $idFormation)
   $idFormation = htmlspecialchars($idFormation);
   $creerCours = $bd->prepare('INSERT INTO session(theme, cours, duree, id_formation) VALUES (?, ?, ?, ?)');
   $creerCours->execute(array($theme, $cours, $duree, $idFormation));
+
+  // Récupérer l'ID du cours créé
+  $idCours = $bd->lastInsertId();
+  
   $bd = null;
 
-  return $creerCours->rowCount() > 0;
+  return $idCours;
 
 }
 
