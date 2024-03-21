@@ -4,14 +4,14 @@
     $mdp = "";
 
     for ($i=0; $i<=9; $i++){
-      if (isset($_POST[$i])){
+      if (isset($_POST[$i])) {
         $mdp = $mdp.$i;
       }
     }
 
-    $user = get_utilisateur($etu["id_utilisateur"]);
+    $user = getUtilisateur($etu["id_utilisateur"]);
 
-    if ($user["mdp"] != $mdp){
+    if ($user["mdp"] != $mdp) {
         header("Location: index.php");
         exit();
     }
@@ -45,14 +45,14 @@
     <div class="bubbles-container">
         <div class="square2">
             <a href="../PageHTML/fiche1.php">
-                <img src="Image/fiche.png" alt="Image 2">
+                <img src="Image/fiche.png" alt="fiche">
             </a>
             <button class="bouton-fiche-actuelle">Ma fiche actuelle</button>
         </div>
 
         <div class="square3">
             <a href="fiche1.php">
-                <img src="Image/fiche.png" alt="Image 1">
+                <img src="Image/fiche.png" alt="fiche">
             </a>
             <button class="bouton-anciennes-fiches">Mes anciennes fiches</button>
         </div>
@@ -61,7 +61,7 @@
     <div class="suivi-eleve">
         <h1 class="h1-pagepostco">Mon suivi :</h1>
         <a href="suivi_eleve.php">
-            <img src="Image/image_suivi.png" alt="Image 2">
+            <img src="Image/image_suivi.png" alt="suivi">
         </a>
     </div>
 

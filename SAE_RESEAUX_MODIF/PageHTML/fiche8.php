@@ -3,11 +3,11 @@ include_once "fiche_base.php";
 $numpage=8;
 include_once "fiche_head.php";
 ?>
-
+<?php include_once "../../APIFinale/fonctions.php"; ?>
 <body class="body_fiche">
-    <?php include_once "fiche_base.php"; ?>
+    
 
-<!-- Formulaire -->
+
 <?php ifform() ?>
 
     <div class="block bordure" id="mat_util">
@@ -16,15 +16,15 @@ include_once "fiche_head.php";
 </div>
     <div id="mat_droit">
     <?php
-    for ($i=0; $i<5; $i++){
-        echoMateriaux($i);
+    for ($i=0; $i<5; $i++) {
+        afficherMateriaux($descriptionDemande, $i);
     }
     ?>
     </div>
     <div id="mat_gauche">
     <?php
-    for ($i=0; $i<5; $i++){
-        echoMateriaux($i+5);
+    for ($i=0; $i<5; $i++) {
+        afficherMateriaux($descriptionDemande, $i+5);
     }
     ?>
     </div>

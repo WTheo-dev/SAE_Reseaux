@@ -3,16 +3,16 @@ include_once "../../APIFinale/fonctions.php";
 $forms = listeFormations();
 $update = false;
 
-foreach ($forms as $form){
+foreach ($forms as $form) {
     $nomform = $form['Intitulé de la Formation'];
     $id = $form["ID"];
     $stripnomform = str_replace(" ", "_", $nomform);
-    if (isset($_POST["supp".$stripnomform])){
+    if (isset($_POST["supp".$stripnomform])) {
         suppresionFormation($id);
         $update = true;
         break;
     }
-    if (isset($_POST["modi".$stripnomform])){
+    if (isset($_POST["modi".$stripnomform])) {
         $nouvnom = $_POST["nom".$stripnomform];
         modifierFormation($id, $nouvnom, null, null);
         $update = true;
@@ -40,8 +40,8 @@ $forms = listeFormations();
         </div>
     </header>
     <?php
-    if ($update){
-        if (isset($nouvnom)){
+    if ($update) {
+        if (isset($nouvnom)) {
             echo "<br>formations modifier: ".$nomform." --> ".$nouvnom.".<br>";
         } elseif (isset($nomform)) {
             echo "<br>formations supprimer: ".$nomform.".<br>";

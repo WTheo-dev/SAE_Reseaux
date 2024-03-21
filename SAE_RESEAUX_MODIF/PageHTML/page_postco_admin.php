@@ -5,17 +5,17 @@
 
     list($prenom, $nom) = explode(' ', $_POST["nom"]);
 
-    for ($i=0; $i<=9; $i++){
-      if (isset($_POST[$i])){
+    for ($i=0; $i<=9; $i++) {
+      if (isset($_POST[$i])) {
         $mdp = $mdp.$i;
       }
     }
 
-    foreach ($persos as $perso){
-      if ($perso["nom"] == $nom && $perso["prenom"] == $prenom){
+    foreach ($persos as $perso) {
+      if ($perso["nom"] == $nom && $perso["prenom"] == $prenom) {
         $idcorrect = "yes";
         $user = get_utilisateur($perso["id_utilisateur"]);
-        if ($user["mdp"] == $mdp){
+        if ($user["mdp"] == $mdp) {
           $mpdcorrect = "yes";
         } else {
             $mpdcorrect = "no";
@@ -26,7 +26,7 @@
       }
     }
 
-    if ($idcorrect == "no" || $mpdcorrect == "no"){
+    if ($idcorrect == "no" || $mpdcorrect == "no") {
         header("Location: liste_educateur.php");
         exit();
     }
@@ -66,7 +66,7 @@
         <div class="rectangle-container-photo-label">
           <label for="nom-prenom"><?php echo strtoupper($etu["nom"]) . " " . $etu["prenom"]; ?></label>
           <div class="rectangle-photo">
-              <img class="image" src="Image/etu/<?php echo $etu["photo"] ?>" alt="utilisateurphoto">
+              <img class="image" src="Image/etu/<?php echo $etu["photo"] ?>" alt="utilisateur">
           </div>
       </div>
     </div>

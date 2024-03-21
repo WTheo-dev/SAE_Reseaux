@@ -3,9 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 26 nov. 2023 à 16:46
+-- Généré le : lun. 18 mars 2024 à 10:26
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
+
+use apeaj
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `apprenti` (
   `photo` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `id_utilisateur` int NOT NULL,
   PRIMARY KEY (`id_apprenti`),
-  UNIQUE KEY `id_utilisateur` (`id_utilisateur`)
+  UNIQUE KEY `id_Utilisateur` (`id_Utilisateur`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -74,6 +76,22 @@ CREATE TABLE IF NOT EXISTS `composer_presentation` (
   `ordre_saisie_focus` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id_element`,`id_fiche`),
   KEY `id_fiche` (`id_fiche`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contenir`
+--
+
+DROP TABLE IF EXISTS `contenir`;
+CREATE TABLE IF NOT EXISTS `contenir` (
+  `id_session` int NOT NULL,
+  `id_utilisateur` int NOT NULL,
+  `id_fiche` int NOT NULL,
+  `id_materiaux` int NOT NULL,
+  PRIMARY KEY (`id_session`,`id_utilisateur`,`id_fiche`,`id_materiaux`),
+  KEY `id_utilisateur` (`id_utilisateur`,`id_fiche`,`id_materiaux`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -174,6 +192,24 @@ CREATE TABLE IF NOT EXISTS `laisser_trace` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `matériaux`
+--
+
+DROP TABLE IF EXISTS `materiaux`;
+CREATE TABLE IF NOT EXISTS `materiaux` (
+  `id_utilisateur` int NOT NULL,
+  `id_fiche` int NOT NULL,
+  `id_materiaux` int NOT NULL AUTO_INCREMENT,
+  `nom_image` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nom_materiaux` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `type_intervention` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id_utilisateur`,`id_fiche`,`id_materiaux`),
+  KEY `id_fiche` (`id_fiche`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `personnel`
 --
 
@@ -182,9 +218,9 @@ CREATE TABLE IF NOT EXISTS `personnel` (
   `id_personnel` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `prenom` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `id_utilisateur` int NOT NULL,
+  `id_Utilisateur` int NOT NULL,
   PRIMARY KEY (`id_personnel`),
-  UNIQUE KEY `id_utilisateur` (`id_utilisateur`)
+  UNIQUE KEY `id_Utilisateur` (`id_Utilisateur`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -225,12 +261,12 @@ CREATE TABLE IF NOT EXISTS `session` (
 
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `id_utilisateur` int NOT NULL AUTO_INCREMENT,
+  `id_Utilisateur` int NOT NULL AUTO_INCREMENT,
   `login` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `mdp` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `id_role` int NOT NULL,
-  PRIMARY KEY (`id_utilisateur`),
-  KEY `id_role` (`id_role`)
+  PRIMARY KEY (`id_Utilisateur`),
+  KEY `Id_role` (`id_role`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 COMMIT;
 

@@ -36,7 +36,7 @@ include_once "../../APIFinale/fonctions.php";
 
     <?php
       $persos = listeEducateur();
-      foreach ($persos as $perso){
+      foreach ($persos as $perso) {
         echo "<tr>";
         echo "<td>".$perso["nom"]."</td>";
         echo "<td>".$perso["prenom"]."</td>";
@@ -49,7 +49,7 @@ include_once "../../APIFinale/fonctions.php";
 
 </form>
 
-<button type="button" onclick="window.location.href = 'index.php';">retour</button>
+<button type="button" onclick="window.location.href = 'index.php';">Retour</button>
 
 </body>
 </html>

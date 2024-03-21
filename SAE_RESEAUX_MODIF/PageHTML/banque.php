@@ -1,3 +1,4 @@
+<?php define("ICON_DIR", "icon/"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -25,20 +26,19 @@
     <script src="fiche_audio.js"></script>
 
     <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', 'On');
+    
     ?>
 
     <?php
         include_once "../../APIFinale/fonctions.php";
 
-        if (!is_dir("icon")){
-            mkdir("icon");
-            shell_exec("chmod 777 icon");
-            shell_exec("chown www-data icon");
-            shell_exec("chgrp www-data icon");
+        if (!is_dir(ICON_DIR)) {
+            mkdir(ICON_DIR);
+            shell_exec("chmod 777 " . ICON_DIR);
+            shell_exec("chown www-data " . ICON_DIR);
+            shell_exec("chgrp www-data " . ICON_DIR);
         }
-        if (!is_dir("audio")){
+        if (!is_dir("audio")) {
             mkdir("audio");
             shell_exec("chmod 777 audio");
             shell_exec("chown www-data audio");
@@ -48,10 +48,10 @@
 
 
     <?php
-        if (is_dir("audio")){
+        if (is_dir("audio")) {
             $files=scandir("audio");
-            foreach ($files as $file){
-                if ($file == "." || $file == ".."){
+            foreach ($files as $file) {
+                if ($file == "." || $file == "..") {
                     continue;
                 }
                 echo '<audio id="'.$file.'">';
@@ -62,18 +62,18 @@
     ?>
 
     <?php
-        if (isset($_POST['supprimer_icon'])){
-            foreach ($_POST as $file => $check){
-                if ($check == "on" && str_starts_with($file, "checkimg-")){
-                    $file="icon/".str_replace("_", ".", str_replace("checkimg-", "", $file));
+        if (isset($_POST['supprimer_icon'])) {
+            foreach ($_POST as $file => $check) {
+                if ($check == "on" && str_starts_with($file, "checkimg-")) {
+                    $file=ICON_DIR.str_replace("_", ".", str_replace("checkimg-", "", $file));
                     unlink($file);
                 }
             }
         }
 
-        if (isset($_POST['supprimer_audio'])){
-            foreach ($_POST as $file => $check){
-                if ($check == "on" && str_starts_with($file, "checkaud-")){
+        if (isset($_POST['supprimer_audio'])) {
+            foreach ($_POST as $file => $check) {
+                if ($check == "on" && str_starts_with($file, "checkaud-")) {
                     $file="audio/".str_replace("_", ".", str_replace("checkaud-", "", $file));
                     unlink($file);
                 }
@@ -100,23 +100,23 @@
     <br>
 
     <?php
-    #var_dump(listeElement("picto"));
-    if (!empty($_FILES) && isset($_POST['enregistrer_icon'])){
-        $target_dir="icon/";
+    
+    if (!empty($_FILES) && isset($_POST['enregistrer_icon'])) {
+        $target_dir=ICON_DIR;
         $name=basename($_FILES["icon-file"]["name"]);
         $target_file=$target_dir.$name;
         $uploadOk=0;
         $imageFileType=strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         $extAutoriser=array("jpeg", "jpg", "png");
 
-        if(isset($_POST["enregistrer_icon"])) {
-            if(in_array($imageFileType, $extAutoriser) === false){
+        if (isset($_POST["enregistrer_icon"])) {
+            if (in_array($imageFileType, $extAutoriser) === false) {
                 echo "Extension non autorisée, choisisez parmi : jpeg, jpg, png<br>";
             } elseif (str_contains($name, "_") || str_contains($name, " ")) {
                 echo $name." Nom incorrect, ne pas mettre de _ ou d'espace dans le nom";
             } else {
                 $check = getimagesize($_FILES["icon-file"]["tmp_name"]);
-                if(!$check) {
+                if (!$check) {
                     echo "Ce fichier n'est pas une image correcte.";
                     $uploadOk = 1;
                 } else {
@@ -126,7 +126,7 @@
                     } catch (Exception $e) {
                         echo "Erreur : ".$e->getMessage();
                     }
-                    if (!$succes){
+                    if (!$succes) {
                         echo "erreur a l'enregistrement, verifier que l'image est bonne.<br>";
                     } else {
                         echo "Pictogramme enregistré.<br>";
@@ -141,21 +141,22 @@
     </form>
     <form action="supprimer_element.php" method="post">
     <div class="icon-container">
-        <?php
-            if (is_dir("icon")){
-                $icons = listeElement("picto");
-                foreach ($icons as $icon){
-                    $file = $icon['picto'];
-                    $name = str_replace("icon/", "", $file);
-                    echo "<input type='checkbox' id='checkimg-".$name."' name='checkimg-".$name."' class='img-check'>";
-                    echo "<label class='image-icon-container' for='checkimg-".$name."'>";
-                    echo "<input hidden name='id-".$name."' value='".$icon['id_element']."' />";
-                    echo "<img class='icon-img' src='".$file."' name='".$name."' />";
-                    echo "<span>".$file."</span>";
-                    echo "</label>";
-                }
+    <?php
+        if (is_dir(ICON_DIR)) {
+            $icons = listeElement("picto");
+            foreach ($icons as $icon) {
+                $file = $icon['picto'];
+                $name = str_replace(ICON_DIR, "", $file);
+                echo "<input type='checkbox' id='checkimg-" .
+                $name . "' name='checkimg-" . $name . "' class='img-check'>";
+                echo "<label class='image-icon-container' for='checkimg-" . $name . "'>";
+                echo "<input hidden name='id-" . $name . "' value='" . $icon['id_element'] . "' />";
+                echo "<img class='icon-img' src='" . $file . "' name='" . $name . "' />";
+                echo "<span>" . $file . "</span>";
+                echo "</label>";
             }
-        ?>
+        }
+    ?>
     </div>
 
     <button class="noprint" type="submit" name="supprimer_icon">
@@ -167,11 +168,11 @@
     <br>
 
     <?php
-        if (isset($_POST['supprimer_icon'])){
+        if (isset($_POST['supprimer_icon'])) {
             echo "Icon supprimées :<br>";
             echo "<ul>";
-            foreach ($_POST as $file => $check){
-                if ($check == "on" && str_starts_with($file, "checkimg-")){
+            foreach ($_POST as $file => $check) {
+                if ($check == "on" && str_starts_with($file, "checkimg-")) {
                     $file=str_replace("_", ".", str_replace("checkimg-", "", $file));
                     echo "<li>".$file."</li>";
                 }
@@ -195,7 +196,7 @@
     <br>
 
     <?php
-    if (!empty($_FILES) && isset($_POST['enregistrer_audio'])){
+    if (!empty($_FILES) && isset($_POST['enregistrer_audio'])) {
         $target_dir="audio/";
         $name=basename($_FILES["audio-file"]["name"]);
         $target_file=$target_dir.$name;
@@ -203,15 +204,15 @@
         $imageFileType=strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         $extAutoriser=array("mp3", "wav", "ogg");
 
-        if(isset($_POST["enregistrer_audio"])) {
-            if(in_array($imageFileType, $extAutoriser) === false){
+        if (isset($_POST["enregistrer_audio"])) {
+            if (in_array($imageFileType, $extAutoriser) === false) {
                 echo "Extension non autorisée, choisisez parmi : mp3, wav, ogg<br>";
             } elseif (str_contains($name, "_") || str_contains($name, " ")) {
                 echo $name." <div class='mot'>Nom de fichier incorrect,
                  ne pas mettre de _ ou d'espace dans le nom></div";
             } else {
                 $check = explode("/", mime_content_type($_FILES['audio-file']['tmp_name']))[0] === "audio";
-                if($check) {
+                if ($check) {
                     echo "<div class='mot'>Ce fichier n'est pas un audio correct.></div>";
                     $uploadOk = 1;
                 } else {
@@ -220,7 +221,7 @@
                     } catch (Exception $e) {
                         echo "Erreur : ".$e->getMessage();
                     }
-                    if (!$succes){
+                    if (!$succes) {
                         echo "Erreur a l'enregistrement, verifier que l'audio est bon.<br>";
                     } else {
                         echo "Votre audio a été enregistré avec succès.<br>";
@@ -234,9 +235,9 @@
     <h3 class ="h3_banque">Liste des audios :</h3>
     <div class="audio-container">
         <?php
-            if (is_dir("audio")){
+            if (is_dir("audio")) {
                 $files=scandir("audio");
-                foreach ($files as $file){
+                foreach ($files as $file) {
                     if ($file == "." || $file == "..") {continue;}
                     echo "<input type='checkbox' id='checkaud-".$file."' name='checkaud-".$file."' class='aud-check'>";
                     echo "<label class='aud-icon-container' for='checkaud-".$file."'>";
@@ -256,11 +257,11 @@
     <br>
 
     <?php
-        if (isset($_POST['supprimer_audio'])){
+        if (isset($_POST['supprimer_audio'])) {
             echo "Audio(s) supprimé(s) :<br>";
             echo "<ul>";
-            foreach ($_POST as $file => $check){
-                if ($check == "on" && str_starts_with($file, "checkaud-")){
+            foreach ($_POST as $file => $check) {
+                if ($check == "on" && str_starts_with($file, "checkaud-")) {
                     $file=str_replace("_", ".", str_replace("checkaud-", "", $file));
                     echo "<li>".$file."</li>";
                 }

@@ -5,11 +5,11 @@
     list($prenom, $nom) = explode('.', $_POST["id"]);
     $mdp = $_POST["mdp"];
 
-    foreach ($persos as $perso){
-        if ($perso["nom"] == $nom && $perso["prenom"] == $prenom){
+    foreach ($persos as $perso) {
+        if ($perso["nom"] == $nom && $perso["prenom"] == $prenom) {
             $idcorrect = "yes";
             $user = get_utilisateur($perso["id_utilisateur"]);
-            if ($user["mdp"] == $mdp){
+            if ($user["mdp"] == $mdp) {
                 $mpdcorrect = "yes";
             } else {
                 $mpdcorrect = "no";
@@ -20,7 +20,7 @@
         }
     }
 
-    if ($idcorrect == "no" || $mpdcorrect == "no"){
+    if ($idcorrect == "no" || $mpdcorrect == "no") {
         header("Location: connexion_superadmin.php");
         exit();
     }

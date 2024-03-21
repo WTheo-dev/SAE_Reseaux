@@ -12,17 +12,17 @@
       <header>Création du compte Educateur</header>
       <form action="creer_compte_educateur_traitement.php" method="post" class="creer_compte_educateur-form">
         <div class="creer_compte_educateur-input-box">
-          <label>Nom</label>
+          <label for="nom">Nom</label>
           <input name="nom" type="text" placeholder="Entrez un nom" required />
         </div>
 
         <div class="creer_compte_educateur-input-box">
-            <label>Prénom</label>
+            <label for="prenom">Prénom</label>
             <input name="prenom" type="text" placeholder="Entrez un prénom" required />
           </div>
         
           <div class="creer_compte_educateur-input-box">
-            <label>Mot de passe</label>
+            <label for="mdp">Mot de passe</label>
             <input name="mdp" type="password" placeholder="Entrez un mot de passe" required />
           </div>
 
@@ -41,7 +41,7 @@
           </div>
 
           <div class="creer_compte_educateur-input-box">
-            <label>Numéro de téléphone (Optionnel)</label>
+            <label for="num_tel">Numéro de téléphone (Optionnel)</label>
             <input name="num" type="number" placeholder="Entrez un numéro de telephone (optionnel)" />
           </div>
        

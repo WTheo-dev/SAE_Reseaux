@@ -1,6 +1,9 @@
 <?php include_once "fiche_base.php"; ?>
 <?php $numpage=7; ?>
 <?php include_once "fiche_head.php"; ?>
+<?php
+define("NEED_NEW_INTERVENTION", "Nécessite_une_nouvelle_intervention");
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,21 +22,26 @@
         p, label, span, input, .fa{
             font-size:<?php echo matchFontSize(); ?> !important;
         }
-        *{
+        {
             font-family:<?php echo getFontName(); ?>;
         }
     </style>
 </head>
 <body class="body_fiche">
 
-    <?php include_once "fiche_base.php"; ?>
+<?php include_once "../../APIFinale/fonctions.php"; ?>
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $travaux_non_realises = $_POST["TravauxNonRealises"];
+    }
+    ?>
 
     <audio id="nuni">
         <source src="audio/NécessiteUneNouvelleIntervention.mp3" type="audio/mp3">
     </audio>
     <script src="fiche_audio.js"></script>
 
-<!-- Formulaire -->
+
 
 <?php ifform() ?>
 
@@ -44,13 +52,13 @@
         <?php if (isset($_COOKIE['travauxNonRealises'])) { echo $_COOKIE['travauxNonRealises']; } ?></textarea>
     </div>
     </div>
-    <input type="checkbox" name="Nécessite_un_nouvelle_intervention" id="Nécessite_un_nouvelle_intervention"
-    <?php if(isset($_COOKIE['Nécessite_un_nouvelle_intervention'])) {echo "checked";} ?> />
-    <label for="Nécessite_un_nouvelle_intervention">
-    <?php addIcon("Nécessite_un_nouvelle_intervention", "fa-refresh"); ?>
-    <?php addTexteBox("Nécessite_un_nouvelle_intervention", "Nécessite un nouvelle intervention"); ?>
+    <input type="checkbox" name="<?php echo NEED_NEW_INTERVENTION; ?>" id="<?php echo NEED_NEW_INTERVENTION; ?>"
+    <?php if (isset($_COOKIE[NEED_NEW_INTERVENTION])) {echo "checked";} ?> />
+    <label for="<?php echo NEED_NEW_INTERVENTION; ?>">
+    <?php addIcon(NEED_NEW_INTERVENTION, "fa-refresh"); ?>
+    <?php addTexteBox(NEED_NEW_INTERVENTION, "Nécessite un nouvelle intervention"); ?>
     </label>
-    <?php addAudio("Nécessite_un_nouvelle_intervention", "nuni"); ?>
+    <?php addAudio(NEED_NEW_INTERVENTION, "nuni"); ?>
 
     <?php
     $numpage=7;
