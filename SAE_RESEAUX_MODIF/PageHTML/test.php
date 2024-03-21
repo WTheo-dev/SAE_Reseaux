@@ -144,7 +144,7 @@ class DatabaseTest extends TestCase
     
         // On test la fonction listeEducateur pour vérifier si elle retourne un tableau non vide
         $resultat = listeEducateur();
-        $this->assertNotEmpty($resultat); 
+        $this->assertNotEmpty($resultat);
 
         // On test si chaque élément du tableau contient les clés attendues
         foreach ($resultat as $educateur) {
@@ -196,6 +196,127 @@ class DatabaseTest extends TestCase
             $this->assertArrayHasKey('id_fiche', $fiche);
         }
     }
+
+
+    public function testApprentiConnexionReussieAvecIdentifiantsValides()
+    {
+        // Appel de la fonction à tester
+        $resultat = connexionApprenti('2', 'motdepasse2');
+        
+        // Vérifier si la connexion a réussi
+        $this->assertTrue($resultat);
+    }
+
+    // Test de connexion échouée avec un mot de passe invalide
+    public function testApprentiConnexionEchoueeAvecMotDePasseInvalide()
+    {
+        $resultat = connexionApprenti('1', 'motdepasse45');
+       
+        // Vérifier si la connexion a échoué
+        $this->assertFalse($resultat);
+    }
+
+    // Test de connexion échouée avec des identifiants vides
+    public function testApprentiConnexionEchoueeAvecIdentifiantsVides()
+    {
+
+        $resultat = connexionApprenti('', '');
+        
+        // Vérifier si la connexion a échoué
+        $this->assertFalse($resultat);
+    }
+
+    public function testPersonnelConnexionReussieAvecIdentifiantsValides()
+    {
+        // Appel de la fonction à tester
+        $resultat = connexionPersonnel('1', 'motdepasse3');
+        
+        // Vérifier si la connexion a réussi
+        $this->assertTrue($resultat);
+    }
+
+    // Test de connexion échouée avec un mot de passe invalide
+    public function testPersonnelConnexionEchoueeAvecMotDePasseInvalide()
+    {
+        $resultat = connexionPersonnel('1', 'motdepasse45');
+       
+        // Vérifier si la connexion a échoué
+        $this->assertFalse($resultat);
+    }
+
+    // Test de connexion échouée avec des identifiants vides
+    public function testPersonnelConnexionEchoueeAvecIdentifiantsVides()
+    {
+
+        $resultat = connexionPersonnel('', '');
+        
+        // Vérifier si la connexion a échoué
+        $this->assertFalse($resultat);
+    }
+
+
+    public function testSaltHash()
+{
+    
+    // Définissez un mot de passe à utiliser pour le test
+    $motDePasse = "motdepasse123";
+
+    // Appelez la fonction saltHash avec le mot de passe défini
+    $motDePasseHashe = saltHash($motDePasse);
+
+    // Vérifiez si le mot de passe hashé est une chaîne non vide
+    $this->assertNotEmpty($motDePasseHashe);
+
+    // Vérifiez si le mot de passe hashé est une chaîne
+    $this->assertIsString($motDePasseHashe);
+
+    // Vérifiez si le mot de passe hashé est différent du mot de passe d'origine
+    $this->assertNotEquals($motDePasse, $motDePasseHashe);
+}
+
+public function testInscriptionApprenti()
+{
+   
+    // Définissez des valeurs pour les paramètres de la fonction
+    $nom = "Doef";
+    $prenom = "Johnt";
+    $photo = "johny_doef.jpg";
+    $utilisateur = array(
+        'login' => 'johnt.doef',
+        'mdp' => 'password1234',
+        'id_role' => 1 // Assurez-vous que l'ID du rôle correspond à celui d'un apprenti dans votre base de données
+    );
+
+    // Appelez la fonction d'inscription avec les valeurs définies
+    $resultatInscription = inscriptionApprenti($nom, $prenom, $photo, $utilisateur);
+
+    // Vérifiez si l'inscription a réussi
+    $this->assertTrue($resultatInscription > 0);
+
+}
+
+public function testSupprimerApprenti()
+{
+   
+    // Supposons que $idApprenti représente l'ID de l'apprenti à supprimer
+    $u['login'] = "login_test";
+    $u['mdp'] = "test_mdp";
+    $u['id_role'] = 1;
+    $idApprenti = inscriptionApprenti("test_nom", "test_prenom", "test_photo", $u); // Remplacez par l'ID de l'apprenti à supprimer dans votre base de données
+
+    var_dump($idApprenti);
+    // Appelez la fonction de suppression avec l'ID de l'apprenti
+    $resultatSuppression = supprimerApprenti($idApprenti);
+
+    // Vérifiez si l'apprenti a été supprimé avec succès
+    $this->assertTrue(($resultatSuppression > 0));
+
+    
+}
+
+
+
+
 
  
 }

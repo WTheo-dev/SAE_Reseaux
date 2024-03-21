@@ -112,58 +112,38 @@ function conversionHTML($tableauAConvertir)
   return $tableauConverti;
 }
 
-function connexionApprenti($idApprenti)
+function connexionApprenti($idApprenti, $mdp)
 {
   $bd = connexionBD();
 
     if (!empty($idApprenti)) {
-      $verificationApprenti = $bd->prepare('SELECT * from apprenti WHERE schema = ?');
-      $verificationApprenti->execute(array($idApprenti[0]));
+      $verificationApprenti = $bd->prepare('SELECT * from apprenti as a, utilisateur as u WHERE a.id_apprenti = ?
+      AND a.id_utilisateur = u.id_utilisateur AND u.mdp = ?');
+      $verificationApprenti->execute(array($idApprenti, $mdp));
       $bd = null;
       
-      if ($verificationApprenti->rowCount() > 0) {
-        foreach ($verificationApprenti as $row) {
-          if (password_verify($idApprenti[1], $row['mdp'])) {
-            $_SESSION['id'] = $row['id_apprenti'];
-            $_SESSION['compteValide'] = $row['compteValide'];
-            $_SESSION['coordinateur'] = $row['coordinateur'];
-            return true;
-          }
-        }
-      }
+      return $verificationApprenti->rowCount() > 0;
+
     }
   
   return false;
 }
 
-function connexionPersonnel($idPersonnel)
+function connexionPersonnel($idPersonnel, $mdp)
 {
-    $bd = connexionBD();
+  $bd = connexionBD();
 
-    if (count($idPersonnel) == 2) {
-        $identitePersonnelHTML = array_map('conversionHTML', $idPersonnel);
+  if (!empty($idPersonnel)) {
+    $verificationApprenti = $bd->prepare('SELECT * from personnel as p, utilisateur as u WHERE p.id_personnel = ?
+    AND p.id_utilisateur = u.id_utilisateur AND u.mdp = ?');
+    $verificationApprenti->execute(array($idPersonnel, $mdp));
+    $bd = null;
+    
+    return $verificationApprenti->rowCount() > 0;
 
-        $verificationPersonnel = $bd->prepare('SELECT * FROM personnel WHERE schema = ?');
-        $verificationPersonnel->execute(array($identitePersonnelHTML[0]));
-        $bd = null;
+  }
 
-        if ($verificationPersonnel->rowCount() > 0) {
-            foreach ($verificationPersonnel as $row) {
-                if (password_verify($identitePersonnelHTML[1], $row['mdp'])) {
-                    // Assuming 'id_apprenti' is the correct column name, update it if needed
-                    $_SESSION['id'] = $row['id_apprenti'];
-                    $_SESSION['compteValide'] = $row['compteValide'];
-                    return true;
-                }
-            }
-        }
-
-        // If the loop doesn't return true, it means the password verification failed
-        return false;
-    }
-
-    // Invalid input format
-    return false;
+  return false;
 }
 
 function saltHash(string $mdp): string
@@ -192,6 +172,7 @@ function modifierMdp(string $mdp, int $idMembre): void
         die('Erreur ! Il y a un problème lors l\'exécution de la requête : qModifierMotDePasseUnMembre');
     }
 }
+
 function resetPassword($id)
 {
     $linkpdo = connexionBd();
@@ -297,8 +278,11 @@ function inscriptionApprenti($nom, $prenom, $photo, $utilisateur)
 
     $ajoutApprenti = $bd->prepare('INSERT INTO apprenti(nom, prenom, photo, id_utilisateur) VALUES (?, ?, ?, ?)');
     $ajoutApprenti->execute(array($nom, $prenom, $photo, $idUtilisateur));
+    $idApprenti = $bd->lastInsertId();
 
     $bd->commit();
+
+    return $idApprenti;
 
     $success = $ajoutApprenti->rowCount() > 0;
     $bd = null;
@@ -352,8 +336,11 @@ function ajouterApprenti($nom, $prenom, $photo, $mdp)
 
   $ajout->execute();
 
+  $id = $bd->prepare("SELECT `id_apprenti` FROM apprenti WHERE nom = ? AND prenom = ?");
+  $id->execute(array($nom, $prenom));
+
   $bd = null;
-  return $ajout->rowCount() > 0;
+  return $id->fetchAll();
 
 }
 
