@@ -259,7 +259,6 @@ function listeApprenti()
 
 function inscriptionApprenti($nom, $prenom, $photo, $utilisateur)
 {
-  try {
     $bd = connexionBD();
     $nom = htmlspecialchars($nom);
     $prenom = htmlspecialchars($prenom);
@@ -283,18 +282,8 @@ function inscriptionApprenti($nom, $prenom, $photo, $utilisateur)
     $bd->commit();
 
     return $idApprenti;
-
-    $success = $ajoutApprenti->rowCount() > 0;
-    $bd = null;
-    return $success;
-  } catch (PDOException $e) {
-    $bd->rollBack();
-    $bd = null;
-    return false;
-  }
+  
 }
-
-
 
 function supprimerApprenti($idApprenti)
 {
@@ -411,7 +400,7 @@ function unApprenti($idApprenti)
     $row['id_apprenti'], 'id_utilisateur' => $row['id_utilisateur']));
   }
 
-  return $resultat;
+  return $resultat[0];
 
 }
 

@@ -3,7 +3,7 @@ use PHPUnit\Framework\TestCase;
 
 require_once '../../APIFinale/fonctions.php';
 
-class DatabaseTest extends TestCase
+class Test extends TestCase
 {
     public function testConnexionBD()
     {
@@ -276,15 +276,14 @@ class DatabaseTest extends TestCase
 
 public function testInscriptionApprenti()
 {
-   
-    // Définissez des valeurs pour les paramètres de la fonction
+   // On ajoute un apprenti
     $nom = "Doef";
     $prenom = "Johnt";
     $photo = "johny_doef.jpg";
     $utilisateur = array(
         'login' => 'johnt.doef',
         'mdp' => 'password1234',
-        'id_role' => 1 // Assurez-vous que l'ID du rôle correspond à celui d'un apprenti dans votre base de données
+        'id_role' => 1 // role de l'apprenti
     );
 
     // Appelez la fonction d'inscription avec les valeurs définies
@@ -298,25 +297,97 @@ public function testInscriptionApprenti()
 public function testSupprimerApprenti()
 {
    
-    // Supposons que $idApprenti représente l'ID de l'apprenti à supprimer
+    // On créer un apprenti
     $u['login'] = "login_test";
     $u['mdp'] = "test_mdp";
     $u['id_role'] = 1;
     $idApprenti = inscriptionApprenti("test_nom", "test_prenom", "test_photo", $u); // Remplacez par l'ID de l'apprenti à supprimer dans votre base de données
 
-    var_dump($idApprenti);
     // Appelez la fonction de suppression avec l'ID de l'apprenti
     $resultatSuppression = supprimerApprenti($idApprenti);
 
     // Vérifiez si l'apprenti a été supprimé avec succès
     $this->assertTrue(($resultatSuppression > 0));
+}
 
+public function testModifierApprenti()
+{
+    // On créer un apprenti
+    $u['login'] = "login_test";
+    $u['mdp'] = "test_mdp";
+    $u['id_role'] = 1;
+    $idApprenti = inscriptionApprenti("test_nom", "test_prenom", "test_photo", $u); // Remplacez par l'ID de l'apprenti à supprimer dans votre base de données
+
+    // Définissez de nouvelles valeurs pour le nom, le prénom et la photo de l'apprenti
+    $nouveauNom = "NouveauNom";
+    $nouveauPrenom = "NouveauPrenom";
+    $nouvellePhoto = "nouvelle_photo.jpg";
+
+    // Appelez la fonction pour modifier l'apprenti
+    $resultatModification = modifierApprenti($idApprenti, $nouveauNom, $nouveauPrenom, $nouvellePhoto);
+
+    // Vérifiez si la modification a été effectuée avec succès
+    $this->assertTrue($resultatModification);
+
+}
+
+
+public function testUnApprenti()
+{
+    // On créer un apprenti
+    $u['login'] = "login_test";
+    $u['mdp'] = "test_mdp";
+    $u['id_role'] = 1;
+    $idApprenti = inscriptionApprenti("test_nom", "test_prenom", "test_photo", $u); // Remplacez par l'ID de l'apprenti à supprimer dans votre base de données
     
+    // Appelez la fonction pour obtenir les informations sur un apprenti
+    $infosApprenti = unApprenti($idApprenti);
+
+    // Vérifiez si les informations ont été récupérées avec succès
+    $this->assertNotEmpty($infosApprenti);
+
+    $this->assertTrue($infosApprenti['nom'] == "test_nom");
+    $this->assertTrue($infosApprenti['prenom'] == "test_prenom");
+    $this->assertTrue($infosApprenti['photo'] == "test_photo");
+    
+}
+
+public function testApprentiDejaExistant()
+{
+    $nomExistant = 'test_nom';
+    $prenomExistant = 'test_prenom';
+    
+    $u['login'] = "login_test";
+    $u['mdp'] = "test_mdp";
+    $u['id_role'] = 1;
+    $idApprenti = inscriptionApprenti($nomExistant, $prenomExistant, "test_photo", $u); // Remplacez par l'ID de l'apprenti à supprimer dans votre base de données
+   
+
+    // Appelez la fonction pour vérifier si l'apprenti existe déjà
+    $existeDeja = apprentiDejaExistant($nomExistant, $prenomExistant);
+
+    // Vérifiez si l'apprenti existe déjà dans la base de données
+    $this->assertTrue($existeDeja);
+}
+
+public function testAjouterEducateur()
+{
+    
+    // Définissez des valeurs pour les paramètres de la fonction
+    $nom = 'NomTest';
+    $prenom = 'PrenomTest';
+    $mdp = 'MotDePasseTest';
+    $type = 'TypeTest';
+    $num = 'NumTest';
+
+    // Appelez la fonction pour ajouter un éducateur
+    $resultat = ajouterEducateur($nom, $prenom, $mdp, $type, $num);
+
+    // Vérifiez si l'ajout a réussi en vérifiant si le nombre de lignes affectées est supérieur à 0
+    $this->assertTrue($resultat);
 }
 
 
 
 
-
- 
 }
