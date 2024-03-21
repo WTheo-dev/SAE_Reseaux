@@ -312,7 +312,7 @@ public function testSupprimerApprenti()
     $u['login'] = "login_test";
     $u['mdp'] = "test_mdp";
     $u['id_role'] = 1;
-    $idApprenti = inscriptionApprenti("test_nom", "test_prenom", "test_photo", $u); // Remplacez par l'ID de l'apprenti à supprimer dans votre base de données
+    $idApprenti = inscriptionApprenti("test_nom", "test_prenom", "test_photo", $u);
 
     // Appelez la fonction de suppression avec l'ID de l'apprenti
     $resultatSuppression = supprimerApprenti($idApprenti);
@@ -327,9 +327,9 @@ public function testModifierApprenti()
     $u['login'] = "login_test";
     $u['mdp'] = "test_mdp";
     $u['id_role'] = 1;
-    $idApprenti = inscriptionApprenti("test_nom", "test_prenom", "test_photo", $u); // Remplacez par l'ID de l'apprenti à supprimer dans votre base de données
+    $idApprenti = inscriptionApprenti("test_nom", "test_prenom", "test_photo", $u);
 
-    // Définissez de nouvelles valeurs pour le nom, le prénom et la photo de l'apprenti
+    // on met les nouvelles valeurs
     $nouveauNom = "NouveauNom";
     $nouveauPrenom = "NouveauPrenom";
     $nouvellePhoto = "nouvelle_photo.jpg";
@@ -349,7 +349,7 @@ public function testUnApprenti()
     $u['login'] = "login_test";
     $u['mdp'] = "test_mdp";
     $u['id_role'] = 1;
-    $idApprenti = inscriptionApprenti("test_nom", "test_prenom", "test_photo", $u); // Remplacez par l'ID de l'apprenti à supprimer dans votre base de données
+    $idApprenti = inscriptionApprenti("test_nom", "test_prenom", "test_photo", $u);
     
     // Appelez la fonction pour obtenir les informations sur un apprenti
     $infosApprenti = unApprenti($idApprenti);
@@ -357,9 +357,10 @@ public function testUnApprenti()
     // Vérifiez si les informations ont été récupérées avec succès
     $this->assertNotEmpty($infosApprenti);
 
-    $this->assertTrue($infosApprenti['nom'] == "test_nom");
-    $this->assertTrue($infosApprenti['prenom'] == "test_prenom");
-    $this->assertTrue($infosApprenti['photo'] == "test_photo");
+    $this->assertEquals("test_nom", $infosApprenti['nom']);
+    $this->assertEquals("test_prenom", $infosApprenti['prenom']);
+    $this->assertEquals("test_photo", $infosApprenti['photo']);
+
     
 }
 
@@ -371,7 +372,7 @@ public function testApprentiDejaExistant()
     $u['login'] = "login_test";
     $u['mdp'] = "test_mdp";
     $u['id_role'] = 1;
-    $idApprenti = inscriptionApprenti($nomExistant, $prenomExistant, "test_photo", $u); // Remplacez par l'ID de l'apprenti à supprimer dans votre base de données
+    $idApprenti = inscriptionApprenti($nomExistant, $prenomExistant, "test_photo", $u);
    
 
     // Appelez la fonction pour vérifier si l'apprenti existe déjà
@@ -462,10 +463,6 @@ public function testModifierPersonnel()
     $this->assertTrue($resultatModification > 0);
 
 }
-
-
-
-
 
 
 }
