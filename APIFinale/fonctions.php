@@ -610,7 +610,7 @@ function creationFiche(
     $descriptionDemande,
     $degreUrgence,
     $typeIntervention,
-   $natureIntervention,
+    $natureIntervention,
     $travauxRealises,
     $travauxNonRealises,
     $couleurIntervention,

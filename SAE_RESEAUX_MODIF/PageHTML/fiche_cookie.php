@@ -18,7 +18,7 @@
 <h1>Cookie</h1>
 
 <?php
-foreach ($_COOKIE as $param => $value){
+foreach ($_COOKIE as $param => $value) {
     echo $param.' : '.$value.'<br>';
 }
 ?>

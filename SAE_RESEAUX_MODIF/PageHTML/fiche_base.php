@@ -4,42 +4,25 @@ include_once "../../APIFinale/fonctions.php";
 
 function matchFontSize()
 {
-    if (!isset($_COOKIE["configTaille"])) {return "1em";}
-    switch ($_COOKIE["configTaille"]) {
-        default:
-        case '75%':
-            return '1.75em';
-            break;
-        case '100%':
-            return '2em';
-            break;
-        case '125%':
-            return '2.25em';
-            break;
-        case "150%":
-            return "2.5em";
-            break;
-        case "175%":
-            return "2.75em";
-            break;
-        case '200%':
-            return '3em';
-            break;
-        case '225%':
-            return '3.25em';
-            break;
-        case "250%":
-            return "3.5em";
-            break;
-        case "275%":
-            return "3.75em";
-            break;
-        case "300%":
-            return "4em";
-            break;
-    }
-    return "1em";
+    $fontSizes = [
+        '75%' => '1.75em',
+        '100%' => '2em',
+        '125%' => '2.25em',
+        '150%' => '2.5em',
+        '175%' => '2.75em',
+        '200%' => '3em',
+        '225%' => '3.25em',
+        '250%' => '3.5em',
+        '275%' => '3.75em',
+        '300%' => '4em'
+    ];
+
+    $cookieValue = isset($_COOKIE["configTaille"]) ? $_COOKIE["configTaille"] : null;
+
+    return isset($fontSizes[$cookieValue]) ? $fontSizes[$cookieValue] : '1em';
 }
+
+
 function getFontName()
 {
 if (isset($_COOKIE["configPolice"])) {return $_COOKIE["configPolice"];}
