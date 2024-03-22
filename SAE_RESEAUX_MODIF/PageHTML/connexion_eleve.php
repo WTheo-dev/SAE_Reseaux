@@ -50,7 +50,7 @@
     $i += 1;
   }
   $etu = unApprenti($idetu);
-  $photoetu = $etu[0]["photo"]
+  $photoetu = $etu["photo"]
     ?>
 
   <form action="page_postco_eleve.php" method="post">

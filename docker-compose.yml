@@ -8,4 +8,7 @@ services:
       - "8080:80"
     volumes:
       - "./SAE_Reseaux/:/opt/lampp/htdocs"
-      - "./saebdd/:/opt/lampp/var/mysql"
+      - "sae-bdd/:/opt/lampp/var/mysql"
+
+volumes:
+  sae-bdd:
