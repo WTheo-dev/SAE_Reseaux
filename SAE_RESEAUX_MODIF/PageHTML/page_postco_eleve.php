@@ -1,22 +1,13 @@
 <?php
-    include_once "../../APIFinale/fonctions.php";
-    $etu = unApprenti($_POST["id"])[0];
-    $mdp = "";
+  session_start();
+  include_once "../../APIFinale/fonctions.php";
 
-    for ($i=0; $i<=9; $i++){
-      if (isset($_POST[$i])) {
-        $mdp = $mdp.$i;
-      }
-    }
+  if (!isset($_SESSION['id_apprenti'])) {
+    header('Location: index.php');
+    exit();
+  }
 
-    $user = getUtilisateur($etu["id_utilisateur"]);
-
-    if ($user["mdp"] != $mdp) {
-        header("Location: index.php");
-        exit();
-    }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 

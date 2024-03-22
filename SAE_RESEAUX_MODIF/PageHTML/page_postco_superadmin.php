@@ -1,29 +1,11 @@
 <?php
-    include_once "../../APIFinale/fonctions.php";
-    $persos = listeSuperAdmin();
-
-    list($prenom, $nom) = explode('.', $_POST["id"]);
-    $mdp = $_POST["mdp"];
-
-    foreach ($persos as $perso) {
-        if ($perso["nom"] == $nom && $perso["prenom"] == $prenom) {
-            $idcorrect = "yes";
-            $user = get_utilisateur($perso["id_utilisateur"]);
-            if ($user["mdp"] == $mdp) {
-                $mpdcorrect = "yes";
-            } else {
-                $mpdcorrect = "no";
-            }
-            break;
-        } else {
-            $idcorrect = "no";
-        }
-    }
-
-    if ($idcorrect == "no" || $mpdcorrect == "no") {
-        header("Location: connexion_superadmin.php");
-        exit();
-    }
+   session_start();
+   include_once "../../APIFinale/fonctions.php";
+ 
+   if (!isset($_SESSION['id_personnel'])) {
+     header('Location: index.php');
+     exit();
+   }
 ?>
 
     <!DOCTYPE html>
