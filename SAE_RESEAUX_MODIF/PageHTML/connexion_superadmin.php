@@ -1,23 +1,26 @@
 <?php
 session_start();
-
 include_once '../../APIFinale/fonctions.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $password = $_POST["mdp"];
-
-    if (connexionPersonnel($password)) {
-        // Authentication successful
-        $_SESSION["username"] = $username; // Store the username in the session
-        header("Location: page_postco_superadmin.php"); // Redirect to a welcome page after successful login
-        exit();
-    } else {
-        // Authentication failed
-        $error_message = "Invalid credentials"; // You can customize this message
+if (!isset($_SESSION['id_personnel'])) {
+    if (isset($_POST['id']) && isset($_POST['mdp'])) {
+        $nomPrenom = $_POST['id']; 
+        $mdp = $_POST['mdp'];
+        if (connexionSuperAdmin($nomPrenom, $mdp)) {
+            $_SESSION['id_personnel'] = $nomPrenom;
+            header('Location: page_postco_superadmin.php');
+            exit();
+        } else {
+            echo "Identifiants invalides. Veuillez réessayer.";
+        }
     }
+} else {
+    header('Location: page_postco_superadmin.php');
+    exit();
 }
-
 ?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -33,10 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="logo">
       <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
     </div>
-  </header>
+</header>
 <body class="body-superadmin">
     <div class="superadmin-wrapper">
-        <form action="page_postco_superadmin.php" method="post">
+        <form action="" method="post">
             <h1>Se connecter</h1>
             <div class="superadmin-input-box">
                 <input type="text" placeholder="prenom.nom" name="id" required>
@@ -51,14 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <a href="mot_de_passe_oublie_superadmin.html"> Mot de passe oublié ?</a>
             </div>
 
-            <button a type="submit" class="superadmin-btn">Se connecter</button>
-           
-            <script src="connexion_superadmin.js"></script>
+            <button type="submit" class="superadmin-btn">Se connecter</button>
             <button type="button" id="back-button" onclick="goBack()">Retour</button>
-            </div>
         </form>
-       
     </div>
-    
 </body>
 </html>

@@ -146,6 +146,28 @@ function connexionPersonnel($idPersonnel, $mdp)
   return false;
 }
 
+function connexionSuperAdmin($nomPrenom, $mdp)
+{
+    $bd = connexionBD();
+
+    // Séparation du nom et du prénom
+    list($nom, $prenom) = explode('.', $nomPrenom);
+
+    if (!empty($nom) && !empty($prenom)) {
+        $verificationSuperAdmin = $bd->prepare('SELECT * FROM personnel AS p 
+        INNER JOIN utilisateur AS u ON p.id_utilisateur = u.id_utilisateur 
+        WHERE p.nom = ? AND p.prenom = ? AND u.mdp = ? AND u.id_role = 2'); 
+        $verificationSuperAdmin->execute(array($nom, $prenom, $mdp));
+        $bd = null;
+        
+        return $verificationSuperAdmin->rowCount() > 0;
+    }
+
+    return false;
+}
+
+
+
 function validationMdp($mdp, $mdpConfirmation)
 {
   if ($mdp == $mdpConfirmation && strlen($mdp) >= 5) {
