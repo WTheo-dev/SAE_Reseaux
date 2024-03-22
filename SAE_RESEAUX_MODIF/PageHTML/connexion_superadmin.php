@@ -19,9 +19,6 @@ if (!isset($_SESSION['id_personnel'])) {
     exit();
 }
 ?>
-
-
-<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -36,10 +33,10 @@ if (!isset($_SESSION['id_personnel'])) {
     <div class="logo">
       <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
     </div>
-</header>
+  </header>
 <body class="body-superadmin">
     <div class="superadmin-wrapper">
-        <form action="" method="post">
+        <form action="page_postco_superadmin.php" method="post">
             <h1>Se connecter</h1>
             <div class="superadmin-input-box">
                 <input type="text" placeholder="prenom.nom" name="id" required>
@@ -54,9 +51,14 @@ if (!isset($_SESSION['id_personnel'])) {
                 <a href="mot_de_passe_oublie_superadmin.html"> Mot de passe oublié ?</a>
             </div>
 
-            <button type="submit" class="superadmin-btn">Se connecter</button>
+            <button a type="submit" class="superadmin-btn">Se connecter</button>
+           
+            <script src="connexion_superadmin.js"></script>
             <button type="button" id="back-button" onclick="goBack()">Retour</button>
+            </div>
         </form>
+       
     </div>
+    
 </body>
 </html>

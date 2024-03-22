@@ -18,10 +18,6 @@
   </header>
   <?php
   session_start();
-
-  include_once "../../APIFinale/fonctions.php";
-
-  session_start();
   include_once "../../APIFinale/fonctions.php";
 
   if (!isset ($_SESSION['id_personnel'])) {

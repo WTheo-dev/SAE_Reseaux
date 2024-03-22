@@ -1,30 +1,3 @@
-<?php
-session_start();
-include_once "../../APIFinale/fonctions.php";
-
-if (!isset ($_SESSION['id_apprenti'])) {
-  if (isset ($_POST['id']) && isset ($_POST['mdp'])) {
-    $idApprenti = $_POST['id'];
-    $mdp = $_POST['mdp'];
-
-    if (connexionApprenti($idApprenti, $mdp)) {
-      // Si les identifiants sont valides, créer la session
-      $_SESSION['id_apprenti'] = $idApprenti;
-      // Rediriger l'utilisateur vers une autre page
-      header('Location: page_postco_eleve.php');
-      exit();
-    } else {
-      // Si les identifiants sont invalides, afficher un message d'erreur
-      echo "Identifiants invalides. Veuillez réessayer.";
-    }
-  }
-} else {
-  // Si l'utilisateur est déjà connecté, rediriger vers une autre page
-  header('Location: page_postco_eleve.php');
-  exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -42,6 +15,43 @@ if (!isset ($_SESSION['id_apprenti'])) {
       <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
     </div>
   </header>
+
+  <?php
+  session_start();
+  include_once "../../APIFinale/fonctions.php";
+  if (!isset ($_SESSION['id_apprenti'])) {
+    if (isset ($_POST['id']) && isset ($_POST['mdp'])) {
+      $idApprenti = $_POST['id'];
+      $mdp = $_POST['mdp'];
+
+      if (connexionApprenti($idApprenti, $mdp)) {
+        // Si les identifiants sont valides, créer la session
+        $_SESSION['id_apprenti'] = $idApprenti;
+        // Rediriger l'utilisateur vers une autre page
+        header('Location: page_postco_eleve.php');
+        exit();
+      } else {
+        // Si les identifiants sont invalides, afficher un message d'erreur
+        echo "Identifiants invalides. Veuillez réessayer.";
+      }
+    }
+  } else {
+    // Si l'utilisateur est déjà connecté, rediriger vers une autre page
+    header('Location: page_postco_eleve.php');
+    exit();
+  }
+  $idetu = -1;
+  $i = 0;
+  while (true) {
+    if (isset ($_POST[$i])) {
+      $idetu = $i;
+      break;
+    }
+    $i += 1;
+  }
+  $etu = unApprenti($idetu);
+  $photoetu = $etu[0]["photo"]
+    ?>
 
   <form action="page_postco_eleve.php" method="post">
 
