@@ -467,23 +467,23 @@ class Test extends TestCase
 
         // Appeler la fonction pour créer une nouvelle fiche et récupérer son ID
         $idNouvelleFiche = creationFiche(
-            $numero,
-            $nomDuDemandeur,
-            $dateDemande,
-            $dateIntervention,
-            $dureeIntervention,
-            $localisation,
-            $descriptionDemande,
-            $degreUrgence,
-            $typeIntervention,
-            $natureIntervention,
-            $travauxRealises,
-            $travauxNonRealises,
-            $couleurIntervention,
-             $etatFiche,
-            $dateCreation,
-            $idApprenti,
-            $idPersonnel
+                $numero,
+                $nomDuDemandeur,
+                $dateDemande,
+                $dateIntervention,
+                $dureeIntervention,
+                $localisation,
+                $descriptionDemande,
+                $degreUrgence,
+                $typeIntervention,
+                $natureIntervention,
+                $travauxRealises,
+                $travauxNonRealises,
+                $couleurIntervention,
+                $etatFiche,
+                $dateCreation,
+                $idApprenti,
+                $idPersonnel
         );
 
         // Vérifier si la création de la fiche a réussi en vérifiant si l'ID est valide
