@@ -378,7 +378,8 @@ function getMateriauxForElectricite()
     );
 }
 
-function afficherMateriaux($descriptionDemande, $i) {
+function afficherMateriaux($descriptionDemande, $i)
+{
     $cookieName = 'materiaux' . $i;
     $cookieValue = isset($_COOKIE[$cookieName]) ? $_COOKIE[$cookieName] : null;
 

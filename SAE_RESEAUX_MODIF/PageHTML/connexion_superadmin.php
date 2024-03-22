@@ -4,7 +4,7 @@ include_once '../../APIFinale/fonctions.php';
 
 if (!isset($_SESSION['id_personnel'])) {
     if (isset($_POST['id']) && isset($_POST['mdp'])) {
-        $nomPrenom = $_POST['id']; 
+        $nomPrenom = $_POST['id'];
         $mdp = $_POST['mdp'];
         if (connexionSuperAdmin($nomPrenom, $mdp)) {
             $_SESSION['id_personnel'] = $nomPrenom;
@@ -19,6 +19,7 @@ if (!isset($_SESSION['id_personnel'])) {
     exit();
 }
 ?>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
