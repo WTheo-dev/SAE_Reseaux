@@ -200,8 +200,20 @@ class Test extends TestCase
 
     public function testApprentiConnexionReussieAvecIdentifiantsValides()
     {
+        // On ajoute un apprenti
+        $nom = "Doef";
+        $prenom = "Johnt";
+        $photo = "johny_doef.jpg";
+        $utilisateur = array(
+            'login' => 'johnt.doef',
+            'mdp' => 'password1234',
+            'id_role' => 1 // role de l'apprenti
+        );
+
+        // Appelez la fonction d'inscription avec les valeurs définies
+        $resultatInscription = inscriptionApprenti($nom, $prenom, $photo, $utilisateur);
         // Appel de la fonction à tester
-        $resultat = connexionApprenti('2', 'motdepasse2');
+        $resultat = connexionApprenti($resultatInscription, 'password1234');
         
         // Vérifier si la connexion a réussi
         $this->assertTrue($resultat);
