@@ -1,3 +1,4 @@
+<?php ?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -16,7 +17,7 @@
     </div>
 
 
-    <!-- Popup -->
+ 
     <div class="modal_mdpsoubliésuperadmin" id="myModal">
         <div class="modal_mdpsoubliésuperadmin-content">
             <span id="modal-close">&times;</span>

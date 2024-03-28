@@ -1,19 +1,43 @@
 <?php
-$nom    = $_POST["nom"];
-$prenom = $_POST["prenom"];
-$mdp    = $_POST["mdp"];
-$num    = $_POST["num"];
+session_start();
+include_once "../../APIFinale/fonctions.php";
 
-if ($_POST["educ-type"] == "simp") {
-    $type = 4;
-}else {
-    $type = 3;
+$succes = false;
+
+if (!isset($_SESSION['superadmin'])) {
+    header('Location: index.php');
+    exit();
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $mdp = $_POST['mdp']; 
 
-include_once "../../APIFinale/fonctions.php";
-$succes = ajouterEducateur($nom, $prenom, $mdp, $type, $num);
+    $roles = array();
+    if(isset($_POST['educ-type'])) {
+        $type_educateur = $_POST['educ-type'];
+        if ($type_educateur === "simp") {
+            $roles[] = 3; 
+        } elseif ($type_educateur === "tech") {
+            $roles[] = 4; 
+        } elseif ($type_educateur === "CIP") {
+            $roles[] = 5; 
+        }
+    }
+
+    $utilisateur = array(
+        'login' => $nom . ' ' . $prenom,
+        'mdp' => $mdp, 
+        'id_role' => $roles[0] 
+    );
+
+    $InscriptionEducateur = inscriptionPersonnel($nom, $prenom, $utilisateur);
+}
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +59,7 @@ $succes = ajouterEducateur($nom, $prenom, $mdp, $type, $num);
     <!-- Main Content -->
     <main>
         <?php if ($succes): ?>
-            <h1 style="text-align: center;">Succées</h1>
+            <h1 style="text-align: center;">Succès</h1>
         <?php else: ?>
             <h1 style="text-align: center;">Erreur</h1>
         <?php endif; ?>

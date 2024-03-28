@@ -17,30 +17,25 @@
     </div>
   </header>
   <?php
-  session_start();
-  include_once "../../APIFinale/fonctions.php";
-
-  if (!isset ($_SESSION['id_personnel'])) {
-    if (isset ($_POST['id']) && isset ($_POST['mdp'])) {
-      $idPersonnel = $_POST['id'];
-      $mdp = $_POST['mdp'];
-
-      if (connexionPersonnel($idPersonnel, $mdp)) {
-        // Si les identifiants sont valides, créer la session
-        $_SESSION['id_personnel'] = $idPersonnel;
-        // Rediriger l'utilisateur vers une autre page
-        header('Location: page_postco_admin.php');
-        exit();
-      } else {
-        // Si les identifiants sont invalides, afficher un message d'erreur
-        echo "Identifiants invalides. Veuillez réessayer.";
-      }
-    }
-  } else {
-    // Si l'utilisateur est déjà connecté, rediriger vers une autre page
-    header('Location: page_postco_admin.php');
-    exit();
-  }
+   session_start();
+   include_once '../../APIFinale/fonctions.php';
+   
+   if (!isset($_SESSION['personnel'])) {
+       if (isset($_POST['id']) && isset($_POST['mdp'])) {
+           $login = $_POST['id'];
+           $mdp = $_POST['mdp'];
+           if (connexionPersonnel($login, $mdp)) {
+               $_SESSION['personnel'] = $login;
+               header('Location: page_postco_admin.php');
+               exit();
+           } else {
+               echo "Identifiants invalides. Veuillez réessayer.";
+           }
+       }
+   } else {
+       header('Location: page_postco_admin.php');
+       exit();
+   }
   $id = -1;
   $i = 0;
   while (true) {

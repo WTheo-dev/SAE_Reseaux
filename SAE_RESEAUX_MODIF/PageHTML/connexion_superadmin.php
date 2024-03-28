@@ -2,12 +2,12 @@
 session_start();
 include_once '../../APIFinale/fonctions.php';
 
-if (!isset($_SESSION['id_personnel'])) {
+if (!isset($_SESSION['superadmin'])) {
     if (isset($_POST['id']) && isset($_POST['mdp'])) {
-        $nomPrenom = $_POST['id'];
+        $login = $_POST['id'];
         $mdp = $_POST['mdp'];
-        if (connexionSuperAdmin($nomPrenom, $mdp)) {
-            $_SESSION['id_personnel'] = $nomPrenom;
+        if (connexionSuperAdmin($login, $mdp)) {
+            $_SESSION['superadmin'] = $login;
             header('Location: page_postco_superadmin.php');
             exit();
         } else {
@@ -37,7 +37,7 @@ if (!isset($_SESSION['id_personnel'])) {
   </header>
 <body class="body-superadmin">
     <div class="superadmin-wrapper">
-        <form action="page_postco_superadmin.php" method="post">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> <!-- Correction de l'action du formulaire -->
             <h1>Se connecter</h1>
             <div class="superadmin-input-box">
                 <input type="text" placeholder="prenom.nom" name="id" required>
@@ -49,17 +49,17 @@ if (!isset($_SESSION['id_personnel'])) {
             </div>
             <div class="superadmin-remember-forgot">
                 <label><input type="checkbox" name="remember"> Se souvenir de moi</label>
-                <a href="mot_de_passe_oublie_superadmin.html"> Mot de passe oublié ?</a>
+                <a href="mot_de_passe_oublie_superadmin.php"> Mot de passe oublié ?</a> <
             </div>
 
-            <button a type="submit" class="superadmin-btn">Se connecter</button>
-           
+            <button type="submit" class="superadmin-btn">Se connecter</button> 
+
             <script src="connexion_superadmin.js"></script>
             <button type="button" id="back-button" onclick="goBack()">Retour</button>
             </div>
         </form>
-       
+
     </div>
-    
+
 </body>
 </html>

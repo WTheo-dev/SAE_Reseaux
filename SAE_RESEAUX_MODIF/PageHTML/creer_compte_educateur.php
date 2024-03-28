@@ -1,3 +1,12 @@
+<?php
+   session_start();
+   include_once "../../APIFinale/fonctions.php";
+ 
+   if (!isset($_SESSION['superadmin'])) {
+     header('Location: index.php');
+     exit();
+   }
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -29,21 +38,20 @@
         <div class="creer_compte_educateur-gender-box">
             <h3>Type Educateur</h3>
             <div class="creer_compte_educateur-gender-option">
-              <div class="creer_compte_educateur-gender">
-                <input type="radio" id="creer_compte_educateur-check-male" name="educ-type" value="simp" checked />
-                <label for="creer_compte_educateur-check-male">Educateur simple</label>
+              <div class="creer_compte_educateur_simple">
+                <input type="radio" id="creer_compte_educateur_simple" name="educ-type" value="simp" checked />
+                <label for="creer_compte_educateur_simple">Educateur simple</label>
               </div>
-              <div class="creer_compte_educateur-gender">
-                <input type="radio" id="creer_compte_educateur-check-female" name="educ-type" value="tech" />
-                <label for="creer_compte_educateur-check-female">Educateur technique</label>
+              <div class="creer_compte_educateur_tech">
+                <input type="radio" id="creer_compte_educateur_tech" name="educ-type" value="tech" checked />
+                <label for="creer_compte_educateur_tech">Educateur technique</label>
               </div>
-            </div>
+              <div class="creer_compte_CIP">
+                <input type="radio" id="creer_compte_CIP" name="educ-type" value="CIP" />
+                <label for="creer_compte_CIP">CIP</label>
+              </div>
           </div>
 
-          <div class="creer_compte_educateur-input-box">
-            <label for="num_tel">Numéro de téléphone (Optionnel)</label>
-            <input name="num" type="number" placeholder="Entrez un numéro de telephone (optionnel)" />
-          </div>
        
         <button type="submit">Créer compte educateur</button>
         <button type="button" onclick="redirectToPostcoAdmin()">Annuler</button>

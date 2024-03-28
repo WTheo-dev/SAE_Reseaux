@@ -1,9 +1,8 @@
 function deconnecter() {
-    // Ajoutez ici le code pour déconnecter l'utilisateur, par exemple, en supprimant les cookies ou en effectuant une déconnexion côté serveur.
-
-    // Redirigez l'utilisateur vers la page d'accueil
-    window.location.href = "index.php";
+  window.location.href = "deconnexion.php";
 }
+
+
 
 function showSection() {
     let selectActions = document.getElementById("actions");
@@ -40,7 +39,7 @@ function showSection() {
         window.location.href = "creer_cours_superadmin.php";
         break;
       case "modifiercours":
-        window.location.href = "modifier_cours_superadmin.html";
+        window.location.href = "modifier_cours_superadmin.php";
         break;
         case "creereducateurs":
         window.location.href = "creer_compte_educateur.php";

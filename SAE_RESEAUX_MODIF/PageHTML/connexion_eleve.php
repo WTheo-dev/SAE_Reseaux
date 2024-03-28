@@ -18,27 +18,23 @@
 
   <?php
   session_start();
-  include_once "../../APIFinale/fonctions.php";
-  if (!isset ($_SESSION['id_apprenti'])) {
-    if (isset ($_POST['id']) && isset ($_POST['mdp'])) {
-      $idApprenti = $_POST['id'];
-      $mdp = $_POST['mdp'];
-
-      if (connexionApprenti($idApprenti, $mdp)) {
-        // Si les identifiants sont valides, créer la session
-        $_SESSION['id_apprenti'] = $idApprenti;
-        // Rediriger l'utilisateur vers une autre page
-        header('Location: page_postco_eleve.php');
-        exit();
-      } else {
-        // Si les identifiants sont invalides, afficher un message d'erreur
-        echo "Identifiants invalides. Veuillez réessayer.";
+  include_once '../../APIFinale/fonctions.php';
+  
+  if (!isset($_SESSION['apprenti'])) {
+      if (isset($_POST['id']) && isset($_POST['mdp'])) {
+          $login = $_POST['id'];
+          $mdp = $_POST['mdp'];
+          if (connexionApprenti($login, $mdp)) {
+              $_SESSION['apprenti'] = $login;
+              header('Location: page_postco_eleve.php');
+              exit();
+          } else {
+              echo "Identifiants invalides. Veuillez réessayer.";
+          }
       }
-    }
   } else {
-    // Si l'utilisateur est déjà connecté, rediriger vers une autre page
-    header('Location: page_postco_eleve.php');
-    exit();
+      header('Location: page_postco_eleve.php');
+      exit();
   }
   $idetu = -1;
   $i = 0;
@@ -50,23 +46,22 @@
     $i += 1;
   }
   $etu = unApprenti($idetu);
-  $photoetu = $etu["photo"]
-    ?>
+  $photoetu = $etu["photo"];
+  ?>
 
   <form action="page_postco_eleve.php" method="post">
-
-    <input hidden name="id" value="<?php echo $idetu; ?>" />
 
     <div class="content-container">
       <div class="rectangle2-connexion-eleve">
         <img id="Imageenfant-connexion-eleve" src="Image/etu/<?php echo $photoetu; ?>" alt="description">
+        <p><?php echo $etu["nom"] . " " . $etu["prenom"]; ?></p>
       </div>
       <p class="p_connexion_eleve">Mettez votre code : </p>
 
       <div id="container">
         <div id="lock-container">
           <div id="lock-screen" class="lock-screen">
-            <div class="lock-dot">
+          <div class="lock-dot">
               <input type="checkbox" id="1" name="1" style="display: none;" />
               <label for="1">1</label>
             </div>
@@ -115,15 +110,13 @@
       </div>
 
       <button type="submit" id="connect-button_educ">Se connecter</button>
-
+    </div>
   </form>
 
   <button id="a" onclick="clearSelection()">Effacer</button>
   <button id="back-button" onclick="goBack()">Retour</button>
-  </div>
 
   <script src="connexion_eleve.js"></script>
 </body>
 
 </html>
-

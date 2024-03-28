@@ -1,5 +1,11 @@
 <?php
+session_start();
 include_once "../../APIFinale/fonctions.php";
+
+if (!isset($_SESSION['superadmin'])) {
+  header('Location: index.php');
+  exit();
+}
 $formcreer = false;
 if (isset($_POST["nom-form"])) {
     ajouterFormation($_POST["nom-form"], null, null);

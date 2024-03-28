@@ -2,8 +2,7 @@
   session_start();
   include_once "../../APIFinale/fonctions.php";
   
-  if (!isset($_SESSION['id_personnel'])) {
-   
+  if (!isset($_SESSION['personnel'])) {
     header('Location: index.php');
     exit();
   }

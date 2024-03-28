@@ -112,52 +112,43 @@ function conversionHTML($tableauAConvertir)
   return $tableauConverti;
 }
 
-function connexionApprenti($idApprenti, $mdp)
-{
-  $bd = connexionBD();
-
-    if (!empty($idApprenti)) {
-      $verificationApprenti = $bd->prepare('SELECT * from apprenti as a, utilisateur as u WHERE a.id_apprenti = ?
-      AND a.id_utilisateur = u.id_utilisateur AND u.mdp = ?');
-      $verificationApprenti->execute(array($idApprenti, $mdp));
-      $bd = null;
-      
-      return $verificationApprenti->rowCount() > 0;
-
-    }
-  
-  return false;
-}
-
-function connexionPersonnel($idPersonnel, $mdp)
-{
-  $bd = connexionBD();
-
-  if (!empty($idPersonnel)) {
-    $verificationApprenti = $bd->prepare('SELECT * from personnel as p, utilisateur as u WHERE p.id_personnel = ?
-    AND p.id_utilisateur = u.id_utilisateur AND u.mdp = ?');
-    $verificationApprenti->execute(array($idPersonnel, $mdp));
-    $bd = null;
-    
-    return $verificationApprenti->rowCount() > 0;
-
-  }
-
-  return false;
-}
-
-function connexionSuperAdmin($nomPrenom, $mdp)
+function connexionApprenti($login, $mdp)
 {
     $bd = connexionBD();
 
-    // Séparation du nom et du prénom
-    list($nom, $prenom) = explode('.', $nomPrenom);
+    if (!empty($login) && !empty($mdp)) {
+        $verificationApprenti = $bd->prepare('SELECT * FROM utilisateur WHERE login = ? AND mdp = ? AND id_role = 1');
+        $verificationApprenti->execute(array($login, $mdp));
+        $bd = null;
+        
+        return $verificationApprenti->rowCount() > 0;
+    }
 
-    if (!empty($nom) && !empty($prenom)) {
-        $verificationSuperAdmin = $bd->prepare('SELECT * FROM personnel AS p
-        INNER JOIN utilisateur AS u ON p.id_utilisateur = u.id_utilisateur
-        WHERE p.nom = ? AND p.prenom = ? AND u.mdp = ? AND u.id_role = 2');
-        $verificationSuperAdmin->execute(array($nom, $prenom, $mdp));
+    return false;
+}
+
+function connexionPersonnel($login, $mdp)
+{
+    $bd = connexionBD();
+
+    if (!empty($login) && !empty($mdp)) {
+        $verificationPersonnel = $bd->prepare('SELECT * FROM utilisateur WHERE login = ? AND mdp = ? AND id_role IN (3, 4, 5)');
+        $verificationPersonnel->execute(array($login, $mdp));
+        $bd = null;
+        
+        return $verificationPersonnel->rowCount() > 0;
+    }
+
+    return false;
+}
+
+function connexionSuperAdmin($login, $mdp)
+{
+    $bd = connexionBD();
+
+    if (!empty($login) && !empty($mdp)) {
+        $verificationSuperAdmin = $bd->prepare('SELECT * FROM utilisateur WHERE login = ? AND mdp = ? AND id_role = 2');
+        $verificationSuperAdmin->execute(array($login, $mdp));
         $bd = null;
         
         return $verificationSuperAdmin->rowCount() > 0;
@@ -165,6 +156,7 @@ function connexionSuperAdmin($nomPrenom, $mdp)
 
     return false;
 }
+
 
 
 
@@ -235,33 +227,37 @@ function listeApprenti()
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////        GESTION DES SUPERADMINS      ////////////////////
 /////////////////////////////////////////////////////////////////////////////
+function inscriptionApprenti($nom, $prenom, $photo, $utilisateur) {
+  $bd = connexionBD();
 
-function inscriptionApprenti($nom, $prenom, $photo, $utilisateur)
-{
-    $bd = connexionBD();
-    $nom = htmlspecialchars($nom);
-    $prenom = htmlspecialchars($prenom);
-    $photo = htmlspecialchars($photo);
+  $nom = htmlspecialchars($nom);
+  $prenom = htmlspecialchars($prenom);
 
-    $bd->beginTransaction();
+  $bd->beginTransaction();
 
-    $ajoutUtilisateur = $bd->prepare('INSERT INTO utilisateur(login, mdp, id_role) VALUES (?, ?, ?)');
-    $ajoutUtilisateur->execute(array($utilisateur['login'], $utilisateur['mdp'], $utilisateur['id_role']));
-    $idUtilisateur = $bd->lastInsertId();
-
-    if (empty($nom) || empty($prenom) || empty($photo)) {
+  $ajoutUtilisateur = $bd->prepare('INSERT INTO utilisateur(login, mdp, id_role) VALUES (?, ?, ?)');
+  if (!$ajoutUtilisateur->execute(array($utilisateur['login'], $utilisateur['mdp'], $utilisateur['id_role']))) {
       $bd->rollBack();
       return false;
-    }
+  }
+  $idUtilisateur = $bd->lastInsertId();
 
-    $ajoutApprenti = $bd->prepare('INSERT INTO apprenti(nom, prenom, photo, id_utilisateur) VALUES (?, ?, ?, ?)');
-    $ajoutApprenti->execute(array($nom, $prenom, $photo, $idUtilisateur));
-    $idApprenti = $bd->lastInsertId();
+  if (empty($nom) || empty($prenom) || empty($photo)) {
+      $bd->rollBack();
+      return false;
+  }
 
-    $bd->commit();
+  $ajoutApprenti = $bd->prepare('INSERT INTO apprenti(nom, prenom, photo, id_utilisateur) VALUES (?, ?, ?, ?)');
+  if (!$ajoutApprenti->execute(array($nom, $prenom, $photo, $idUtilisateur))) {
+      $bd->rollBack();
+      return false;
+  }
 
-    return $idApprenti;
-  
+  $idApprenti = $bd->lastInsertId();
+
+  $bd->commit();
+
+  return $idApprenti;
 }
 
 function supprimerApprenti($idApprenti)
@@ -398,14 +394,20 @@ function apprentiDejaExistant($nom, $prenom)
 /////////////////////////////////////////////////////////////////////////////
 function inscriptionPersonnel($nom, $prenom, $utilisateur)
 {
-
     $bd = connexionBD();
+
     $nom = htmlspecialchars($nom);
     $prenom = htmlspecialchars($prenom);
+
     $bd->beginTransaction();
 
     $ajoutUtilisateur = $bd->prepare('INSERT INTO utilisateur(login, mdp, id_role) VALUES (?, ?, ?)');
-    $ajoutUtilisateur->execute(array($utilisateur['login'], $utilisateur['mdp'], $utilisateur['id_role']));
+    
+    if(!$ajoutUtilisateur->execute(array($utilisateur['login'], $utilisateur['mdp'], $utilisateur['id_role']))){
+    $bd->rollBack();
+    return false;
+    }
+
     $idUtilisateur = $bd->lastInsertId();
 
     if (empty($nom) || empty($prenom)) {
@@ -414,7 +416,11 @@ function inscriptionPersonnel($nom, $prenom, $utilisateur)
     }
 
     $ajoutPersonnel = $bd->prepare('INSERT INTO personnel(nom, prenom, id_utilisateur) VALUES (?, ?, ?)');
-    $ajoutPersonnel->execute(array($nom, $prenom, $idUtilisateur));
+    if(!$ajoutPersonnel->execute(array($nom, $prenom, $idUtilisateur))){
+      $bd->rollBack();
+      return false;
+    }
+
     $idPersonnel = $bd->lastInsertId();
 
     $bd->commit();
