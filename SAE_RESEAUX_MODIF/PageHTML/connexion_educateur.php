@@ -17,29 +17,29 @@
     </div>
   </header>
   <?php
-   session_start();
-   include_once '../../APIFinale/fonctions.php';
-   
-   if (!isset($_SESSION['personnel'])) {
-       if (isset($_POST['id']) && isset($_POST['mdp'])) {
-           $login = $_POST['id'];
-           $mdp = $_POST['mdp'];
-           if (connexionPersonnel($login, $mdp)) {
-               $_SESSION['personnel'] = $login;
-               header('Location: page_postco_admin.php');
-               exit();
-           } else {
-               echo "Identifiants invalides. Veuillez réessayer.";
-           }
-       }
-   } else {
-       header('Location: page_postco_admin.php');
-       exit();
-   }
+  session_start();
+  include_once '../../APIFinale/fonctions.php';
+
+  if (!isset($_SESSION['personnel'])) {
+    if (isset($_POST['id']) && isset($_POST['mdp'])) {
+      $login = $_POST['id'];
+      $mdp = $_POST['mdp'];
+      if (connexionPersonnel($login, $mdp)) {
+        $_SESSION['personnel'] = $login;
+        header('Location: page_postco_admin.php');
+        exit();
+      } else {
+        echo "Identifiants invalides. Veuillez réessayer.";
+      }
+    }
+  } else {
+    header('Location: page_postco_admin.php');
+    exit();
+  }
   $id = -1;
   $i = 0;
   while (true) {
-    if (isset ($_POST[$i])) {
+    if (isset($_POST[$i])) {
       $id = $i;
       break;
     }
@@ -53,7 +53,7 @@
   <form action="page_postco_admin.php" method="post">
 
     <div class="label_connexion_educ">
-      <input type="text" id="nom" name="nom" value="<?php echo $prenomperso . " " . $nomperso; ?>" />
+      <input type="text" id="nom" name="nom" value="<?php echo $nomperso . " " . $prenomperso; ?>" readonly />
     </div>
     <div class="content-container">
       <p class="p_connexion_eleve">Mettez votre code : </p>

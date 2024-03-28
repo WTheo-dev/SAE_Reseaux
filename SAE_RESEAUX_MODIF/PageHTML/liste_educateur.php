@@ -19,7 +19,7 @@ include_once "../../APIFinale/fonctions.php";
 
 <body class="body-liste-educateur">
   <div class="liste-educ">
-    <h2 >Liste des Éducateurs</h2>
+    <h2>Liste des Éducateurs</h2>
   </div>
 <form action="connexion_educateur.php" method="post">
 
@@ -35,7 +35,7 @@ include_once "../../APIFinale/fonctions.php";
   <tbody>
 
     <?php
-      $persos = listeEducateur();
+      $persos = listePersonnel();
       foreach ($persos as $perso) {
         echo "<tr>";
         echo "<td>".$perso["nom"]."</td>";

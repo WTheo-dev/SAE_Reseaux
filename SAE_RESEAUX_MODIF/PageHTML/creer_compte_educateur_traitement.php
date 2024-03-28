@@ -33,10 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     );
 
     $InscriptionEducateur = inscriptionPersonnel($nom, $prenom, $utilisateur);
+
+    if ($InscriptionEducateur) {
+        $succes = true;
+    }
 }
 
 ?>
-
 
 
 <!DOCTYPE html>

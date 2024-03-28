@@ -455,7 +455,7 @@ function modifierPersonnel($idPersonnel, $nom, $prenom)
 function listePersonnel()
 {
   $bd = connexionBD();
-  $listePersonnel = $bd->prepare('SELECT * FROM personnel');
+  $listePersonnel = $bd->prepare('SELECT nom, prenom, id_personnel, id_Utilisateur FROM personnel WHERE id_personnel <> 2');
   $listePersonnel->execute(array());
   $bd = null;
   $resultat = [];
@@ -467,13 +467,14 @@ function listePersonnel()
             'nom'           => $row['nom'],
             'prenom'        => $row['prenom'],
             'id_personnel'  => $row['id_personnel'],
-            'id_utilisateur'=> $row['id_utilisateur']
+            'id_utilisateur'=> $row['id_Utilisateur']
         )
     );
   }
 
   return $resultat;
 }
+
 
 function listeEducateur()
 {
