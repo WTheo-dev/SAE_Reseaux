@@ -43,7 +43,7 @@
         </div>
 
         <div class="square3">
-            <a href="fiche1.php">
+            <a href="listeFiche.php">
                 <img src="Image/fiche.png" alt="fiche">
             </a>
             <button class="bouton-anciennes-fiches">Mes anciennes fiches</button>

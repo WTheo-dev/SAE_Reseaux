@@ -23,15 +23,8 @@
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mdp = $_POST['mdp']; 
   
-    $idApprenti = -1;
-    $i = 0;
-    while (true) {
-      if (isset($_POST[$i])) {
-        $idApprenti = $i;
-        break;
-      }
-      $i += 1;
-    }
+    $idApprenti = 9; // You can replace 123 with any value you want
+
 
     $etu = unApprenti($idApprenti);
     $photoetu = $etu["photo"];
@@ -47,7 +40,7 @@
     if (connexionApprenti($mdp, $etu)) {
       $_SESSION['apprenti'] = $etu['login'];
       echo $etu['login'];
-      header("Location: page_postco_apprenti.php");
+      header("Location: page_postco_eleve.php");
       exit();
     } else {
       echo "Identifiants invalides. Veuillez réessayer.";
@@ -78,7 +71,7 @@
         </div>
       </div>
 
-      <input type="text" id="mdp" name="mdp" value="">
+      <input type="text" id="mdp" name="mdp" onclick="clearSelection()" value="">
 
       <button type="submit" id="connect-button_educ">Se connecter</button>
     </div>
