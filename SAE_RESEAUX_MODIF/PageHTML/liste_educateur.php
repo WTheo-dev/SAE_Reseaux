@@ -42,15 +42,28 @@ include_once "../../APIFinale/fonctions.php";
           echo "<td>" . $perso["nom"] . "</td>";
           echo "<td>" . $perso["prenom"] . "</td>";
           echo "<td>" . $perso['description'] . "</td>";
-          echo "<td><button name='" . $perso["id_personnel"] . "'>Se connecter</button></td>";
+          echo "<td><button type='submit' class='educateur_button' name='id_personnel' value='" . $perso["id_personnel"] . "'>Se connecter</button></td>";
           echo "</tr>";
         }
         ?>
+
 
       </tbody>
     </table>
 
   </form>
+
+  <script>
+    document.querySelectorAll('.educateur_button').forEach(item => {
+      item.addEventListener('click', event => {
+        var idEducateur = event.target.value;
+        document.getElementById('id_educateur_input').value = idEducateur;
+        document.getElementById('educateur_form').submit();
+      });
+    });
+  </script>
+
+
 
   <button type="button" onclick="window.location.href = 'index.php';">Retour</button>
 

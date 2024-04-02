@@ -25,7 +25,7 @@ if (!isset($_SESSION['superadmin'])) {
         <div class="header_text"><img class="logo_page_postco_superadmin" src="Image/APEAJ_color2.png"
                 alt="pictogramme"></div>
         <div class="child-info">
-            <!-- <h2 class="header_text_postcoeleve"><?php echo $prenom . " " . strtoupper($nom); ?></h2> -->
+            <h2 class="header_text_postcoeleve"><?php echo $_SESSION['superadmin']; ?></h2>
         </div>
     </header>
 

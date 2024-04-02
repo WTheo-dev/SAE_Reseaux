@@ -14,12 +14,12 @@ function checkCode() {
 }
 
 function showConnectButton() {
-  const connectButton = document.getElementById('connect-button');
+  const connectButton = document.getElementById('connect-button_educ');
   connectButton.style.display = 'block';
 }
 
 function hideConnectButton() {
-  const connectButton = document.getElementById('connect-button');
+  const connectButton = document.getElementById('connect-button_educ');
   connectButton.style.display = 'none';
 }
 

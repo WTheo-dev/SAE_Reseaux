@@ -21,20 +21,19 @@
   include_once '../../APIFinale/fonctions.php';
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $mdp = $_POST['mdp']; 
-  
-    $idApprenti = 9; // You can replace 123 with any value you want
-
-
-    $etu = unApprenti($idApprenti);
-    $photoetu = $etu["photo"];
-
     $mdp = '';
     for ($i = 1; $i <= 9; $i++) {
       if (isset($_POST['digit' . $i])) {
         $mdp .= $i;
       }
     }
+  }
+
+    $idApprenti = $_POST['id_apprenti'];
+
+    $etu = unApprenti($idApprenti);
+    $photoetu = $etu["photo"];
+
 
 
     if (connexionApprenti($mdp, $etu)) {
@@ -42,40 +41,36 @@
       echo $etu['login'];
       header("Location: page_postco_eleve.php");
       exit();
-    } else {
-      echo "Identifiants invalides. Veuillez réessayer.";
     }
-  }
   ?>
 
-
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-    <div class="content-container">
-      <img id="Imageenfant-connexion-eleve" src="Image/etu/<?php echo $photoetu; ?>" alt="description">
-      <div class="rectangle2-connexion-eleve">
-        <input type="text" id="nom" name="nom" value="<?php echo $etu["login"]; ?>" readonly />
-      </div>
-      <p class="p_connexion_eleve">Mettez votre code : </p>
-      <div id="container">
-        <div id="lock-container">
-          <div id="lock-screen" class="lock-screen">
-            <?php for ($i = 1; $i <= 9; $i++) { ?>
-              <div class="lock-dot">
-                <input type="checkbox" id="<?php echo $i; ?>" name="digit<?php echo $i; ?>" style="display: none;">
-                <label for="<?php echo $i; ?>">
-                  <?php echo $i; ?>
-                </label>
-              </div>
-            <?php } ?>
-          </div>
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+  <div class="content-container">
+    <img id="Imageenfant-connexion-eleve" src="Image/etu/<?php echo $photoetu; ?>" alt="description">
+    <div class="rectangle2-connexion-eleve">
+      <input type="text" id="nom" name="nom" value="<?php echo $etu["login"]; ?>" readonly />
+    </div>
+    <p class="p_connexion_eleve">Mettez votre code : </p>
+    <div id="container">
+      <div id="lock-container">
+        <div id="lock-screen" class="lock-screen">
+          <?php for ($i = 1; $i <= 9; $i++) { ?>
+            <div class="lock-dot">
+              <input type="checkbox" id="<?php echo $i; ?>" name="digit<?php echo $i; ?>" style="display: none;">
+              <label for="<?php echo $i; ?>">
+                <?php echo $i; ?>
+              </label>
+            </div>
+          <?php } ?>
         </div>
       </div>
-
-      <input type="text" id="mdp" name="mdp" onclick="clearSelection()" value="">
-
-      <button type="submit" id="connect-button_educ">Se connecter</button>
     </div>
-  </form>
+    <input type="hidden" id="id_apprenti" name="id_apprenti" value="<?php echo $idApprenti; ?>">
+    <input type="hidden" id="mdp" name="mdp" value="">
+    <button type="submit" id="connect-button_educ">Se connecter</button>
+  </div>
+</form>
+
 
   <button id="a" onclick="clearSelection()">Effacer</button>
 

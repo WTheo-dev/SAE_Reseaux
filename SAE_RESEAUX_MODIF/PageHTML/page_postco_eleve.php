@@ -27,7 +27,8 @@
             <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
         </div>
         <div class="child-info">
-            <h2 class="header_text_postcoeleve"><?php echo $etu["prenom"]." ".strtoupper($etu["nom"]); ?></h2>
+        <h2 class="header_text_postcoeleve"><?php echo $_SESSION['apprenti']; ?></h2>
+
             <p class="header_text_postcoeleve">Formation de l'élève</p>
         </div>
     </header>
@@ -59,7 +60,7 @@
 
     <div class="bouton-deconnexion-container">
         <form method="post" action="deconnexion.php">
-            <button id="btnDeconnexion" type="submit">Déconnexion</button>
+            <button id="btnDeconnexion" type="submit" class="bouton-deconnexion">Déconnexion</button>
         </form>
     </div>
 

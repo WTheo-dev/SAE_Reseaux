@@ -138,16 +138,21 @@ function connexionApprenti($mdp, $etu) {
 
 
 
-function connexionPersonnel($login, $mdp)
+function connexionPersonnel($mdp, $perso)
 {
+
+  if (empty($mdp) || !ctype_digit($mdp) || strlen($mdp) !== 4) {
+    return false;
+  }
   $bd = connexionBD();
+  $login = $perso["login"];
 
-  if (!empty($login) && !empty($mdp)) {
-    $verificationPersonnel = $bd->prepare('SELECT * FROM utilisateur WHERE login = ? AND mdp = ? AND id_role IN (3, 4, 5)');
-    $verificationPersonnel->execute(array($login, $mdp));
-    $bd = null;
-
-    return $verificationPersonnel->rowCount() > 0;
+  $verificationPersonnel = $bd->prepare('SELECT * FROM utilisateur WHERE login = ? AND mdp = ? AND id_role IN (3, 4, 5)');
+  $verificationPersonnel->execute(array($login, $mdp));
+  
+  if ($verificationPersonnel->rowCount() > 0) {
+    $_SESSION['personnel'] = $login;
+    return true;
   }
 
   return false;
@@ -381,33 +386,38 @@ function modifierApprenti($idApprenti, $nom, $prenom, $photo)
 
 function unApprenti($idApprenti)
 {
-    $bd = connexionBD();
-    $idApprenti = htmlspecialchars($idApprenti);
-    $query = 'SELECT apprenti.*, utilisateur.login, utilisateur.mdp FROM apprenti 
+  $bd = connexionBD();
+  $idApprenti = htmlspecialchars($idApprenti);
+  $query = 'SELECT apprenti.*, utilisateur.login, utilisateur.mdp FROM apprenti 
               INNER JOIN utilisateur ON apprenti.id_utilisateur = utilisateur.id_utilisateur 
               WHERE apprenti.id_apprenti = ?';
-    $listeUnApprenti = $bd->prepare($query);
-    $listeUnApprenti->execute(array($idApprenti));
-    $bd = null;
-    $resultat = [];
+  $listeUnApprenti = $bd->prepare($query);
+  $listeUnApprenti->execute(array($idApprenti));
+  $bd = null;
+  $resultat = [];
 
-    foreach ($listeUnApprenti as $row) {
-        array_push(
-            $resultat,
-            array(
-                'nom' => $row['nom'],
-                'prenom' => $row['prenom'],
-                'photo' => $row['photo'],
-                'id_apprenti' => $row['id_apprenti'],
-                'id_utilisateur' => $row['id_utilisateur'],
-                'login' => $row['login'],
-                'mdp' => $row['mdp']
-            )
-        );
-    }
+  foreach ($listeUnApprenti as $row) {
+    array_push(
+      $resultat,
+      array(
+        'nom' => $row['nom'],
+        'prenom' => $row['prenom'],
+        'photo' => $row['photo'],
+        'id_apprenti' => $row['id_apprenti'],
+        'id_utilisateur' => $row['id_utilisateur'],
+        'login' => $row['login'],
+        'mdp' => $row['mdp']
+      )
+    );
+  }
 
+  if (!empty($resultat)) {
     return $resultat[0];
+  } else {
+    return null;
+  }
 }
+
 
 
 function apprentiDejaExistant($nom, $prenom)
@@ -584,34 +594,37 @@ function listeSuperAdmin()
 
 function unPersonnel($idPersonnel)
 {
-    $bd = connexionBD();
-    $idPersonnel = htmlspecialchars($idPersonnel);
-    $query = 'SELECT personnel.*, utilisateur.id_utilisateur, utilisateur.login, utilisateur.mdp 
-    FROM personnel 
-    INNER JOIN utilisateur ON personnel.id_utilisateur = utilisateur.id_utilisateur 
-    WHERE personnel.id_personnel = ?';
+  $bd = connexionBD();
+  $idPersonnel = htmlspecialchars($idPersonnel);
+  $query = 'SELECT personnel.*, utilisateur.login, utilisateur.mdp FROM personnel 
+              INNER JOIN utilisateur ON personnel.id_utilisateur = utilisateur.id_utilisateur 
+              WHERE personnel.id_personnel = ?';
+  $listeUnPersonnel = $bd->prepare($query);
+  $listeUnPersonnel->execute(array($idPersonnel));
+  $bd = null;
+  $resultat = [];
 
-    $listeUnPersonnel = $bd->prepare($query);
-    $listeUnPersonnel->execute(array($idPersonnel));
-    $bd = null;
-    $resultat = [];
+  foreach ($listeUnPersonnel as $row) {
+    array_push(
+      $resultat,
+      array(
+        'nom' => $row['nom'],
+        'prenom' => $row['prenom'],
+        'id_personnel' => $row['id_personnel'],
+        'id_utilisateur' => $row['id_utilisateur'],
+        'login' => $row['login'],
+        'mdp' => $row['mdp']
+      )
+    );
+  }
 
-    foreach ($listeUnPersonnel as $row) {
-        array_push(
-            $resultat,
-            array(
-                'nom' => $row['nom'],
-                'prenom' => $row['prenom'],
-                'id_personnel' => $row['id_personnel'],
-                'id_utilisateur' => $row['id_utilisateur'],
-                'login' => $row['login'],
-                'mdp' => $row['mdp']
-            )
-        );
-    }
-
+  if (!empty($resultat)) {
     return $resultat[0];
+  } else {
+    return null;
+  }
 }
+
 
 
 function personnelDejaExistant($nom, $prenom)
