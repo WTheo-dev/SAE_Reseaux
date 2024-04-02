@@ -4,6 +4,7 @@ include_once "../../APIFinale/fonctions.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,35 +22,38 @@ include_once "../../APIFinale/fonctions.php";
   <div class="liste-educ">
     <h2>Liste des Éducateurs</h2>
   </div>
-<form action="connexion_educateur.php" method="post">
+  <form action="connexion_educateur.php" method="post">
 
-<table>
-  <caption>Table</caption>
-  <thead>
-    <tr>
-      <th>Nom</th>
-      <th>Prénom</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Rôle</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
 
-    <?php
-      $persos = listePersonnel();
-      foreach ($persos as $perso) {
-        echo "<tr>";
-        echo "<td>".$perso["nom"]."</td>";
-        echo "<td>".$perso["prenom"]."</td>";
-        echo "<td><button name='".$perso["id_personnel"]."'>Se connecter</button></td>";
-        echo "</tr>";
-      }
-    ?>
-  </tbody>
-</table>
+        <?php
+        $persos = listePersonnel();
+        foreach ($persos as $perso) {
+          echo "<tr>";
+          echo "<td>" . $perso["nom"] . "</td>";
+          echo "<td>" . $perso["prenom"] . "</td>";
+          echo "<td>" . $perso['description'] . "</td>";
+          echo "<td><button name='" . $perso["id_personnel"] . "'>Se connecter</button></td>";
+          echo "</tr>";
+        }
+        ?>
 
-</form>
+      </tbody>
+    </table>
 
-<button type="button" onclick="window.location.href = 'index.php';">Retour</button>
+  </form>
+
+  <button type="button" onclick="window.location.href = 'index.php';">Retour</button>
 
 </body>
+
 </html>

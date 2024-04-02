@@ -34,7 +34,6 @@ include_once "../../APIFinale/fonctions.php";
                     echo "<button name=".$etu["id_apprenti"].">";
                     echo "<img src='Image/etu/".$etu["photo"]."' alt='".$etu["prenom"]."'>";
                     echo "<p class='p_pd'>" . strtoupper($etu["nom"]) . " " . $etu["prenom"] . "</p>";
-
                     echo "</button>";
                 }
             ?>

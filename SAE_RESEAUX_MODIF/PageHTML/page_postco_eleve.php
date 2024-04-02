@@ -7,6 +7,7 @@
     exit();
   }
 
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -57,7 +58,9 @@
     </div>
 
     <div class="bouton-deconnexion-container">
-        <a href="index.php" class="bouton-deconnexion">Déconnexion</a>
+        <form method="post" action="deconnexion.php">
+            <button id="btnDeconnexion" type="submit">Déconnexion</button>
+        </form>
     </div>
 
 </body>

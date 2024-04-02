@@ -19,101 +19,73 @@
   <?php
   session_start();
   include_once '../../APIFinale/fonctions.php';
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $mdp = $_POST['mdp']; 
   
-  if (!isset($_SESSION['apprenti'])) {
-      if (isset($_POST['id']) && isset($_POST['mdp'])) {
-          $login = $_POST['id'];
-          $mdp = $_POST['mdp'];
-          if (connexionApprenti($login, $mdp)) {
-              $_SESSION['apprenti'] = $login;
-              header('Location: page_postco_eleve.php');
-              exit();
-          } else {
-              echo "Identifiants invalides. Veuillez réessayer.";
-          }
+    $idApprenti = -1;
+    $i = 0;
+    while (true) {
+      if (isset($_POST[$i])) {
+        $idApprenti = $i;
+        break;
       }
-  } else {
-      header('Location: page_postco_eleve.php');
-      exit();
-  }
-  $idetu = -1;
-  $i = 0;
-  while (true) {
-    if (isset ($_POST[$i])) {
-      $idetu = $i;
-      break;
+      $i += 1;
     }
-    $i += 1;
+
+    $etu = unApprenti($idApprenti);
+    $photoetu = $etu["photo"];
+
+    $mdp = '';
+    for ($i = 1; $i <= 9; $i++) {
+      if (isset($_POST['digit' . $i])) {
+        $mdp .= $i;
+      }
+    }
+
+
+    if (connexionApprenti($mdp, $etu)) {
+      $_SESSION['apprenti'] = $etu['login'];
+      echo $etu['login'];
+      header("Location: page_postco_apprenti.php");
+      exit();
+    } else {
+      echo "Identifiants invalides. Veuillez réessayer.";
+    }
   }
-  $etu = unApprenti($idetu);
-  $photoetu = $etu["photo"];
   ?>
 
-  <form action="page_postco_eleve.php" method="post">
 
+  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
     <div class="content-container">
+      <img id="Imageenfant-connexion-eleve" src="Image/etu/<?php echo $photoetu; ?>" alt="description">
       <div class="rectangle2-connexion-eleve">
-        <img id="Imageenfant-connexion-eleve" src="Image/etu/<?php echo $photoetu; ?>" alt="description">
-        <p><?php echo $etu["nom"] . " " . $etu["prenom"]; ?></p>
+        <input type="text" id="nom" name="nom" value="<?php echo $etu["login"]; ?>" readonly />
       </div>
       <p class="p_connexion_eleve">Mettez votre code : </p>
-
       <div id="container">
         <div id="lock-container">
           <div id="lock-screen" class="lock-screen">
-          <div class="lock-dot">
-              <input type="checkbox" id="1" name="1" style="display: none;" />
-              <label for="1">1</label>
-            </div>
-
-            <div class="lock-dot">
-              <input type="checkbox" id="2" name="2" style="display: none;" />
-              <label for="2">2</label>
-            </div>
-
-            <div class="lock-dot">
-              <input type="checkbox" id="3" name="3" style="display: none;" />
-              <label for="3">3</label>
-            </div>
-
-            <div class="lock-dot">
-              <input type="checkbox" id="4" name="4" style="display: none;" />
-              <label for="4">4</label>
-            </div>
-
-            <div class="lock-dot">
-              <input type="checkbox" id="5" name="5" style="display: none;" />
-              <label for="5">5</label>
-            </div>
-
-            <div class="lock-dot">
-              <input type="checkbox" id="6" name="6" style="display: none;" />
-              <label for="6">6</label>
-            </div>
-
-            <div class="lock-dot">
-              <input type="checkbox" id="7" name="7" style="display: none;" />
-              <label for="7">7</label>
-            </div>
-
-            <div class="lock-dot">
-              <input type="checkbox" id="8" name="8" style="display: none;" />
-              <label for="8">8</label>
-            </div>
-
-            <div class="lock-dot">
-              <input type="checkbox" id="9" name="9" style="display: none;" />
-              <label for="9">9</label>
-            </div>
+            <?php for ($i = 1; $i <= 9; $i++) { ?>
+              <div class="lock-dot">
+                <input type="checkbox" id="<?php echo $i; ?>" name="digit<?php echo $i; ?>" style="display: none;">
+                <label for="<?php echo $i; ?>">
+                  <?php echo $i; ?>
+                </label>
+              </div>
+            <?php } ?>
           </div>
         </div>
       </div>
+
+      <input type="text" id="mdp" name="mdp" value="">
 
       <button type="submit" id="connect-button_educ">Se connecter</button>
     </div>
   </form>
 
   <button id="a" onclick="clearSelection()">Effacer</button>
+
   <button id="back-button" onclick="goBack()">Retour</button>
 
   <script src="connexion_eleve.js"></script>

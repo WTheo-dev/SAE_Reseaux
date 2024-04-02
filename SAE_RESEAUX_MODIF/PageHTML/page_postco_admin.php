@@ -50,8 +50,6 @@
 
 </div>
 
-<!-- Ajoutez d'autres profils si nécessaire -->
-
 <div class="profile-buttons" id="profile_btn">
   <button onclick="creerNouvelleFiche()">Créer une nouvelle fiche</button>
   <button onclick="accederEvaluation()">Evaluation des fiches</button>

@@ -40,11 +40,11 @@
             <div class="creer_compte_educateur-gender-option">
               <div class="creer_compte_educateur_simple">
                 <input type="radio" id="creer_compte_educateur_simple" name="educ-type" value="simp" checked />
-                <label for="creer_compte_educateur_simple">Educateur simple</label>
+                <label for="creer_compte_educateur_simple">Educateur technique</label>
               </div>
               <div class="creer_compte_educateur_tech">
                 <input type="radio" id="creer_compte_educateur_tech" name="educ-type" value="tech" checked />
-                <label for="creer_compte_educateur_tech">Educateur technique</label>
+                <label for="creer_compte_educateur_tech">Educateur simple</label>
               </div>
               <div class="creer_compte_CIP">
                 <input type="radio" id="creer_compte_CIP" name="educ-type" value="CIP" />
