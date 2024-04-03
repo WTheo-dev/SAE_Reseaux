@@ -26,20 +26,30 @@ include_once "../../APIFinale/fonctions.php";
         </div>
 
         <div id="liste_photo_p_d">
-            <!-- Placeholder pour les photos d'élève -->
-            <form action="connexion_eleve.php" method="post">
-            <?php
-                $etus = listeApprenti();
-                foreach ($etus as $etu) {
-                    echo "<button name=".$etu["id_apprenti"].">";
-                    echo "<img src='Image/etu/".$etu["photo"]."' alt='".$etu["prenom"]."'>";
-                    echo "<p class='p_pd'>" . strtoupper($etu["nom"]) . " " . $etu["prenom"] . "</p>";
+    <!-- Placeholder pour les photos d'élève -->
+    <form id="apprenti_form" action="connexion_eleve.php" method="post">
+        <?php
+        $etus = listeApprenti();
+        foreach ($etus as $etu) {
+            echo "<button type='submit' name='id_apprenti' value='".$etu["id_apprenti"]."'>";
+            echo "<img src='Image/etu/".$etu["photo"]."' alt='".$etu["prenom"]."'>";
+            echo "<p class='p_pd'>" . strtoupper($etu["nom"]) . " " . $etu["prenom"] . "</p>";
+            echo "</button>";
+        }
+        ?>
+    </form>
+</div>
 
-                    echo "</button>";
-                }
-            ?>
-            </form>
-        </div>
+<script>
+    document.querySelectorAll('.apprenti_button').forEach(item => {
+        item.addEventListener('click', event => {
+            var idApprenti = event.target.value;
+            document.getElementById('id_apprenti_input').value = idApprenti;
+            document.getElementById('apprenti_form').submit();
+        });
+    });
+</script>
+
     </main>
     <p class="p_p_d"> Ou connecte toi en tant que personnel</p>
     <div class="boutons">

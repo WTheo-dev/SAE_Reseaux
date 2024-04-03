@@ -1,3 +1,13 @@
+<?php
+  session_start();
+  include_once "../../APIFinale/fonctions.php";
+  
+  if (!isset($_SESSION['personnel'])) {
+    header('Location: index.php');
+    exit();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,7 +22,7 @@
             <div class="header_text"><img class="logo_page_suivi_eleve_educateur"
             src="Image/APEAJ_color2.png" alt="pictogramme"></div>
             <div class="child-info">
-                <h2 class="header_text_suivi_eleve_educateur">Nom Prénom de l'admin</h2>
+                <h2 class="header_text_postcoeleve"><?php echo $_SESSION['personnel']; ?></h2>
             </div>
         </header>
 

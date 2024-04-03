@@ -1,3 +1,13 @@
+<?php
+  session_start();
+  include_once "../../APIFinale/fonctions.php";
+  
+  if (!isset($_SESSION['personnel'])) {
+    header('Location: index.php');
+    exit();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang= fr>
   <head>
@@ -8,6 +18,9 @@
       <div class="logo">
         <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
       </div>
+      <div class="child-info">
+                <h2 class="header_text_postcoeleve"><?php echo $_SESSION['personnel']; ?></h2>
+            </div>
     </header>
   </head>
   <body class="body-voircom">

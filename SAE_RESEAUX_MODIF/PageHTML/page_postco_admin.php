@@ -21,7 +21,7 @@
   <div class="logo">
     <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
     <div class="child-info">
-      <h2 class="header_text_postcoeleve"><?php echo $prenom." ".strtoupper($nom); ?></h2>
+    <h2 class="header_text_postcoeleve"><?php echo $_SESSION['personnel']; ?></h2>
     </div>
   </div>
 </header>
@@ -50,8 +50,6 @@
 
 </div>
 
-<!-- Ajoutez d'autres profils si nécessaire -->
-
 <div class="profile-buttons" id="profile_btn">
   <button onclick="creerNouvelleFiche()">Créer une nouvelle fiche</button>
   <button onclick="accederEvaluation()">Evaluation des fiches</button>
@@ -59,9 +57,11 @@
 </div>
 
 <div class="btn-deconnexion_page_postco_admin">
-  <button onclick="deconnecter()">Deconnexion</button>
-</div>
-
+        <form method="post" action="deconnexion.php">
+            <button id="btnDeconnexion" type="submit" class="bouton-deconnexion">Déconnexion</button>
+        </form>
+    </div>
+    
 <script src="page_postco_admin.js"></script>
 </body>
 </html>

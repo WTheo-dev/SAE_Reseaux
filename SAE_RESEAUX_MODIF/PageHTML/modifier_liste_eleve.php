@@ -93,7 +93,6 @@ $apprentis = listeApprenti();
   <h2>Liste d'élèves</h2>
 
   <table>
-  <caption>Table</caption>
     <thead>
       <tr>
         <th>Prénom</th>

@@ -19,7 +19,7 @@ function showConnectButton() {
 }
 
 function hideConnectButton() {
-  const connectButton = document.getElementById('connect-button');
+  const connectButton = document.getElementById('connect-button_educ');
   connectButton.style.display = 'none';
 }
 
@@ -29,13 +29,51 @@ function connect() {
 
 function clearSelection() {
 
-  const get  = document.getElementsByTagName('input');
+  const get = document.getElementsByTagName('input');
 
   for (const element of get) {
     element.checked = false;
   }
 }
 
+
+document.addEventListener('DOMContentLoaded', function () {
+  const checkboxes = document.querySelectorAll('#lock-screen input[type="checkbox"]');
+
+  checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener('change', (event) => {
+          let checkedCount = 0;
+          checkboxes.forEach((cb) => {
+              if (cb.checked) checkedCount++;
+          });
+
+          if (checkedCount > 4) {
+              event.target.checked = false;
+          }
+      });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const lockScreen = document.getElementById("lock-screen");
+  const digits = lockScreen.querySelectorAll(".lock-dot input[type='checkbox']");
+  const mdpField = document.getElementById("mdp");
+  
+  let mdp = '';
+
+  digits.forEach(function(digit) {
+    digit.addEventListener("change", function() {
+      if (this.checked) {
+        mdp += this.id;
+      } else {
+        mdp = mdp.replace(this.id, '');
+      }
+      mdpField.value = mdp;
+    });
+  });
+});
+
+
 function goBack() {
-  window.location.href = 'index.php';
+  window.location.href = 'liste_educateur.php';
 }
