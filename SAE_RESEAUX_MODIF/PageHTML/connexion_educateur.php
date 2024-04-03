@@ -66,7 +66,7 @@
             </div>
         </div>
         <input type="hidden" id="id_personnel" name="id_personnel" value="<?php echo $idPersonnel; ?>">
-      <input type="text" id="mdp" name="mdp" value="">
+      <input type="hidden" id="mdp" name="mdp" value="">
         <button type="submit" id="connect-button_educ">Se connecter</button>
     </div>
   </form>

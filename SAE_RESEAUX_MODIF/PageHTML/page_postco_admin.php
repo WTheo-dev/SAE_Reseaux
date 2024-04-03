@@ -57,9 +57,11 @@
 </div>
 
 <div class="btn-deconnexion_page_postco_admin">
-  <button onclick="deconnecter()">Deconnexion</button>
-</div>
-
+        <form method="post" action="deconnexion.php">
+            <button id="btnDeconnexion" type="submit" class="bouton-deconnexion">Déconnexion</button>
+        </form>
+    </div>
+    
 <script src="page_postco_admin.js"></script>
 </body>
 </html>
