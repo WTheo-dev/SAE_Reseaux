@@ -2,6 +2,7 @@
 include_once "fiche_base.php";
 $numpage=8;
 include_once "fiche_head.php";
+include_once "enregistrer_materiaux.php";
 ?>
 <?php include_once "../../APIFinale/fonctions.php"; ?>
 <body class="body_fiche">
@@ -17,14 +18,14 @@ include_once "fiche_head.php";
     <div id="mat_droit">
     <?php
     for ($i=0; $i<5; $i++) {
-        afficherMateriaux($descriptionDemande, $i);
+        echoMateriaux($i);
     }
     ?>
     </div>
     <div id="mat_gauche">
     <?php
     for ($i=0; $i<5; $i++) {
-        afficherMateriaux($descriptionDemande, $i+5);
+        echoMateriaux($i+5);
     }
     ?>
     </div>
@@ -36,3 +37,27 @@ include_once "fiche_head.php";
     ?>
 
 <?php ifformfin() ?>
+
+<script>
+    function enregistrerMateriau(selection, numero) {
+        var materiau = selection.value;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "enregistrer_materiaux.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log("Matériau enregistré avec succès !");
+            }
+        };
+        xhr.send("materiau=" + encodeURIComponent(materiau) + "&numero=" + numero);
+    }
+    
+    var selects = document.querySelectorAll("select");
+    selects.forEach(function(select, index) {
+        select.addEventListener("change", function() {
+            enregistrerMateriau(this, index);
+        });
+    });
+</script>
+

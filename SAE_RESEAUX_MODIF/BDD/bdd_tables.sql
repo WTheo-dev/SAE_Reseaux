@@ -200,12 +200,13 @@ CREATE TABLE IF NOT EXISTS `materiaux` (
   `id_utilisateur` int NOT NULL,
   `id_fiche` int NOT NULL,
   `id_materiaux` int NOT NULL AUTO_INCREMENT,
-  `nom_image` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nom_materiaux` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `type_intervention` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id_utilisateur`,`id_fiche`,`id_materiaux`),
-  KEY `id_fiche` (`id_fiche`)
+  `nom_image` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nom_materiaux` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description_demande` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id_materiaux`),
+  FOREIGN KEY (`id_fiche`) REFERENCES `fiche_dintervention`(`id_fiche`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 -- --------------------------------------------------------
 

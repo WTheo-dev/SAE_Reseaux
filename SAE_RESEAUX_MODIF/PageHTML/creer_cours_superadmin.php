@@ -26,16 +26,18 @@ if (!isset($_SESSION['superadmin'])) {
     <h1>Choisissez le cours que vous voulez créer</h1>
 
     <form action="fiche_base.php" method="post">
-        <label for="categorie">Choisissez la catégorie :</label>
-        <select name="categorie" id="categorie">
-            <option value="Finition">Finition</option>
-            <option value="Plomberie">Plomberie</option>
-            <option value="Aménagement d'intérieur">Aménagement d'intérieur</option>
-            <option value="Serrurerie">Serrurerie</option>
-            <option value="Electricite">Électricité</option>
-        </select>
-        <button type="submit">Créer le cours</button>
-    </form>
+    <label for="categorie">Choisissez la catégorie :</label>
+    <select name="categorie" id="categorie">
+        <option value="Finition">Finition</option>
+        <option value="Plomberie">Plomberie</option>
+        <option value="Aménagement d'intérieur">Aménagement d'intérieur</option>
+        <option value="Serrurerie">Serrurerie</option>
+        <option value="Electricite">Électricité</option>
+    </select>
+    <input type="hidden" name="description_demande" id="description_demande">
+    <button type="submit">Créer le cours</button>
+</form>
+
     
 
     <div class="btn_deconnexion-container">
@@ -43,6 +45,12 @@ if (!isset($_SESSION['superadmin'])) {
     </div>
 
     <script>
+    function updateDescriptionDemande() {
+        var categorie = document.getElementById("categorie").value;
+        document.getElementById("description_demande").value = categorie;
+    }
+
+    document.getElementById("categorie").addEventListener("change", updateDescriptionDemande);
     
         function redirectTo(page) {
             window.location.href = page;
