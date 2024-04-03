@@ -1,25 +1,33 @@
 USE apeaj
 
 -- Insertion des données d'apprentis
-INSERT INTO `apprenti` (`nom`, `prenom`, `photo`, `id_utilisateur`) VALUES
-('Dupont', 'Jean', 'jean.jpg', 1),
-('Martin', 'Sophie', 'sophie.jpg', 2),
-('Dubois', 'Pierre', 'pierre.jpg', 3),
-('Lefevre', 'Marie', 'marie.jpg', 4),
-('Leroy', 'Luc', 'luc.jpg', 5),
-('Moreau', 'Claire', 'claire.jpg', 6),
-('Roux', 'Thomas', 'thomas.jpg', 7),
-('Fournier', 'Julie', 'julie.jpg', 8);
+INSERT INTO `apprenti` (`id_apprenti`, `nom`, `prenom`, `photo`, `id_utilisateur`) VALUES
+(25, 'Dupont', 'Jean', 'jean.jpg', 59),
+(26, 'Martin', 'Sophie', 'sophie.jpg', 60),
+(21, 'Lebrun', 'Jane', 'jane.jpg', 55),
+(27, 'Dubois', 'Pierre', 'pierre.jpg', 61),
+(28, 'Lefevre', 'Marie', 'marie.jpg', 62),
+(29, 'Leroy', 'Luc', 'luc.jpg', 63),
+(30, 'Moreau', 'Claire', 'claire.jpg', 64),
+(31, 'Roux', 'Thomas', 'thomas.jpg', 65);
+COMMIT;
 
 -- Insertion des données pour la table `utilisateur`
-INSERT INTO `utilisateur` (`login`, `mdp`, `id_role`) VALUES
-('utilisateur1', 'motdepasse1', 1),
-('utilisateur2', 'motdepasse2', 2),
-('utilisateur3', 'motdepasse3', 3),
-('utilisateur4', 'motdepasse4', 4),
-('utilisateur5', 'motdepasse5', 4),
-('utilisateur6', 'motdepasse6', 5),
-('utilisateur7', 'motdepasse7', 1);
+INSERT INTO `utilisateur` (`id_Utilisateur`, `login`, `mdp`, `id_role`) VALUES
+(2, 'Theo.WAZYDRAG', 'azerty', 2),
+(47, 'WAZYDRAG Theo', '1234', 4),
+(48, 'Chazal Claire', '1245', 5),
+(55, 'Lebrun Jane', '1234', 1),
+(53, 'Dujardin Jean', '3456', 3),
+(54, 'Dupond Jacques', '5678', 4),
+(60, 'Martin Sophie', '1478', 1),
+(59, 'Dupont Jean', '1268', 1),
+(61, 'Dubois Pierre', '1269', 1),
+(62, 'Lefevre Marie', '1258', 1),
+(63, 'Leroy Luc', '1245', 1),
+(64, 'Moreau Claire', '3568', 1),
+(65, 'Roux Thomas', '6789', 1);
+COMMIT;
 
 -- Insertion des données pour la table `rôle`
 INSERT INTO `role` (`id_role`, `description`) VALUES
