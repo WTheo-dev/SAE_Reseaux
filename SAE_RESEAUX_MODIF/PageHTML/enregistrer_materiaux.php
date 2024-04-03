@@ -10,5 +10,5 @@ $stmt = $conn->prepare($sql);
 $stmt->execute([$materiau, $numero]);
 $conn = null;
 
-echo "Matériau enregistré avec succès !";
+echo "Matériaux enregistré avec succès !";
 ?>

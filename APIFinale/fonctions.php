@@ -912,6 +912,31 @@ function ficheInterventionDejaExistante($numero)
   return $ficheExiste->rowCount() > 0;
 }
 
+
+
+function peutAfficherBouton($role, $roleAutorise)
+{
+    return $role === $roleAutorise;
+}
+
+
+function getRoleIdByLogin($conn, $login) {
+    $sql = "SELECT u.id_role 
+            FROM utilisateur u
+            WHERE u.login = :login";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':login', $login);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        return $result['id_role'];
+    } else {
+        return null;
+    }
+}
+
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////          GESTION DES COURS          ////////////////////
 /////////////////////////////////////////////////////////////////////////////

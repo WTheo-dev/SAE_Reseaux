@@ -27,9 +27,7 @@
             <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
         </div>
         <div class="child-info">
-        <h2 class="header_text_postcoeleve"><?php echo $_SESSION['apprenti']; ?></h2>
-
-            <p class="header_text_postcoeleve">Formation de l'élève</p>
+            <h2 class="header_text_postcoeleve"><?php echo $_SESSION['apprenti']; ?></h2>
         </div>
     </header>
 

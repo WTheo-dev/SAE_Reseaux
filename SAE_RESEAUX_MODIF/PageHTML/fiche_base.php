@@ -1,6 +1,12 @@
 <?php
-
+session_start();
 include_once "../../APIFinale/fonctions.php";
+
+if (!isset($_SESSION['personnel']) && !isset($_SESSION['superadmin'])) {
+    header('Location: index.php');
+    exit();
+}
+
 
 function matchFontSize()
 {

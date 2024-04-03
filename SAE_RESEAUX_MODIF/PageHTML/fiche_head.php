@@ -1,5 +1,9 @@
 <?php include_once "fiche_base.php"; ?>
 
+<?php
+  include_once "../../APIFinale/fonctions.php";
+?>
+
 <?php if (!isset($nohead) || $nohead != "no"): ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,7 +23,7 @@
             <div class="header_text"><img class="logo_page_postco_superadmin"
             src="Image/APEAJ_color2.png" alt="pictogramme"></div>
             <div class="child-info">
-                <h2 class="header_text_postcoeleve">Nom Prénom de l'admin</h2>
+                <h2 class="header_text_postcoeleve"><?php echo $_SESSION['apprenti']; ?></h2>
             </div>
         </header>
     <style>

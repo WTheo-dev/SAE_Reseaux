@@ -1,6 +1,12 @@
 <?php
+  include_once "../../APIFinale/fonctions.php";
+?>
+
+<?php
 include_once "fiche_base.php";
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,7 +26,7 @@ include_once "fiche_base.php";
             <div class="header_text"><img class="logo_page_postco_superadmin"
             src="Image/APEAJ_color2.png" alt="pictogramme"></div>
             <div class="child-info">
-                <h2 class="header_text_postcoeleve">Nom Prénom de l'admin</h2>
+            <h2 class="header_text_postcoeleve"><?php echo $_SESSION['personnel']; ?></h2>
             </div>
         </header>
 <body class="body_fiche_valeur">

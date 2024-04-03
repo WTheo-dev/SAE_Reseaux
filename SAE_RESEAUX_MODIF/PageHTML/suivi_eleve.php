@@ -1,3 +1,15 @@
+<?php
+  session_start();
+  include_once "../../APIFinale/fonctions.php";
+
+  if (!isset($_SESSION['apprenti'])) {
+    header('Location: index.php');
+    exit();
+  }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,6 +20,9 @@
     <header class="header-suivi_eleve">
         <div class="logo">
           <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
+          <div class="child-info">
+            <h2 class="header_text_postcoeleve"><?php echo $_SESSION['apprenti']; ?></h2>
+        </div>
         </div>
       </header>
 </head>
@@ -16,7 +31,6 @@
         <h2>Suivez votre avancée</h2>
     </div>
 <table class="table-suivi_eleve">
-    <caption>table</caption>
     <thead>
         <tr class="tr-suivi_eleve">
             <th class="th-suivi_eleve">Nom de l'Éducateur</th>

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once "../../APIFinale/fonctions.php";
+
 if (!isset($_SESSION['superadmin'])) {
   header('Location: index.php');
   exit();
@@ -11,7 +12,7 @@ if (!isset($_SESSION['superadmin'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services</title>
+    <title>Création de Cours</title>
     <link rel="stylesheet" href="creer_cours_superadmin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-FawF8f7ovfA67zceqO8n+J3/z21S0g9/jeLiNgO7tn5z1eGrLJpRgz7XKL2eJpaOkt2tsQv7GfADmACuRvZ2eQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -19,7 +20,7 @@ if (!isset($_SESSION['superadmin'])) {
     <header class="header_page_creer_cours_superadmin">
         <div class="header_text"><img class="logo_page_creer_cours_superadmin" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
         <div class="child-info">
-            <h2 class="header_page_creer_cours_superadmin">Nom Prénom du SuperAdmin</h2>
+        <h2 class="header_text_postcoeleve"><?php echo $_SESSION['superadmin']; ?></h2>
         </div>
     </header>
 

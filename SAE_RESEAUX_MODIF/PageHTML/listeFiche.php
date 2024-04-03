@@ -26,7 +26,6 @@ if (!isset($_SESSION['apprenti'])) {
         </div>
         <div class="child-info">
             <h2 class="header_text_postcoeleve"><?php echo $_SESSION['apprenti']; ?></h2>
-            <p class="header_text_postcoeleve">Formation de l'élève</p>
         </div>
     </header>
 
@@ -53,7 +52,7 @@ if (!isset($_SESSION['apprenti'])) {
     }
     ?>
 
-    <a href="page_post_eleve.php" class="btn-retour">Retour</a>
+    <a href="page_postco_eleve.php" class="btn-retour">Retour</a>
 
 </body>
 
