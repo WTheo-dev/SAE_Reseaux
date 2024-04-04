@@ -45,7 +45,7 @@ function showSection() {
         window.location.href = "creer_compte_educateur.php";
         break;
       case "modifiereducateurs":
-        window.location.href = "modifier_educateur.html";
+        window.location.href = "modifier_liste_personnel.php";
         break;
            case "creerformations":
         window.location.href = "creer_formation_superadmin.php";

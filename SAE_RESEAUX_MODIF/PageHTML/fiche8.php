@@ -2,7 +2,6 @@
 include_once "fiche_base.php";
 $numpage=8;
 include_once "fiche_head.php";
-include_once "enregistrer_materiaux.php";
 ?>
 <?php include_once "../../APIFinale/fonctions.php"; ?>
 <body class="body_fiche">

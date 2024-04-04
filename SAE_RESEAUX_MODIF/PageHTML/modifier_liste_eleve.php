@@ -78,70 +78,91 @@
 </head>
 <body class="body_page_modifier_liste_eleve">
 
-<?php
-include_once "../../APIFinale/fonctions.php";
-$apprentis = listeApprenti();
-?>
 
   
 
   <header class="header_modifier_liste_eleve">
     <div class="header_text">
       <img class="logo_modifier_liste_eleve" src="Image/APEAJ_color2.png" alt="pictogramme"></div>
+      <h2 class="header_text_postcoeleve"><?php echo $_SESSION['superadmin']; ?></h2>
   </header>
 
-  <h2>Liste d'élèves</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Prénom</th>
-        <th>Nom</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-    <?php foreach ($apprentis as $apprenti) : ?>
+
+  <?php
+include_once "../../APIFinale/fonctions.php";
+?>
+<table>
+  <thead>
     <tr>
-        <td><?= $apprenti['prenom'] ?></td>
-        <td><?= $apprenti['nom'] ?></td>
-        <td>
-            <button class="btn btn-primary" onclick="setModifierApprentiId(<?= $apprenti['id_apprenti'] ?>,
-            '<?= $apprenti['prenom'] ?>', '<?= $apprenti['nom'] ?>')" data-toggle="modal"
-             data-target="#modifierModal">Modifier</button>
-            <button onclick="supprimerLigne(this)">Supprimer</button>
-        </td>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Actions</th>
     </tr>
-<?php endforeach; ?>
-    </tbody>
-  </table>
+  </thead>
+  <tbody>
+    <?php
+    // Récupération des données des apprentis
+    $apprentis = listeApprenti();
 
-  <div class="modal" id="modifierModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modifier élève</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-              <form id="modificationForm">
-                <input type="hidden" id="apprentiId" name="apprentiId" value="">
-                  <div class="form-group">
-                    <label for="nouveauNom">Nouveau Nom:</label>
-                    <input type="text" class="form-control" id="nouveauNom">
-                  </div>
-                  <div class="form-group">
-                    <label for="nouveauPrenom">Nouveau Prénom:</label>
-                    <input type="text" class="form-control" id="nouveauPrenom">
-                  </div>
-                  <button type="submit" class="btn btn-primary">Modifier</button>
-              </form>
-            </div>
-        </div>
-    </div>
-  </div>
+    // Affichage des données dans votre interface utilisateur
+    foreach ($apprentis as $apprenti) {
+        echo '<tr>';
+        echo '<td>' . $apprenti['prenom'] . '</td>';
+        echo '<td>' . $apprenti['nom'] . '</td>';
+        echo '<td>';
+        echo '<form action="" method="post">';
+        echo '<input type="hidden" name="idApprenti" value="' . $apprenti['id_apprenti'] . '">';
+        echo '<button class="btn btn-primary" type="submit" name="modifier">Modifier</button>';
+        echo '<button class="btn btn-primary" type="submit" name="supprimer">Supprimer</button>';
+        echo '</form>';
+        echo '</td>';
+        echo '</tr>';
+    }
+
+    // Modification ou suppression de l'apprenti si le formulaire est soumis
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST['idApprenti'])) {
+            $idApprenti = $_POST['idApprenti'];
+            if (isset($_POST['modifier'])) {
+                // Récupération de toutes les informations de l'apprenti
+                $bd = connexionBD();
+                $requete = $bd->prepare('SELECT * FROM apprenti WHERE id_apprenti = ?');
+                $requete->execute([$idApprenti]);
+                $apprenti = $requete->fetch(PDO::FETCH_ASSOC);
+                // Récupération du mot de passe de l'apprenti depuis une autre classe
+                // Supposons que le mot de passe est stocké dans une variable $mdpUtilisateur dans une autre classe
+                $mdpApprenti = $autreClasse->getMdp($apprenti['nom_utilisateur']);
+                $apprenti['mot_de_passe'] = $mdpApprenti;
+                // Affichage d'un formulaire pré-rempli avec les données de l'apprenti
+                echo '<tr>';
+                echo '<td colspan="3">';
+                echo '<form action="modifier_apprenti.php" method="post">';
+                foreach ($apprenti as $cle => $valeur) {
+                    echo '<input type="hidden" name="' . $cle . '" value="' . $valeur . '">';
+                }
+                echo '<button type="submit" name="modifier">Modifier</button>';
+                echo '</form>';
+                echo '</td>';
+                echo '</tr>';
+            } elseif (isset($_POST['supprimer'])) {
+                $resultatSuppression = supprimerApprenti($idApprenti);
+                if ($resultatSuppression) {
+                    echo '<tr><td colspan="3">L\'apprenti a été supprimé avec succès.</td></tr>';
+                } else {
+                    echo '<tr><td colspan="3">La suppression a échoué.</td></tr>';
+                }
+            }
+        } else {
+            echo '<tr><td colspan="3">Identifiant de l\'apprenti manquant.</td></tr>';
+        }
+    }
+    ?>
+  </tbody>
+</table>
+
+</body>
+</html>
 
 
 <button onclick="redirigerVersExportExcel()">Exporter vers Excel</button>

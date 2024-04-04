@@ -113,10 +113,11 @@ function conversionHTML($tableauAConvertir)
   return $tableauConverti;
 }
 
-function connexionApprenti($mdp, $etu) {
+function connexionApprenti($mdp, $etu)
+{
   // Vérifiez si le mot de passe est vide ou s'il ne contient pas exactement 4 chiffres
   if (empty($mdp) || !ctype_digit($mdp) || strlen($mdp) !== 4) {
-      return false;
+    return false;
   }
 
   $bd = connexionBD();
@@ -125,12 +126,12 @@ function connexionApprenti($mdp, $etu) {
   // Utilisez une requête SQL paramétrée pour éviter les attaques par injection SQL
   $verificationApprenti = $bd->prepare('SELECT * FROM utilisateur WHERE login = ? AND mdp = ?');
   $verificationApprenti->execute(array($login, $mdp));
-  
+
   // Si une ligne est retournée, cela signifie que les informations de connexion sont valides
   if ($verificationApprenti->rowCount() > 0) {
-      // Stockez le login dans la session
-      $_SESSION['apprenti'] = $login;
-      return true;
+    // Stockez le login dans la session
+    $_SESSION['apprenti'] = $login;
+    return true;
   }
 
   return false;
@@ -149,7 +150,7 @@ function connexionPersonnel($mdp, $perso)
 
   $verificationPersonnel = $bd->prepare('SELECT * FROM utilisateur WHERE login = ? AND mdp = ? AND id_role IN (3, 4, 5)');
   $verificationPersonnel->execute(array($login, $mdp));
-  
+
   if ($verificationPersonnel->rowCount() > 0) {
     $_SESSION['personnel'] = $login;
     return true;
@@ -289,7 +290,11 @@ function supprimerApprenti($idApprenti)
   $bd = connexionBD();
 
   $idApprenti = htmlspecialchars($idApprenti);
-  $suppressionApprenti = $bd->prepare('DELETE FROM apprenti WHERE id_apprenti = ?');
+  $suppressionApprenti = $bd->prepare('DELETE apprenti, utilisateur
+  FROM apprenti
+  JOIN utilisateur ON apprenti.id_utilisateur = utilisateur.id_utilisateur
+  WHERE apprenti.id_apprenti = ?
+  ');
   $suppressionApprenti->execute(array($idApprenti));
   $bd = null;
   return $suppressionApprenti->rowCount() > 0;
@@ -377,7 +382,10 @@ function modifierApprenti($idApprenti, $nom, $prenom, $photo)
   $nom = htmlspecialchars($nom);
   $prenom = htmlspecialchars($prenom);
   $photo = htmlspecialchars($photo);
-  $modifierApprenti = $bd->prepare('UPDATE apprenti SET nom = ?, prenom = ?, photo = ? where id_apprenti = ?');
+  $modifierApprenti = $bd->prepare('UPDATE apprenti AS a
+                                  INNER JOIN utilisateur AS u ON a.id_apprenti = u.id_apprenti
+                                  SET a.nom = ?, a.prenom = ?, a.photo = ?, u.mdp = ?
+                                  WHERE a.id_apprenti = ?');
   $modifierApprenti->execute(array($nom, $prenom, $photo, $idApprenti));
   $bd = null;
   return $modifierApprenti->rowCount() > 0;
@@ -473,7 +481,10 @@ function supprimerPersonnel($idPersonnel)
 {
   $bd = connexionBD();
   $idPersonnel = htmlspecialchars($idPersonnel);
-  $suppressionPersonnel = $bd->prepare('DELETE FROM personnel WHERE id_personnel = ?');
+  $suppressionPersonnel = $bd->prepare('DELETE personnel, utilisateur
+  FROM personnel
+  JOIN utilisateur ON personnel.id_utilisateur = utilisateur.id_utilisateur
+  WHERE personnel.id_personnel = ?');
   $suppressionPersonnel->execute(array($idPersonnel));
   $bd = null;
   return $suppressionPersonnel->rowCount() > 0;
@@ -916,25 +927,26 @@ function ficheInterventionDejaExistante($numero)
 
 function peutAfficherBouton($role, $roleAutorise)
 {
-    return $role === $roleAutorise;
+  return $role === $roleAutorise;
 }
 
 
-function getRoleIdByLogin($conn, $login) {
-    $sql = "SELECT u.id_role 
+function getRoleIdByLogin($conn, $login)
+{
+  $sql = "SELECT u.id_role 
             FROM utilisateur u
             WHERE u.login = :login";
 
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':login', $login);
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  $stmt = $conn->prepare($sql);
+  $stmt->bindParam(':login', $login);
+  $stmt->execute();
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($result) {
-        return $result['id_role'];
-    } else {
-        return null;
-    }
+  if ($result) {
+    return $result['id_role'];
+  } else {
+    return null;
+  }
 }
 
 /////////////////////////////////////////////////////////////////////////////
