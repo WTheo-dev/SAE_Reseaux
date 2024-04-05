@@ -4,7 +4,7 @@ function deconnecter() {
     window.location.href = "page_daccueil.html";
   }
   
-  function selectProfile(element) {
+  function selectProfile(element, id_app) {
     // Retirez d'abord la classe "selected" de tous les éléments
     const allContainers = document.querySelectorAll('.profile-switch-container');
     allContainers.forEach(container => {
@@ -17,6 +17,8 @@ function deconnecter() {
     // Affichez les boutons dans le profil sélectionné
     const buttonsContainer = document.getElementById("profile_btn") 
        buttonsContainer.style.display = 'flex';
+
+      document.getElementById("button_creer_nouvelle_fiche").setAttribute("value", id_app);
   }
   
   function creerNouvelleFiche() {
