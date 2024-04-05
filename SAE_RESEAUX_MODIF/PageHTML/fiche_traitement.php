@@ -1,4 +1,5 @@
 
+
 <?php
   session_start();
   include_once "../../APIFinale/fonctions.php";
@@ -50,21 +51,24 @@ if (isset($_POST['precedent'])) {
 foreach ($_POST as $param => $value) {
     $value = htmlspecialchars($value);
     setcookie($param, $value, time() + (86400 * 60));
-    if ((str_starts_with($name, "Texte") || str_starts_with($name, "Icon") || str_starts_with($name, "Audio"))
-    && !isset($_POST[$name])) {
-        unset($_COOKIE[$name]);
-        setcookie($name, '', -1);
+    if ((str_starts_with($param, "Texte") || str_starts_with($param, "Icon") || str_starts_with($param, "Audio"))
+    && !isset($_POST[$param])) {
+        unset($_COOKIE[$param]);
+        setcookie($param, '', -1);
     }
 }
 
-function uncheckCheckbox($name, $pagenum)
+
+
+function uncheckCheckbox($param, $pagenum)
 {
     global $numpage;
-    if (($numpage == $pagenum || $pagenum == "total") && !isset($_POST[$name])) {
-        unset($_COOKIE[$name]);
-        setcookie($name, '', -1);
+    if (($numpage == $pagenum || $pagenum == "total") && !isset($_POST[$param])) {
+        unset($_COOKIE[$param]);
+        setcookie($param, '', -1);
     }
 }
+
 uncheckCheckbox("Améliorative", 4);
 uncheckCheckbox("Préventive", 4);
 uncheckCheckbox("Corrective", 4);
@@ -72,5 +76,5 @@ uncheckCheckbox("Aménagement", 5);
 uncheckCheckbox("Finitions", 5);
 uncheckCheckbox("Installation_sanitaire", 5);
 uncheckCheckbox("Nécessite_un_nouvelle_intervention", 7);
-exit;
+
 

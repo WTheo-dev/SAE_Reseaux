@@ -2,6 +2,7 @@
 
 <?php
   include_once "../../APIFinale/fonctions.php";
+  $numpage = 1; 
 ?>
 
 <?php if (!isset($nohead) || $nohead != "no"): ?>

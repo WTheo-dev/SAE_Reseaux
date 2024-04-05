@@ -81,13 +81,12 @@ include_once "fiche_base.php";
             <span>Taille texte</span>
             <select id="configTaille" name="configTaille">
                 <?php if (isset($_COOKIE['configTaille'])): ?>
-                    <option>
-                        <?php echo $_COOKIE['configTaille'] ?>
+                    <option selected>
+                        <?php echo $_COOKIE['configTaille']; ?>
                     </option>
                 <?php else: ?>
                     <option>-- Choisir une taille --</option>
                 <?php endif; ?>
-                <option>75%</option>
                 <option>100%</option>
                 <option>125%</option>
                 <option>150%</option>
@@ -120,19 +119,17 @@ include_once "fiche_base.php";
         <div class="blockbordure1">
             <p class="titrepagevaleur">Intervenant</p>
             <label for="nomIntervenant">Nom de l'intervenant:</label>
-            <input class="labelfichevaleur" type="text" disabled name="nomIntervenant"
-                value="<?php if (isset($_COOKIE['nomIntervenant'])) {
-                    echo $_COOKIE['nomIntervenant'];
-                } ?>">
+            <input class="labelfichevaleur" type="text" disabled name="nomIntervenant" value="<?php if (isset($_COOKIE['nomIntervenant'])) {
+                echo $_COOKIE['nomIntervenant'];
+            } ?>">
             <?php formatBox("NomIntervenant"); ?>
             <br>
             <br>
 
             <label for="prenomIntervenant">Prénom de l'intervenant</label>
-            <input class="labelfichevaleur" type="text" disabled name="prenomIntervenant"
-                value="<?php if (isset($_COOKIE['prenomIntervenant'])) {
-                    echo $_COOKIE['prenomIntervenant'];
-                } ?>">
+            <input class="labelfichevaleur" type="text" disabled name="prenomIntervenant" value="<?php if (isset($_COOKIE['prenomIntervenant'])) {
+                echo $_COOKIE['prenomIntervenant'];
+            } ?>">
             <?php formatBox("PrenomIntervenant"); ?>
 
         </div>
@@ -141,42 +138,29 @@ include_once "fiche_base.php";
         <div class="blockbordure2">
             <p class="titrepagevaleur">Demandeur</p>
 
-            <label for="nomDemandeur">Nom du demandeur: </label>
             <input class="labelfichevaleur" type="text" name="nomDemandeur"
-                value="<?php if (isset($_COOKIE['nomDemandeur'])) {
-                    echo $_COOKIE['nomDemandeur'];
-                } ?>">
+                value="<?php echo valEns('nomDemandeur'); ?>">
+            <label for="nomDemandeur">Nom du demandeur: </label>
             <?php formatBox("NomDemandeur"); ?>
             <br>
             <label for="degreeUrgence">Degré d'urgence: </label>
             <input class="labelfichevaleur" type="text" name="degreeUrgence"
-                value="<?php if (isset($_COOKIE['degreeUrgence'])) {
-                    echo $_COOKIE['degreeUrgence'];
-                } ?>">
+                value="<?php echo valEns('degreeUrgence'); ?>">
             <?php formatBox("DegreeUrgence"); ?>
             <br>
             <label for="dateDemande">Date demande: </label>
-            <input class="labelfichevaleur" type="date" name="dateDemande"
-                value="<?php if (isset($_COOKIE['dateDemande'])) {
-                    echo $_COOKIE['dateDemande'];
-                } ?>">
+            <input class="labelfichevaleur" type="date" name="dateDemande" value="<?php echo valEns('dateDemande'); ?>">
             <?php formatBox("DateDemande"); ?>
             <br>
             <label for="localisation">Localisation: </label>
             <input class="labelfichevaleur" type="text" name="localisation"
-                value="<?php if (isset($_COOKIE['localisation'])) {
-                    echo $_COOKIE['localisation'];
-                } ?>">
+                value="<?php echo valEns('localisation'); ?>">
             <?php formatBox("Localisation"); ?>
             <br>
             <label for="descDemande">Description demande: </label>
-            <?php formatBox("DescDemande"); ?>
-            <br>
-            <textarea id="descDemande" name="descDemande" rows="5">
-        <?php if (isset($_COOKIE['descDemande'])) {
-            echo $_COOKIE['descDemande'];
-        } ?>
-    </textarea>
+            <textarea id="descDemande" name="descDemande" rows="5"><?php echo valEns('descDemande'); ?></textarea>
+
+            </textarea>
             <br>
         </div>
 
@@ -346,7 +330,7 @@ include_once "fiche_base.php";
         <span>imprimer</span>
     </button>
 
-    <button class="noprint" name="quitter" onClick="window.location.href = 'index.php';">
+    <button class="noprint" name="quitter" onClick="window.location.href = 'page_postco_superadmin.php';">
         <i class="fa fa-ban" aria-hidden="true"></i>
         <span>quitter</span>
     </button>
