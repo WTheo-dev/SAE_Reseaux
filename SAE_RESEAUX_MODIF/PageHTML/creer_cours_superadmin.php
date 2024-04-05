@@ -26,7 +26,7 @@ if (!isset($_SESSION['superadmin'])) {
 
     <h1>Choisissez le cours que vous voulez créer</h1>
 
-    <form action="fiche_base.php" method="post">
+    <form action="fiche_valeur.php" method="post">
     <label for="categorie">Choisissez la catégorie :</label>
     <select name="categorie" id="categorie">
         <option value="Finition">Finition</option>

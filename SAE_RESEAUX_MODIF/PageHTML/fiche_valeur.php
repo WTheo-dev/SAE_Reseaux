@@ -1,8 +1,5 @@
 <?php
 include_once "../../APIFinale/fonctions.php";
-?>
-
-<?php
 include_once "fiche_base.php";
 ?>
 
