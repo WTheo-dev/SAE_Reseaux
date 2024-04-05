@@ -23,6 +23,7 @@ if (!isset($_SESSION['superadmin'])) {
   <header class="header-connexion-eleve">
     <div class="logo">
       <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
+      <h2 class="header_text_postcoeleve"><?php echo $_SESSION['superadmin']; ?></h2>
     </div>
   </header>
 

@@ -1,4 +1,14 @@
 <?php define("ICON_DIR", "icon/"); ?>
+
+<?php session_start();
+  include_once "../../APIFinale/fonctions.php";
+  
+  if (!isset($_SESSION['superadmin'])) {
+    header('Location: index.php');
+    exit();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,7 +29,7 @@
             <div class="header_text"><img class="logo_page_postco_superadmin"
              src="Image/APEAJ_color2.png" alt="pictogramme"></div>
             <div class="child-info">
-                <h2 class="header_text_pagebanque">Nom Prénom de l'admin</h2>
+                <h2 class="header_text_postcoeleve"><?php echo $_SESSION['superadmin']; ?></h2>
             </div>
         </header>
 
@@ -273,6 +283,16 @@
  </div>
 
     </form>
+
+    <div class="btn_deconnexion-container">
+        <button class="btn_deconnexion" onclick="redirectTo('page_postco_superadmin.php')">Retour</button>
+    </div>
+
+    <script>
+        function redirectTo(page) {
+            window.location.href = page;
+        }
+    </script>
 
 </body>
 </html>

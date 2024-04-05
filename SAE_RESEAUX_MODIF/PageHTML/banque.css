@@ -147,3 +147,20 @@ span{
 .browseaudio{
     font-size: 4em;
 }
+
+.btn_deconnexion-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn_deconnexion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 75px;
+    background-color: lightcoral;
+    cursor: pointer;
+}
