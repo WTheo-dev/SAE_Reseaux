@@ -28,7 +28,7 @@ $forms = listeFormations();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="creer_formation_superadmin.css">
+    <link rel="stylesheet" href="modifier_formation_superadmin.css">
     <title>modifier formations</title>
 </head>
 <body>
@@ -64,6 +64,10 @@ $forms = listeFormations();
 
     <button onclick="redirigerVersExportExcel()">Exporter vers Excel</button>
 
+    <div class="bouton_retour">
+  <button id="btnretour" onclick="goToPagePostCoSuperAdmin()">Retour</button>
+</div>
+
 <script>
     function redirigerVersExportExcel() {
         window.location.href = 'export-excel-formations.php';
@@ -71,3 +75,5 @@ $forms = listeFormations();
 </script>
 </body>
 </html>
+
+<script src="modifier_liste_eleve.js"></script>

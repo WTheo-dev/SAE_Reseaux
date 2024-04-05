@@ -1,0 +1,36 @@
+.header_page_creer_formation_superadmin{
+    background-color: rgb(130,106,251); 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.child-info{
+    font-family: 'Cinzel', sans-serif;
+    font-size: 25px;
+    padding-right: 1em;
+}
+
+.colonne_liste{
+    display: flex;
+    justify-content: center; 
+    
+
+}
+
+#btnDeconnexion{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 70px;
+    margin-top: 10rem;
+    background-color: lightcoral;
+    cursor: pointer;
+}
+
+#btnredirection{
+    font-family: 'Cormorant', sans-serif;
+    font-size: 70px;
+    margin-top: 10rem;
+    background-color: lightblue;
+    cursor: pointer;
+}
