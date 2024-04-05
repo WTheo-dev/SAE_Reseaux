@@ -23,8 +23,8 @@ if (!isset($_SESSION['superadmin'])) {
   <header class="header-connexion-eleve">
     <div class="logo">
       <img src="Image/APEAJ_color2.png" alt="Logo APEAJ">
-      <h2 class="header_text_postcoeleve"><?php echo $_SESSION['superadmin']; ?></h2>
     </div>
+    <h2 class="header_text_postcoadmin"><?php echo $_SESSION['superadmin']; ?></h2>
   </header>
 
   <!-- Main Content -->
@@ -52,7 +52,7 @@ if (!isset($_SESSION['superadmin'])) {
       </div>
 
       <!-- Section pour le schéma de connexion et le formulaire -->
-      <p class="p_creation_eleve">Creez le code de l'élève: </p>
+      <p class="p_creation_eleve">Créez le code de l'élève: </p>
 
       <div id="container">
         <div id="lock-container">

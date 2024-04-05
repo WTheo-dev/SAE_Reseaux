@@ -339,7 +339,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <span>imprimer</span>
     </button>
 
-    <button class="noprint" name="quitter" onClick="window.location.href = 'fiche_valeur_quitter.php';">
+    <button class="noprint" id="btnquit" name="quitter" onClick="window.location.href = 'fiche_valeur_quitter.php';">
         <i class="fa fa-ban" aria-hidden="true"></i>
         <span>quitter</span>
     </button>

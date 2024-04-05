@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 
-/* Importez Cormorant */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
 .header_page_postco_superadmin{
+    font-family: 'Verdana', 'sans-serif';
     background-color: rgb(130,106,251); 
     padding: 20px;
     display: flex;
@@ -11,7 +9,6 @@
 }
 
 .child-info{
-    font-family: 'Cinzel', sans-serif;
     font-size: 25px;
     padding-right: 1em;
 }
@@ -29,7 +26,6 @@
 }
 
 .colonne_creation{
-    font-family: 'Cormorant', sans-serif;
     font-size: 55px;
     display: flex;
     justify-content: center;
@@ -37,15 +33,12 @@
 }
 
 .container_1_page_postco_admin{
-    font-family: 'Cinzel', sans-serif;
     display: flex;
     justify-content: center;
     font-size: 50px;
 }
 
 .container_2{
-
-    font-family: 'Cormorant', sans-serif;
     display: flex;
     font-size: 80px;
     justify-content: center;
@@ -57,14 +50,12 @@
 }
 
 .btnaction option, .btnliste option{
-    font-family: 'Cormorant', sans-serif;
     font-size: 20px;
 }
 
 .actions, .liste{
     cursor: pointer;
     margin-top: 2rem;
-    font-family: 'Cormorant', sans-serif;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -85,7 +76,6 @@
 }
 
 .btnGO{
-    font-family: 'Cormorant', sans-serif;
     font-size: 65px;
     cursor: pointer;
 }
@@ -111,6 +101,7 @@
     margin-top: 10rem;
     background-color: lightblue;
     cursor: pointer;
+    border-radius: 20px;
 }
 
 :root {

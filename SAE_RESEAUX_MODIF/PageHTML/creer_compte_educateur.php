@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Création du compte Educateur</title>
-    <h2 class="header_text_postcoeleve"><?php echo $_SESSION['superadmin']; ?></h2>
+    <h2 class="header_text_postcoeleve"><?php e>cho $_SESSION['superadmin']; ?></h2>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="body-creer-compte-educateur">

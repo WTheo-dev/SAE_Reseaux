@@ -49,7 +49,7 @@ if (!isset($_SESSION['superadmin'])) {
             </div>
             <div class="superadmin-remember-forgot">
                 <label><input type="checkbox" name="remember"> Se souvenir de moi</label>
-                <a href="mot_de_passe_oublie_superadmin.php"> Mot de passe oublié ?</a> 
+                <a href="mot_de_passe_oublie_superadmin.php"> Mot de passe oublié ?</a>
             </div>
 
             <button type="submit" class="superadmin-btn">Se connecter</button> 

@@ -60,6 +60,11 @@
     background-color: blue;
     cursor: pointer;
     color: white;
+
+  }
+  .header_text_postcoeleve{
+    color : white;
+    font-size:50px;
   }
   </style>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

@@ -1,8 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
-
-/* Importez Cormorant */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap');
 
 
 /* CONNEXION ELEVE */
@@ -525,8 +521,13 @@ footer {
         padding: 0;
         box-sizing: border-box;
         font-family: "Poppins", sans-serif;
-    }
 
+    }
+    .header_text_postcoadmin{
+        display: flex;
+        justify-content: right;
+        color: white;
+    }
     .body-educateur {
         display: flex;
         justify-content: center;
