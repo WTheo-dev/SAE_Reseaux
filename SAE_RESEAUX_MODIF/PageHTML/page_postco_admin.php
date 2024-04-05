@@ -37,7 +37,7 @@
   <?php $etus = listeApprenti(); ?>
   <?php foreach($etus as $etu): ?>
 
-    <div class="profile-switch-container" onclick="selectProfile(this)">
+      <div class="profile-switch-container" onclick="selectProfile(this, <?php echo $etu['id_apprenti'] ?>)">
       <div class="rectangle-container-photo-label">
         <label for="nom-prenom"><?php echo strtoupper($etu["nom"]) . " " . $etu["prenom"]; ?></label>
         <div class="rectangle-photo">
@@ -50,11 +50,13 @@
 
 </div>
 
-<div class="profile-buttons" id="profile_btn">
-  <button onclick="creerNouvelleFiche()">Créer une nouvelle fiche</button>
-  <button onclick="accederEvaluation()">Evaluation des fiches</button>
-  <button onclick="voirCommentaires()">Voir les commentaires sur la fiche en cours</button>
-</div>
+<form action="fiche_valeur.php" method="post">
+    <div class="profile-buttons" id="profile_btn">
+      <button id="button_creer_nouvelle_fiche" name="id_app" value="59">Créer une nouvelle fiche</button>
+      <button onclick="accederEvaluation()">Evaluation des fiches</button>
+      <button onclick="voirCommentaires()">Voir les commentaires sur la fiche en cours</button>
+    </div>
+</form>
 
 <div class="btn-deconnexion_page_postco_admin">
         <form method="post" action="deconnexion.php">

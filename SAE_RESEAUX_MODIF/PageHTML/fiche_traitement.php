@@ -62,5 +62,3 @@ uncheckCheckbox("Aménagement", 5);
 uncheckCheckbox("Finitions", 5);
 uncheckCheckbox("Installation_sanitaire", 5);
 uncheckCheckbox("Nécessite_un_nouvelle_intervention", 7);
-
-
