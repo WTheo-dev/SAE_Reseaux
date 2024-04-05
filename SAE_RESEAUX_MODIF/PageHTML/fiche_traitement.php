@@ -1,17 +1,3 @@
-
-
-<?php
-  session_start();
-  include_once "../../APIFinale/fonctions.php";
-
-  if (!isset($_SESSION['apprenti'])) {
-    header('Location: index.php');
-    exit();
-  }
-
-
-?>
-
 <?php
 
 define('FICHE_LOCATION', 'location: fiche');
