@@ -285,36 +285,53 @@ include_once "fiche_base.php";
 
         <br>
 
+        <div id="selectDescriptionForm">
+    <label for="description_demande">Choisissez la description demandée :</label>
+    <select name="description_demande" id="description_demande">
+        <option value="Finition">Finition</option>
+        <option value="Plomberie">Plomberie</option>
+        <option value="Aménagement d'intérieur">Aménagement d'intérieur</option>
+        <option value="Serrurerie">Serrurerie</option>
+        <option value="Electricite">Électricité</option>
+    </select>
+    <button type="button" onclick="afficherMateriaux()">Afficher les matériaux</button>
+    </div>
 
-        <div class="blockbordure8" id="mat_util">
-            <p class="titrepagevaleur">Matériaux utilisés</p>
-            <div id="mat_droit">
-                <?php
-                for ($i = 0; $i < 5; $i++) {
-                    echo '<select disabled id="materiaux' . $i . '" name="materiaux' . $i . '">';
-                    if (isset($_COOKIE['materiaux' . $i])) {
-                        echo "<option>" . $_COOKIE['materiaux' . $i] . "</option>";
-                    } else {
-                        echo '<option>-- Choisir un matériau --</option>';
-                    }
-                    echo "</select>";
-                }
-                ?>
-            </div>
-            <div id="mat_gauche">
-                <?php
-                for ($i = 5; $i < 10; $i++) {
-                    echo '<select disabled id="materiaux' . $i . '" name="materiaux' . $i . '">';
-                    if (isset($_COOKIE['materiaux' . $i])) {
-                        echo "<option>" . $_COOKIE['materiaux' . $i] . "</option>";
-                    } else {
-                        echo '<option>-- Choisir un matériau --</option>';
-                    }
-                    echo "</select>";
-                }
-                ?>
-            </div>
-        </div>
+
+<?php
+// Vérifier si le formulaire a été soumis
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupérer la description demandée sélectionnée par l'éducateur
+    $description_demande = isset($_POST['description_demande']) ? $_POST['description_demande'] : '';
+
+    // Appel de la fonction echoMateriaux avec la description demandée
+    for ($i = 0; $i < 10; $i++) {
+        echoMateriaux($i, $description_demande);
+    }
+}
+?>
+
+
+<script>
+    document.getElementById("selectDescriptionForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Empêcher la soumission du formulaire
+
+        var selectedDescription = document.getElementById("description_demande").value;
+
+        // Envoyer la sélection au script PHP en utilisant AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "fiche8.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Réponse du serveur, si nécessaire
+            }
+        };
+        xhr.send("description_demande=" + encodeURIComponent(selectedDescription));
+    });
+</script>
+
+
 
         <br>
 

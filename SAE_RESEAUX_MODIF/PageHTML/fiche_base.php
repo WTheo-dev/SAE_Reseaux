@@ -77,16 +77,16 @@ function ifformfin()
     }
 }
 
-function echoMateriaux($i)
+function echoMateriaux($i, $description_demande)
 {
     echo '<select id="materiaux' . $i . '" name="materiaux' . $i . '">';
     if (isset($_COOKIE['materiaux' . $i])) {
         echo "<option>" . $_COOKIE['materiaux' . $i] . "</option>";
     } else {
-        echo '<option>-- Choisir un matériau --</option>';
+        echo '<option>-- Choisir un matériaux --</option>';
     }
-    $description_demande = isset($_POST['categorie']) ? $_POST['categorie'] : null;
 
+    // Vérifier si une description_demande est spécifiée
     if ($description_demande) {
         $conn = connexionBD();
         $sql = "SELECT nom_materiaux FROM materiaux WHERE description_demande = ?";
@@ -103,6 +103,8 @@ function echoMateriaux($i)
     }
     echo '</select>';
 }
+
+
 
 
 ?>
