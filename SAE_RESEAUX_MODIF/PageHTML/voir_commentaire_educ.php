@@ -43,8 +43,8 @@
       
       <div class="w3-responsive-voircom">
         <table id="commentTablevoircom" class="w3-table-all-voircom">
-          <caption>table</caption>
           <tr>
+            
             <th class="th-voircom">Nom Educateur</th>
             <th class="th-voircom">Prénom Educateur</th>
             <th class="th-voircom">Commentaires </th>
@@ -56,7 +56,7 @@
       
       
     </div>
-    <button class="buton_deconnexion-voircom" onclick="deconnecter()">Déconnexion</button>
+    <button class="buton_deconnexion-voircom" onclick="retour()">Retour</button>
     
     <script src="voir_commentaire_educ.js"></script>
 

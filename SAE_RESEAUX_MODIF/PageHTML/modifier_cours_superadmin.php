@@ -82,7 +82,7 @@
       </tr>
     </tbody>
   </table>
-
+  
   <script>
     function supprimerLigne(button) {
       var row = button.parentNode.parentNode;
@@ -97,7 +97,9 @@
         nomCoursCell.textContent = nouveauNom;
       }
     }
-  </script>
 
+    </script>
+
+<button class="buton_deconnexion-voircom" onclick="retour()">Retour</button>
 </body>
 </html>

@@ -53,8 +53,8 @@
 <form action="fiche_valeur.php" method="post">
     <div class="profile-buttons" id="profile_btn">
       <button id="button_creer_nouvelle_fiche" name="id_app" value="59">Créer une nouvelle fiche</button>
-      <button onclick="accederEvaluation()">Evaluation des fiches</button>
-      <button onclick="voirCommentaires()">Voir les commentaires sur la fiche en cours</button>
+      <button type='button' onclick="accederEvaluation()">Evaluation des fiches</button>
+      <button type='button' onclick="voirCommentaires()">Voir les commentaires sur la fiche en cours</button>
     </div>
 </form>
 
