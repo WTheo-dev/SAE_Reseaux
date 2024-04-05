@@ -47,23 +47,23 @@ include_once "fiche_base.php";
         echo '<input class="noprint" type="checkbox" id="texte' . $name . '" name="texte' . $name . '" ';
         if (valEns('texte' . $name) == "on") {
             echo "checked";
-            echo '/>';
-            echo '<label class="noprint" for="texte' . $name . '"> Texte </label>';
         }
+        echo '/>';
+        echo '<label class="noprint" for="texte' . $name . '"> Texte </label>';
 
         echo '<input class="noprint" type="checkbox" id="icon' . $name . '" name="icon' . $name . '" ';
         if (valEns('icon' . $name) == "on") {
             echo "checked";
-            echo '/>';
-            echo '<label class="noprint" for="icon' . $name . '"> Icône </label>';
         }
+        echo '/>';
+        echo '<label class="noprint" for="icon' . $name . '"> Icône </label>';
 
         echo '<input class="noprint" type="checkbox" id="audio' . $name . '" name="audio' . $name . '" ';
         if (valEns('audio' . $name) == "on") {
             echo "checked";
-            echo '/>';
-            echo '<label class="noprint" for="audio' . $name . '"> Audio </label>';
         }
+        echo '/>';
+        echo '<label class="noprint" for="audio' . $name . '"> Audio </label>';
 
     }
     ?>
