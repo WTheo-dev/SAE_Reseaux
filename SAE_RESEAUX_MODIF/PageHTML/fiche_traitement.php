@@ -1,6 +1,23 @@
 <?php
 
+include_once '../../APIFinale/fonctions.php';
 define('FICHE_LOCATION', 'location: fiche');
+
+$id_fiche = creationFiche(
+    69,
+    $_REQUEST['nomDemandeur'],
+    $_REQUEST['dateDemande'],
+    date("Y-m-d"),
+    "",
+    $_REQUEST['localisation'],
+    $_REQUEST['descDemande'],
+    $_REQUEST['degreeUrgence'],
+    "", "", "", "", "", "",
+    date("Y-m-d"),
+    intval($_POST['id_app']),
+    69
+);
+setcookie("id_fiche", $id_fiche, -1);
 
 if (isset($_POST['precedent'])) {
     $numpage = $_POST['precedent'];

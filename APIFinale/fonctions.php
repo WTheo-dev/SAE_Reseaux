@@ -653,15 +653,15 @@ function personnelDejaExistant($nom, $prenom)
 ////////////////////           GESTION FICHES            ////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
-function listeFiche()
+function listefiche()
 {
-  $bd = connexionBD();
-  $listeFiche = $bd->prepare('SELECT * from fiche_intervention');
-  $listeFiche->execute(array());
+  $bd = connexionbd();
+  $listefiche = $bd->prepare('select * from fiche_intervention');
+  $listefiche->execute(array());
   $bd = null;
   $resultat = [];
 
-  foreach ($listeFiche as $row) {
+  foreach ($listefiche as $row) {
     array_push(
       $resultat,
       array(
@@ -689,6 +689,18 @@ function listeFiche()
   return $resultat;
 }
 
+function derniereFiche($id_apprenti)
+{
+  $bd = connexionbd();
+  $listefiche = $bd->prepare('SELECT * FROM fiche_intervention WHERE id_apprenti = 1');
+  $listefiche->execute(array());
+  $bd = null;
+  $resultat = $listefiche->fetchAll();
+
+  return $resultat;
+}
+
+
 function creationFiche(
   $numero,
   $nomDuDemandeur,
@@ -712,28 +724,26 @@ function creationFiche(
   $bd = connexionBD();
   $numero = htmlspecialchars($numero);
   $nomDuDemandeur = htmlspecialchars($nomDuDemandeur);
-  $dateDemande = htmlspecialchars($dateDemande);
-  $dateIntervention = htmlspecialchars($dateIntervention);
+  $dateDemande = date('Y-m-d', strtotime(str_replace("/","-", $dateDemande)));
+  $dateIntervention = date('Y-m-d', strtotime(str_replace("/","-", $dateIntervention)));
   $dureeIntervention = htmlspecialchars($dureeIntervention);
   $localisation = htmlspecialchars($localisation);
   $descriptionDemande = htmlspecialchars($descriptionDemande);
   $degreUrgence = htmlspecialchars($degreUrgence);
   $typeIntervention = htmlspecialchars($typeIntervention);
   $natureIntervention = htmlspecialchars($natureIntervention);
-  $travauxRealises = htmlspecialchars($travauxRealises);
-  $travauxNonRealises = htmlspecialchars($travauxNonRealises);
   $couleurIntervention = htmlspecialchars($couleurIntervention);
   $etatFiche = htmlspecialchars($etatFiche);
-  $dateCreation = htmlspecialchars($dateCreation);
+  $dateCreation = date('Y-m-d', strtotime(str_replace("/","-", $dateCreation)));
   $idApprenti = htmlspecialchars($idApprenti);
   $idPersonnel = htmlspecialchars($idPersonnel);
 
   $creerFiche = $bd->prepare(
-    'INSERT INTO fiche_intervention(numero, nom_du_demandeur, date_demande, ' .
+    'INSERT INTO fiche_intervention(id_fiche, numero, nom_du_demandeur, date_demande, ' .
     'date_intervention, duree_intervention, localisation, description_demande, ' .
-    'degre_urgence, type_intervention, nature_intervention, travaux_realises, ' . // Correction ici
-    'travaux_non_realises, couleur_intervention, etat_fiche, date_creation, ' .
-    'id_apprenti, id_personnel) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)' // Correction ici
+    'degre_urgence, type_intervention, nature_intervention, ' . // Correction ici
+    'couleur_intervention, etat_fiche, date_creation, ' .
+    'id_apprenti, id_personnel) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)' // Correction ici
   );
 
   $creerFiche->execute(
@@ -748,8 +758,6 @@ function creationFiche(
       $degreUrgence,
       $typeIntervention,
       $natureIntervention,
-      $travauxRealises,
-      $travauxNonRealises,
       $couleurIntervention,
       $etatFiche,
       $dateCreation,
@@ -791,8 +799,6 @@ function modifierFiche(
   $degreUrgence,
   $typeIntervention,
   $natureIntervention,
-  $travauxRealises,
-  $travauxNonRealises,
   $couleurIntervention,
   $etatFiche,
   $dateCreation,
@@ -804,19 +810,17 @@ function modifierFiche(
   $idFiche = htmlspecialchars($idFiche);
   $numero = htmlspecialchars($numero);
   $nomDuDemandeur = htmlspecialchars($nomDuDemandeur);
-  $dateDemande = htmlspecialchars($dateDemande);
-  $dateIntervention = htmlspecialchars($dateIntervention);
+  $dateDemande = date('Y-m-d', strtotime(str_replace("/","-", $dateDemande)));
+  $dateIntervention = date('Y-m-d', strtotime(str_replace("/","-", $dateIntervention)));
   $dureeIntervention = htmlspecialchars($dureeIntervention);
   $localisation = htmlspecialchars($localisation);
   $descriptionDemande = htmlspecialchars($descriptionDemande);
   $degreUrgence = htmlspecialchars($degreUrgence);
   $typeIntervention = htmlspecialchars($typeIntervention);
   $natureIntervention = htmlspecialchars($natureIntervention);
-  $travauxRealises = htmlspecialchars($travauxRealises);
-  $travauxNonRealises = htmlspecialchars($travauxNonRealises);
   $couleurIntervention = htmlspecialchars($couleurIntervention);
   $etatFiche = htmlspecialchars($etatFiche);
-  $dateCreation = htmlspecialchars($dateCreation);
+  $dateCreation = date('Y-m-d', strtotime(str_replace("/","-", $dateCreation)));
   $idApprenti = htmlspecialchars($idApprenti);
   $idPersonnel = htmlspecialchars($idPersonnel);
 
@@ -832,8 +836,6 @@ function modifierFiche(
         degre_urgence = ?,
         type_intervention = ?,
         nature_intervention = ?,
-        travaux_realises = ?,
-        travaux_non_realises = ?,
         couleur_intervention = ?,
         etat_fiche = ?,
         date_creation = ?,
@@ -854,8 +856,6 @@ function modifierFiche(
       $degreUrgence,
       $typeIntervention,
       $natureIntervention,
-      $travauxRealises,
-      $travauxNonRealises,
       $couleurIntervention,
       $etatFiche,
       $dateCreation,
