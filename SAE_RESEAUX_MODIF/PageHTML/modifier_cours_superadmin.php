@@ -81,6 +81,7 @@
         </td>
       </tr>
     </tbody>
+    <button class="buton_deconnexion-voircom" onclick="retour()">Retour</button>
   </table>
 
   <script>
@@ -97,6 +98,7 @@
         nomCoursCell.textContent = nouveauNom;
       }
     }
+
   </script>
 
 </body>

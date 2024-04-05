@@ -56,7 +56,7 @@
       
       
     </div>
-    <button class="buton_deconnexion-voircom" onclick="deconnecter()">Déconnexion</button>
+    <button class="buton_deconnexion-voircom" onclick="retour()">Retour</button>
     
     <script src="voir_commentaire_educ.js"></script>
 

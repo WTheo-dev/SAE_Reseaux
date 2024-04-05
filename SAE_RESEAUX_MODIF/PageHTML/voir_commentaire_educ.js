@@ -3,11 +3,11 @@ window.onload = function() {
   loadComments();
 };
 
-function deconnecter() {
+function retour() {
   // Ajoutez ici le code pour déconnecter l'utilisateur, par exemple, en supprimant les cookies ou en effectuant une déconnexion côté serveur.
 
   // Redirigez l'utilisateur vers la page d'accueil
-  window.location.href = "index.php";
+  window.location.href = "page_postco_admin.php";
 }
 
 function ajouterCommentaire() {
