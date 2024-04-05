@@ -31,8 +31,9 @@
           </div>
         
           <div class="creer_compte_educateur-input-box">
-            <label for="mdp">Mot de passe</label>
-            <input name="mdp" type="password" placeholder="Entrez un mot de passe" required />
+          <label for="mdp">Mot de passe</label>
+<input name="mdp" type="password" inputmode="numeric" pattern="[0-9]{4}" placeholder="Entrez un mot de passe (4 chiffres)" maxlength="4" required />
+
           </div>
 
         <div class="creer_compte_educateur-gender-box">
