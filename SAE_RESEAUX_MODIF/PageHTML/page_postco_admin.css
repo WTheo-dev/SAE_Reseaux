@@ -114,7 +114,7 @@
 
 
 .profile-switch-container.selected {
-  border: 10px solid green;
+  border: 10px solid lightgreen;
   box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
 }
 
