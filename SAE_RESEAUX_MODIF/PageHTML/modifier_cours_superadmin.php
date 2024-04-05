@@ -81,9 +81,8 @@
         </td>
       </tr>
     </tbody>
-    <button class="buton_deconnexion-voircom" onclick="retour()">Retour</button>
   </table>
-
+  
   <script>
     function supprimerLigne(button) {
       var row = button.parentNode.parentNode;
@@ -99,7 +98,8 @@
       }
     }
 
-  </script>
+    </script>
 
+<button class="buton_deconnexion-voircom" onclick="retour()">Retour</button>
 </body>
 </html>
