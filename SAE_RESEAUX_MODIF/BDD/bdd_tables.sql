@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `apprenti` (
   `photo` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `id_utilisateur` int NOT NULL,
   PRIMARY KEY (`id_apprenti`),
-  UNIQUE KEY `id_Utilisateur` (`id_Utilisateur`)
+  UNIQUE KEY `id_utilisateur` (`id_utilisateur`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -219,9 +219,9 @@ CREATE TABLE IF NOT EXISTS `personnel` (
   `id_personnel` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `prenom` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `id_Utilisateur` int NOT NULL,
+  `id_utilisateur` int NOT NULL,
   PRIMARY KEY (`id_personnel`),
-  UNIQUE KEY `id_Utilisateur` (`id_Utilisateur`)
+  UNIQUE KEY `id_utilisateur` (`id_utilisateur`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -262,11 +262,11 @@ CREATE TABLE IF NOT EXISTS `session` (
 
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `id_Utilisateur` int NOT NULL AUTO_INCREMENT,
+  `id_utilisateur` int NOT NULL AUTO_INCREMENT,
   `login` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `mdp` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `id_role` int NOT NULL,
-  PRIMARY KEY (`id_Utilisateur`),
+  PRIMARY KEY (`id_utilisateur`),
   KEY `Id_role` (`id_role`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 COMMIT;
