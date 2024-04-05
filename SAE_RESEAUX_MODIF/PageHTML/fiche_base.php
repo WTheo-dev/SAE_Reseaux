@@ -2,7 +2,7 @@
 session_start();
 include_once "../../APIFinale/fonctions.php";
 
-if (!isset($_SESSION['personnel']) && !isset($_SESSION['superadmin'])) {
+if (!isset($_SESSION['personnel']) && !isset($_SESSION['superadmin']) && !isset($_SESSION['apprenti'])) {
     header('Location: index.php');
     exit();
 }
