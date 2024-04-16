@@ -1,34 +1,18 @@
-USE apeaj
+USE apeaj;
 
 -- Insertion des données d'apprentis
 INSERT INTO `apprenti` (`id_apprenti`, `nom`, `prenom`, `photo`, `id_utilisateur`) VALUES
-(25, 'Dupont', 'Jean', 'jean.jpg', 59),
-(26, 'Martin', 'Sophie', 'sophie.jpg', 60),
-(21, 'Lebrun', 'Jane', 'jane.jpg', 55),
-(27, 'Dubois', 'Pierre', 'pierre.jpg', 61),
-(28, 'Lefevre', 'Marie', 'marie.jpg', 62),
-(29, 'Leroy', 'Luc', 'luc.jpg', 63),
-(30, 'Moreau', 'Claire', 'claire.jpg', 64),
-(31, 'Roux', 'Thomas', 'thomas.jpg', 65);
+(32, 'apprenti', 'test', 'apprenti.jpg', 68);
 COMMIT;
 
 -- Insertion des données pour la table `utilisateur`
 INSERT INTO `utilisateur` (`id_Utilisateur`, `login`, `mdp`, `id_role`) VALUES
-(2, 'Theo.WAZYDRAG', 'azerty', 2),
-(47, 'WAZYDRAG Theo', '1234', 4),
-(48, 'Chazal Claire', '1245', 5),
-(55, 'Lebrun Jane', '1234', 1),
-(53, 'Dujardin Jean', '3456', 3),
-(54, 'Dupond Jacques', '5678', 4),
-(60, 'Martin Sophie', '1478', 1),
-(59, 'Dupont Jean', '1268', 1),
-(61, 'Dubois Pierre', '1269', 1),
-(62, 'Lefevre Marie', '1258', 1),
-(63, 'Leroy Luc', '1245', 1),
-(64, 'Moreau Claire', '3568', 1),
-(65, 'Roux Thomas', '6789', 1);
+(2, 'super.admin', 'superadmin', 2),
+(72, 'cip test', '9876', 5),
+(73, 'educ test', '1234', 4),
+(70, 'educadmin test', '1234', 3),
+(68, 'apprenti test', '1234', 1);
 COMMIT;
-
 -- Insertion des données pour la table `rôle`
 INSERT INTO `role` (`id_role`, `description`) VALUES
 (1, 'Apprenti'),
