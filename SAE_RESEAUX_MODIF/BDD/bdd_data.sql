@@ -2,17 +2,22 @@ USE apeaj;
 
 -- Insertion des données d'apprentis
 INSERT INTO `apprenti` (`id_apprenti`, `nom`, `prenom`, `photo`, `id_utilisateur`) VALUES
-(32, 'apprenti', 'test', 'apprenti.jpg', 68);
-COMMIT;
+(34, 'apprenti', 'test', 'apprenti.jpg', 79);
+
+-- Insertion des données de personels
+INSERT INTO `personnel` (`id_personnel`, `nom`, `prenom`, `id_utilisateur`) VALUES
+(22, 'educ', 'test', 80),
+(23, 'educadmin', 'test', 81),
+(24, 'cip', 'test', 82);
 
 -- Insertion des données pour la table `utilisateur`
 INSERT INTO `utilisateur` (`id_Utilisateur`, `login`, `mdp`, `id_role`) VALUES
+(81, 'educadmin test', '1234', 3),
+(80, 'educ test', '1234', 4),
 (2, 'super.admin', 'superadmin', 2),
-(72, 'cip test', '9876', 5),
-(73, 'educ test', '1234', 4),
-(70, 'educadmin test', '1234', 3),
-(68, 'apprenti test', '1234', 1);
-COMMIT;
+(79, 'apprenti test', '1234', 1),
+(82, 'cip test', '1234', 5);
+
 -- Insertion des données pour la table `rôle`
 INSERT INTO `role` (`id_role`, `description`) VALUES
 (1, 'Apprenti'),
@@ -20,7 +25,6 @@ INSERT INTO `role` (`id_role`, `description`) VALUES
 (3, 'Educ Admin'),
 (4, 'Educ Simple'),
 (5, 'CIP');
-
 -- Ajout de la contrainte d'unicité pour le Super-Admin
 ALTER TABLE `role`
 ADD CONSTRAINT `unique_superadmin`
@@ -266,3 +270,5 @@ INSERT INTO `materiaux` (
 (1, 5, 'plaque_de_platre_BA13.png', 'plaque_de_platre_BA13', 'Electricite'),
 (1, 5, 'montant_M48.png', 'montant_M48', 'Electricite'),
 (1, 5, 'vis_ttpc_25.png', 'vis_ttpc_25', 'Electricite');
+
+COMMIT;
