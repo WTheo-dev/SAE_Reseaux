@@ -77,7 +77,7 @@ function idLogin($login)
   $bd = null;
   if ($rechercheUtilisateur->rowCount() > 0) {
     foreach ($rechercheUtilisateur as $row) {
-      return $row['id_utilisateur'];
+      return $row['id_Utilisateur'];
     }
   } else {
     return false;
@@ -799,6 +799,8 @@ function modifierFiche(
   $degreUrgence,
   $typeIntervention,
   $natureIntervention,
+  $travauxRealises,
+  $travauxNonRealises,
   $couleurIntervention,
   $etatFiche,
   $dateCreation,

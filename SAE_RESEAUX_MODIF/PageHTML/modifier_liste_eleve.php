@@ -98,6 +98,7 @@
 include_once "../../APIFinale/fonctions.php";
 ?>
 <table>
+<caption>Liste des Elèves</caption>
   <thead>
     <tr>
       <th>Prénom</th>

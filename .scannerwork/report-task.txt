@@ -2,5 +2,5 @@ projectKey=SAE
 serverUrl=http://localhost:9000
 serverVersion=9.9.4.87374
 dashboardUrl=http://localhost:9000/dashboard?id=SAE
-ceTaskId=AY5lIFw9nDWwXIv_1rc9
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AY5lIFw9nDWwXIv_1rc9
+ceTaskId=AY7yZOr7aju9MXwSvw93
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AY7yZOr7aju9MXwSvw93

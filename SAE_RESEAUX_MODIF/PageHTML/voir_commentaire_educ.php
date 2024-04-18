@@ -43,6 +43,7 @@
       
       <div class="w3-responsive-voircom">
         <table id="commentTablevoircom" class="w3-table-all-voircom">
+        <caption>Voir commentaires des Éducateurs</caption>
           <tr>
             
             <th class="th-voircom">Nom Educateur</th>

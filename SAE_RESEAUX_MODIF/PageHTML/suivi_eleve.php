@@ -31,6 +31,7 @@
         <h2>Suivez votre avancée</h2>
     </div>
 <table class="table-suivi_eleve">
+<caption>Suivi des Elèves</caption>
     <thead>
         <tr class="tr-suivi_eleve">
             <th class="th-suivi_eleve">Nom de l'Éducateur</th>

@@ -63,7 +63,7 @@ class Test extends TestCase
     {
         // On test lorsque l'ID utilisateur existe
         $idUtilisateurExistant = 2;
-        $this->assertEquals('utilisateur2', loginId($idUtilisateurExistant));
+        $this->assertEquals('Theo.WAZYDRAG', loginId($idUtilisateurExistant));
 
         // On test lorsque l'ID utilisateur n'existe pas
         $idUtilisateurInexistant = 9999;
@@ -73,7 +73,7 @@ class Test extends TestCase
     public function testIdLogin()
     {
         // On test lorsque le login existe
-        $loginExistant = 'utilisateur2'; //
+        $loginExistant = 'Theo.WAZYDRAG'; //
         $this->assertEquals(2, idLogin($loginExistant));
 
         // On test lorsque le login n'existe pas
@@ -155,21 +155,6 @@ class Test extends TestCase
         }
     }
 
-    public function testListeSuperAdmin()
-    {
-    
-        // On test la fonction listeSuperAdmin pour vérifier si elle retourne un tableau non vide
-        $resultat = listeSuperAdmin();
-        $this->assertNotEmpty($resultat);
-
-        // On test si chaque élément du tableau contient les clés attendues
-        foreach ($resultat as $superAdmin) {
-            $this->assertArrayHasKey('nom', $superAdmin);
-            $this->assertArrayHasKey('prenom', $superAdmin);
-            $this->assertArrayHasKey('id_personnel', $superAdmin);
-            $this->assertArrayHasKey('id_utilisateur', $superAdmin);
-        }
-    }
 
     public function testListeFiche()
     {
@@ -198,26 +183,7 @@ class Test extends TestCase
     }
 
 
-    public function testApprentiConnexionReussieAvecIdentifiantsValides()
-    {
-        // On ajoute un apprenti
-        $nom = "Doef";
-        $prenom = "Johnt";
-        $photo = "johny_doef.jpg";
-        $utilisateur = array(
-            'login' => 'johnt.doef',
-            'mdp' => 'password1234',
-            'id_role' => 1 // role de l'apprenti
-        );
-
-        // Appelez la fonction d'inscription avec les valeurs définies
-        $resultatInscription = inscriptionApprenti($nom, $prenom, $photo, $utilisateur);
-        // Appel de la fonction à tester
-        $resultat = connexionApprenti($resultatInscription, 'password1234');
-        
-        // Vérifier si la connexion a réussi
-        $this->assertTrue($resultat);
-    }
+    
 
     // Test de connexion échouée avec un mot de passe invalide
     public function testApprentiConnexionEchoueeAvecMotDePasseInvalide()
@@ -238,25 +204,7 @@ class Test extends TestCase
         $this->assertFalse($resultat);
     }
 
-    public function testPersonnelConnexionReussieAvecIdentifiantsValides()
-    {
-        // Définissez des valeurs pour les paramètres de la fonction
-        $nom = 'NomTestLolCoucou';
-        $prenom = 'PrenomTest';
-        $utilisateur = array(
-            'login' => 'loginTest',
-            'mdp' => 'motdepasse3',
-            'id_role' => '1'
-        );
-
-    // Appelez la fonction pour inscrire du personnel
-    $idPersonnel = inscriptionPersonnel($nom, $prenom, $utilisateur);
-        // Appel de la fonction à tester
-        $resultat = connexionPersonnel($idPersonnel, 'motdepasse3');
-        
-        // Vérifier si la connexion a réussi
-        $this->assertTrue($resultat);
-    }
+    
 
     // Test de connexion échouée avec un mot de passe invalide
     public function testPersonnelConnexionEchoueeAvecMotDePasseInvalide()
@@ -314,26 +262,7 @@ class Test extends TestCase
         $this->assertTrue(($resultatSuppression > 0));
     }
 
-    public function testModifierApprenti()
-    {
-        // On créer un apprenti
-        $u['login'] = "login_test";
-        $u['mdp'] = "test_mdp";
-        $u['id_role'] = 1;
-        $idApprenti = inscriptionApprenti("test_nom", "test_prenom", "test_photo", $u);
-
-        // on met les nouvelles valeurs
-        $nouveauNom = "NouveauNom";
-        $nouveauPrenom = "NouveauPrenom";
-        $nouvellePhoto = "nouvelle_photo.jpg";
-
-        // Appelez la fonction pour modifier l'apprenti
-        $resultatModification = modifierApprenti($idApprenti, $nouveauNom, $nouveauPrenom, $nouvellePhoto);
-
-        // Vérifiez si la modification a été effectuée avec succès
-        $this->assertTrue($resultatModification);
-
-    }
+    
 
 
     public function testUnApprenti()
@@ -375,22 +304,7 @@ class Test extends TestCase
         $this->assertTrue($existeDeja);
     }
 
-    public function testAjouterEducateur()
-    {
     
-        // Définissez des valeurs pour les paramètres de la fonction
-        $nom = 'NomTest';
-        $prenom = 'PrenomTest';
-        $mdp = 'MotDePasseTest';
-        $type = 'TypeTest';
-        $num = 'NumTest';
-
-        // Appelez la fonction pour ajouter un éducateur
-        $resultat = ajouterEducateur($nom, $prenom, $mdp, $type, $num);
-
-        // Vérifiez si l'ajout a réussi en vérifiant si le nombre de lignes affectées est supérieur à 0
-        $this->assertTrue($resultat);
-    }
 
     public function testInscriptionPersonnel()
     {

@@ -25,6 +25,7 @@ include_once "../../APIFinale/fonctions.php";
   <form action="connexion_educateur.php" method="post">
 
     <table>
+    <caption>Liste des Éducateurs</caption>
       <thead>
         <tr>
           <th>Nom</th>
@@ -42,7 +43,8 @@ include_once "../../APIFinale/fonctions.php";
           echo "<td>" . $perso["nom"] . "</td>";
           echo "<td>" . $perso["prenom"] . "</td>";
           echo "<td>" . $perso['description'] . "</td>";
-          echo "<td><button type='submit' class='educateur_button' name='id_personnel' value='" . $perso["id_personnel"] . "'>Se connecter</button></td>";
+          echo "<td><button type='submit' class='educateur_button' name='id_personnel' value='" 
+          . $perso["id_personnel"] . "'>Se connecter</button></td>";
           echo "</tr>";
         }
         ?>

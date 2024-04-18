@@ -91,6 +91,7 @@ if (!isset($_SESSION['superadmin'])) {
   include_once "../../APIFinale/fonctions.php";
   ?>
   <table>
+  <caption>Modifier des Personnels</caption>
     <thead>
       <tr>
         <th>Nom</th>
