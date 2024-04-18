@@ -26,7 +26,7 @@ if (isset($_POST["nom-form"])) {
         <div class="header_text"><img class="logo_page_creer_formation_superadmin"
         src="Image/APEAJ_color2.png" alt="pictogramme"></div>
         <div class="child-info">
-            <h2 class="header_page_creer_formation_superadmin">Nom Prénom du SuperAdmin</h2>
+        <h2 class="header_text_postcoeleve"><?php echo $_SESSION['superadmin']; ?></h2> 
         </div>
     </header>
 
