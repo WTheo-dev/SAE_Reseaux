@@ -6,7 +6,7 @@ sudo apt install -y git docker docker-compose
 
 docker pull tomsik68/xampp
 
-git clone https://github.com/WTheo-dev/SAE_Reseaux.git -b integration-de-fou-zinzin --depth=1
+git clone https://github.com/WTheo-dev/SAE_Reseaux.git --depth=1
 
 cd SAE_Reseaux && git checkout integration-de-fou-zinzin && cd ..
 
