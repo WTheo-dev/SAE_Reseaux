@@ -1,6 +1,6 @@
-CREATE USER IF NOT EXISTS 'maxlamenace'@'localhost' IDENTIFIED BY 'hamza';
+CREATE USER IF NOT EXISTS 'associationAPEAJ'@'localhost' IDENTIFIED BY '1234Apeaj';
 CREATE DATABASE IF NOT EXISTS apeaj
 CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-GRANT ALL PRIVILEGES ON apeaj .* TO 'maxlamenace'@'localhost';
+GRANT ALL PRIVILEGES ON apeaj .* TO 'associationAPEAJ'@'localhost';
 FLUSH PRIVILEGES;
 
